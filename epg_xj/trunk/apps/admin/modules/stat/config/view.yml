@@ -1,0 +1,4 @@
+indexSuccess:
+  javascripts: [jquery.mousewheel-3.0.4.pack.js,jquery.fancybox-1.3.4.pack.js,thickbox.js,auto_complete.js,jquery-ui-1.8.2.custom.min.js]
+  stylesheets: [fancybox-1.3.4.css,smoothness/jquery-ui-1.8.2.custom.css]
+

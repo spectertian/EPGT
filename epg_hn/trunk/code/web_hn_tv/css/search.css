@@ -1,0 +1,27 @@
+@charset "utf-8";
+*{ 
+	margin:0;
+	padding:0;
+	-webkit-transition: all 0.2s linear;/*所有的动画在零点二秒之内执行线性缓动的步骤*/
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+body{ background:#111; font-family:"微软雅黑"; color:#fff;}
+li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{ font-size:16px; font-weight:normal;}
+a{ color:#fff; text-decoration:none;}
+.clr{ zoom:1; overflow:hidden;}
+
+.main{ width:80%; height:720px; margin:0 auto; position:relative; overflow:hidden; background:url(/images/111.jpg) no-repeat;}
+.src{ width:80%; margin:100px auto; padding:40px; background:rgba(0,0,0,0.8);}
+.src img{ float:right; width:300px; height:450px;}
+.src li{ margin:0 0 15px; text-align:center;}
+.src .search{ width:400px; height:30px; background:none; border:2px yellow solid; color:#ffffff}
+.src .btn{ background:yellow; color:#111; width:80px; height:35px;display:inline-block; position:relative; top:-2px; line-height:30px; margin:0 0 0 15px; cursor:pointer}
+.src h2{ font-size:18px;}
+.src ul{ padding:0 50px; width:600px;}
+.src span{ color:yellow; float:left; margin:0 0 30px;}
+.src a{ margin:0 0 0 20px;}
+.src .tag{ text-align:left; line-height:180%;}

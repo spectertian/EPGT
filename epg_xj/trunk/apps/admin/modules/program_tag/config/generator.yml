@@ -1,0 +1,30 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ProgramTag
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          program_tag
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        program_id:   { label: 节目名称 }
+        tag_id:   { label: 关联标签 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+      list:
+        title: 标签关联管理
+        max_per_page: 50
+        display: [id,program_id,tag_id,created_at, updated_at]
+      filter:
+        display: [tag_id]
+      form:    ~
+      edit:    ~
+      new:     ~

@@ -1,0 +1,16 @@
+//ÌøÌ¨
+function funSetPlay(serviceId){
+	var gvarServiceId = new Global('superServiceId');
+	gvarServiceId.value = serviceId ;
+	window.location = 'file://htmldata/mod/fullscreen/fullscreen.htm' ;
+}
+//Ô¤Ô¼
+function funSetBooking(serviceId,date,time){
+	//date format 2012-12-12
+	//time format 23:55
+	var gvarServiceId = new Global('superServiceId');
+	gvarServiceId.value = serviceId ;
+	var gvarScheduleInfo = new Global('superScheduleInfo');
+	gvarScheduleInfo.value = date + "*" + time ;
+	window.location = 'file://htmldata/mod/schedule/schedule.htm' ;
+}

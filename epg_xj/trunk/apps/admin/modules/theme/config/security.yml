@@ -1,0 +1,44 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+new:
+  credentials: theme_new
+
+addwiki:
+  credentials: theme_new
+
+add:
+  credentials: theme_new
+
+delete:
+  credentials: theme_del
+
+index:
+  credentials: theme_index
+
+editwiki:
+  credentials: theme_edit
+
+edit:
+  credentials: theme_edit
+
+setscene:
+  credentials: theme_edit
+
+delwiki:
+  credentials: theme_del
+
+listwikis:
+  credentials: theme_index
+
+batchDelete:
+  credentials: channel_del
+
+publishoff:
+  credentials: theme_publishoff
+
+publishon:
+  credentials: theme_publishoff
+
+publish:
+  credentials: theme_publishoff		

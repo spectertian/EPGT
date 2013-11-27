@@ -1,0 +1,12 @@
+indexSuccess:
+    stylesheets:    [-css.css,-sty2.css,sty28list.css]
+    javascripts:    [scroll.js]
+
+allSuccess:
+    has_layout: false
+    
+allTempSuccess:
+    has_layout: false
+    
+allNoCoverSuccess:
+    has_layout: false

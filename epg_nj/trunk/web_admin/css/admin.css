@@ -1,0 +1,9 @@
+.wiki-meta > label,.wiki-meta .checkbox_list{ float:left;}
+.wiki-meta > label{width:33%;}
+.wiki-meta li > label{ padding:8px 0 0;}
+.wiki-meta .checkbox_list{width:90%;}
+.wiki-meta > li{overflow:hidden; zoom:1;}
+.checkbox_list li {float:left; height:30px; line-height:24px; padding:3px 0; width:25%; }
+.checkbox_list li input { width:20px; vertical-align:middle}
+.wiki-meta li .checkbox_list li label { text-align: left; position: inherit; display: inline; float: none; width:auto; vertical-align:middle; padding:0;}
+.checkbox_list input{ margin:8px 0 0;}

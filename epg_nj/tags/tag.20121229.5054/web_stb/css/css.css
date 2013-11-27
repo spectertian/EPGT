@@ -1,0 +1,396 @@
+﻿*{margin:0; padding:0;-webkit-transition-duration:0.5s;transition-duration:0.5s;}
+a:focus,input:focus{-webkit-outline-style: none; outline: none;}
+body{ background:transparent; color:#eee; font-size:14px; font-family:微软雅黑;}
+h1,h2,h3,h4,h5,h6{ font-size:12px; font-weight:normal;}
+li{ list-style:none;}
+a{ color:#fff; text-decoration:none; white-space:nowrap;}
+a:hover{ color:yellow;}
+.clr{ overflow:hidden; z-index:1;}
+
+.wapper{ height:720px; margin:0 auto; position:relative; width:1280px;}
+.bg{ background: url(/img/bg.png) repeat; height:640px; margin:0 auto; position:relative; top:40px; width:1160px;}
+
+.nav{ height:52px; padding:20px;}
+.nav h1{ background: url(/img/logo.png) no-repeat; float:left; height:53px; text-indent:-2222px; width:190px;}
+.nav .navh,.nav ul,.nav li{ float:left;}
+.nav .navh{ height:44px; left:33px; overflow:hidden; position:relative; top:5px; width:750px;}
+.nav ul{ height:44px; left:0; position:absolute;}
+.nav li,.nav a{ color:#fff; display:block; font-size:30px; height:44px; line-height:44px; text-align:center; width:150px;}
+.nav a:hover{ background: url(/img/navh.png) no-repeat; color:#111;}
+.nav .there{ background: url(/img/navht.png) no-repeat; color:#f1e800;}
+
+.liststy{ margin:0 auto; margin:0 0 15px; height:161px; padding:0 0 0 160px; width:940px;}
+.playnow{ background: url(/img/hotplay.png) no-repeat 10px center;}
+.hlist{ position:relative; overflow:hidden; height:162px; padding:3px 0 0; width:946px;}
+.playnow ul{ left:0; height:162px; position:absolute; width:9999px;}
+.playnow li{ float:left; height:160px; padding:2px 0 0 2px; width:242px;}
+.playnow li a,.playnow li img{ height:154px; width:208px;}
+.playnow li a,.youlike a,.movielist a,.goodmovie a{ border:1px #09141f solid; display:block; font-size:24px; overflow:hidden; position:relative;}
+.playnow li a:hover,.youlike a:hover,.movielist a:hover,.goodmovie a:hover{ border:3px #ffe12b solid; left:-2px; top:-2px;}
+.playnow li span,.playnow li em,.youlike span,.movielist span{ display:block; position:absolute;}
+.playnow li span,.youlike span,.movielist span{ background:#0f2032; bottom:0; display:block; height:50px; left:0; text-indent:5px; width:100%;}
+.playnow li a:hover span,.youlike a:hover span,.movielist a:hover span,.goodmovie a:hover span{ background:#ffe12b; color:#111;}
+.playnow li strong,.playnow li b{ display:block; height:7px;}
+.playnow li strong{ background:#080e12; border-bottom:1px #293c4c solid; margin:5px auto 0; width:195px;}
+.playnow li em{ background: url(/img/playnowusernum.png) no-repeat; font-style:normal; font-size:18px; height:27px; padding:0 2px 0 0; right:0; text-align:right; top:0; width:99px;}
+.playnow li .tvnumber,.playnow li a:hover em{ display:none;}
+.playnow li a:hover .tvnumber{ display:block; }
+.playnow li i{ display:block; font-style:normal; height:32px; overflow:hidden; position:relative; top:2px; width:200px;}
+.playnow li b,.timenow{ background: url(/img/timenowbg.jpg) repeat-x;}
+
+
+.youlike{ background: url(/img/youlike.png) no-repeat 10px center; height:162px;}
+.youlike ul{ left:0; height:162px; position:absolute; width:9999px;}
+.youlike li{ float:left; height:160px; padding:2px 0 0 2px; width:163px;}
+.youlike a,.youlike img{ display:block; height:152px; width:114px;}
+.youlike img{ left:0; position:relative; top:0;}
+.youlike span{ height:35px; left:0; line-height:35px; overflow:hidden; width:114px;}
+.youlike b,.movielist b,.goodmovie b,.hidelist li a b,.hotplays a b,.commant li b{ display:block; font-weight:normal; height:35px; left:0; position:absolute; width:auto;}
+
+.commant{ background: url(/img/commant.png) no-repeat 10px center;}
+.commant li a,.commant li img{ height:125px; position:relative; width:208px;}
+.commant li img{ left:0; top:0;}
+.commant li span,.movielist span{ height:35px; line-height:35px;}
+.commant li b{ background:none;}
+.commant li span{ overflow:hidden; width:208px;}
+
+.moviemenu{ background: url(/img/moviemenubg.png) no-repeat; height:122px; margin:0 auto 25px; padding:0 0 0 10px; position:relative; width:1111px;}
+.moviemenu li{ float:left; height:32px; margin:0 2px; padding:4px 0; text-align:center; width:88px;}
+.moviemenu li a{ display:block; font-size:22px; height:32px; line-height:30px; width:88px;}
+.moviemenu li a:hover{ background: url(/img/moviemenuh.png) no-repeat; color:#111; }
+.moviemenu li .there{ background: url(/img/moviemenu.png) no-repeat; color:#f1e800; }
+.movielist{ height:362px; margin:0 auto; overflow:hidden; position:relative; width:1054px;}
+.movielist ul{ left:0; position:absolute; top:0; width:1085px;}
+.movielist li{ float:left; height:158px; margin:0 0 20px; padding:3px 0 0 3px; width:152px;}
+.movielist a,.movielist img{ display:block; height:152px; position:relative; width:114px;}
+.movielist span{ overflow:hidden; width:114px;}
+.movielist p,.mylist_hide p{ color:yellow; font-size:26px; line-height:300px; text-align:center;}
+.moviemenu .px{ font-size:24px; line-height:36px; position:absolute; right:5px; top:5px; width:360px;}
+.moviemenu span{ display:block; float:right; height:31px; margin:0 15px 0 0; width:115px;}
+.moviemenu .zntjw{ background: url(/img/zntjw.png) no-repeat;}
+.moviemenu .gxrqw{ background: url(/img/gxrqw.png) no-repeat;}
+.moviemenu .zntj{ background: url(/img/zntj.png) no-repeat; margin:-2px 15px 0 0; height:36px; width:133px;}
+.moviemenu .gxrq{ background: url(/img/gxrq.png) no-repeat; margin:-2px 15px 0 0; height:36px; width:133px;}
+
+.week{ background: url(/img/week.png) no-repeat; height:57px; position:absolute; right:75px; top:15px; width:252px;}
+
+.titbg{ font-size:34px; padding:15px 0 0 125px;}
+
+.intro,.movelist{ background:#25343d; border:1px #324048 solid; font-size:24px; margin:20px auto 0; padding:15px; width:916px;}
+.intro ul{ float:left; width:665px;}
+.intro ul li{ line-height:170%;}
+.intro ol{ float:right; margin:-5px 0 0;}
+.intro ol img{ border:1px #d2d2d2 solid; margin:0 0 8px;}
+
+.back,.next{ background: url(/img/back.png) no-repeat; height:38px; position:absolute; top:70px; width:38px;}
+.back{ left:20px;}
+.next{ background: url(/img/next.png) no-repeat; right:20px;}
+.backs,.nexts{ top:385px;}
+.backs{ left:10px;}
+.nexts{ right:10px;}
+.movelist,.hidelist{ position:relative;}
+.movelist{ padding:5px 15px;}
+.hidelist{ height:180px; left:55px; overflow:hidden; width:900px;}
+.hidelist ul{ left:0; padding:0 0 0 5px; position:absolute;}
+.hidelist li{ float:left; margin:0 15px 0 0; position:relative;}
+.hidelist li a{ background:#ffe22c; border:1px #09141f solid; display:block; height:156px; margin:15px 0 0; text-align:center; width:120px;}
+.hidelist li a:hover,.hidelist li .there{background:#ffe22c; border:1px #784c00 solid; height:168px; margin:0 0 0 -6px; padding:3px 0 0; width:126px;}
+.hidelist li a img{ height:156px; position:relative; width:120px;}
+.hidelist li a:hover img,.hidelist li .there img{ height:165px; width:120px;}
+.hidelist li a span,.goodmovie a span{ background:#0f2032; bottom:0; display:block; height:36px; line-height:36px; overflow:hidden; position:absolute; width:114px;}
+.hidelist li a:hover span,.hidelist li .there span{ background:#ffe22c; bottom:2px; color:#111; height:40px; left:-2px;}
+.hidelist li a span{ width:122px;}
+.movelisticon{ background: url(/img/movelist.png) no-repeat; bottom:257px; display:block; height:11px; left:225px; position:absolute; width:31px;}
+
+
+.help{ background:#01273a; bottom:0; color:#bfbfbf; font-size:20px; height:45px; left:0; line-height:40px; position:absolute; width:100%;}
+.help ul{ padding:0 0 0 40px;}
+.help li{ float:left; line-height:45px; margin:0 15px 0 0;}
+.help li img{ float:left; margin:5px 5px 0 0;}
+.help p{ color:#fff; float:right; padding:0 30px 0 0;}
+.help p span{ padding:0 5px;}
+
+.tips,.tipsl{ background: url(/img/tips.png) no-repeat; bottom:50px; height:151px; padding:20px; position:absolute; right:55px; width:331px; z-index:11;}
+.tips{ display:none;}
+.tips h6,.tipsl h6{ font-size:24px; line-height:160%;}
+.tips p{ margin:20px 0 0;}
+.tips a,.tipsl p a{ display:inline-block; font-size:26px; height:44px; line-height:44px; text-indent:35px; width:165px;}
+.tips a:hover,.tipsl p a:hover{ color:#111;}
+.tips .ok{ background:url(/img/btnok.png) no-repeat;}
+.tips .ok:hover{ background:url(/img/btnokh.png) no-repeat;}
+.tips .no,.tipsl .no{ background:url(/img/btnno.png) no-repeat;}
+.tips .no:hover,.tipsl .no:hover{ background:url(/img/btnnoh.png) no-repeat;}
+.tipsl{ background:transparent; height:auto;}
+.tipsl h6,.tipsl p{ background: url(/img/tips.png) no-repeat; padding:10px 20px; width:331px;}
+.tipsl h6{ height:80px;}
+.tipsl p{ background: url(/img/tips.png) no-repeat 0 bottom; height:65px; padding-top:15px; text-align:center;}
+.hidetips{ height:300px; overflow:hidden; position:relative; width:371px;}
+.hidetips li{ font-size:26px; height:60px; line-height:60px; overflow:hidden; zoom:1;}
+.hidetips a{ color:#b8b8b8; display:block; height:60px; padding:0 35px;}
+.hidetips a:hover{ background: url(/img/hidetipsh.png) repeat-x; color:#111;}
+.hidetips a span,.hidetips a strong{ float:left; width:50%;}
+.hidetips a strong{ font-weight:normal; text-align:right;}
+.hidetips .odd{ background: url(/img/hidetipso.png) repeat-y;}
+.hidetips .even{ background: url(/img/hidetipso.png) repeat-y -371px 0;}
+
+
+.smartnav{ background: url(/img/smartnvabg.png) no-repeat; height:290px; margin:0 auto; position:relative; top:390px; width:1198px;}
+.smartnav h2{ background: url(/img/icon.png) no-repeat 10px 50%; color:#a8ff00; font-size:24px; height:45px; line-height:45px; position:relative; text-indent:35px;}
+.smartnav h2 strong{ display:block; font-weight:normal; height:45px; overflow:hidden; width:500px;}
+.smartnav .time{ color:#b8b8b8; font-size:22px; left:480px; position:absolute; top:0; }
+.timebg,.timenow{ display:inline-block; height:8px; }
+.timebg{ background:#080e12; border-bottom:1px #364853 solid; margin:0 15px; position:relative; text-indent:0; top:-5px; width:120px;}
+.snav{ height:50px; line-height:50px;}
+.snav h3,.snav ul,.snav ul li,.snavlist li{ float:left;}
+.snav h3{ padding:8px 0 0 20px; }
+.snav h3 a{ display:inline-block; height:31px; margin:5px 15px 0 0; width:115px; }
+.snav .movie_list{ background: url(/img/jmb.png) no-repeat;}
+.snav .movie_info{ background: url(/img/jmxq.png) no-repeat;}
+.snav .movie_listh{ background: url(/img/jmbh.png) no-repeat; margin:0 15px 0 0; height:36px; position:relative; top:2px; width:133px;}
+.snav .movie_infoh{ background: url(/img/jmxqh.png) no-repeat; margin:0 15px 0 0; height:36px; position:relative; top:2px; width:133px;}
+
+.snav ul{ margin:5px 0 0; width:840px;}
+.snav li,.snavlist li{ font-size:24px; text-align:center; width:105px;}
+.snav li a{ display:block; height:44px; line-height:44px; width:105px;}
+.snav li a:hover{ background: url(/img/snavbgh.png) no-repeat; color:#111;}
+.snav li .there{ background: url(/img/snavbg.png) no-repeat;}
+.snavlisth{ height:160px; margin:0 0 0 40px; overflow:hidden; padding:20px 0 0; position:relative; width:1120px;}
+.snavlist{ left:2px; position:absolute; width:9999px;}
+.snavlist li{ height:160px; padding:2px 0 0; position:relative; width:140px;}
+.snavlist li a,.snavlist li img{ height:152px; width:114px;}
+.snavlist li a{ border:1px #09141f solid; display:block; margin:0 auto; position:relative;}
+.snavlist li a:hover{ border:3px #ffdf27 solid;}
+.snavlist li span{ background:#0f2032; bottom:0; display:block; height:38px; line-height:38px; overflow:hidden; position:absolute; width:114px;}
+.snavlist li a:hover span{ background:#ffdf27 ; color:#111;}
+.snavlist li em{ display:block; font-style:normal; left:0; position:absolute; text-indent:5px;}
+.snavlist li b{ background: url(/img/top.png) no-repeat; display:block; height:40px; right:5px; position:absolute; top:-15px; width:26px;}
+.snavlist li .two{ background: url(/img/two.png) no-repeat;}
+.snavlist li .three{ background: url(/img/three.png) no-repeat;}
+.smartnavr{ background: url(/img/smartnvabgr.png) no-repeat;}
+.smartnavr h2{background: url(/img/icon.png) no-repeat 470px 50%;}
+.smartnavr h2 strong{ margin:0 0 0 450px; width:520px;}
+.smartnavr .time{ left:inherit; right:20px;}
+.smartnavr .snav h3{ float:right; width:280px;}
+.smartnavr .snav ul{ margin:5px 0 0 40px;}
+
+.search { width:1100px; margin:0 auto;}
+.srh{ float:left; width:580px;}
+.srh form{ background: url(/img/src.png) no-repeat; height:35px; padding:10px 15px 10px 10px; width:590px;}
+.srh form .src{ background: url(/img/srcbg.png) no-repeat center center; border:none; float:left; height:37px; font-size:22px; line-height:31px; padding:0 15px; width:484px;}
+.srh form .src:focus{background: url(/img/srcbgh.png) no-repeat center center;}
+.srg{ background: url(/img/srcbtn.png) no-repeat center center; display:block; float:left; height:31px; margin:4px 0 0; width:49px;}
+.srg:hover{ background: url(/img/srcbtnh.png) no-repeat;}
+.srh dl{ margin:20px 0 0; width:580px;}
+.srh dt{ font-size:30px; margin:0 0 18px;}
+.srh dl li{ float:left; width:33%;}
+.srh dl a{ background: url(/img/srha.png) no-repeat; display:block; font-size:26px; height:42px; line-height:42px; margin:0 0 15px; padding:0 13px; text-align:center; width:120px;}
+.srh dl a:hover{ background: url(/img/srhah.png) no-repeat; color:#111;}
+.srh dl a span{ display:block; overflow:hidden; width:120px;}
+.goodmovie{ background: url(/img/goodmovie.png) no-repeat; float:right; height:420px; margin:0 20px 0 0; padding:23px 0 0 33px ; width:430px;}
+.goodmovie h2{ font-size:30px; margin:0 0 10px;}
+.goodmovie ul{ margin:0 0 0 5px;}
+.goodmovie li{ float:left; height:170px; margin:0 10px 10px 0; width:128px;}
+.goodmovie a,.goodmovie img{ display:block; height:152px; width:114px;}
+.goodmovie a{ margin:16px 2px 0;}
+.goodmovie a:hover{ height:168px; margin:0;}
+.goodmovie a span{ text-indent:5px;}
+.goodmovie img{ position:relative;}
+.srhlist .srh{ float:none; margin:30px auto;}
+
+.weeklist{ margin:10px auto 0; width:1020px;}
+.weekl,.weekr{ float:left;}
+.weekl{ margin:0 10px 0 0; width:219px;}
+.weekl h2,.weekl p a{ font-size:26px; height:51px; line-height:51px;}
+.weekl h2{ background: url(/img/weeklt.png) no-repeat; color:#fff; text-indent:25px;}
+.weekl h2 img{ height:50px; margin:0 0 0 -25px; position:relative; top:-3px; vertical-align:middle;}
+.htime{ height:350px; position:relative;}
+.htime ul{ position:absolute; top:0;}
+.htime ul li{ background: url(/img/weekle.png) repeat-y; height:44px; padding:6px 0 0 10px; width:209px; }
+.htime ul .odd{ background: url(/img/weeklo.png) repeat-y;}
+.htime ul a,.weekl p a{ color:#b8b8b8; display:block; font-size:26px; height:44px; line-height:44px; text-indent:15px; width:150px;}
+.htime ul a:hover,.weekl p a:hover{ background: url(/img/timehr.png) no-repeat; color:#111;}
+.htime ul .there{background: url(/img/timeh.png) no-repeat; color:#f1e800;}
+.weekl p{ background: url(/img/weeklb.png) no-repeat; color:#b8b8b8; display:block; height:51px; padding:0 0 0 10px;}
+.weekr{ background: url(/img/weeklr.png) no-repeat; height:450px; width:788px;}
+.weekrlist{ border-right:1px #131b1f solid;  float:left; height:450px; margin:0 0 0 11px; overflow:hidden; position:relative; width:519px;}
+.weekrlist p{ color:yellow; font-size:24px; line-height:400px; text-align:center;}
+.weekrlist ul{ left:0; position:absolute; top:0; width:519px;}
+.weekrlist .odd{ background:#374b57;}
+.weekrlist a{ display:block; font-size:24px; height:50px; line-height:50px; padding:0 0 0 40px; position:relative;}
+.weekrlist a:hover,.weekrlist a:focus{ background: url(/img/weekrlisth.png) repeat-x; color:#111;}
+.weekrlist a:hover b{background:url(/img/playsnowbh.png) no-repeat; color:#111;}
+.weekrlist .playsnow{ background: url(/img/icon.png) no-repeat 15px center; color:#a8ff00;}
+.weekrlist .playsnow:hover{ background: url(/img/weekrlisthf.jpg) no-repeat;}
+.weekrlist .cancel{background: url(/img/ling.png) no-repeat 10px center;}
+.weekrlist span,.weekrlist strong{ float:left;}
+.weekrlist span{ padding:0 5px; width:90px;}
+.weekrlist strong{ overflow:hidden; height:50px; left:0; position:relative; width:280px;}
+.weekrlist i{ font-style:normal; left:0; position:absolute; top:0;}
+.weekrlist b{ background:url(/img/playsnowb.png) no-repeat; color:#5a5a5a; font-size:20px; height:37px; line-height:37px; right:10px; position:absolute; text-align:center; top:8px; width:76px;}
+.weekrlist .playsnow b,.weekrlist .playsnow:hover b{ background:none; color:#a8ff00;}
+.weekrlist .playsnow:hover b{ color:#111;}
+.weekrlist strong,.weekrlist b{ font-weight:normal;}
+.weelg,.weelg a:hover{ width:212px;}
+.weelg{ border-left:1px #36444c solid; float:left; height:440px; padding:10px 0 0 30px;}
+.weelg li{ height:212px; width:212px;}
+.weelg a{ background:#0f2032; border:1px solid #09141f; display:block; height:200px; margin:0 6px; overflow:hidden; position:relative; top:6px; width:200px;}
+.weelg a:hover{ background:#ffb107; border:1px solid #784c00; height:210px; margin:0; top:0;}
+.weelg a img{ display:block; height:135px; margin:0 auto; width:200px;}
+.weelg a:hover img{ height:135px; margin:3px auto 0; width:204px;}
+.weelg span{ bottom:0; font-size:22px; left:0; height:64px; position:absolute;}
+.weelg strong,.weelg b{ display:block; font-weight:normal; left:5px; position:absolute; width:300px;}
+.weelg a b{ bottom:6px; color:#7c8084;}
+.weelg a:hover strong{ color:#111;}
+.weelg a:hover b{ color:#444;}
+
+.channel{ margin:30px auto 0; left:20px; position:relative; width:980px;}
+.chanel_menu{ float:left; width:179px;}
+.chanel_menu li{ height:44px; padding:16px 0; text-align:center;}
+.chanel_menu .t{ background: url(/img/chanelt.png) no-repeat;}
+.chanel_menu .b{ background: url(/img/chanelb.png) no-repeat;}
+.chanel_menu .odd{ background: url(/img/.chanel_menuo.png) repeat-y;}
+.chanel_menu .even{ background: url(/img/.chanel_menue.png) repeat-y;}
+.chanel_menu a{ color:#b8b8b8; display:block; font-size:28px; height:44px; line-height:44px; margin:0 auto; width:150px;}
+.chanel_menu a:hover{ background: url(/img/chaneel.png) no-repeat; color:#111;}
+.chanel_menu .there{ background: url(/img/chanelthere.png) no-repeat; color:yellow;}
+
+.channel_list{ border:1px #131b1f solid; float:left; height:450px; margin:3px 0 0 15px; overflow:hidden; position:relative; width:784px;}
+.channel_list ul{ background: url(/img/channel_list.png) repeat; border:1px #475964 solid; position:absolute; top:0;}
+.channel_list li{ float:left; height:50px; line-height:50px; width:390px;}
+.channel_list .cl{ border-right:1px #131b1f solid;}
+.channel_list .cr{ border-left:1px #475964 solid;}
+.channel_list a{ display:block; font-size:24px; padding:0 0 0 110px;}
+.channel_list a:hover{ background: url(/img/weekrlisth.png) repeat-x; color:#111;}
+.channel_list span{ padding:0 35px 0 0;}
+
+.my_list{ margin:0 auto; width:1120px;}
+.mylist_hide{ float:left; height:480px; margin:0 0 0 10px; position:relative; width:880px;}
+.mylist_hide ul{ position:absolute; top:0;}
+.mylist_hide li{ background:#374b57;}
+.mylist_hide .even{ background:#25343d;}
+.mylist_hide a{ display:block; font-size:26px; height:60px; line-height:60px; overflow:hidden; padding:0 15px; width:850px; zoom:1;}
+.mylist_hide a *{ float:left;}
+.mylist_hide b,.mylist_hide strong{ font-weight:normal;}
+.mylist_hide em,.mylist_hide i{ font-style:normal;}
+.mylist_hide b{ width:140px;}
+.mylist_hide span{ width:100px;}
+.mylist_hide strong{ height:60px; overflow:hidden; position:relative; width:280px;}
+.mylist_hide strong big{ display:block; left:0; top:0; position:absolute;}
+.mylist_hide em{ text-indent:15px; width:230px;}
+.mylist_hide i{ background: url(/img/playsnowb.png) no-repeat; color:#5a5a5a; font-size:20px;  height:37px; line-height:37px; margin:12px 0 0; text-align:center; width:76px;}
+.mylist_hide a:hover{ background: url(/img/hidetipsh.png) repeat-x; color:#111;}
+.mylist_hide a:hover i{ background: url(/img/playsnowbh.png) no-repeat; color:#000;}
+.ad200{ display:block; float:right; height:494px; margin:-8px 0 0; width:200px;}
+
+.tv{ margin:20px auto 0; width:1050px;}
+.tvl{ float:left; width:670px;}
+.tvinfo,.notv,.dbzy{ background: url(/img/tvinfo.png) no-repeat; height:237px; margin:0 0 14px;}
+.tvinfo img{ height:200px; margin:20px 0 0 20px; width:150px;}
+.tvinfo ul{ float:right; margin:20px 50px 0 0; width:410px;}
+.tvinfo li{ font-size:20px; line-height:160%;}
+.tvinfo li .movieyear{ font-weight:normal; padding:0 0 0 15px;}
+.tvinfo .hides{ height:35px; overflow:hidden;}
+.tvinfo li a{ background:url(/img/srhas.png) no-repeat; display:block; height:35px; line-height:35px; text-align:center; width:100px;}
+.tvinfo li a:hover{ background:url(/img/srhahs.png) no-repeat; color:#111;}
+.notv h3{ color:#b8b8b8; font-size:24px; padding:5px 10px;}
+.notv ul{ padding:10px 0 0;}
+.notv li{ float:left; width:25%;}
+.notv a,.notv img{ height:152px; margin:0 auto; width:112px;}
+.notv a{ border:1px #25343d solid; display:block; overflow:hidden; position:relative; top:0;}
+.notv a:hover,.notv a:hover img{ height:164px; width:122px;}
+.notv a:hover{ background:#ffad05; border:1px #784c00 solid; padding:3px; top:-10px;}
+.notv span{ background:#0f2032; bottom:0; display:block; font-size:24px; height:35px; left:0; line-height:35px; position:absolute; text-indent:5px; width:100%;}
+.notv a:hover span{ background:#ffad05; color:#111; font-size:26px;}
+.notv span i{ display:block; font-style:normal; height:35px; margin:0 auto; overflow:hidden; position:relative; width:95%;}
+.itemchoice{ background: url(/img/playlibrary.png) no-repeat; height:65px; position:relative; width:670px; }
+.itemchoice ul{ left:175px; position:absolute; top:10px;}
+.itemchoice li{ float:left; margin: 0 25px 0 0;}
+.itemchoice a{ display:block; height:43px; padding:3px; width:133px;}
+.itemchoice .there{ background: url(/img/itemchoice.png) no-repeat;}
+.itemnum{ background: url(/img/itemnum.png) no-repeat; height:164px; margin:5px 0 0; width:674px;}
+.itemnum2{ background: url(/img/itemnum2.png) no-repeat;}
+.itemnum3{ background: url(/img/itemnum3.png) no-repeat;}
+.hidenum{ position:relative; height:135px; margin:0 auto; overflow:hidden; top:24px; width:630px;}
+.hidenum ul{ height:auto; position:absolute; top:0; width:100%;}
+.hidenum li{ float:left; margin:0 0 10px; width:10%;}
+.hidenum li a{ background: url(/img/hidenum.png) no-repeat center center; display:block; font-size:24px; height:35px; line-height:35px; margin:0 auto; text-align:center; width:56px;}
+.hidenum li a:hover{ background: url(/img/hidenumh.png) no-repeat; color:#111;}
+.hidenum .longlist li{ width:50%;}
+.hidenum .longlist li a{ background:url(/img/hidenuml.png) no-repeat; overflow:hidden; padding:0 15px; text-align:left; width:270px;}
+.hidenum .longlist li a:hover{ background:url(/img/hidenumlh.png) no-repeat;}
+.hidenum .longlist li a span{ display:block; height:35px; overflow:hidden; position:relative; width:270px;}
+.hidenum .longlist li a big{ display:block; font-weight:normal; font-size:24px; left:0; position:absolute; width:auto;}
+.dbzy{ margin:0 auto; padding:0 10px; width:650px;}
+.dbzy h2{ font-size:30px; height:65px; line-height:65px; text-indent:15px;}
+.dbzy .dbzypic li{ float:left; padding:2px 0 0; text-align:center; width:33%;}
+.dbzy .dbzypic li a,.dbzy .dbzypic li img{ height:118px; width:178px;}
+.dbzy .dbzypic li a{ border:1px #09141f solid; display:block; font-size:22px; margin:0 auto; position:relative;}
+.dbzy .dbzypic li a:hover{ border:3px #ffad04 solid; margin:-2px auto 0;}
+.dbzy .dbzypic li a span{ background: url(/img/play.png) no-repeat; display:none; height:70px; left:55px; position:absolute; top:25px; width:70px; z-index:2;}
+.dbzy .dbzypic li a:hover span{ display:block;}
+.dbzy .dbzylist li{ border-bottom:1px #ccc dashed; font-size:20px; line-height:50px; margin:0 auto; width:95%;}
+.dbzy .dbzylist li img{ height:30px; margin:0 10px 0 0; vertical-align:middle;}
+.dbzylist li span{ display:inline-block; width:120px;}
+.dbzylist li a{ background:url(/img/playsh.png) no-repeat 0 center; line-height:27px; margin:0 25px 0 0; padding:0 0 3px 28px; ;}
+.dbzylist li a:hover{background:url(/img/plays.png) no-repeat 0 center; }
+.tvr{ float:right; width:350px;}
+.hotplays,.advance{ background: url(/img/hotplaysb.png) no-repeat 0 bottom; padding:0 0 7px;}
+.hotplays h2{ background: url(/img/hotplayst.png) no-repeat; font-size:30px; height:60px; line-height:60px; padding:0 0 0 25px; }
+.hotplays li{ background:#374b57; line-height:60px; width:350px;}
+.hotplays .even{ background:#25343d; }
+.hotplays a{ border-left:1px #06121e solid; border-right:1px #06121e solid; color:#b8b8b8; display:block; font-size:26px; height:60px; padding:0 25px; width:298px;}
+.hotplays a:hover{ background: url(/img/hidetipsh.png) repeat-x; color:#111;}
+.hotplays a span{ float:right; height:60px; overflow:hidden; position:relative; width:70px;}
+.hotplash{ height:420px; overflow:hidden; position:relative;}
+.hotplash ul{ position:absolute; top:0;}
+.reseeding .hotplash,.advance .hotplash{ height:180px;}
+.reseeding a span{text-align:left; width:150px;}
+.reseeding a i,.reseeding a big,.advance a i,.advance a big{ display:block; font-style:normal; font-size:26px;}
+.reseeding a i{ height:60px; left:0; overflow:hidden; position:relative; width:298px;}
+.reseeding a:hover{ background: url(/img/reseeding.png) repeat-x;}
+.reseedings{ height:240px; padding:0;}
+.reseedings a span{ width:auto;}
+.advance h2{ background:#25343d; border-left:1px #06121e solid; border-right:1px #06121e solid; }
+.advance .reserve{ background: url(/img/ling.png) no-repeat 23px center;}
+.advance a span{ margin:0 -10px 0 0; text-align:right;}
+.advance a i{ float:left; height:60px; overflow:hidden; position:relative; width:220px;}
+.advance .reserve i{ left:30px; width:190px;}
+
+.hotplays #hotplays i,.hotplays #hotplasy i{ display:block; height:60px; margin:0 auto; overflow:hidden; position:relative; width:298px;}
+.hotplays #hotplays big,.reseeding a big,.advance a big,.notv span big,.playnow li big,.hotplays #hotplasy big{ display:block; font-style:normal; font-size:26px; left:0; position:absolute;}
+#hotplasy{ height:auto;}
+#hotplasy ul{ position:static;}
+
+.tipc{ background: url(/img/tipss.png) no-repeat; display:none; height:161px; left:50%; margin:-95px -185px; padding:15px; position:absolute; text-align:center; top:50%; width:341px; z-index:8;}
+.tipc h2{ font-size:26px; color:yellow;}
+.tipc h2 a{ display:none;}
+.tipc p{ font-size:22px; padding:15px;}
+.tipbig{ background: url(/img/tipbig.png) no-repeat; height:400px; margin:-215px -415px; text-align:left; width:800px;}
+.tipbig p{ height:300px; line-height:180%; overflow:hidden; padding:15px 10px 15px 0; width:770px;}
+.tipbig h2 a{ display:block; float:right; font-size:20px; padding:0 30px 0 0; }
+
+.disforli{display:none}
+.addheight{height:270px}
+
+
+.movieinfo{ background:url(/img/hotplayst.png) no-repeat; padding:35px 0 0 ; width:350px;}
+.movieinfo ul{ background:#25343d; border-left:1px #06121E solid; border-right:1px #06121E solid; font-size:20px; padding:0 25px 25px; }
+.movieinfo ul img{ display:block; margin:0 auto 15px;}
+.movieinfo li{ margin:0 0 7px;}
+.movieinfo .hides{ overflow:hidden; width:298px;}
+.movieinfo li a{ background:url(/img/btn.png) no-repeat; color:#555; display:block; height:38px; line-height:38px; margin:10px auto -10px; text-align:center; width:114px;}
+.movieinfo li a:hover{ background:url(/img/btnh.png) no-repeat; color:#111;}
+#longlist{ background: url(/img/tvinfos.png) no-repeat; height:470px;}
+#longlist .hidenum{ height:430px;}
+#longlist ul{ margin-top:0;}
+#longlist li{ margin:0 0 14px;}
+.titbg img{ position:relative; top:15px; left:-40px;}
+.tvinfos{ background:url(/img/tvinfob.png) no-repeat; height:170px;}
+.tvinfos ul{ padding:25px 0;}
+.tvinfos li{ float:left; height:48px; margin:0 0 25px; width:25%;}
+.tvinfos li a{ display:block; height:43px; margin:0 auto; padding:3px; width:133px;}
+.tvinfos li a:hover{ background: url(/img/itemchoice.png) no-repeat;}
+
+.tipDiv {BACKGROUND: #ccc; LEFT: 314px; VISIBILITY: hidden; WIDTH: 651px; COLOR: #00f; POSITION: absolute; TOP: 168px; HEIGHT: 224px; z-index: 100;}
+.tipTitle {FONT-SIZE: 20px; LEFT: 255px; COLOR: #000; POSITION: absolute; TOP: 14px}
+.tipInfo {PADDING-LEFT: 60px; FONT-SIZE: 14px; LEFT: 40px; WIDTH: 511px; COLOR: #111; LINE-HEIGHT: 150%; POSITION: absolute; TOP: 100px; HEIGHT: 42px}

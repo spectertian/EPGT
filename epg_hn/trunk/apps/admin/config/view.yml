@@ -1,0 +1,21 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        Mozitek Internal System
+    #description:  symfony project
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       index, follow
+
+  #stylesheets: [system.css, template.css, rounded.css,thickbox.css]
+  stylesheets: [internal.css,message-box.css,jquery.autocomplete.css]
+  #javascripts: [jquery-1.4.2.min.js, index.js, menu.js, thickbox.js]
+  javascripts: [jquery-1.4.2.min.js,index.js, menu.js, jquery.autocomplete.min.js, jquery-ui-1.8.2.custom.min.js]
+  
+  has_layout:     true
+  layout:         layout

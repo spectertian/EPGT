@@ -1,0 +1,12 @@
+interface:
+  credentials: check_interface
+epg:
+  credentials: check_epg
+epgBak:
+  credentials: check_epgbak
+log:
+  credentials: check_log
+epgBochu:
+  credentials: check_epgBochu
+epgWeek:
+  credentials: check_epgWeek

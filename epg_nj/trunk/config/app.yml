@@ -1,0 +1,138 @@
+prod:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "5itv", class: "image"}
+   
+  photopre:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "epg_pre", class: "image"}
+    
+  base_url: http://10.20.20.209
+  static_url: http://image.epg.huan.tv/
+
+  memcache:
+    servers:
+      config_one: {host: "118.194.161.68", port: 11211}
+    compression : 0
+    lefttime : 7200
+
+temp:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "5itv", class: "image"}
+   
+  photopre:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "epg_pre", class: "image"}
+    
+  base_url: http://10.20.20.209
+  static_url: http://122.193.13.36:81/
+
+  memcache:
+    servers:
+      config_one: {host: "118.194.161.68", port: 11211}
+    compression : 0
+    lefttime : 7200
+      
+dev:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "5itv", class: "image"}
+  
+  base_url: http://10.20.20.209  
+  static_url: http://image.epg.huan.tv/
+    
+  memcache:
+    servers:
+      config_one: {host: "118.194.161.68", port: 11211}
+    compression : 0
+
+all: 
+  httpsqs:
+    host: 172.31.200.62
+    port: 1218
+    auth: epgpass
+    charset: utf-8  
+    
+  #回看系统播放能力
+  cpgPortal:
+    url: http://172.20.224.146:8086/nj-portal/oss/getNScreenPlayUrl
+    username: bokonguser
+    password: 12345678
+    
+  #回看系统ftp  
+  cpgFtp:
+    host: 172.20.224.235
+    port: 21
+    username: timeshift
+    password: timeshift123 
+
+  #媒资页面查询
+  linkQuery:
+    #center: http://172.31.155.22:9080/core/ContentLinksQuery.do
+    center: http://172.31.179.235:8880/SearchService/ContentLinksQuery
+  
+  #终端查询
+  statsQuery:
+    biz: http://172.31.6.27:8080/hems/servlet/BizStatsQuery
+ 
+  #推荐系统
+  #tcl,center,tongzhou
+  recommend:
+    vodWho: center
+    liveWho: tcl
+    tclUrl: http://172.31.200.20:8080/urec/api/v2/interface
+    #centerUrl: http://172.20.224.146:9090/ie/interface
+    centerUrl: http://172.20.224.181:9090/ie/interface
+    tongzhouUrl: http://172.31.177.250:8080/recommand/recommand/epgAction.action 
+  
+  #CMS数据中心
+  cmsCenter:
+    importUrl: http://172.31.155.22:9080/core/ContentLinksQuery.do
+    bkjson: http://172.31.183.230:8080/icms/content
+    bkjsonVod: http://172.31.183.10:8080/icms/content
+
+  #EPG JSON 欢网导出json节目数据
+  epgJson:
+    ip: 172.31.198.32
+    username: huanwang
+    password: huanwang
+    
+  #图片服务器地址
+  img:
+    url: http://172.31.139.17:81/
+    
+  #同步欢网数据地址
+  epghuan:
+    url: http://www.epg.huan.tv/json
+    posturl: http://www.epg.huan.tv/inject
+    apikey: FBCECY2E
+    secretkey: 9ef2977d62f85681eae90788b13678af
+
+  #搜索页面服务器地址
+  search:
+    url: http://172.31.139.19/was5/web/search
+
+  #exec路径
+  exec:
+    path: /bin/php /www/newepg/symfony
+
+  #数据仓库用户数据
+  DataWarehouse:
+    ip: 172.31.143.126
+    username: njepg
+    password: njepg
+    
+  #运营中心ftp  
+  centerFtp:
+    host: 172.20.225.218
+    port: 21
+    username: bokongUser
+    password: bokongUser
+    
+  #公用ftp  
+  commonFtp:
+    host: 172.31.201.123
+    port: 21
+    username: writeepg
+    password: epg123456

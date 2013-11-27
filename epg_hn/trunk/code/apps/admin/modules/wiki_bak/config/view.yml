@@ -1,0 +1,17 @@
+indexSuccess:
+  javascripts:    [thickbox-compressed.js,wiki.js]
+  stylesheets:    [thickbox.css]
+
+newSuccess:
+  javascripts: [tiny_mce/tiny_mce_src.js,auto_complete.js,ajax.js,jquery.cookie.js,swfupload/swfupload.js,swfupload/swfupload.queue.js, swfupload/handlers.js, swfupload/fileprogress.js,thickbox.js,nba_team.js]
+  stylesheets: [auto_complete.css,mediamanager.css,medialist-thumbs.css,thickbox.css]
+
+editSuccess:
+  javascripts: [tiny_mce/tiny_mce_src.js,auto_complete.js,ajax.js,jquery.cookie.js,swfupload/swfupload.js,swfupload/swfupload.queue.js, swfupload/handlers.js, swfupload/fileprogress.js,thickbox.js,nba_team.js ]
+  stylesheets: [ auto_complete.css,mediamanager.css,medialist-thumbs.css,thickbox.css]
+  
+testSuccess:
+  javascripts: [tiny_mce/tiny_mce_src.js,auto_complete.js,ajax.js,jquery.cookie.js,swfupload/swfupload.js,swfupload/swfupload.queue.js, swfupload/handlers.js, swfupload/fileprogress.js,thickbox.js]
+  stylesheets: [auto_complete.css,mediamanager.css,medialist-thumbs.css,thickbox.css]
+linkSuccess:
+  has_layout: false

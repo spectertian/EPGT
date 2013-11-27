@@ -1,0 +1,27 @@
+@charset "utf-8";
+*{ 
+	margin:0;
+	padding:0;
+	-webkit-transition: all 0.2s linear;/*所有的动画在零点二秒之内执行线性缓动的步骤*/
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+body{ background:#111; font-family:"微软雅黑"; color:#fff;}
+li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{ font-size:16px; font-weight:normal;}
+a{ color:#fff; text-decoration:none;}
+.clr{ zoom:1; overflow:hidden;}
+
+.main{ width:80%; height:720px; margin:0 auto; position:relative; overflow:hidden; background:url(/images/111.jpg) no-repeat;}
+#cover{ width:1280px;}
+.tvlists{ width:80%; margin:80px auto 0;}
+.tvlists ul{ background:yellow;}
+.tvlists ul li{ float:left; width:33%; text-align:center; color:#555; height:40px; line-height:40px; border-right:1px #d2d2d2 solid;}
+.tvlists ul li:last-child{ border:none;}
+.tvlists ol{ background:rgba(0,0,0,0.7); padding:10px 0;}
+.tvlists ol li{ padding:5px 15px; overflow:hidden; zoom:1;}
+.tvlists a{ display:block; height:30px; line-height:30px; overflow:hidden;}
+.tvlists a:hover{ color:yellow;}
+.tvlists span{ float:left; width:33%;}

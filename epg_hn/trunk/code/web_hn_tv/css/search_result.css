@@ -1,0 +1,26 @@
+@charset "utf-8";
+*{ 
+	margin:0;
+	padding:0;
+	-webkit-transition: all 0.2s linear;/*所有的动画在零点二秒之内执行线性缓动的步骤*/
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+body{ background:#111; font-family:"微软雅黑"; color:#fff;}
+li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{ font-size:16px; font-weight:normal;}
+a{ color:#fff; text-decoration:none;}
+.clr{ zoom:1; overflow:hidden;}
+
+.main{ width:80%; height:720px; margin:0 auto; position:relative; overflow:hidden; background:url(/images/111.jpg) no-repeat;}
+.srclist{ width:80%; margin:80px auto 0;}
+.srclist h2{ height:40px; line-height:40px; background:rgba(0,0,0,0.6); padding:0 15px; font-size:16px; color:yellow;}
+.srclist h2 a{ float:right; background:rgba(255,255,255,0.4); text-align:center; padding:0 10px;}
+.srclist h2 strong{ font-size:30px; margin:0 15px 0 0;}
+.srclist ul{ padding:30px 0; margin:0 -50px 0 0;}
+.srclist li{ float:left; width:12%; height:180px; text-align:center;}
+.srclist dt{ font-size:20px; color:yellow; margin:0 0 15px;}
+.srclist dt a{ font-size:20px; color:yellow;}
+.srclist dd{ line-height:180%;}

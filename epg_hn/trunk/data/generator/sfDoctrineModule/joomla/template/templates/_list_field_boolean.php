@@ -1,0 +1,5 @@
+[?php if ($value): ?]
+  [?php echo image_tag('icon/publish_g.png', array('alt' => __('Checked', array(), 'sf_admin'), 'title' => __('Checked', array(), 'sf_admin'))) ?]
+[?php else: ?]
+  [?php echo image_tag('icon/publish_x.png', array('alt' => __('Unhecked', array(), 'sf_admin'), 'title' => __('UnChecked', array(), 'sf_admin'))) ?]
+[?php endif; ?]

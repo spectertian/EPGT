@@ -1,0 +1,8 @@
+indexSuccess:
+  javascripts: [date.js,date_do.js]
+ajax_get_channelsSuccess:
+  has_layout:   false
+ajax_get_weekdaysSuccess:
+  has_layout:   false
+ajax_get_datasSuccess:
+  has_layout:   false

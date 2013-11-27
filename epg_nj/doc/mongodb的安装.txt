@@ -1,0 +1,47 @@
+#导出
+mongoexport -h localhost -d epg -c sp_service -o /root/sp_service.json
+#导入
+mongoimport -h localhost -d epg -c sp_service /root/sp_service.json 
+
+
+
+
+
+
+#在每个服务器创建mongodb的数据存储目录
+$ mkdir -p /data/r0 /data/r1 /data/r2
+$ adduser mongodb
+$ passwd mongodb
+
+#启动mongod
+#--fork为创建守护进程，--logpath与--fork必须并存
+$ nohup /app/mongodb/bin/mongod --dbpath /data/r0 --logpath /data/r0/mg.log --port 27010 --replSet test --fork --rest &
+$ nohup /app/mongodb/bin/mongod --dbpath /data/r1 --logpath /data/r1/mg.log --port 27011 --replSet test --fork --rest &
+$ nohup /app/mongodb/bin/mongod --dbpath /data/r2 --logpath /data/r2/mg.log --port 27012 --replSet test --fork --rest &
+
+/usr/local/mongodb-linux-x86_64-2.0.2/bin/mongod --dbpath=/hwdata/mogdata --logpath=/hwdata/mogdata/mg.log --fork
+
+--keyfile /srv/mongodb/keyfile
+
+#如果没有指定主，可以启动一个仲裁
+$ nohup ./mongod --dbpath /data/arb  --logpath /data/arb/mg.log  --port 27015 --rest --replSet test  --fork 
+
+#连接上mongo
+$ mongo 127.0.0.1:27010/admin
+>config = {_id:"test",members:[
+    {_id:0, host:'127.0.0.1:27010', priority:1},
+    {_id:1, host:'127.0.0.1:27011', priority:1},
+    {_id:2, host:'127.0.0.1:27012', priority:1}]}
+#或者
+>config = {_id:"test",members:[
+    {_id:0, host:'127.0.0.1:10000', priority:1},
+    {_id:1, host:'127.0.0.1:10001', priority:1},
+    {_id:2, host:'127.0.0.1:10002', priority:1},    
+    {_id:3, host:'127.0.0.1:10003', priority:1,"arbiterOnly": true}]
+    }       
+>rs.initiate(config);
+
+>rs.status()
+
+#或者查看状态
+http://10.0.0.11:28017/_replSet 

@@ -1,0 +1,58 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Channel
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          channel
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:    false
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        tv_station_id: {label: 电视台 }
+        tv_station: {label: 所属电台 }
+        name: { label: 频道名称 }
+        memo: { label: 频道备注 }
+        publish: {label: 发布, type: Boolean }
+        sort_id: { label: 排序 }
+        status: { label: 发布 }
+        sort_id: {label: 排序(小靠前) }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+      list:
+        title: 频道列表
+        fields:
+          program: {label: 节目模板, is_partial: true }
+          program_1: {label: 电视节目, is_partial: true }
+          has_logo: { label: 台标,is_partial: true }
+        display: [id, tv_station, =name, publish,has_logo, sort_id, memo, created_at, updated_at, program, program_1]
+        max_per_page: 30
+        sort: [sort_id, asc]
+        
+        batch_actions:
+          publish:  { label: 发布 ,class: publish }
+          unpublish:  { label: 隐藏 ,class: unpublish }
+          _delete: { label: 删除 }
+        object_actions: {}
+      filter:
+        display: [tv_station_id, name, publish]
+      form:
+        #display: [ tv_station_id,publish,sort_id,name,memo,logo,code ]
+        display: [ tv_station_id,publish,sort_id,name,memo,logo ]
+        fields:
+          publish: { label: "状态:" }
+        actions:
+          _list  : { label: 返回列表 }
+          _save  : ~
+          _delete: ~
+      edit:
+        title: 更新 %%name%% 频道
+      new:
+        title: 创建频道

@@ -1,0 +1,9 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+index:
+  credentials: memcache_index
+delete:
+  credentials: memcache_del
+captcha:
+  is_secure: false

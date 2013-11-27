@@ -1,0 +1,20 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: simple_ad_del
+
+batchdelete:
+  credentials: simple_ad_del
+
+index:
+  credentials: simple_ad_index
+
+edit:
+  credentials: simple_ad_edit
+
+add:
+  credentials: simple_ad_new
+
+captcha:
+  is_secure: false

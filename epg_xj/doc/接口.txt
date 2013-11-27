@@ -1,0 +1,146 @@
+﻿获取频道列表
+getChannels(type, showlive, order, page, pagesize)
+channels    channel[]
+
+获取推荐的频道列表
+GetChannelsByRecommended(type, showlive, order, page, pagesize)
+channels    channel[]
+
+获取当前正在直播的节目列表
+getLivePrograms(tag, type, order, page, pagesize)
+programs    program[]
+
+按时间段获取节目列表
+getPrograms(tag, type, startTime, endTime, page, pagesize)
+programs    program[]
+
+获取频道指定时间段节目列表
+getProgramsByChannel(channelId, startTime, endTime, page, pagesize)
+programs    program[]
+
+获取频道指定日期节目列表
+getProgramsOfDateByChannel(channelId, date, page, pagesize)
+programs    program[]
+
+获取wiki指定时间段节目列表
+getProgramsByWiki(wikiId, startTime, endTime, page, pagesize)
+programs    program[]
+
+根据关键字获取指定时间段节目列表
+searchPrograms(keyword, startTime, endTime, page, pagesize)
+programs    program[]
+
+获取指定时间内推荐的节目列表
+getProgramsByRecommended(type, startTime, endTime, page, pagesize)
+programs    program[]
+type 可以为空，默认是编辑推荐(editor)|猜你喜欢(system)
+
+设置用户喜欢的频道(如果已经存在，则取消喜欢)
+setLikeChannelByUser(userId, channelId)
+
+获取用户喜欢的频道列表
+getLikeChannelsByUser(userid, showlive, order, page, pagesize)
+channels    channel[]
+
+设置用户喜欢的wiki(如果已经存在，则取消喜欢)
+setLikeWikiByUser(userId, wikiId)
+
+获取用户喜欢的wiki列表
+getLikeWikisByUser(page, pagesize)
+wikis   wiki[]
+
+获取用户喜欢的wiki指定时间段节目列表
+getProgramsByWiki(userId, startTime, endTime, page, pagesize)
+programs    program[]
+
+根据关键字搜索wiki列表
+searchWikis(keyword, page, pagesize)
+wikis   wiki[]
+
+获取wiki详情
+getWikiInfo(wikiId)
+wiki    wiki
+
+预约节目
+orderProgramByUser(userId, channelId, programName, startTime, endTime)
+
+取消预约
+unOrderProgramByUser(userId, orderID)
+
+获取预约列表
+getProgramOrdersByUser(userId, page ,pagesize)
+orders  order[]
+
+获取用户的节目提醒
+getMessagesByUser(userId, type, page ,pagesize)
+type        string
+message	    string
+programs    program[]	
+
+wiki对象
+id	    string	影视id
+title	string	影视名称
+desc	string	描述
+type    string[]类型
+tags    array[] 关键字
+model   enum    模型
+info    media   描述信息
+posters poster[]海报
+screens string[]剧照
+
+channel对象
+id          string  频道id
+name        string  频道名称
+number      int     频道号
+serviceId   string  节目Id
+frequency   string  频率值
+type        array   类型
+logo        string  logo
+hot         int     热度
+curName     string  当前节目名称
+curType     array   当前节目类型
+startTime   date    当前节目开始时间
+endTime     date    当前节目结束时间
+wikiId      string  wikiID
+wikiTitle   string  wiki名称
+wikiCover   poster[]wiki封面
+nextName    string  下个节目名称
+
+program对象
+title	    string	节目名称
+startTime	string	节目开始时间
+endTime	string	节目结束时间
+type        array   节目类型
+channelId	string	频道ID
+channelName	string	频道名称
+channelNumber	string	频道号
+channelLogo	string	频道logo
+wikiId      string  wikiID
+wikiTitle   string  wiki名称
+wikiCover   poster[]  wiki封面
+
+order对象
+orderID     string
+channelID   string
+programName string
+startTime   date
+endTime     date
+
+poster对象
+type	string	海报类型
+size	string	海报尺寸，格式：宽*高，单位：像素
+url	    string	海报图片url
+
+
+计划任务导入
+program 加上 channel_id
+
+看看ProgramTemp在哪用到
+
+在模型里面 把删除的模型也删除。
+
+Programe_user  =>  UserPrograme
+channel_id
+
+
+

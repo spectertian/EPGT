@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+.wapper{ background:transparent;}
+.bg{ background: url(../img/sty2/bgs.jpg) no-repeat; height:630px; width:1160px;}
+.nav{ height:52px; padding:22px 100px 25px 35px;}
+.nav li{ margin:0 50px 0 0;}
+.nav li, .nav a{ background: url(../img/sty2/navbg.png) no-repeat; font-size:20px; height:48px; width:115px;}
+.nav a:hover{ background: url(../img/sty2/navbgh.png) no-repeat; color:#fff;}
+.nav .there{ background: url(../img/sty2/navbgt.png) no-repeat; color:#fff;}
+.nav .navh{ left:60px;}
+.liststy{ height:245px;}
+.playnow ul,.playnow li{ height:204px;}
+.hlist{ height:210px; overflow:hidden; width:1080px;}
+.liststy{ margin:0 auto; padding:0; width:1090px;}
+.liststy h2{ clear:both; font-size:20px; margin:0 0 10px;}
+.liststy span{display:block; float:right;}
+.liststy .line{ background:#6a655c; height:1px; line-height:1px; margin:0 15px; position:relative; top:14px; width:930px;}
+.liststy .num{ color:#969395; width:50px;}
+.liststy .num em,.liststy .num b{ font-style:normal; font-weight:normal; padding:0 3px;}
+.playnow li{ width:182px;}
+.playnow li a{ height:186px; width:140px;}
+.playnow li img{height:184px; width:138px;}
+.hotplays h2,.hotplays #hotplays big, .reseeding a big, .advance a big, .notv span big, .playnow li big, .hotplays #hotplasy big{ font-size:26px;}
+.playnow li i{ height:24px;}
+.playnow li em{ background:url(../img/sty2/playnowusernum.png) no-repeat; font-size:16px; height:24px; line-height:24px; padding:0; right:1px; top:0; width:64px;}
+.playnow li span,.playnow li a:hover span{ background:url(../img/sty2/playnow.png) repeat-x; bottom:-5px; color:#fff; height:40px;}
+.playnow li a:hover img,.youlike a:hover img,.movielist a:hover img,.goodmovie a:hover img{ border:1px #333 solid;}
+
+.srh,.srh dl { width:520px;}
+.srh form{ background:no-repeat; margin:30px 0 40px; padding:0; width:500px;}
+.srh form .src{ background:url(../img/sty2/srcbg.png) no-repeat center center; height:52px; padding:0 10px; width:390px;}
+.srh form .src:focus{ background:url(../img/sty2/srcbgh.png) no-repeat center center;}
+.srg { background:url(../img/sty2/btn.png) no-repeat center center; font-size:24px; height:54px; line-height:54px; margin:0; text-align:center; width:78px;}
+.srg:hover{background:url(../img/sty2/btnh.png) no-repeat center center;}
+.goodmovie{ background:url(../img/sty2/goodmovie.png) no-repeat; height:458px; width:524px;}
+.goodmovie li{ width:160px;}
+.goodmovie a span{ background:url(../img/sty2/goodmoviespan.png) no-repeat center bottom;}
+.goodmovie a:hover span{ background:url(../img/sty2/goodmoviespanh.png) no-repeat center bottom; color:#fff;}
+.srh dt{ font-size:20px;}
+.srh dl li{ margin:0 0 10px;}
+.srh dl a{ background:no-repeat; font-size:20px; height:31px; line-height:31px; margin:0; padding:0; text-align:left; text-indent:10px; width:120px;}
+.srh dl a:hover{ background: url(../img/sty2/srhah.png) no-repeat; color:#fff;}
+.help{ background:none; bottom:5px; font-size:20px;}
+.help ul{ padding:0 0 0 80px;}
+.help span{ padding:0 4px;}
+.help li img{ float:none; position:relative; top:2px; vertical-align:middle;}
+.srceah{ background:url(../img/sty2/src.png) no-repeat left top; border:none; height:25px; padding:10px 10px 0; position:relative; top:0; width:70px; }
+.srceah:focus{ background:url(../img/sty2/srch.png) no-repeat left center;}
+.go{ background: url(../img/sty2/go.png) no-repeat left center; border:none; cursor:pointer; height:35px; position:relative; top:-10px; width:85px;}
+.go:hover{ background: url(../img/sty2/goh.png) no-repeat left center;}
+.moviemenu{ background:url(../img/sty2/moviemenubg.png) no-repeat; height:105px; margin:0 auto 15px; padding-top:15px; width:1082px;}
+.moviemenu li{ height:31px; padding:0; width:78px;}
+.moviemenu li a{ font-size:19px; height:31px; width:59px;}
+.moviemenu li a:hover{ background:url(../img/sty2/moviemenu.png) no-repeat; color:yellow;}
+.moviemenu .px{ top:25px;}
+.moviemenu li .there{ background:url(../img/sty2/moviemenut.png) repeat-x; color:#fff;}
+.playnow li span, .youlike span, .movielist span,.playnow li a:hover span, .youlike a:hover span, .movielist a:hover span{ background:url(../img/sty2/bg1.png) repeat-x;}
+.playnow li a:hover span, .youlike a:hover span, .movielist a:hover span{ color:yellow;}
+.mylist_hide a{background:url(../img/sty2/bg3.png) no-repeat left bottom; font-size:24px; height:64px;}
+.mylist_hide a:hover{ background:url(../img/sty2/bg2.png) no-repeat; color:#fff;}
+.mylist_hide strong big{ font-size:24px;}
+.mylist_hide li,.mylist_hide .even{ background:none;}
+.mylist_hide img{ height:45px; position:relative; top:8px;}
+.ad200{ height:460px; overflow:hidden;}
+.weeklist{ width:1100px;}
+.weekl h2{ font-size:20px; overflow:hidden;}
+.weekl h2,.weekl p,.htime ul .odd,.htime ul li,.weekr{ background:none;}
+.htime ul a,.weekl p a{ color:#48586c; }
+.weekl p a{ color:yellow;}
+.htime ul a:hover,.weekl p a:hover{ background:none; color:#fff; border:2px #fddf04 solid; height:40px; line-height:40px; width:176px;}
+.htime ul .there{ background:url(../img/sty2/htime.png) repeat-x; color:#fff;}
+.htime ul a,.weekl p a{ width:180px;}
+.weekl{ width:190px;}
+.weelg,.weekrlist{ border:none;}
+.weelg li{ margin:0 0 15px;}
+.weelg a,.weelg a img,.weelg a:hover,.weelg a:hover img{ height:202px; width:135px;}
+.weelg a b{ display:none;}
+.weelg a span{ background: url(../img/sty2/14.png) no-repeat; height:35px; width:135px;}
+.weelg a:hover{ border:2px #f7c73e solid; height:202px; margin:0 6px; top:6px;}
+.weelg a:hover img{ margin:0 auto;}
+.weelg a:hover strong{ color:#fff;}
+.weekr{ width:900px;}
+.weekrlist,.weekrlist ul,.weekrlist li{ width:682px;}
+.weekrlist a:hover,.weekrlist .playsnow:hover{ background:url(../img/sty2/15.png) no-repeat; height:48px; width:682px;}
+/*.weekrlist a:hover,.weekrlist .playsnow:hover{ border:2px #f7c73e solid; height:44px;}*/
+.weelg{ margin:0; padding:0 0 0 20px; width:180px;}
+.weekrlist li{ margin:0;}
+.weekrlist .odd{ background:none;}
+.weekrlist a{ clear:both;}
+.weekrlist li a:hover{ color:#fff;}
+.weekrlist a,.weekrlist a:hover{ width:642px;}
+.channel_list ul { background:none; border:none;}
+.channel_list .cl{ border-right:none;}
+.channel_list .cr { border-left:none;}
+.channel_list ul li{ background:none;}
+.chanel_menu .t,.chanel_menu .odd,.chanel_menu .even,.chanel_menu .b{ background:none;}
+.chanel_menu a{ color:#48586C; font-size:28px;}
+.channel_list a{ font-size:26px;}
+.channel_list a:hover{ background: url(../img/sty2/bg4.png) no-repeat; color:#fff;}
+.chanel_menu a:hover{background:none; border:2px #fede00 solid; color:#fff; font-size:28px;}
+.chanel_menu .there{ background:url(../img/sty2/htime.png) repeat-x; color:#fff; font-size:28px;}
+.tvinfo, .notv, .dbzy{ background:url(../img/sty2/bg5.png) no-repeat;}
+.itemchoice{ background:url(../img/sty2/bg7.png) no-repeat;}
+.tvinfos{ background:url(../img/sty2/bg6.png) no-repeat;}
+.hotplays,.hotplays h2,.hotplays .even{ background:none;}
+.hotplays li{ background:url(../img/sty2/bg14.png) repeat-y left top;}
+.hotplays a{ border:none;}
+.hotplays a:hover{ background:url(../img/sty2/bg8.png) no-repeat; color:#fff;}
+.hotplays #hotplays a:hover big, .reseeding a:hover big, .advance a:hover big,.hotplays #hotplasy a:hover big{ font-size:26px;}
+.movieinfo{ background:url(../img/sty2/bg9.png) no-repeat;}
+.movieinfo ul{ background:none; border:none;}
+#longlist{ background:url(../img/sty2/bg10.png) no-repeat;}
+.hidenum .longlist li a{ background:none; color:#ccc;line-height:30px;}
+.hidenum .longlist li a:hover{ background:url(../img/sty2/bg11.png) no-repeat; color:#fff;}
+.hidenum .longlist li a big{ font-size:18px;}
+.hidenum .longlist li a:hover big{ font-size:18px;}
+.movieinfo{ padding:55px 0 0;}
+.movieinfo ul{ font-size:18px;}
+.intro,.movelist{ height:215px;}
+.intro ul li{ font-size:22px; line-height:150%;}
+.movelist{ height:175px; padding:25px 15px;}
+.back, .next{ top:100px;}
+.intro, .movelist{ background:url(../img/sty2/bg12.png) no-repeat;}
+.intro ol img{ height:100px;}
+.hidelist li a:hover, .hidelist li .there{ background:#f0c43f;}
+.hidelist li a span,.hidelist li a:hover span,.hidelist li .there span{ background:url(../img/sty2/bg13.png) no-repeat; color:#fff;}
+.playnow{ background:none;}
+.advance h2 { border:none;}
+
+.playnow li a:hover .tvnumber { display: none;}
+.playnow li a:hover em{ display:block;}
+#hotlist li i{ line-height:30px;}
+#hotlist li strong{ display:none;}
+.weekrlist .playsnow:hover b{ color:#a8ff00; right:50px;}
+
+.tv{ margin:30px auto 0;}
+.tvr{ background:url(../img/sty2/bg15.png) no-repeat; height:481px;}
+.tvinfo, .notv, .dbzy{ margin:0 0 10px;}
+.notv h3{ padding:5px 20px;}
+.notv span,.notv a:hover span{ background:url(../img/sty2/bg1.png) no-repeat;}
+.notv a:hover,.notv a:hover img{ height:152px; padding:0; top:-2px; width:112px;}
+.notv a:hover{ border:3px #ffd925 solid; color:#fff;}
+.hotplays h2{ height:57px;}
+.itemnum{ background:url(../img/sty2/bg16.png) no-repeat; margin:14px 0 0;}
+.itemnum2{ background:url(../img/sty2/bg161.png) no-repeat;}
+.itemnum3{ background:url(../img/sty2/bg162.png) no-repeat;}
+.hidenum{ top:20px;}
+.hidenum li a{ background:url(../img/sty2/bg17.png) no-repeat;}
+.hidenum li a:hover{ background:url(../img/sty2/bg18.png) no-repeat; color:#fff;}
+.itemchoice li{ margin:0 20px 0 0;}
+.itemchoice a{ background:url(../img/sty2/bg19.png) no-repeat; font-size:22px; height:49px; line-height:38px; text-align:center; width:139px;}
+.itemchoice a:hover{background:url(../img/sty2/bg21.png) no-repeat;}
+.itemchoice .there{background:url(../img/sty2/bg20.png) no-repeat;}
+.hidenum li{ margin:0 0 5px;}
+.hidenum .longlist li a{ background:url(../img/sty2/bg25.png) no-repeat; height:40px; line-height:35px;}
+.hidenum .longlist li a:hover{ background:url(../img/sty2/bg23.png) no-repeat;}
+.dbzy .dbzylist li{ border:none; clear:both; height:50px;}
+.dbzy .dbzylist li img{ margin:5px 10px 0 0;}
+.dbzylist li span{ float:left; width:100px;}
+.dbzylist li a{ background:none; display:block; float:left; height:40px; line-height:40px; margin:0; width:480px; }
+.dbzylist li a:hover{ background:url(../img/sty2/bg24.png) no-repeat; }
+.weekrlist strong{ width:400px;}
+.titbg{ padding:30px 0 0 115px;}
+.channel_list{ border:none;}
+.weelg .weelgtwo{ margin:0;}
+.htime{ height:350px;}
+.playnow ul{ top:3px;}
+.playnow li{ padding:0 0 0 2px;}
+.playnow li a,.youlike a,.movielist a,.goodmovie a{ top:3px;}
+.playnow li a:hover{ top:0;}
+.weelg strong, .weelg b{ line-height:35px;}

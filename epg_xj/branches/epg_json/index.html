@@ -1,0 +1,549 @@
+<html>
+<head>
+<title>Service Web 服务</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" type="text/xml" href="/service.asmx?disco" />
+<link rel="stylesheet" type="text/css" href="base.css" />
+<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="function.js"></script>
+<script type="text/javascript">
+//$developer = '{"apikey":"FBCECY2E","secretkey":"9ef2977d62f85681eae90788b13678af"}';
+//$developer = '{"apikey":"S8Q5T32C1","secretkey":"95e49c4363dc1fa0f5004b01412f5be2"}';
+$developer = '{"apikey":"UNU6HKY8","secretkey":"42057dae179f6f33ab758496bb5687c3"}';
+
+$device = '{"dnum":"123"}';
+$user = '{"userid":"123"}';
+
+$(document).ready(function() {
+	$("h3").each(function(){ 
+		$table = $(this).next();
+		$table.hide();
+		$(this).click(function(){
+			$("table").hide();
+			$(this).next().toggle();
+		});
+	});
+	var nowDate = new Date();
+	var nextDate = new Date();
+	nextDate.setHours(nextDate.getHours()+4);
+	$("#GetProgramsByChannel_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#GetProgramsByChannel_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+	$("#SearchProgram_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#SearchProgram_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+	$("#GetAttachments_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#GetAttachments_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+	$("#GetProgramsOfDateByChannel_date").val(nowDate.format("yyyy-MM-dd"));
+
+    $("#GetPrograms_st").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+    $("#GetPrograms_et").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+
+	$("#GetProgramsByWiki_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#GetProgramsByWiki_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+
+	$("#SearchPrograms_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#SearchPrograms_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+
+    $("#GetProgramsByRecommended_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#GetProgramsByRecommended_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+
+    $("#GetLikeByWiki_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#GetLikeByWiki_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+
+    $("#OrderProgramByUser_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#OrderProgramByUser_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+	
+	
+
+});
+</script>
+</head>
+ 
+<body>
+	<div id="content"> 	
+		<form method="post" action="http://www.5itest.tv/api/interface" id="post-form" target="_blank">
+			<input type="hidden" name="jsonstr" id="jsonstr">	
+		</form>	
+		<p class="heading1">智能EPG接口 Ver2.1.9（JSON）测试</p>		
+		<div style="zoom:1; overflow:hidden;">
+			<p class="intro">选择测试平台
+				<select id="env" name="env">
+                     <option value="http://www.xj.tv/index.php/json"> 本地新疆epg</option>
+					<option value="http://118.194.161.94/index.php/json">新疆epg</option>
+				</select>，可以点击<a href="Ver2.1.9.pdf" target="_blank">此处</a>，查看接口文档说明。</p>
+			<div style="width:40%;float:left">
+
+				<h3>GetChannels</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">type:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetChannels_type" value="cctv"></td>
+					</tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">showlive:</td>
+                        <td><input class="frmInput" type="text" size="20" name="type" id="GetChannels_show" value="false"></td>
+                    </tr>
+                    <tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetChannels();"></td>
+					</tr>
+				</table>
+
+				<h3>GetChannelsByRecommended</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">type:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetChannelsByRecommended_type" value="cctv"></td>
+					</tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">showlive:</td>
+                        <td><input class="frmInput" type="text" size="20" name="type" id="GetChannelsByRecommended_show" value="false"></td>
+                    </tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetChannelsByRecommended();"></td>
+					</tr>
+				</table>
+ 
+				<h3>GetLivePrograms</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">tag:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetLivePrograms_tags" value="电影"></td>
+					</tr>
+					 <tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">type:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetLivePrograms_type" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetLivePrograms();"></td>
+					</tr>
+				</table>
+
+
+				<h3>GetPrograms</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">tag:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetPrograms_tags" value="电影"></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">type:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetPrograms_type" value=""></td>
+					</tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">startTime:</td>
+                        <td><input class="frmInput" type="text" size="20" name="type" id="GetPrograms_st" value=""></td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">endTime:</td>
+                        <td><input class="frmInput" type="text" size="20" name="type" id="GetPrograms_et" value=""></td>
+                    </tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetPrograms();"></td>
+					</tr>
+				</table>
+
+
+ 
+
+				<h3>GetProgramsByChannel</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">channelId:</td>
+						<td><input class="frmInput" type="text" size="20" name="channelId" id="GetProgramsByChannel_channelId" value="cctv1"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByChannel_start_time" value=""></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByChannel_end_time" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetProgramsByChannel();"></td>
+					</tr>
+				</table>
+
+
+
+				<h3>GetProgramsOfDateByChannel</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">channelId:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsOfDateByChannel_channelId" value="cctv1"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">date</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsOfDateByChannel_date" value=""></td>
+					</tr>
+			 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetProgramsOfDateByChannel();"></td>
+					</tr>
+				</table>
+
+
+
+
+				<h3>GetProgramsByWiki</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">wiki_id</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByWiki_wiki" value="4d007e1d2f2a241bd7000726"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByWiki_start_time" value=""></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByWiki_end_time" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetProgramsByWiki();"></td>
+					</tr>
+				</table>
+
+
+
+				<h3>SearchPrograms</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">keyword</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="SearchPrograms_keyword" value="天龙八部"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="SearchPrograms_start_time" value=""></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="SearchPrograms_end_time" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="SearchPrograms();"></td>
+					</tr>
+				</table>
+
+
+               <h3>GetProgramsByRecommended</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">type</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByRecommended_type" value="editor"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByRecommended_start_time" value=""></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByRecommended_end_time" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetProgramsByRecommended();"></td>
+					</tr>
+				</table>
+
+
+
+				<h3>SetLikeChannelByUser</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">userId:</td>
+                        <td><input class="frmInput" type="text" size="20" name="type" id="SetLikeChannelByUser_userId" value=""></td>
+                    </tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">channelId:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="SetLikeChannelByUser_channelId" value=""></td>
+					</tr>  
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="SetLikeChannelByUser();"></td>
+					</tr>
+				</table>
+
+				<h3>GetLikeChannelsByUser</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">userid</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetLikeChannelsByUser_userid" value=""></td>
+					</tr>  
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetLikeChannelsByUser();"></td>
+					</tr>
+				</table>
+
+
+			<h3>SetLikeWikiByUser</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">userId:</td>
+                        <td><input class="frmInput" type="text" size="20" name="type" id="SetLikeWikiByUser_userId" value=""></td>
+                    </tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">wikiId:</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="SetLikeWikiByUser_wikiId" value=""></td>
+					</tr>  
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="SetLikeWikiByUser();"></td>
+					</tr>
+				</table>
+
+
+
+
+
+               <h3>GetLikeProgramsByWiki</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">wikiId</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetLikeByWiki_userId" value="4d007e1d2f2a241bd7000726"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetLikeByWiki_start_time" value="2012-11-13 00:00:00"></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetLikeByWiki_end_time" value="2012-11-13 23:59:59"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetLikeProgramsByWiki();"></td>
+					</tr>
+				</table>
+
+
+			  <h3>SearchWikis</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">keyword</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="SearchWikis_keyword" value=""></td>
+					</tr>  
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="SearchWikis();"></td>
+					</tr>
+				</table>
+
+			  <h3>GetWikiInfo</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">wikiId</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetWikiInfo_wikiId" value="4d007e1d2f2a241bd7000726"></td>
+					</tr>  
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetWikiInfo();"></td>
+					</tr>
+				</table>
+ 
+
+
+
+               <h3>OrderProgramByUser</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">channelId</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="OrderProgramByUser_channelId" value="1"></td>
+					</tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">节目名称</td>
+                        <td><input class="frmInput" type="text" size="20" name="channel_code" id="OrderProgramByUser_programName" value="1"></td>
+                    </tr>
+                    <tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">userId</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="OrderProgramByUser_userId" value="1"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="OrderProgramByUser_start_time" value="2012-11-13 00:00:00"></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="OrderProgramByUser_end_time" value="2012-11-13 23:59:59"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="OrderProgramByUser();"></td>
+					</tr>
+				</table>
+ 
+
+
+
+
+			  <h3>UnOrderProgramByUser</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">userId</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="UnOrderProgramByUser_userId" value=""></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">orderid</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="UnOrderProgramByUser_orderID" value=""></td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="UnOrderProgramByUser();"></td>
+					</tr>
+				</table>
+
+
+
+			  <h3>GetProgramOrdersByUser</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">userId</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetProgramOrdersByUser_userId" value=""></td>
+					</tr> 
+			
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetProgramOrdersByUser();"></td>
+					</tr>
+				</table>
+
+
+			    <h3>GetLikeWikisByUser</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">userId</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetLikeWikisByUser_userId" value=""></td>
+					</tr> 
+			        <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">pagesize:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetLikeWikisByUser_pagesize" value="10"></td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">page:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetLikeWikisByUser_page" value="1"></td>
+                    </tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetLikeWikisByUser();"></td>
+					</tr>
+				</table>
+ 
+
+ 			    <h3>GetMessagesByUser</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">userId</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetMessagesByUser_userId" value=""></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">type</td>
+						<td><input class="frmInput" type="text" size="20" name="type" id="GetMessagesByUser_type" value="order"></td>
+					</tr> 
+			        <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">pagesize:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetMessagesByUser_pagesize" value="10"></td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">page:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetMessagesByUser_page" value="1"></td>
+                    </tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetMessagesByUser();"></td>
+					</tr>
+				</table>
+				 
+			</div>	
+		</div>
+	</div>
+<div id="result"></div>    
+</body>
+</html>

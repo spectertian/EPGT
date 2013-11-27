@@ -1,0 +1,12 @@
+Exception.php 异常文件的处理
+OAuth.php OAuth.php oauth 协议的库
+WeiboOAuth.php 处理weibo 上面的weibo库
+
+WeiboClient.php weibo client的程序主入口 所相应的实现的入口为factory
+
+SinaWeiboClient.php Sina Weibo Client Sina程序的主入口
+QqtWeiboClient.php Qq weibo 程序的主要处理function
+QqWeiboClient.php qq zone 程序的主要处理方式，这块还没有来处理
+
+
+如有疑问请邮件 lizhi.liu@mozitek.com

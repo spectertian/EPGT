@@ -1,0 +1,6 @@
+all:
+  is_secure: on
+  credentials: spservice
+  
+getSpLogo:
+  credentials: spservice_getSpLogo

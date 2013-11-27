@@ -1,0 +1,16 @@
+@charset "utf-8";
+#message-box { margin-bottom:16px; width:100%; font-size:12px; font-weight:bold; text-align:center; background:#f9f9f9; }
+#message-box .status { position:relative; margin:3px auto 0; padding:6px 10px; line-height:normal; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+#message-box .status p { display:inline; padding-left:22px; }
+#message-box .info { background:#e8f2f1; border:1px solid #b5d2e3; color:#004b69; }
+#message-box .info p { background:url("../images/information.png") no-repeat 0 center; }
+#message-box .success { background:#d1ffb9; border:1px solid #c2dfa8; color:#4d821f; }
+#message-box .success p { background:url("../images/accept.png") no-repeat 0 center; }
+#message-box .warning, #message-box .alert { background:#ffffd4; border:1px solid #dcdcad; color:#978d3c; }
+#message-box .warning p, #message-box .alert p { background:url("../images/error.png") no-repeat 0 center; }
+#message-box .error { background:#ffe5e5; border:1px solid #efa6a0; color:#d00000; }
+#message-box .error p { background:url("../images/cancel.png") no-repeat 0 center; }
+#message-box a.close { display:block; position:absolute; right:10px; top:8px; width:12px; height:12px; overflow:hidden; text-indent:9999px; background:url("../images/ico_close.png") no-repeat 0 1px; }
+#message-box a.close:hover { background:url("../images/ico_close.png") no-repeat 100% 1px; }
+/*.default { position:absolute; left:0; top:-40px; z-index:9999; }*/
+.fixed { position:fixed; left:0; top:-3px; z-index:9999; }

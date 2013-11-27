@@ -1,0 +1,20 @@
+﻿# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        南京广电智能EPG
+    description:  南京广电智能EPG系统
+    keywords:     南京广电 智能EPG
+    #language:    en
+    #robots:      index, follow
+
+  stylesheets:    [css.css, sty2.css]
+
+  javascripts:    [jlim.min.js,public.js,common.js]
+
+  has_layout:     true
+  layout:         layout

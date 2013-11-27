@@ -1,0 +1,50 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+thumb_image:
+  url: /thumb/:w/:h/:key
+  param: { module: files, action: thumb_image }
+  requirements:
+    w: \d+
+    h: \d+
+    key: .*
+    
+thumb_imagepre:
+  url: /thumbpre/:w/:h/:key
+  param: { module: files, action: thumb_imagepre }
+  requirements:
+    w: \d+
+    h: \d+
+    key: .*    
+    
+static:
+  url: /:year/:month/:day/:key
+  param: { module: files, action: show }
+  requirements:
+    year: \d+
+    month: \d+
+    day: \d+
+    key: .*
+
+staticpre:
+  url: /pre/:year/:month/:day/:key
+  param: { module: files, action: showpre }
+  requirements:
+    year: \d+
+    month: \d+
+    day: \d+
+    key: .*
+    
+# default rules
+homepage:
+   url:   /
+   param: { module: files, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+#default_index:
+#  url:   /:module
+#  param: { action: index }
+
+#default:
+#  url:   /:module/:action/*

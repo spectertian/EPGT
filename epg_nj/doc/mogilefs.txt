@@ -1,0 +1,211 @@
+#安装msyql，如果已经安装可以忽略
+$ yum install mysql-server
+$ chkconfig mysqld on
+$ service mysqld start
+
+#修改root密码
+$ mysqladmin -u root -p password portal
+
+#创建mogilefs的数据库和权限
+$ mysql -u root -p
+mysql> create database mogilefs default character set utf8;
+mysql> grant all on mogilefs.* to 'mogilefs'@'localhost' identified by 'mogilefs#123' ;
+mysql> FLUSH PRIVILEGES ;
+ 
+ 
+grant all on *.* to 'root'@'*' identified by 'portal';
+#安装MogileFS
+$ yum install mogilefsd
+
+#安装mogstored
+$ yum install mogilefsd mogstored mogstored-backend-perlbal mogstored-backend-lighttpd mogstored-backend-apache perl-MogileFS-Client perl-MogileFS-Utils --nogpgcheck
+
+#初始化mogilefs数据库。
+$ mogdbsetup --dbhost=localhost --dbname=mogilefs --dbuser=mogilefs --dbpassword=mogilefs#123
+
+#配置mogilefs
+$ vi /etc/mogilefs/mogilefs.conf
+	trackers = localhost:6001
+
+$ vi /etc/mogilefs/mogilefsd.conf
+	db_dsn DBI:mysql:mogilefs:192.168.8.219
+	db_user mogilefs
+	db_pass mogilefs#123
+	conf_port 6001
+	listener_jobs 5
+	
+#启动服务
+$ service mogilefsd start	
+
+#创建目录
+$ mkdir /var/mogdata
+#由于 mogilefsd 不能用 root 用户启动 . 所以添加 mogile 用户 .
+$ chown mogstored /var/mogdata
+
+#创建并配置mogstored的配置文件
+$ vi /etc/mogilefs/mogstored.conf
+	maxconns=10000
+	httplisten=0.0.0.0:7500
+	mgmtlisten=0.0.0.0:7501
+	docroot=/var/mogdata	
+$ chkconfig mogstored on
+
+#启动mogstored
+$ su mogile
+$ service mogstored start   
+	
+#同样的方法在另外一台服务器上安装mogstored
+
+#添加主机	
+$ mogadm --trackers=localhost:6001 host add FS01 --ip=localhost --port=7500 --status=alive
+
+#查看主机
+$ mogadm --trackers=localhost:6001 host list
+
+#添加设备	
+$ mogadm --trackers=localhost:6001 device add FS01 1
+
+#创建目录（可以将硬盘挂载到这个目录）
+$ mkdir /var/mogdata/dev1
+#将目录属主改为mogilefsd
+$ chown mogilefsd.mogilefsd /var/mogdata/dev1
+	
+#添加一个yuwen域
+$ mogadm --trackers=localhost:6001 domain add epg	
+#在yuwen域添加一个image的class
+$ mogadm --trackers=localhost:6001 class add epg image
+
+#检查
+$ mogadm --trackers=localhost:6001 check
+
+#测试，上传一个文件
+$ mogtool --trackers=localhost:6001 --domain=epg --class=image inject install.log install.log
+
+#安装php扩展
+$ yum install neon neon-devel
+$ svn checkout http://svn.usrportage.de/php-mogilefs/trunk  php-mogilefs
+$ cd php-mogilefs
+$ phpize
+$ ./configure --with-php-config=/usr/local/php5.3.8/bin/php-config
+$ make
+$ make install
+
+./configure --with-php-config=/usr/local/php/bin/php-config
+echo 'extension = mogilefs.so' >> /usr/local/php/etc/php.ini
+
+ tail -f  /srv/logs/localhost.error.log
+
+#将生成的/usr/lib64/php/modules/mogilefs.so复制到 PHP 扩展目录，在 php.ini 添加一行扩展配置：
+extension=mogilefs.so
+#在/etc/php.d文件夹中添加mogilefs.ini
+$ vi /etc/php.d/mogilefs.ini
+extension=mogilefs.so
+
+#修改系统句柄数
+$ vi /etc/security/limits.conf
+	* soft nofile 2048
+	* hard nofile 32768
+    root  soft nofile 2048
+    root hard nofile 32768
+	
+<?php
+$client = new MogileFs();
+$client->connect('192.168.0.3', 6001, 'yuwen');
+$client->put('license.txt', 'license.txt', 'image');
+
+$metadata = $client->get('license.txt');
+$content = file_get_contents($metadata['path1']);
+var_dump ($content);
+
+
+$mfs = new MogileFS('yuwen', 'image', 'tcp://127.0.0.1');
+$mfs->setFile('license.txt ',  'license.txt ');
+print "GET: [" . $mfs->get('license.txt ') . "]\n";
+
+	
+============= memcache ===============
+$ yum install memcached
+$ chkconfig memcached on
+$ service memcached start
+
+#如果没有安装pear
+$ wget http://pear.php.net/go-pear.phar
+$ php go-pear.phar
+
+#安装php-memcache
+$ pecl install memcache
+#将生成的/usr/lib64/php/modules/memcache.so复制到 PHP 扩展目录，在 php.ini 添加一行扩展配置：
+extension=memcache.so
+
+#用memcache来保存session
+ini_set("session.save_handler", "memcache");  
+ini_set("session.save_path", "tcp://127.0.0.1:11211");  
+
+#用memcache来缓存数据
+$memcache = memcache_connect('localhost', 11211);  
+if($aaa = $memcache->get('aaaa')) {
+	echo $aaa;
+}else {
+	$memcache->set('aaaa', 'hello everyone');  
+	echo 'memcache setting Ok!';
+}
+
+
+===============apc加速==================
+#安装php-apc
+$ pecl install apc
+#将生成的/usr/lib64/php/modules/apc.so复制到 PHP 扩展目录，在 php.ini 添加一行扩展配置：
+extension=apc.so
+
+//启用APC
+apc.enabled = 1
+//默认对所有文件启用缓冲
+apc.cache_by_default = on
+//共享内存块数量
+apc.shm_segments = 1
+//共享内存块大小M
+apc.shm_size = 32M
+//缓存的秒数
+apc.ttl = 7200
+//针对每个用户缓存的秒数
+apc.user_ttl = 7200
+//缓存在垃圾回收表中的秒数
+apc.num_files_hint = 0
+//是否启用写入锁
+apc.write_lock = On
+//如果发现修改时间距离访问时间小于 2 秒则不做缓冲
+apc.file_update_protection = 2 
+//优化等级
+apc.optimization = 0 
+//是否检查更新
+//如果是off，文件更新了，只能通过重启web
+//或者执行调用apc_cache_clear()函数
+apc.stat = On
+
+
+apc.enabled = 1
+apc.cache_by_default = on
+apc.shm_segments = 1
+apc.shm_size = 128M
+apc.ttl = 7200
+apc.user_ttl = 7200
+apc.num_files_hint = 0
+apc.write_lock = on
+apc.file_update_protection = 2 
+apc.optimization = 0 
+apc.stat = on
+
+//执行，查看apc运行情况
+php -i | grep apc 
+
+
+rpm -ivh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+yum install nagios nagios-plugins nagios-plugins-all nagios-plugins-nrpe nrpe
+
+rpm -ivh * 安装
+rpm -e * 卸载
+rpm -Uvh * --force --nodeps 覆盖安装
+
+yum --disablerepo=\* --enablerepo=base install * 
+
+

@@ -1,0 +1,70 @@
+@charset "utf-8";
+.ui-widget-overlay { position:absolute; top:0; left:0; width:100%; height:100%; /*background:#aaa url(../images/ui-bg_flat_0_aaaaaa_40x100.png) repeat-x 50% 50%; opacity:.3; filter:Alpha(Opacity=30);*/ }
+.ui-dialog { position:relative; padding:11px; text-align:left; overflow:visible; }
+.ui-dialog .ui-dialog-titlebar { position:absolute; left:0; top:0; z-index:99999; margin:36px 24px; padding:0; height:15px; overflow:hidden; font:normal 14px/normal Tahoma, Arial, Helvetica, sans-serif; color:#131313; line-height:15px; }
+.ui-dialog-titlebar-close { display:none; }
+.ui-dialog-extended-close { position:absolute; right:26px; top:9px; display:block; width:21px; height:20px; overflow:hidden; text-indent:-9999px; }
+.ui-dialog-extended-close a { display:block; width:21px; height:20px; overflow:hidden; background:url(../images/ui-dialog-titlebar-close.png) no-repeat 0 0; }
+.ui-dialog-extended-close a:hover { background:url(../images/ui-dialog-titlebar-close.png) no-repeat 0 -20px; }
+
+.ui-dialog-t { position:relative; height:11px; background:url(../images/ui-dialog_t_bg.png) repeat-x 0 0; overflow:visible; }
+.ui-dialog-t .ral { position:absolute; left:-11px; top:0; width:11px; height:11px; overflow:hidden; background:url(../images/ui-dialog_rc1.png) no-repeat 0 0; }
+.ui-dialog-t .rar { position:absolute; right:-11px; top:0; width:11px; height:11px; overflow:hidden; background:url(../images/ui-dialog_rc2.png) no-repeat 0 0; }
+.ui-dialog-m { position:relative; padding:0 11px; margin:0 -11px; overflow:hidden; zoom:1; }
+.ui-dialog-m .rl { position:absolute; left:0; top:0; width:11px; height:1000px; overflow:hidden; background:url(../images/ui-dialog_rl.png) repeat-y 0 0; }
+.ui-dialog-m .rr { position:absolute; right:0; top:0; width:11px; height:1000px; overflow:hidden; background:url(../images/ui-dialog_rr.png) repeat-y 0 0; }
+.ui-dialog-m-bg { background:#fff; overflow:hidden; }
+.ui-dialog-b { position:relative; height:11px; background:url(../images/ui-dialog_b_bg.png) repeat-x 0 0; overflow:visible; }
+.ui-dialog-b .ral { position:absolute; left:-11px; top:0; width:11px; height:11px; overflow:hidden; background:url(../images/ui-dialog_rc3.png) no-repeat 0 0; }
+.ui-dialog-b .rar { position:absolute; right:-11px; top:0; width:11px; height:11px; overflow:hidden; background:url(../images/ui-dialog_rc4.png) no-repeat 0 0; }
+
+.dialog-content { padding:40px 14px 10px; overflow:hidden; }
+.dialog-content .uploadForm { padding-top:14px; background:url(../images/dotline_hr_inpage.png) repeat-x 0 0; }
+.dialog-content .uploadForm ul { float:none; width:auto; overflow:hidden; }
+.dialog-content .uploadForm li { position:relative; height:1%; margin-bottom:12px; *margin-bottom:10px; }
+.dialog-content .uploadForm li label { float:left; display:block; width:80px; height:24px; overflow:hidden; line-height:24px; text-indent:14px; }
+.dialog-content .uploadForm li p { padding:6px 0 10px; }
+.dialog-content .uploadForm li .height180 { max-height:180px; }
+.dialog-content .uploadForm li .textInfo { position:relative; float:left; display:block; height:24px; color:#999; line-height:19px; }
+.dialog-content .uploadForm li .textInfo .msg { position:absolute; left:10px; top:3px; }
+.dialog-content .uploadForm li .button129 { margin-top:6px; }
+
+.dialog-content .artworkList { width:825px; overflow:hidden; padding-top:16px; background:url(../images/dotline_hr_inpage.png) repeat-x 0 0; }
+.dialog-content .artworkList ul { width:870px; height:345px; list-style:none; }
+.dialog-content .artworkList ul.loading { background:url(../images/loading.gif) no-repeat center center; }
+.dialog-content .artworkList ul li { float:left; margin:0; padding:0 16px 0 0; width:152px; height:170px; color:#c7c7c7; text-align:center; overflow:hidden; }
+.dialog-content .artworkList ul li .showcase { border:1px solid #ddd; width:150px; height:150px; overflow:hidden; display:table-cell; +display:block; position:static; +position:relative; vertical-align:middle; text-align:center; }
+.dialog-content .artworkList ul li .showcase .thumb { margin:0; display:table-cell; +display:block; margin:0; position:static; +position:absolute; top:50%; left:50%; width:150px; margin-left:auto; margin-right:auto; }
+.dialog-content .artworkList ul li .showcase .thumb img { position:static; +position:relative; top:auto; +top:-50%; left:auto; +left:-50%; _margin-top:1px; }
+
+.dialog-content .userList { width:730px; overflow:hidden; padding-top:16px; background:url(../images/dotline_hr_inpage.png) repeat-x 0 0; }
+.dialog-content .userList ul { width:730px; height:345px; list-style:none; }
+.dialog-content .userList ul.loading { background:url(../images/loading.gif) no-repeat center center; }
+.dialog-content .userList li { float:left; width:180px; height:70px; }
+.dialog-content .userList li .avatar, .dialog-content .userList li .avatar img { display:block; float:left; width:48px; height:48px; overflow:hidden; }
+.dialog-content .userList li .avatar { padding-right:10px; }
+.dialog-content .userList li .userName { display:block; float:left; margin-top:12px; width:120px; height:25px; overflow:hidden; line-height:25px; }
+.dialog-content .userList li .userName a { font-weight:bold; color:#333; }
+.dialog-content .userList li .userName a:hover { color:#000; }
+
+.dialog-content .editArtworkInfo { padding-top:16px; background:url(../images/dotline_hr_inpage.png) repeat-x 0 0; }
+.dialog-content .artworkThumb { float:left; margin:0; padding:0; width:152px; color:#c7c7c7; text-align:center; overflow:hidden; }
+.dialog-content .showcase { border:1px solid #ddd; width:150px; height:150px; overflow:hidden; display:table-cell; +display:block; position:static; +position:relative; vertical-align:middle; text-align:center; }
+.dialog-content .showcase .thumb { margin:0; display:table-cell; +display:block; margin:0; position:static; +position:absolute; top:50%; left:50%; width:150px; margin-left:auto; margin-right:auto; }
+.dialog-content .showcase .thumb img { position:static; +position:relative; top:auto; +top:-50%; left:auto; +left:-50%; _margin-top:1px; }
+.dialog-content .artworkInfo { float:left; margin-top:2px; *margin-top:0; width:520px; }
+.dialog-content .artworkInfo label { float:left; display:block; width:80px; height:24px; overflow:hidden; line-height:24px; text-indent:14px; }
+.dialog-content .artworkInfo dt { display:none; }
+.dialog-content .artworkInfo dd { margin-bottom:12px; }
+.dialog-content .artworkInfo dd.submit { margin-left:80px; }
+.dialog-content .artworkInfo dd.submit .button129 { margin:3px 0; }
+.dialog-content .artworkInfo dd .height80 { max-height:80px; }
+
+.dialog-content .editCollectionInfo { padding-top:16px; background:url(../images/dotline_hr_inpage.png) repeat-x 0 0; }
+.dialog-content .collectionInfo { margin-top:2px; *margin-top:0; }
+.dialog-content .collectionInfo label { float:left; display:block; width:90px; height:24px; overflow:hidden; line-height:24px; text-indent:14px; }
+.dialog-content .collectionInfo dt { display:none; }
+.dialog-content .collectionInfo dd { margin-bottom:12px; }
+.dialog-content .collectionInfo dd.submit { margin-left:90px; }
+.dialog-content .collectionInfo dd.submit .button129 { margin:3px 0; }
+.dialog-content .collectionInfo dd .height80 { max-height:80px; }

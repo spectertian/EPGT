@@ -1,0 +1,101 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+#all:
+#  admin:
+#    credentials: { admin: '管理', channel: '频道', program: '节目单', program_ext: '节目标题', program_template: '节目模板', tags: '标签', tv_station: '电视台', wiki: '维基'  }
+
+all:
+  admin:
+    credentials:
+      admin:
+        label: '管理'
+        credential: { admin_show: '查看', admin_new: '新增', admin_edit: '编辑', admin_del: '删除' }
+      channel:
+        label: '频道'
+        credential: { channel_show: '查看', channel_new: '新增', channel_edit: '编辑', channel_del: '删除' }
+      program:
+        label: '电视节目'
+        credential: { program_show: '查看', program_new: '新增', program_edit: '编辑', program_del: '删除', program_publish: '发布', program_set: '更新', program_channelget: '抓取' }
+      program_ext:
+        label: '推荐管理'
+        credential: { program_ext_show: '查看', program_ext_new: '新增', program_ext_edit: '编辑', program_ext_del: '删除' }
+      program_template:
+        label: '节目模板'
+        credential: { program_template_show: '查看', program_template_new: '新增', program_template_edit: '编辑', program_template_del: '删除' }
+      tags:
+        label: '标签'
+        credential: { tags_show: '查看', tags_new: '新增', tags_edit: '编辑', tags_del: '删除' }
+      tag_relationships:
+        label: '标签关联'
+        credential: { tags_show: '查看', tags_new: '新增', tags_edit: '编辑', tags_del: '删除' }
+      tv_station:
+        label: '电视台'
+        credential: { tv_station_show: '查看', tv_station_new: '新增', tv_station_edit: '编辑', tv_station_del: '删除', tv_station_batchpublish: '发布', tv_station_batchunpublish: '隐藏', tv_station_ajax_program_publish: '状态', tv_station_ajax_program_update: '设置' }
+      wiki:
+        label: '维基'
+        credential: { wiki_show: '查看', wiki_new: '新增', wiki_edit: '编辑', wiki_del: '删除', wiki_batch: '推荐', wiki_getwikisitedata: '采集'}
+      media:
+        label: '文件管理'
+        credential: { media_index: '查看', media_batchchangecategorys: '移动', media_batchdelete: '删除', media_collectionpic: '采集' }
+      setting:
+        label: '热门关键词'
+        credential: { setting_edit: '编辑' }
+      memcache:
+        label: '缓存管理'
+        credential: { memcache_index: '编辑', memcache_del: '删除' }
+      developer:
+        label: '开发者管理'
+        credential: { developer_index: '查看', developer_new: '新增', developer_edit: '修改', developer_lockdeveloper: '锁定', developer_del: '删除' }
+      user_behavior:
+        label: '用户行为'
+        credential: { user_behavior_index: '查看'}
+      reportchannel:
+        label: '频道别名'
+        credential: { reportchannel_index: '查看', reportchannel_state: '状态' }
+      program_sport:
+        label: '体育节目'
+        credential: { program_sport_index: '查看', program_sport_channelupdate: '更新', program_sport_del: '删除', program_sport_publish: '发布' }
+      program_live:
+        label: '直播监控'
+        credential: { program_live_index: '查看', program_live_new: '新增', program_live_edit: '修改', program_live_del: '删除' }
+      video:
+        label: '视频'
+        credential: { video_index: '查看', video_new: '新增', video_edit: '修改', video_del: '删除' }
+      short_movie:
+        label: '短视频'
+        credential: { short_movie_index: '查看', short_movie_new: '新增', short_movie_edit: '修改', short_movie_del: '删除', short_movie_publishoff: '发布'}
+      sp:
+        label: '运营商管理'
+        credential: { sp_index: '查看', sp_new: '新增', sp_edit: '修改', sp_del: '删除' }
+      terminal:
+        label: '终端类型'
+        credential: { terminal_index: '查看', terminal_new: '新增', terminal_edit: '修改', terminal_del: '删除' }
+      wiki_package:
+        label: '维基包'
+        credential: { wiki_package_index: '查看', wiki_package_new: '新增', wiki_package_edit: '修改', wiki_package_del: '删除' }
+      wiki_recommend:
+        label: '维基推荐'
+        credential: { wiki_recommend_index: '查看', wiki_recommend_new: '新增', wiki_recommend_edit: '修改', wiki_recommend_del: '删除' }
+      theme:
+        label: '专题推荐'
+        credential: { theme_index: '查看', theme_new: '新增', theme_edit: '修改', theme_del: '删除', theme_publishoff: '发布' }
+      category_recommends:
+        label: '分类列表'
+        credential: { category_recommends_index: '查看', category_recommends_new: '新增', category_recommends_edit: '修改', category_recommends_del: '删除' }
+      shortmovie_package:
+        label: '短视频包'
+        credential: { shortmovie_package_index: '查看', shortmovie_package_new: '新增', shortmovie_package_edit: '修改', shortmovie_package_del: '删除' }
+      video_crawler:
+        label: '百度抓取'
+        credential: { video_crawler_index: '查看', video_crawler_new: '新增', video_crawler_edit: '修改', video_crawler_del: '删除' }
+      stat:
+        label: '访问统计'
+        credential: { stat_index: '查看'}
+      simple_ad:
+        label: '广告管理'
+        credential: { simple_ad_index: '查看', simple_ad_new: '新增', simple_ad_edit: '修改', simple_ad_del: '删除' }
+      content:
+        label: 'cms内容'
+        credential: { content_index: '查看', content_inject: '导入', content_import: '导出', content_del: '删除' }

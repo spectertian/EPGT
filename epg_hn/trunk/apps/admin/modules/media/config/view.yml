@@ -1,0 +1,25 @@
+#indexSuccess:
+#  javascripts: [ jquery.ajaxscroll.js,thickbox.js,jquery.cookie.js,jquery.jstree.js,jquery.hotkeys.js,swfupload/swfupload.js, swfupload/swfupload.queue.js, swfupload/handlers.js,jquery.treeview.js]
+#  stylesheets: [ ui.dialog.css,ext.css,thickbox.css,mediamanager.css,medialist-thumbs.css,jquery.treeview.css,tree.css,treeview.css ]
+#
+#linkSuccess:
+#  javascripts: [ jquery.cookie.js,jquery.jstree.js,jquery.hotkeys.js,swfupload/swfupload.js, swfupload/swfupload.queue.js, swfupload/handlers.js,jquery.treeview.js]
+#  stylesheets: [ mediamanager.css,medialist-thumbs.css,tree.css,treeview.css]
+#  layout:    popup_layout
+#
+
+indexSuccess:
+  javascripts: [ jquery.fancybox-1.3.4.pack.js,jquery.ajaxscroll.js,thickbox.js,jquery.cookie.js,jquery.jstree.js,jquery.hotkeys.js,swfupload/swfupload.js, swfupload/swfupload.queue.js, swfupload/handlers.js,jquery.treeview.js]
+  stylesheets: [ fancybox-1.3.4.css,ui.dialog.css,ext.css,thickbox.css,mediamanager.css,medialist-thumbs.css,jquery.treeview.css,tree.css,treeview.css]
+
+linkSuccess:
+  javascripts: [ jquery.cookie.js,jquery.jstree.js,jquery.hotkeys.js,swfupload/swfupload.js, swfupload/swfupload.queue.js, swfupload/handlers.js,jquery.treeview.js]
+  stylesheets: [ mediamanager.css,medialist-thumbs.css,tree.css,treeview.css]
+  layout:    popup_layout
+
+
+cutpicSuccess:
+  javascripts: [ jquery.cookie.js,jquery.jstree.js,jquery.hotkeys.js,swfupload/swfupload.js, swfupload/swfupload.queue.js, swfupload/handlers.js,jquery.treeview.js]
+  stylesheets: [ mediamanager.css,medialist-thumbs.css,tree.css,treeview.css]
+  layout: popup_layout
+

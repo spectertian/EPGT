@@ -1,0 +1,60 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           TvStation
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          tv_station
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:    false
+
+    config:
+      actions: ~
+      fields:
+        parent_id: { label: 电视台/省市 }
+        id:   { label: ID }
+        name: { label: 名称 }
+        code: { label: 代号}
+        sort: { label: 排序 }
+        publish: { label: 发布, type: Boolean }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+        other:       { label: 已有频道 ,is_partial: true }
+      list:
+        title: 电视台列表
+        fields: ~
+        display: [id, =name, sort, publish, other, created_at, updated_at]
+        max_per_page: 30
+        object_actions: {}
+        batch_actions:
+          publish:  { label: 发布, class: publish }
+          unPublish:  { label: 取消发布, class: unpublish }
+          _delete: ~
+        actions:
+          _new: ~
+#          archive: { label: 存档, partial: test }
+#          test:
+#            action: new
+#            class: trash
+#            label:   测试
+#        layout:
+          
+      filter:
+        display: [parent_id, name, publish]
+      form:
+        display:
+          Info: [parent_id, name,sort, code]
+          params: [publish]
+        actions:
+          _delete: { confirm: 确认删除吗？ }
+          _list: { label: 返回列表 }
+          _save: { label: 保存 }
+#          archive: { label: 存档, partial: test }
+      edit:
+        title: 修改 "%%name%%"
+      new:
+        title: 添加 电视台

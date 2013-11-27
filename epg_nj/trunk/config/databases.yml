@@ -1,0 +1,40 @@
+dev:
+  master:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;port=3306;dbname=newepg'
+      username: epg
+      password: epgpass
+  mondongo:
+    class: sfMondongoDatabase
+    param:
+      server: mongodb://10.20.20.239:27017
+      database: epg
+prod:
+  master:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;port=3306;dbname=newepg'
+      username: epg
+      password: epgpass
+  mondongo:
+    class: sfMondongoDatabase
+    param:
+      server: mongodb://10.20.20.239:27017
+      database: epg
+      #connect: replicaSet
+      #slaveOk: true
+      #replicaSet: rs1
+      #connectTimeoutMS: 500    
+temp:
+  master:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;port=3306;dbname=newepg'
+      username: epg
+      password: epgpass
+  mondongo:
+    class: sfMondongoDatabase
+    param:
+      server: mongodb://10.20.20.239:27017
+      database: epg     

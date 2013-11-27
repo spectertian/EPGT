@@ -1,0 +1,61 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Program
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          program
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        name: { label: 名称 }
+        channel: { label: 频道 }
+        channel_id: { label: 频道 }
+        publish: { label: 发布, type: Boolean }
+#        time: { label: 播放时间, date_format: 'H:m:s' }
+        time: { label: 播放时间, date_format: 'HH:mm', type: Date }
+        date: { label: 日期, date_format: 'y-MM-dd' }
+        ext: { label: 其他 ,is_partial: true }
+        is_new: { label: 新节目 ,is_partial: true }
+        is_hot: { label: 热播 ,is_partial: true }
+        is_top: { label: 推荐 ,is_partial: true }
+        wiki: { label: 维基 }
+        tags: { lable: 标签, is_partial: true }
+        created_at: { label: 创建时间, date_format: 'y-MM-dd H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-MM-dd H:m:s' }
+      list:
+        title: 节目单
+#        table_method: getPrograms
+        sort: [time, asc]
+        display: [id, name, channel, publish, time, date, is_new, is_top, is_hot, wiki, tags]
+        max_per_page: 50
+        object_actions: {}
+        batch_actions:
+          save:   {label: 存为模板 }
+          add: { label: 添加, partial: batch_add }
+          publish:  { label: 发布, class: publish }
+          unPublish:  { label: 取消发布, class: unpublish }
+          _delete: ~
+        actions:  []
+#          _new: ~
+      filter:
+        display: [channel_id,publish,name,date]
+      form:
+        display:
+          Info: [name,channel_id,wiki_id,time,date]
+          params: [publish]
+        actions:
+          _delete: ~
+          _list: { label: 返回列表 }
+          _save: { label: 保存 }
+      edit:
+        title: 修改 "%%name%%"
+      new:
+        title: 添加 节目单

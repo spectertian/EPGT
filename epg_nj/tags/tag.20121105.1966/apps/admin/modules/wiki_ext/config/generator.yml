@@ -1,0 +1,43 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           WikiExt
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          wiki_ext
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        wiki: { label: Wiki }
+        title: { label: 标题 }
+        wiki_id: { label: 维基ID }
+        wiki_key: { label: 字段Key }
+        wiki_value: { label: 字段内容 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+        
+      list:
+        title:  wiki扩展
+        display: [id,wiki,title,wiki_key,created_at,updated_at]
+        sort:    [id,desc]
+        max_per_page: 10
+        object_actions: {}
+        batch_actions:
+          _delete: { label: 删除 }
+          batch_add: {label:批量添加, partial: batch_add }
+      filter:
+        display : [id,wiki_id,wiki_value]
+      form:
+        actions:
+          _list  : { label: 返回列表 }
+          _save  : ~
+          _delete: ~
+      edit:    ~
+      new:     ~

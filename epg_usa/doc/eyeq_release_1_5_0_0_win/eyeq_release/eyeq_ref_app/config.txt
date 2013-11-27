@@ -1,0 +1,13 @@
+# Replace and uncomment the line below with the Client ID that was supplied by Gracenote
+#client_id	9999999-ABCDEF1234567890ABCDEF1234567890
+
+# Replace and uncomment the service_url with a valid one
+# provided by GRacenote Professional Services
+#service_url	https://put.your.url.here
+country		usa  
+
+# Proxy server support is optional
+#proxy_url	your.proxy.server.here.com
+#proxy_port	8888
+#proxy_user	optional_proxy_user
+#proxy_passwd	optional_proxy_password

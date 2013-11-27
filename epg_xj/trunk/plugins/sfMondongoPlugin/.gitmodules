@@ -1,0 +1,6 @@
+[submodule "lib/vendor/mondongo"]
+	path = lib/vendor/mondongo
+	url = git://github.com/mondongo/mondongo.git
+[submodule "lib/vendor/mondongo-extensions-extra"]
+	path = lib/vendor/mondongo-extensions-extra
+	url = git://github.com/mondongo/mondongo-extensions-extra.git

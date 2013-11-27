@@ -1,0 +1,70 @@
+2013-3-21
+db.content_import.ensureIndex({"provider_id":1,"from_id":1}, {"name":"provider_from"});
+
+
+2012-12-12
+db.wiki.update({"starring":/\<dd\>/},{$pop: {"starring":1}},false,true)
+db.wiki.update({"starring":/\<dd\>/},{$pop: {"starring":1}},false,true) 
+db.wiki.update({"starring":/\<dd\>/},{$pop: {"starring":1}},false,true) 
+
+db.wiki.update({"has_video":{$exists:1}},{$set:{"has_video":0}},false,true)
+
+db.content_inject.update({"state" :{$ne : 0}},{$set: {"state":0}},false,true);
+db.content_import.drop();
+db.video.drop();
+db.video_playlist.drop();
+
+2012-11-27
+创建索引
+
+db.sp_service.remove({});
+
+db.program.getIndexes();
+
+db.wiki.getIndexes();
+db.wiki.ensureIndex({"title":1}, {"name":"title"});
+db.wiki.ensureIndex({"slug":1}, {"name":"slug"});
+db.wiki.ensureIndex({"model":1}, {"name":"model"});
+db.wiki.ensureIndex({"created_at":-1}, {"name":"created_at"});
+db.wiki.ensureIndex({"tags":1}, {"name":"tags"});
+
+db.sp_service.getIndexes();
+db.sp_service.ensureIndex({"sp_code":1,"name":1}, {"name":"sp_name"});
+db.sp_service.ensureIndex({"channel_code":1}, {"name":"channel_code"});
+db.sp_service.ensureIndex({"logicNumber":1}, {"name":"logicNumber"});
+db.sp_service.ensureIndex({"channel_id":1}, {"name":"channel_id"});
+db.sp_service.ensureIndex({"hot":-1}, {"name":"hot-1"});
+db.sp_service.reIndex();
+
+db.video.getIndexes();
+db.video.ensureIndex({"wiki_id":1}, {"name":"wiki_id"});
+db.video.ensureIndex({"video_playlist":1}, {"name":"video_playlist"});
+
+db.video_playlist.getIndexes();
+db.video_playlist.ensureIndex({"wiki_id":1}, {"name":"wiki_id"});
+
+db.cpg.getIndexes();
+db.cpg.ensureIndex({"channel_code":1}, {"name":"channel_code"});
+db.cpg.ensureIndex({"start_time":1}, {"name":"start_time"});
+db.cpg.ensureIndex({"end_time":1}, {"name":"end_time"});
+db.cpg.ensureIndex({"date":1}, {"name":"date"});
+
+db.recommend.getIndexes();
+db.cpg.ensureIndex({"scene":1}, {"name":"scene"});
+
+db.setting.ensureIndex({"key":1}, {"name":"key"});
+db.single_chip.ensureIndex({"user_id":1}, {"name" : "user_id"});
+db.wiki_meta.ensureIndex({"wiki_id":1}, {"name": "wiki_id"});
+db.wiki_recommend.ensureIndex({"model":1},{"name":"model"});
+db.wiki_recommend.ensureIndex({"tags":1},{"name":"tags"});
+
+2012-11-08
+1、导入新增的mongodb数据sp_service表
+mongoimport -h localhost -d epg -c sp_service /root/sp_service.json 
+2、导入更新的mysql数据channel表
+mysql -u epg -p epgpass
+> SET NAMES utf8;
+> source /root/channel.sql;
+3、覆盖程序文件 app.zip,lib.zip,web_stb.zip
+
+

@@ -1,0 +1,356 @@
+@charset "utf-8";
+* { margin:0; padding:0; }
+a { text-decoration:none; }
+img { border:0; }
+strong { font-weight:normal; }
+ol, ul { list-style:none; }
+
+.no-warp { white-space:nowrap; }
+.disabled { color:#777; }
+.clear-both { clear:both; }
+.display-none { display:none; visibility:hidden; }
+.action {}
+
+html { overflow:hidden; }
+body { font-size:20px; color:#fff; background:#000; overflow:hidden; }
+.page { position:relative; margin:30px 50px; width:1180px; height:660px; overflow:hidden; background:#000; font-family:"droid sans fallback"; }
+.header { position:absolute; top:0; left:0; width:1180px; }
+.navi { margin:10px 0 0 5px; padding-left:14px; height:75px; overflow:hidden; background:url("../images/spirits.png") no-repeat 0 0; float:left; }
+.navi ul { padding-right:14px; height:75px; background:url("../images/spirits.png") no-repeat 100% 0; }
+.navi li { padding-right:3px; height:75px; line-height:75px; font-size:26px; text-align:center; background:url("../images/spirits.png") no-repeat 100% -75px; float:left; }
+.navi li.hover .ahover { margin:0 -3px; display:block; height:75px; line-height:75px; }
+.navi li.actived .aactived { display:block; height:75px; line-height:75px; background:url("../images/spirits.png") no-repeat -10px -75px; }
+.navi li.font2 { width:80px; }
+.navi li.font2.hover .ahover { background:url("../images/spirits.png") no-repeat -190px -75px; }
+.navi li.font3 { width:105px; }
+.navi li.font3.hover .ahover { background:url("../images/spirits.png") no-repeat -290px -75px; }
+.navi li.first { margin-left:-10px; padding-left:5px; }
+.navi li.first.actived .aactived { margin-left:-5px; padding-left:5px; background-position:0 -75px; }
+.navi li.first.hover .ahover { margin:0 -3px 0 -9px; padding-left:6px; background:url("../images/spirits.png") no-repeat -420px -75px; }
+.navi li.last { margin-right:-10px; padding-right:5px; background:none; }
+.navi li.last.actived .aactived { margin-right:-5px; padding-right:5px; background-position:-70px -75px; }
+.navi li.last.hover .ahover { margin:0 -9px 0 -3px; padding-right:6px; background:url("../images/spirits.png") no-repeat -530px -75px; }
+.search { margin:10px 5px 0 0; padding-left:14px; height:75px; overflow:hidden; background:url("../images/spirits.png") no-repeat 0 0; float:right; }
+.search-form { padding-right:14px; width:240px; height:75px; background:url("../images/spirits.png") no-repeat 100% 0; }
+.search-form .search-inner { margin-left:-14px; padding:5px 16px; width:396px; height:65px; }
+/*.search-form .hover { background:url("../images/search_hover.png") no-repeat 0 0; }
+.search-form img { float:left; }*/
+
+.search-form .real, .search-form .fake { height:75px; overflow:hidden; }
+.search-form .textfield { border:0; padding:0 3px; width:122px; height:44px; line-height:44px; font-size:26px; color:#000; background:#fff; -moz-border-radius:4px; -webkit-border-radius:4px; }
+.search-form .textfield-focus { margin-top:13px; width:128px; overflow:hidden; height:44px; padding:3px; float:left; -moz-border-radius:6px; -webkit-border-radius:6px; }
+.search-form .submit-focus { margin-top:13px; width:100px; height:44px; line-height:44px; font-size:26px; color:#fff; background:url("../images/spirits.png") no-repeat -742px -88px; text-indent:42px; padding:3px; float:right; -moz-border-radius:6px; -webkit-border-radius:6px; }
+.search-form .real .textfield { width:126px; }
+.search-form .real .textfield-focus:hover { padding:0; border:3px solid #cf212a; }
+.search-form .real .submit-focus:hover { padding:0; border:3px solid #cf212a; background-position:-745px -91px; }
+
+.epg-home { margin:100px 5px 0 5px; color:#777; }
+.epg-home li { color:#555; }
+.epg-home strong { color:#777; }
+.epg-home .still { margin:10px 13px 3px; border:1px solid #777; padding:1px; width:480px; height:328px; background:#000; float:left; }
+.epg-home .still img { width:480px; height:328px; overflow:hidden; }
+.epg-home .cover { margin:13px; border:1px solid #777; padding:1px; width:130px; height:150px; background:#000; float:left; }
+.epg-home .cover img { width:130px; height:150px; overflow:hidden; }
+.epg-home .details { margin:13px 13px 0 0; width:255px; height:155px; overflow:hidden; float:right; }
+.epg-home .title { margin-bottom:10px; font-size:24px; }
+
+.epg-home .left-col { padding:0; width:450px; height:566px; overflow:hidden; color:#555; background:#111; -moz-border-radius:8px; -webkit-border-radius:8px; float:left; }
+.epg-home .left-col ul { height:150px; margin-bottom:10px; overflow:hidden; line-height:1.2; }
+.epg-home .left-col ul li { margin:0; height:auto; color:#555; background:none; }
+.epg-home .left-col ul li strong { color:#777; }
+.epg-home .left-col .title { margin:13px 13px 0; font-size:26px; color:#777; }
+.epg-home .left-col .still { margin:13px 13px; border:1px solid #777; padding:1px; width:420px; height:287px; background:#000; }
+.epg-home .left-col .still img { width:420px; height:287px; overflow:hidden; }
+.epg-home .left-col .details { float:left; margin:13px; float:none; width:auto; height:auto; }
+.epg-home .left-col .button { width:151px; height:32px; line-height:32px; text-align:center; overflow:hidden; color:#777; background:url("../images/spirits.png") no-repeat -885px -75px; }
+.epg-home .left-col.hover { color:#fff; background:url("../images/spirits.png") no-repeat 0 -150px; }
+.epg-home .left-col.hover li { color:#777; }
+.epg-home .left-col.hover strong { color:#fff; }
+.epg-home .left-col.hover .title { color:#fff; }
+.epg-home .left-col.hover .button { color:#fff; background:url("../images/spirits.png") no-repeat -885px -118px; }
+
+.epg-home .right-col { width:884px; height:566px; overflow:hidden; float:right; }
+.epg-home .right-col li { margin:0 0 13px 14px; width:428px; height:180px; overflow:hidden; background:#111; -moz-border-radius:8px; -webkit-border-radius:8px; float:left; }
+.epg-home .right-col li .title { color:#777; }
+.epg-home .right-col li ul { margin-bottom:13px; height:70px; overflow:hidden; line-height:1.2; }
+.epg-home .right-col li ul li { margin:0; width:auto; height:auto; background:none; float:none; }
+.epg-home .right-col li .button { width:151px; height:32px; line-height:32px; text-align:center; overflow:hidden; color:#777; background:url("../images/spirits.png") no-repeat -885px -75px; }
+.epg-home .right-col li.hover { color:#fff; background:url("../images/spirits.png") no-repeat -450px -150px; }
+.epg-home .right-col li.hover .title { color:#fff; }
+.epg-home .right-col li.hover ul li { color:#777; }
+.epg-home .right-col li.hover ul li strong { color:#fff; }
+.epg-home .right-col li.hover .button { color:#fff; background:url("../images/spirits.png") no-repeat -885px -118px; }
+
+
+.cat-list { position:relative; height:500px; overflow:hidden; margin-top:100px; }
+
+/* HOME.MOD 1117 */
+.epg-home .spotlight { float:left; position:relative; width:895px; height:498px; overflow:hidden; }
+.epg-home .spotlight .frame { position:absolute; left:0; top:0; z-index:100; display:block; width:895px; height:498px; overflow:hidden; background:url("../images/home_spotlight.png") no-repeat 0 0; }
+.epg-home .spotlight .frame .title { position:absolute; left:15px; top:385px; z-index:101; font-size:30px; color:#fff; }
+.epg-home .spotlight .frame .description { position:absolute; left:25px; top:425px; width:680px; z-index:101; color:#ccc; line-height:1.4; }
+.epg-home .spotlight .frame .button {  position:absolute; right:20px; top:425px; z-index:101; display:block; width:151px; height:32px; line-height:32px; text-align:center; overflow:hidden; color:#fff; background:url("../images/spirits.png") no-repeat -885px -75px; }
+.epg-home .spotlight.hover .frame .button {  background:url("../images/spirits.png") no-repeat -885px -118px;  }
+.epg-home .featured { float:right; width:268px; height:508px; overflow:hidden; }
+.epg-home .featured li { margin-bottom:15px; position:relative; width:268px; height:156px; overflow:hidden; }
+.epg-home .featured li .frame { position:absolute; left:0; top:0; display:block; width:268px; height:156px; overflow:hidden;  background:url("../images/home_featured.png") no-repeat 0 100%;  }
+.epg-home .featured li .frame .title { position:absolute; left:0; top:122px; z-index:101; font-size:24px; color:#fff; }
+.epg-home .featured li .frame .button {  position:absolute; right:10px; top:118px; z-index:101; display:block; width:70px; height:32px; line-height:32px; text-align:center; overflow:hidden; color:#fff; background:url("../images/spirits.png") no-repeat -885px -160px; }
+.epg-home .featured li.hover .frame .button { background:url("../images/spirits.png") no-repeat -965px -160px;}
+/* END.HOME.MOD */
+
+
+/* .cat-list { position:relative; margin-top:120px; } */
+.cat-list .larr { position:absolute; top:235px; left:10px; width:13px; height:27px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1050px -80px; }
+.cat-list .rarr { position:absolute; top:235px; right:10px; width:13px; height:27px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1066px -80px; }
+.cat-list .grid { position:absolute; top:0; left:0; }
+.cat-list .no-match { width:100%; }
+.cat-list .no-match p { margin:220px auto; font-size:30px; text-align:center; }
+.cat-list ul { padding:0 26px; overflow: hidden;}
+.cat-list li { margin:10px 9px; padding:1px; width:166px; height:226px; float:left; border:1px solid #777; /*background:url("../images/cat_list_bg.png") no-repeat 0 0;*/ }
+.cat-list li img, .cat-list li .cover { width:166px; height:191px; overflow:hidden; }
+.cat-list li .title { padding:0 10px; height:35px; overflow:hidden; font-size:24px; line-height:35px; }
+.cat-list li.hover .item { position:relative; z-index:100; margin:-9px -9px 0; padding:9px; width:166px; height:226px; background:url("../images/spirits.png") no-repeat -450px -330px; }
+.cat-list li.hover .item img, .cat-list li.hover .item .cover { width:166px; height:191px; overflow:hidden; }
+.cat-list li.hover .item .title { height:45px; overflow:hidden; font-size:24px; line-height:45px; }
+
+
+/* NEED FIX */
+.prog-list { position:relative; margin-top:220px; height:470px; background:url("../images/shadow_bg.png") no-repeat center 100%; }
+.prog-list ul { padding:0 22px; }
+.prog-list li { width:220px; height:270px; text-align:center; /*background:url("../images/spirits.png") no-repeat -25px -716px;*/ float:left; }
+.prog-list li.hover { position:relative; z-index:100; margin:0 -25px; width:270px; /*background:url("../images/spirits.png") no-repeat 0 -986px;*/ }
+.prog-list li .title { margin-top:207px; height:50px; overflow:hidden; font-size:26px; line-height:50px; }
+.prog-list li.hover .title { margin-top:228px; height:60px; overflow:hidden; font-size:30px; line-height:60px; }
+.prog-list li.prog-1 { background:url("../images/spirits.png") no-repeat -25px -716px; }
+.prog-list li.prog-1.hover { background:url("../images/spirits.png") no-repeat 0 -986px; }
+.prog-list li.prog-2 { background:url("../images/spirits.png") no-repeat -295px -716px; }
+.prog-list li.prog-2.hover { background:url("../images/spirits.png") no-repeat -270px -986px; }
+.prog-list li.prog-3 { background:url("../images/spirits.png") no-repeat -565px -716px; }
+.prog-list li.prog-3.hover { background:url("../images/spirits.png") no-repeat -540px -986px; }
+.prog-list li.prog-4 { background:url("../images/spirits.png") no-repeat -835px -716px; }
+.prog-list li.prog-4.hover { background:url("../images/spirits.png") no-repeat -810px -986px; }
+.prog-list li.prog-5 { background:url("../images/spirits.png") no-repeat -25px -1256px; }
+.prog-list li.prog-5.hover { background:url("../images/spirits.png") no-repeat 0 -1526px; }
+.prog-list li.prog-6 { background:url("../images/spirits.png") no-repeat -295px -1256px; }
+.prog-list li.prog-6.hover { background:url("../images/spirits.png") no-repeat -270px -1526px; }
+
+
+.epg-list { position:relative; margin-top:26px; height:700px; font-size:22px; }
+.epg-list .larr { position:absolute; top:38px; left:10px; width:13px; height:28px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1050px -80px; }
+.epg-list .rarr { position:absolute; top:38px; right:10px; width:13px; height:28px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1066px -80px; }
+.epg-list .item-list { padding:0 29px; }
+.epg-list .item { margin:0 7px; width:421px; height:500px; color:#777; float:left; }
+.epg-list .item-header { margin-bottom:13px; height:100px; overflow:hidden; background:url("../images/spirits.png") no-repeat -701px -430px; }
+.epg-list .item-header .title { padding:9px 9px 0; height:41px; overflow:hidden; font-size:26px; line-height:45px; text-indent:22px; }
+.epg-list .item-header .on-air { padding:0 60px 0 9px; height:45px; overflow:hidden; line-height:45px; text-indent:22px; }
+.epg-list .actived { color:#fff; }
+.epg-list .actived .item-header { background:url("../images/spirits.png") no-repeat -701px -530px; }
+.epg-list .actived .hover .item-header { background:url("../images/spirits.png") no-repeat -701px -330px; }
+.epg-list .item-body { position:relative; width:421px; height:510px; overflow:hidden; background:#111; -moz-border-radius:8px; -webkit-border-radius:8px; float:left; }
+.epg-list .item-body .loading { position:absolute; width:421px; height:510px; overflow:hidden; background:url("../images/ico_loading.png") no-repeat center 130px; }
+.epg-list .cpanel { margin:20px 18px; font-size:18px; }
+.epg-list .cpanel .dates { position:relative; display:block; }
+.epg-list .cpanel .dates .dropdown { display:block; padding-left:10px; width:210px; height:37px; font-size:24px; line-height:37px; float:left; }
+.epg-list .cpanel .dates.actived .dropdown { background:url("../images/spirits.png") no-repeat -701px -630px; }
+.epg-list .cpanel .dates.actived .hover { background:url("../images/spirits.png") no-repeat -701px -667px; }
+.epg-list .cpanel .dates .dropdown small { font-size:18px; }
+.epg-list .cpanel .dates .days { position:absolute; top:44px; padding:0 5px; display:block; width:375px; height:50px; line-height:50px; background:url("../images/spirits.png") no-repeat -540px -1256px; }
+.epg-list .cpanel .dates .days .day { margin:0 6px; font-size:19px; }
+.epg-list .cpanel .dates .days .hover { position:relative; bottom:-2px; font-size:25px; background:none; color:#b92322; }
+.epg-list .cpanel .pages { float:right; }
+.epg-list .cpanel .pages .button { margin-top:5px; display:block; width:151px; height:32px; overflow:hidden; line-height:32px; text-align:center; background:url("../images/spirits.png") no-repeat -885px -75px; }
+.epg-list .cpanel .pages .actived { color:#fff; background:url("../images/spirits.png") no-repeat -885px -118px; }
+.epg-list .cpanel .pages .hover { color:#b92322; }
+
+.epg-list li { margin:16px 28px; width:375px; overflow:hidden; }
+.epg-list li.on-air, .epg-list li.on-air .time { color:#963; }
+.epg-list li .time { margin-right:10px; color:#555; }
+.epg-list .actived .item-body { background:url("../images/spirits.png") no-repeat -541px -1306px; }
+.epg-list .actived .time { color:#777; }
+
+
+/* epg-list-new */
+.epg-list-new { margin-top:5px; height:595px; font-size:24px; }
+.epg-list-new .channel-list { position:relative; width:1100px; height:75px; margin:0 5px; padding:0 35px; background:url("../images/navi_bg2.png") no-repeat 0 0; }
+.epg-list-new .channel-list .channel-slider { position:relative; width:1100px; height:75px; overflow:hidden; }
+.epg-list-new .channel-list .channel-slider ul { position:absolute; left:0; top:0; }
+.epg-list-new .channel-list .channel-slider li { float:left; width:118px; height:75px; line-height:75px; margin:0; padding:0; color:#ccc; font-size:25px; text-align:center; }
+.epg-list-new .channel-list .channel-slider li.actived { width:156px; color:#cf212a; font-size:34px; line-height:70px; }
+.epg-list-new .channel-list .channel-slider li.hover { width:150px; height:67px; margin:1px 0; line-height:62px; border:3px solid #cf212a; -moz-border-radius:8px; -webkit-border-radius:8px; }
+.epg-list-new .channel-list .larr { position:absolute; top:29px; left:18px; width:13px; height:18px; background:#333; text-indent:-9999px; background:url("../images/ico_arrow.png") no-repeat 0 0; }
+.epg-list-new .channel-list .rarr { position:absolute; top:29px; right:18px; width:13px; height:18px; background:#333; text-indent:-9999px; background:url("../images/ico_arrow.png") no-repeat 100% 0; }
+.epg-list-new .dates { width:1148px; height:75px; margin:20px auto 0; padding:0 10px; background:#000; height:45px; line-height:45px; border-bottom:3px solid #222; }
+.epg-list-new .dates li { float:left; width:164px; background:#000; color:#777; text-align:center; }
+.epg-list-new .dates li.actived { background:#222; color:#ccc; -moz-border-radius-topleft:6px; -webkit-border-top-left-radius:6px; -moz-border-radius-topright:6px; -webkit-border-top-right-radius:6px; }
+.epg-list-new .dates li.hover { -moz-border-radius:6px; -webkit-border-radius:6px; width:160px; height:40px; line-height:40px; border:2px solid #cf212a; }
+.epg-list-new .tv-listings { position:relative; width:1170px; height:432px; overflow:hidden; margin:30px auto 0; }
+.epg-list-new .tv-listings ul { position:absolute; top:0; left:0; }
+.epg-list-new .tv-listings li { display:block; height:45px; line-height:45px; margin:0 20px; border:2px solid #000; border-bottom:1px solid #222; }
+.epg-list-new .tv-listings li .time { display:block; float:left; width:110px; color:#777; text-align:center; }
+.epg-list-new .tv-listings li .program-title { display:block; float:left; width:810px; height:45px; overflow:hidden; color:#ccc; text-align:left; }
+.epg-list-new .tv-listings li .column { display:block; float:left; width:176px; padding-right:20px; color:#ccc; text-align:right; }
+.epg-list-new .tv-listings li.played span { color:#777; }
+.epg-list-new .tv-listings li.on-air span { color:#963; }
+.epg-list-new .tv-listings li.hover { margin:0; padding:0 20px; height:44px; line-height:44px; border:2px solid #cf212a; -moz-border-radius:24px; -webkit-border-radius:24px; }
+
+
+.epg-details { position:relative; margin:20px; height:620px; font-size:22px; background:url("../images/spr.png") no-repeat 310px 0; }
+.epg-details .left-col { padding:0 20px 0 10px; width:260px; height:535px; overflow:hidden; color:#777; float:left; }
+.epg-details .left-col .cover { margin-bottom:22px; padding:5px; width:260px; height:300px; overflow:hidden; background:url("../images/spirits.png") no-repeat -920px -200px; }
+.epg-details .left-col .cover img { width:260px; height:300px; overflow:hidden; }
+.epg-details .left-col ul { line-height:1.5; }
+.epg-details .left-col ul li { max-height:32px; overflow:hidden; }
+.epg-details .left-col ul li.col-2 { max-height:64px; overflow:hidden; }
+.epg-details .left-col strong { color:#fff; }
+.epg-details .right-col { position:relative; /*padding-right:20px;*/ width:800px; float:right; }
+.epg-details .right-col .title { margin-bottom:22px; font-size:40px; }
+.epg-details .right-col .summary { position:relative; margin-bottom:36px; height:252px; overflow:hidden; }
+.epg-details .right-col .summary .content-slide { position:absolute; top:0; left:0; }
+.epg-details .right-col .summary p { margin-bottom:36px; line-height:36px; }
+.epg-details .right-col .stills ul { margin-left:3px; margin-bottom:10px; height:154px; }
+.epg-details .right-col .stills li { margin-right:50px; padding:1px; width:220px; height:150px; overflow:hidden; border:1px solid #777; float:left; }
+.epg-details .right-col .stills li img { width:220px; height:150px; overflow:hidden; }
+.epg-details .right-col .stills li.last { margin:0; }
+.epg-details .right-col .pagenator { width:100px; height:37px; line-height:37px; text-align:center; background:url("../images/spirits.png") no-repeat -450px -667px; float:right; }
+
+.epg-details .player { position:absolute; left:0; bottom:0; font-size:22px; }
+.epg-details .player .time { margin-left:15px; }
+.epg-details .player .progress { margin-top:5px; background:url("../images/progress_bar_full.png") no-repeat 0 0; width:1310px; height:23px; }
+.epg-details .player .progress .track { position:relative; background:url("../images/progress_track_full.png") no-repeat 0 0; height:23px; }
+
+.epg-details .play-channel { display:block; width:1292px; padding:0 10px; height:48px; line-height:48px; position:absolute; left:0; bottom:10px; font-size:22px; background:#000; color:#777; }
+.epg-details .play-channel .play-channel-hd { float:left; width:110px; height:48px; }
+.epg-details .play-channel .play-channel-bd { float:right; width:1182px; height:48px; overflow:hidden; }
+.epg-details .play-channel .play-channel-bd .on-air { color:#963; }
+.epg-details .play-channel .play-channel-bd span { margin-left:15px; }
+
+.search-results { position:relative; margin:0 26px; height:630px; font-size:22px; background:url("../images/spr.png") no-repeat 1000px 60px; }
+.search-results .left-col { position:relative; width:970px; float:left; }
+.search-results .left-col .results-title { margin:30px 0; padding:0 15px; font-size:40px; }
+.search-results .left-col ul { margin-bottom:13px; height:480px; overflow:hidden; }
+.search-results .left-col li { padding:0 25px; height:48px; overflow:hidden; line-height:48px; }
+.search-results .left-col li span { width:100px; font-size:24px; color:#999; float:left; overflow:hidden; }
+.search-results .left-col li .time { width:90px; }
+.search-results .left-col li .title { width:420px; color:#fff; }
+.search-results .left-col li .channel { width:200px; text-align:right; color:#fff; float:right; }
+.search-results .left-col li .on-air { width:70px; color:#963; }
+.search-results .left-col li.upcomimg span { color:#777; }
+
+
+/* 1103 */
+.search-results .left-col li.hover { background:url("../images/search_result_hover.png") no-repeat 0 0; }
+.search-results .left-col .pagenator { width:100px; height:37px; line-height:37px; text-align:center; background:url("../images/details_pagenator.png") no-repeat 0 0; float:left; }
+.search-results .right-col { padding:0 10px 0 20px; width:260px; color:#999; float:right; }
+.search-results .right-col .cover { margin:70px 2px 35px; border:1px solid #999; padding:1px; width:130px; height:150px; }
+.search-results .right-col .cover img { width:130px; height:150px; overflow:hidden; }
+.search-results .right-col .title { margin-bottom:10px; font-size:24px; color:#fff; }
+.search-results .right-col ul { margin-bottom:32px; line-height:1.5; }
+.search-results .right-col ul li { max-height:68px; overflow:hidden; }
+.search-results .right-col strong { color:#fff; }
+.search-results .player { font-size:22px; color:#fff; }
+.search-results .player .time { margin:0 3px; text-align:right; }
+.search-results .player .progress { margin-top:5px; background:url("../images/progress_bar.png") no-repeat 0 0; width:240px; height:23px; }
+.search-results .player .progress .track { position:relative; background:url("../images/progress_track.png") no-repeat 0 0; height:23px; }
+.no-match { background:none; }
+.no-match .right-col { display:none; }
+
+.footer { position:absolute; bottom:0; left:0; width:1180px; }
+.help { margin:0 5px 5px 0; height:37px; line-height:37px; float:right; }
+.help span { margin:0 2px; display:block; height:37px; line-height:37px; float:left; }
+.help .arrows { width:37px; height:37px; text-indent:-9999px; background:url("../images/ico_arrows.png") no-repeat center center; }
+.help .arrows_vertical { width:37px; height:37px; text-indent:-9999px; background:url("../images/ico_arrows_vertical.png") no-repeat center center; }
+.help .button { width:37px; height:37px; line-height:39px; text-align:center; background:url("../images/ico_button.png") no-repeat center center; }
+.help .button_menu { width:37px; height:37px; line-height:37px; text-align:center; background:url("../images/btn_menu.png") no-repeat center center; text-indent:-9999px; }
+
+.info { margin:0 5px 5px; height:37px; font-size:26px; line-height:37px; float:left; width:880px; overflow:hidden; }
+.info span {display:block; height:37px; line-height:37px; float:left; }
+.info .progress { margin:9px 3px 0 7px; background:url("../images/progress_bar.png") no-repeat 0 0; width:240px; height:23px; }
+.info .progress .track { position:relative; background:url("../images/progress_track.png") no-repeat 0 0; height:23px; }
+.info .played-time { margin-left:10px; color:#963; }
+.info .time-left { margin-left:5px; color:#963; }
+.footer .back,.footer .return { margin:-40px 0 0 20px; width:150px; height:75px; overflow:hidden; font-size:24px; line-height:75px; text-indent:65px; float:left; }
+.footer .back .button,.footer .return .button { background:url("../images/btn_back.png") no-repeat 0 0; }
+.footer .back .hover,.footer .return .hover { background:url("../images/btn_back_hover.png") no-repeat 0 0; }
+.footer .normal { margin:-40px 0 0 13px; width:150px; height:75px; overflow:hidden; font-size:24px; line-height:75px; text-align:center; float:left; }
+.footer .normal .button { background:url("../images/btn_normal.png") no-repeat 0 0; }
+.footer .normal .hover { background:url("../images/btn_normal_hover.png") no-repeat 0 0; }
+.footer .pages { margin:-40px 0 0 13px; width:167px; height:75px; overflow:hidden; font-size:24px; line-height:75px; text-align:center; background:url("../images/btn_pages.png") no-repeat 0 0; float:left; }
+.footer .pages .pgu { margin-right:-5px; width:87px; height:75px; float:left; }
+.footer .pages .pgd { margin-left:-5px; width:87px; height:75px; float:right; }
+.footer .pages .hover { background:url("../images/btn_pages_hover.png") no-repeat 0 0; }
+.footer .search { margin:-35px 0 0 14px; float:left; }
+
+.popup { position:absolute; top:300px; left:442px; z-index:500; width:480px; height:200px; }
+.popup .play { margin:45px; font-size:24px; text-align:center; }
+.popup .play li { margin:8px auto; width:210px; height:45px; overflow:hidden; line-height:45px; font-size:24px; text-align:center; background:url("../images/btn.png") no-repeat 0 0; }
+.popup .play li.hover { background:url("../images/btn_hover.png") no-repeat 0 0; }
+.popup-bg { position:absolute; top:300px; left:442px; z-index:400; background:#000; width:480px; height:200px; overflow:hidden; -moz-border-radius:10px; -webkit-border-radius:10px; opacity:0.9; }
+
+.popup-loading { position:absolute; top:0; left:0; z-index:9999; margin:0 auto; width:1364px; height:767px; overflow:hidden; background:url("../images/ico_loading.png") no-repeat center center; }
+.popup-loading-bg { position:absolute; top:324px; left:622px; z-index:400; background:#000; width:120px; height:120px; overflow:hidden; -moz-border-radius:10px; -webkit-border-radius:10px; opacity:0.9; }
+
+/* 2010-11-16 */
+.channel-list { margin-top:125px; position:relative; font-size:24px; height:560px; overflow:hidden; }
+.channel-list .larr { position:absolute; top:245px; left:10px; width:13px; height:28px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1050px -80px; }
+.channel-list .rarr { position:absolute; top:245px; right:10px; width:13px; height:28px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1066px -80px; }
+.channel-list .item-list { position:absolute; margin:0 32px; }
+.channel-list .item-list li { margin:0 5px; float:left; display:block; text-align:center; width:250px; height:190px; text-align:center; }
+.channel-list .item-list li .icon { margin-bottom:15px; height:135px; overflow:hidden; background:url("../images/channel_bg.png") no-repeat 0 0; }
+.channel-list .item-list li.hover .icon { background-position:0 100%; }
+
+/* 2010-11-25 */
+.channel-list-new { margin-top:105px; position:relative; font-size:22px; height:500px; overflow:hidden; }
+.channel-list-new .larr { position:absolute; top:215px; left:10px; width:13px; height:28px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1050px -80px; }
+.channel-list-new .rarr { position:absolute; top:215px; right:10px; width:13px; height:28px; background:#333; text-indent:-9999px; background:url("../images/spirits.png") no-repeat -1066px -80px; }
+.channel-list-new .item-list { position:absolute; margin:0 32px; }
+.channel-list-new .item-list li { margin:12px 11px; float:left; display:block; text-align:center; width:200px; height:140px; text-align:center; }
+.channel-list-new .item-list li .icon { margin-bottom:3px; height:97px;padding-top: 10px; overflow:hidden; background:url("../images/spirits.png") no-repeat -680px -360px; }
+.channel-list-new .item-list li.hover .icon { background:url("../images/spirits.png") no-repeat -680px -468px; }
+
+/*EPG details*/
+.detail-show{overflow: hidden;background: url("../images/spr.png") no-repeat scroll 910px 0 transparent}
+h1,h2,h3{font-weight: normal;}
+.ll{width:900px;float: left;margin-right: 20px;height: 570px;}
+.binfo {overflow: hidden;height: 325px;}
+.bs{float: left;margin-right:40px;}
+.bs img{padding: 5px;background: #fff;height: 300px;}
+.dinfo{overflow: hidden;}
+.dinfo li,.prelist li{line-height: 36px;}
+.smry span{position: absolute;right: 0;bottom: 6px;margin-left: 10px;color: #777777;border:3px solid #000;padding: 2px 15px;}
+.smry .hover{color: #fff;border:3px solid #CF212A;-moz-border-radius:20px; -webkit-border-radius:20px;}
+.smry{height: 120px;overflow: hidden;position: relative;}
+.lr{overflow: hidden;}
+.playlist{overflow: hidden; position: absolute;left: 0;width: 100%;}
+.playlist li{font-size: 24px;height: 37px;line-height: 36px;margin: 0 15px;border:2px solid #000;border-bottom: 1px solid #222;overflow: hidden;}
+.playlist li.hover{margin: 0;padding: 0 15px;height: 36px;}
+.playlist li.hover,.prelist li.hover{border:2px solid #CF212A;-moz-border-radius:24px; -webkit-border-radius:20px;border-radius:20px;}
+.playlist li div{width: 32%;float: left;text-align: center;}
+.playlist li div:last-child{text-align: right;float: right;}
+.nextlist li div:last-child{position: relative;width: 28%;padding-right: 5%;}
+.playlist li div:first-child{text-align:left;float: left;}
+.playlist .time-left{font-size: 20px;}
+.stills li{float: left;width: 300px;text-align: center;}
+.stills li img{border: 1px solid #777777;height: 156px;padding: 1px;}
+.bcct>div{height: 160px;overflow: hidden;position: relative;}
+.bcct{position: relative;}
+.bcct .up,.bcct .down{position: absolute;width: 30px;height: 16px;background: url(../images/ico_arrows_vertical.png) no-repeat center -2px;left: 50%;z-index: 100;margin-left: -15px;}
+.bcct .up{top: -20px;}
+.bcct .down{bottom: -20px;background-position: center -20px;}
+.play,.ring{margin-left: 2px;display: inline-block;height: 36px;width: 30px;float: right;}
+.nextlist li .ring{display: none;}
+.nextlist li.hover .ring{display: inline-block;position: absolute;right: 0;}
+.play img,.ring img{vertical-align: middle;}
+.prelist li{border:2px solid #000;padding: 0 10px;font-size: 24px;width: 234px;overflow: hidden;white-space: nowrap;}
+.prelist li.even{background: #282829;}
+.play{background: url(../images/play.png) no-repeat center center;}
+.ring{background: url(../images/ring.png) no-repeat center center;}
+.epg-list-new .up,.epg-list-new .down{position: absolute;width: 30px;height: 16px;background: url(../images/ico_arrows_vertical.png) no-repeat center -2px;left: 570px;top: 152px;z-index: 100;}
+.epg-list-new .down{top: 630px;background-position: center -20px;}
+.sbar{position: absolute; z-index: 100; width: 7px; bottom: 2px; top: 2px; right: 1px;overflow: hidden; opacity: 1;}
+.sbar div{position: absolute; z-index: 100; background: #999999;  width: 100%; border-radius: 3px;height: 316px;}
+.infotab{margin-bottom: 20px;border-bottom: 3px solid #222222;background-color: #000;overflow: hidden;border-radius: 6px 6px 0 0;}
+.infotab li{text-align: center;font-size: 24px;float: left;cursor: pointer;color: #777777;width: 164px;border: 2px solid transparent;line-height: 40px;height: 40px;}
+.infotab li.hover{border-color:#CF212A;-webkit-border-radius: 6px;}
+.infotab li.actived{background: #222222;color: #ffffff;}
+.prelist li p{width: 234px;overflow: hidden;}

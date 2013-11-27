@@ -1,0 +1,58 @@
+南京广电同步机制
+1、电视台和电视频道为固定数据，不需要同步。
+2、节目，每日定时多次从中央数据库同步节目信息。开发节目数据同步接口。
+3、Wiki，中央数据有变更及时同步到南京广电数据库。需要开发wiki同步的接口。
+包括wiki的基本信息、wiki的剧照、wiki的海报、分集剧情等。
+4、在节目变更过程中发现有单个wiki没有更新的，及时更新。开发单个wiki的同步接口。
+5、附件的同步
+
+
+需要导入的数据
+
+admin,				       	--- 后台用户表
+admin_auth,					--- 后台权限表
+attachment_categorys,		--- 附件分类表
+attachments,                --- 附件表
+attention,					--- ？？？
+channel,					--- 频道信息表
+channel_recommend,			--- 频道推荐表
+ip,							--- ip地址表
+tags,						--- tag表
+theme,						--- 主题表	
+theme_item,					--- 主题项目表
+tv_station,					--- 电视台信息表
+userliving                  --- 用户直播信息表
+
+album(0)                    --- 没有用
+channel_favorites(44)       --- 频道收藏
+comments(0)                 --- 评论
+dict(45230)                 --- 词典 (主站没有？)
+editor_memory(16690)        --- 编辑记忆表（南京广电可以不用）
+page(287)                   --- 没有用
+program(398804)             --- 节目表
+program_archiver(3634154)   
+program_bank(400)			--- (主站没有？)
+program_copy(158048)		--- (主站没有？)
+program_recommend(0)		--- (主站没有？)
+programe_user(12)			--- 用户预约信息表
+recommend(14)               --- 推荐信息表
+reportchannel(17)           --- 别名信息表（南京广电可以不用）
+session(4)                  --- session
+setting(1)                  --- 系统设置信息表（如：热门关键词）
+single_chip(4)              --- 片单信息表
+sp(7)						--- 运营商信息表（如：VOD运营商）
+television(8986)            --- ？？？
+terminal(4)					--- 终端信息表
+user(154) 					--- 用户信息表
+user_behaviors(4)          	--- 用户行为信息表 (主站没有？)
+user_mark(1)                --- 用户标记（南京广电可以不用）
+user_recommendations(1)     --- 用户推荐 (主站没有？)
+user_share(34)				--- 用户分享
+user_wikistatus(0)          --- ？？？ (主站没有？)
+video(29139)                --- 视频
+video_playlist(873)         --- 视频列表
+wiki(63123)					--- 维基信息
+wiki_copy(60048)			--- ？？？ (主站没有？)
+wiki_meta(282768)  			--- 分集剧情
+wiki_play(117462)           --- 直播剧集
+wiki_recommend(98)          --- 维基推荐

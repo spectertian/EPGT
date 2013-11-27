@@ -1,0 +1,1328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<meta name=page-view-size content = 1280*720 />
+
+<script language="javascript" src="ui://over_all_widget/keyEvent1.0.js"></script>
+<script language="javascript" src="ui://menu.js"></script>
+
+<script type="text/javascript">
+<!--
+//联名卡功能 + NIT定向广告
+//该JS会随着导入器一起下载下来
+if (iPanel.eventFrame.appCard_img_src != ""){
+	document.write("<script src="+iPanel.eventFrame.appCard_img_src+"info.js><\/script>")
+}
+//-->
+</script>
+
+<script type="text/javascript">
+<!--
+hardware.STB.frontPanel(2,"good",0,1,100); //前面板显示
+iPanel.eventFrame.initPage(window);
+
+var stopAV_flag = 0;
+
+/*热门推荐*/
+var recommend_focus = [516,667,817,967,1117];
+var recommend_focus_pos = 0;
+
+
+/*一级菜单*/
+var mainMenu_focus_pos = 0;
+var mainMenu_length = 10;//2012-09-05,局方说定死了10个一级菜单，因为菜单中有
+var mainMenu_pos = [-3,131,268,401,532,652,772,892,1012,1132];
+
+/*二级菜单*/
+var subMenu_length = 7;
+var subMenu_focus = [57,225,394,562,731,901,1070];//7个子菜单的焦点位置
+var subMenu_data_pos = 0;
+var subMenu_focus_pos = 0;
+
+var focus_area = 1; // 0 ,表示在推荐位置 ； 1 ,表示在主菜单位置 ； 2 ,表示在子菜单位置
+var subMenu_slipObj = null;//子菜单的滑动object
+
+var ChLength = user.channels.length; //音视频的频道的长度
+var curr_channel = null; //当前的频道
+
+var mainMenu_timeout = null;
+var video_timeout = null;
+var data_timeout = null;
+var tips_timeout = null;
+function init(){
+	if (E.form_key_menu)E.form_key_menu = false;//设置下，防止在eventpage被设置后回到主页仍然保留着值
+	curr_channel = user.getOffChannel(128); //获取当前的关机频道
+	if (typeof(curr_channel)!='undefined'){
+		if (curr_channel.type == 0x02)
+		{
+			$("music_bg").style.visibility = "visible";
+		}
+		else{
+			$("music_bg").style.visibility = "hidden";
+		}
+		if(video_timeout)clearTimeout(video_timeout);
+		video_timeout = setTimeout("onChannelVideo()",1000); //1s后开始播，延迟一会
+	}
+	else{
+		DVB.stopAV(0);
+	}
+	
+	if(typeof iPanel.getGlobalVar("focus_area") == "number") focus_area = iPanel.getGlobalVar("focus_area");
+	if (typeof iPanel.getGlobalVar("mainMenu_focus_pos") == "number")mainMenu_focus_pos = iPanel.getGlobalVar("mainMenu_focus_pos");
+	if (typeof iPanel.getGlobalVar("subMenu_data_pos") == "number")subMenu_data_pos = iPanel.getGlobalVar("subMenu_data_pos");
+	if (typeof iPanel.getGlobalVar("subMenu_focus_pos") == "number")subMenu_focus_pos = iPanel.getGlobalVar("subMenu_focus_pos");
+	if (typeof  iPanel.getGlobalVar("recommend_focus_pos") == "number")recommend_focus_pos = iPanel.getGlobalVar("recommend_focus_pos");
+
+	if (focus_area == 0){
+		mainMenu_focus_pos = 0;
+		subMenu_focus_pos = 0;
+		subMenu_data_pos = 0;
+	}
+	else if (focus_area == 1){
+		subMenu_focus_pos = 0;
+		subMenu_data_pos = 0;
+		recommend_focus_pos = 0;
+	}
+	else if (focus_area == 2){
+		recommend_focus_pos = 0;
+	}
+	initRecommend();
+	initMainMenu();
+	initSubMenu(1);
+
+	if (focus_area == 0){//焦点在推荐上
+		$("recommend_focus").style.webkitTransitionDuration = "0ms";
+		$("recommend_focus").style.left = recommend_focus[recommend_focus_pos];
+		$("recommend_focus").style.webkitTransitionDuration = "300ms";
+		$("recommend_focus").style.opacity = 1;
+		$("img_0").src = mainMenu_blur[0];
+	}
+	else if (focus_area == 1){//焦点在主菜单上
+		$("mainMenu_focus").style.webkitTransitionDuration = "0ms";
+		$("mainMenu_focus").style.left = mainMenu_pos[mainMenu_focus_pos];
+		$("mainMenu_focus").style.webkitTransitionDuration = "300ms";
+		$("mainMenu_focus").style.opacity = 1;
+
+		if(mainMenu_timeout)clearTimeout(mainMenu_timeout);
+		mainMenu_timeout = setTimeout(function(){
+				$("img_" + mainMenu_focus_pos).src = mainMenu_focus[mainMenu_focus_pos];
+			},300
+		);
+	}
+	else if (focus_area == 2){//焦点在子菜单上
+		$("img_" + mainMenu_focus_pos).src = mainMenu_blur[mainMenu_focus_pos];
+		$("subMenu_focus").style.opacity = 1;
+	}
+
+	initText();
+	showDate();
+	initWeather();
+	var smartcard_in = iPanel.getGlobalVar("smartcard_in");
+	if (smartcard_in == "1" && CA.card.isCurrCACard == 1){
+		var cardId = iPanel.misc.getUserCharsetStr(CA.card.cardId,"gb2312");
+		var cardId_number = cardId.length;
+		var show_cardId = "";
+		while (cardId_number > 0){
+			var id = cardId.substring(cardId_number-1,cardId_number);
+			if (!isNaN(parseInt(id))){
+				show_cardId = id + show_cardId;
+			}
+			if (show_cardId.length == 11)break;
+			cardId_number--;
+		}
+		$("ca_cardId").innerText =show_cardId;
+	}
+	else{
+		$("ca_cardId").innerText = "";
+	}
+
+	check_notes();//检测提示信息
+	setTimeout("check_email()",1500);//检测未读邮件
+
+	check_net(); //检测网络
+
+	caCard_check();//检测用户属于哪个联名卡?
+	initAD();//add ad code
+}
+
+var caCard_userId = [0,0]; //这个是通过某个CA接收获取到的用户属于哪几个联名卡用户，新疆联名卡业务
+
+var caCard_url = ["",""];
+//var caCard_des = ["",""];
+var appCard_urlList; //联名卡用户url链接信息，会通过导入器下载的.js文件对其进行赋值，如无赋值，appCard_urlList()时会赋值为空数组
+var index_av_info; //NIT定向广告，会通过导入器下载的.js文件对其进行赋值，如无赋值，get_av_info()时会赋值
+
+/*检测联名卡用户对应的url*/
+function caCard_check(){
+	caCard_url = ["",""];
+	var smartcard_in = iPanel.getGlobalVar("smartcard_in");
+	if (smartcard_in == "1" && CA.card.isCurrCACard == 1){
+		caCard_userId = CA.card.userType;
+	}
+	else {
+		caCard_userId = [0,0];
+		return;
+	}
+	
+	iPanel.debug("index_caCard_check_CA.card.groupLable==" + caCard_userId[0] + "__" + caCard_userId[1]) ;
+
+	if (typeof appCard_urlList != "undefined"){
+		iPanel.debug("index_caCard_check_appCard_urlList.length == " + appCard_urlList.length);
+		for (var i=0; i<appCard_urlList.length; i++){
+			iPanel.debug("index_caCard_check_appCard_urlList["+i+"].id == " + appCard_urlList[i].id);
+			if (caCard_userId[0] == appCard_urlList[i].id){
+				caCard_url[0] = appCard_urlList[i].url;
+				//caCard_des[0] = appCard_urlList[i].des;
+			}
+			else if (caCard_userId[1] == appCard_urlList[i].id){
+				caCard_url[1] = appCard_urlList[i].url;
+				//caCard_des[1] = appCard_urlList[i].des;
+			}
+		}	
+	}
+	else{
+		appCard_urlList = [];
+		caCard_url = ["",""];
+	}
+}
+
+function check_email(){
+	var smartcard_in = iPanel.getGlobalVar("smartcard_in");
+	var isCurrCACard = CA.card.isCurrCACard; //判断是否是本卡
+	if (smartcard_in == "0" || (smartcard_in == "1" && isCurrCACard != 1)){
+		$("email_num").innerText = "未读0";
+	}
+	else{
+		var newEmailNum = 0;
+		var emailList = CA.getEmails();
+		for (var i=0; i<emailList.length; i++)
+		{
+			var email = emailList[i];
+			if (email.isNew)newEmailNum++;
+		}
+		$("email_num").innerText = "未读" + newEmailNum;
+	}
+}
+
+function check_net(){
+	var ethernetItem = network.ethernets[0];
+	var net_status = ethernetItem.LANStatus; //1：表示目前处于连接状态   0：表示没有连接上网络
+	if (net_status==0 || (net_status!=3&&network.ethernets[0].DHCPEnable==1)){
+		$("net_icon").src = "net_off.png";
+	}
+	else{
+		$("net_icon").src = "net_on.png";
+	}
+}
+
+/***************   ad code start   ***************/
+function initAD(){//初始化广告位数据
+	E.index_ad_0.init($(E.index_ad_0.name),adReady,refreshAD);
+	E.index_ad_1.init($(E.index_ad_1.name),adReady,refreshAD);
+	E.index_ad_2.init($(E.index_ad_2.name),adReady,refreshAD);
+}
+var index_ad_name = ["imageAd_0","imageAd_1","marquee_ad"];
+var index_ad_url = ["",""];//广告链接地址。
+var index_ad_timer = new Array(3);
+var index_ad_pos = [0,0,0];
+var fly_ad_pos = 0;
+var fly_ad_data;
+
+function adReady(id,W){//刷新，显示数据
+	var url = W.location.href;
+	var data = W.contentWindow.jsonData;
+	var type = W.contentWindow.type;
+	var pos;
+	switch(id){
+		case E.index_ad_0.id:
+			pos = 0;
+			
+			iPanel.debug("index_adReady_caCard_url[0]=" + caCard_url[0] + "__ caCard_userId[0]=" + caCard_userId[0]);
+			if (caCard_url[0] != "" && (typeof(caCard_userId[0]) != "undefined" && caCard_userId[0] != 0)){//特殊用户广告，查询显示对应的即可
+				index_ad_url[0] = caCard_url[0];
+				iPanel.debug("index_adReady_E.appCard_img_src="+E.appCard_img_src);
+				var img_name_gif = E.appCard_img_src + "special_"+caCard_userId[0]+".gif";
+				var img_name_png = E.appCard_img_src + "special_"+caCard_userId[0]+".png";
+				var img_name_jpg = E.appCard_img_src + "special_"+caCard_userId[0]+".jpg";
+				var img_name_normal = "";
+				var url = url.substr(0,url.lastIndexOf("\/")+1);
+				if (data.imgAds.imgEntrys.length > 0)img_name_normal = url + data.imgAds.imgEntrys[0].src;
+				var img_name_ui = "ui://adv3.png";
+
+				$('imageAd_0').src = img_name_gif+'@'+img_name_png+'@'+img_name_jpg+'@'+img_name_normal+'@'+img_name_ui;
+				//$('ad3_des').innerText = caCard_des[0];
+				return;
+			}
+
+			index_ad_url[0] = data.imgAds.extendsUrl;
+			break;
+		case E.index_ad_1.id:
+			pos = 1;
+
+			iPanel.debug("index_adReady_caCard_url[1]=" + caCard_url[1] + "__ caCard_userId[1]=" + caCard_userId[1]);
+			if (caCard_url[1] != ""  && (typeof(caCard_userId[0]) != "undefined" && caCard_userId[1] != 0)){//特殊用户广告，查询显示对应的即可
+				index_ad_url[1] = caCard_url[1];
+				iPanel.debug("index_adReady_E.appCard_img_src="+E.appCard_img_src);
+				var img_name_gif = E.appCard_img_src + "special_"+caCard_userId[1]+".gif";
+				var img_name_png = E.appCard_img_src + "special_"+caCard_userId[1]+".png";
+				var img_name_jpg = E.appCard_img_src + "special_"+caCard_userId[1]+".jpg";
+				var img_name_normal = "";
+				var url = url.substr(0,url.lastIndexOf("\/")+1);
+				if (data.imgAds.imgEntrys.length > 0)img_name_normal = url + data.imgAds.imgEntrys[0].src;
+				var img_name_ui = "ui://adv2.png";
+
+				$('imageAd_1').src = img_name_gif+'@'+img_name_png+'@'+img_name_jpg+'@'+img_name_normal+'@'+img_name_ui;
+				//$('ad3_des').innerText = caCard_des[1];
+				return;
+			}
+			index_ad_url[1] = data.imgAds.extendsUrl;
+			break;
+		case E.index_ad_2.id:
+			pos = 2;
+			break;
+	}
+	if(typeof pos == "undefined") return;
+	url = url.substr(0,url.lastIndexOf("\/")+1);
+	if(type == "Fly"){
+		 fly_ad_pos = pos;
+		 fly_ad_data = data;
+		 doFly();
+	}
+	else if(type == "Image") doImage(data,pos,url);
+}
+
+var fly_marquee_id = 0; //记录当前是哪个DIV正在显示中
+var first_show = 1;
+function doFly(){/*这里文字广告要做特殊处理，不是滚动，而是多条翻屏*/
+	if(!fly_ad_data) return;
+	var len = fly_ad_data.flyads.flyEntrys.length;
+	var obj = fly_ad_data.flyads;
+	if(len > 0){
+		/*var content = "<marquee scrollAmount='"+obj.speed+"' scrollDelay='"+obj.delay+"' direction='"+obj.runType+"' loop='"+obj.flyEntrys[index_ad_pos[fly_ad_pos]].cycles+"' style='font-size:"+obj.fontSize+"px;color:"+obj.fontColor+";background-color:"
+		+obj.backgroundColor+";background:url("+obj.backgroundImage+") center no-repeat;' onfinish='change()'>"
+		+iPanel.misc.getUserCharsetStr(obj.flyEntrys[index_ad_pos[fly_ad_pos]].content,"gb2312")+"</marquee>";*/
+
+		if (index_ad_pos[fly_ad_pos] >= len)index_ad_pos[fly_ad_pos] = 0;//保护一下，免得广告更新的时候这里出问题
+		var content = iPanel.misc.getUserCharsetStr(obj.flyEntrys[index_ad_pos[fly_ad_pos]].content,"gb2312");
+
+		if (first_show){//如是第一次
+			first_show = 0;
+			$("marquee_ad" + fly_marquee_id).innerText = content;
+		}
+		else{
+			$("marquee_ad" + (fly_marquee_id + 1)%2).style.webkitTransitionDuration = "0ms";
+			$("marquee_ad" + (fly_marquee_id + 1)%2).style.top = "-30px";
+			$("marquee_ad" + (fly_marquee_id + 1)%2).innerText = content;	
+			$("marquee_ad" + fly_marquee_id).style.webkitTransitionDuration = "0ms";
+
+			setTimeout(function(){
+				$("marquee_ad" + fly_marquee_id).style.webkitTransitionDuration = "300ms";
+				$("marquee_ad" + fly_marquee_id).style.top = "30px";//往下滚动
+				$("marquee_ad" + (fly_marquee_id + 1)%2).style.webkitTransitionDuration = "300ms";
+				$("marquee_ad" + (fly_marquee_id + 1)%2).style.top = "0px";//往下滚动
+				fly_marquee_id = (fly_marquee_id + 1)%2;
+			},5);
+		}
+
+		if(len > 1){
+			index_ad_pos[fly_ad_pos] = (index_ad_pos[fly_ad_pos] + 1) % len;
+		}
+		clearTimeout(changeFlyTimer);
+		changeFlyTimer = setTimeout("doFly();",5000);
+	}
+}
+var changeFlyTimer = -1;
+/*function change(){//立即对marquee 操作会死机。验证库 10736.0.0.0.10167
+	clearTimeout(changeFlyTimer);
+	changeFlyTimer = setTimeout("doFly();",100);
+}*/
+function doImage(data,pos,url){
+	var len = data.imgAds.imgEntrys.length;
+	if(len > 0){
+		$(index_ad_name[pos]).src = url + data.imgAds.imgEntrys[index_ad_pos[pos]].src;
+		if(len > 1){
+			index_ad_pos[pos] = (index_ad_pos[pos] + 1) % len;
+			clearTimeout(index_ad_timer[pos]);
+			index_ad_timer[pos] = setTimeout(function(){
+				doImage(data,pos,url);
+			},data.imgAds.imgEntrys[index_ad_pos[pos]].pauseTime * 1000);
+		}
+	}
+}
+function refreshAD(arr){// 更新广告
+	var len = arr.length;
+	iPanel.debug("index  refreshAD() arr.length = " + len);
+	for(var i=0; i<len; i++){
+		var tmp_id = arr[i];
+		iPanel.debug("index  refreshAD() tmp_id = " + tmp_id);
+		switch(tmp_id){
+			case E.index_ad_0.id: //刷新广告位1
+				E.index_ad_0.refreshed = false;
+				E.index_ad_0.refreshAD();
+				break;
+			case E.index_ad_1.id: //刷新广告位2
+				E.index_ad_1.refreshed = false;
+				E.index_ad_1.refreshAD();
+				break;
+			case E.index_ad_2.id: //刷新广告位3
+				E.index_ad_2.refreshed = false;
+				E.index_ad_2.refreshAD();
+				break;
+		}
+	}	
+}
+
+function refreshed(){
+	E.index_ad_0.refreshAD();
+	E.index_ad_1.refreshAD();
+}
+
+/***************   ad code end   ***************/
+
+function onChannelVideo(){
+	media.video.setPosition(52,121,435,249); //小视频位置,分别是x、y、宽度、高度
+
+	var smartcard_in = iPanel.getGlobalVar("smartcard_in");
+	var isCurrCACard = CA.card.isCurrCACard; //判断是否是本卡
+
+	if (smartcard_in == "0"){//智能卡未插上
+		DVB.stopAV(0);
+		if (E.init_index)E.init_index = 0; 
+		return;
+	}
+	else if (smartcard_in == "1" && isCurrCACard != 1){//卡插上不是本卡
+		DVB.stopAV(0);
+		if (E.init_index)E.init_index = 0; 
+		return;
+	}
+
+	iPanel.debug("index_onChannelVideo_E.init_index = " + E.init_index);
+
+	if (E.init_index){//NIT定向广告(小视频在第一次进入到index时播放指定的视音频)
+		E.init_index = 0;
+		if (typeof index_av_info != "undefined"){
+			var curr_freq = parseInt(index_av_info.frequency);
+			var serviceId = index_av_info.serviceId;
+			iPanel.debug("index_onChannelVideo_curr_freq = " + curr_freq + "__serviceId" + serviceId);
+			var delivery_list = DVB.SI.allDeliveries;
+			for (var i=0; i < delivery_list.length; i++){
+				var tmp_frequency = delivery_list[i].frequency;
+				iPanel.debug("index_onChannelVideo_tmp_frequency = " + tmp_frequency);
+				if (tmp_frequency == curr_freq){
+					var curr_service = DVB.getService(delivery_list[i].ONId,delivery_list[i].TSId,serviceId);
+					if (typeof curr_service != "undefined"){//能够找到对应的service,说明搜索到这个service了，可以播放,否则播放关机频道内容
+						iPanel.debug("index_onChannelVideo_frequency = " + curr_service.frequency + "__serviceId=" + curr_service.serviceId);
+						DVB.playAV(curr_service.frequency, curr_service.serviceId); 
+						return ;
+					}
+				}
+			}
+		}
+	}
+
+	if(user.passwordEnable && curr_channel.lock){//频道被锁定了...
+		DVB.stopAV(0);
+	}
+	else{	
+		var service = curr_channel.getService();
+		DVB.playAV(service.frequency, service.serviceId); 
+	}
+}
+
+/*初始化推荐列表*/
+function initRecommend(){
+	for (var i=0; i<recommend.length; i++){
+		$("recommend_" + i).src = recommend[i].pic;
+	}
+}
+
+/*初始化主菜单列表*/
+function initMainMenu(){
+	for (var i=0 ; i<mainMenu_length; i++)
+	{
+		$("img_" + i).src = mainMenu[i];
+	}
+}
+
+/*初始化子菜单列表*/
+function initSubMenu(flag){
+	if (flag != 1){
+		subMenu_data_pos = 0;//恢复子菜单的焦点位置
+		subMenu_focus_pos = 0;
+	}
+	var slipOpotion = {                           //设定滑动条件
+		objName : "subMenu_",                     //内容DIV的前缀名称
+		direction : "left",
+		listSize : 7,                             // 当前最大显示。（不是所有内容DIV的个数）
+		rowHeight : 165,                          // 每个内容DIV的高度
+		focusObj : "subMenu_focus",              //焦点ID名称
+		focusTop : 75,                            //焦点ID的高度
+		dataLength : subMenu[mainMenu_focus_pos].length,             
+		focusRange : [0,6],                       //控制焦点框的范围，注：不能超过listSize。如果listPos为0，那么focusRange[0] 自动设置为0
+		show : showSubMenu,                        // 显示数据方法，自带_row ,_pos 前面代表焦点下标，后面代表数据下标
+		clear : clearSubMenu,                      // 清楚数据 自带_row 
+		focusPos : subMenu_focus_pos,			   //焦点位置
+		listPos : subMenu_data_pos				   //数据位置
+	};	
+	subMenu_slipObj = new E.listSlip_2D(slipOpotion);
+	subMenu_slipObj.initData();
+
+	$("subMenu").style.opacity = 0;
+	$("subMenu").style.webkitTransitionDuration = "0ms";
+	$("subMenu").style.webkitTransitionDuration = "300ms";
+	$("subMenu").style.opacity = 1;
+}
+
+function showSubMenu(_focusPos,_dataPos){
+	$("subImg_"+_focusPos).src = subMenu[mainMenu_focus_pos][_dataPos].pic;
+}
+
+function clearSubMenu(_focusPos){
+	$("subImg_"+_focusPos).src = " ";
+}
+
+/*初始化滚动条*/
+function initText(){
+	
+}
+
+/*显示当前时间*/
+function showDate(){
+	if(data_timeout)clearTimeout(data_timeout);
+	var curr_time = E.util.date.format(new Date(),"hh:mm:ss");
+	$("curr_time").innerText = curr_time;
+	data_timeout = setTimeout("showDate()" , 1000);
+} 
+
+/*天气预报*/
+function initWeather(){
+	var url = "http://10.60.6.203:8080/weather/weather.do?cityName=乌鲁木齐";
+
+	iPanel.debug("index_initWeather");
+
+	var AjaxObj = new E.AJAX_OBJ(url, 
+		function(xmlHttp) {
+			iPanel.debug("index_initWeather_success_text=" + xmlHttp.responseText);
+			var currTextData = E.trim(xmlHttp.responseText);
+			var objText = eval("("+currTextData+")");
+			showTodayWeather(objText);
+		},
+		function(xmlStatus){
+			iPanel.debug("index_initWeather_fail_xmlStatus = " + xmlStatus);
+			$("tem").innerHTML = "无天气情况";
+			$("weather").src = "wether.png";
+		}
+		); 
+	AjaxObj.requestData();
+}
+
+function showTodayWeather(objText){
+	var obj = objText[0];
+
+	if (obj.temperature != "" && obj.temperature != " " && obj.temperature.split(",").length > 0){
+		var max_temp = obj.temperature.split(",")[0];
+		var min_temp = obj.temperature.split(",")[1];
+		$("tem").innerHTML = min_temp + "℃-" + max_temp + "℃";
+	}
+	else{
+		$("tem").innerHTML = "无天气情况";
+	}
+
+	iPanel.debug("index_showTodayWeather_" + obj.weather);
+	if (typeof obj.icon != "undefined" && obj.icon != " " || obj.icon != "")
+	{
+		$("weather").src = obj.icon;
+	}
+	else{
+		$("weather").src = "wether.png";
+	}
+}
+
+/************键值处理***************/
+function eventHandler(obj, type){
+	iPanel.debug("index_keycode = " + obj.code);
+	switch(obj.code){
+		case "KEY_LEFT":
+			if (focus_area == 0){//在推荐区域
+				recommend_change(-1);
+			}
+			else if (focus_area == 1){//在主菜单区域
+				mainMenu_change(-1);
+			}
+			else if (focus_area == 2){//在子菜单区域
+				subMenu_change(-1);
+			}
+			return 0;
+			break;
+		case "KEY_RIGHT":
+			if (focus_area == 0){//在推荐区域
+				recommend_change(1);
+			}
+			else if (focus_area == 1){//在主菜单区域
+				mainMenu_change(1);
+			}
+			else if (focus_area == 2){//在子菜单区域
+				subMenu_change(1);
+			}
+			return 0;
+			break;
+		case "KEY_UP":
+			chang_area(-1);
+			return 0;
+			break;
+		case "KEY_DOWN":
+			chang_area(1);
+			return 0;
+	 		break;
+		case "KEY_NUMERIC"://1，进入直播， 2，进入广告，3，进入广告
+			if (obj.args.value == 1){
+				openOffChannel();
+			}
+			else if(obj.args.value == 2){//进入广告
+				if(index_ad_url[0] != ""){
+					window.location.href = index_ad_url[0];
+				}
+			}else if(obj.args.value == 3){//进入广告
+				if(index_ad_url[1] != ""){
+					window.location.href = index_ad_url[1];
+				}
+			}
+			break;
+		case "KEY_SELECT":
+			iPanel.setGlobalVar("focus_area",focus_area);
+			iPanel.setGlobalVar("mainMenu_focus_pos",mainMenu_focus_pos);
+			iPanel.setGlobalVar("subMenu_data_pos",subMenu_data_pos);
+			iPanel.setGlobalVar("recommend_focus_pos",recommend_focus_pos);
+			iPanel.setGlobalVar("subMenu_focus_pos",subMenu_slipObj.focusPos);
+			switch(focus_area){
+				case 0: //焦点在推荐上
+					if (recommend[recommend_focus_pos].url == ""){
+						$("tips_msg").innerText = "精彩在即，敬请期待!";
+						$("tips").style.opacity=1;
+						if(tips_timeout)clearTimeout(tips_timeout);
+						tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+					}
+					else{
+						var recommend_url = recommend[recommend_focus_pos].url;
+
+						if (recommend_url.indexOf("ui://") < 0 || (recommend_url.indexOf("ui://system/channelManager.htm") < 0 && recommend_url.indexOf("ui://system/systemSetIndex.htm") < 0)){
+							DVB.stopAV(0);
+						}
+
+						if (recommend[recommend_focus_pos].url == E.stock_index){
+							//stock上传
+							var ioctlWrite_content = "0x09;"+E.get_ca_id()+";"+E.stb_id+";951;65535;65535;;;;;";
+							iPanel.debug("index -> stock -> ioctlWrite =" + ioctlWrite_content);
+							iPanel.TR069.ioctlWrite("udc",ioctlWrite_content);//收视率 股票上传
+						}
+						else{
+							var appType = "Remote";
+							if(recommend[recommend_focus_pos].url.indexOf("ui://") != -1 && recommend[recommend_focus_pos].url.indexOf("loading.htm") == -1){
+								appType = "Local";
+							}
+							var ioctlWrite_content = "0x10;"+E.get_ca_id()+";"+E.stb_id+";1002;"+iPanel.misc.getUserCharsetStr(recommend[recommend_focus_pos].name,"gb2312")+";"+appType+";"+recommend[recommend_focus_pos].type+";1";
+							iPanel.debug("index -> KEY_SELECT -> case 2 -> ioctlWrite_content = " + ioctlWrite_content);
+							iPanel.TR069.ioctlWrite("udc",ioctlWrite_content);//应用上传
+						}
+						window.location.href = recommend[recommend_focus_pos].url;
+					}
+					break;
+				case 1: //主菜单
+					//要求进入到子菜单
+					var mainMenuContent = iPanel.misc.getUserCharsetStr(mainMenu_content[mainMenu_focus_pos],"gb2312");
+					iPanel.debug("index_KEY_SELECT_mainMenuContent="+mainMenuContent);
+					if (mainMenuContent == "看电视"){
+						openOffChannel(1);
+					}
+					//2012/10/17 , 现场要求互动电视，维语点播，哈语点播进入二级菜单，所以这里注释掉
+					//2012/10/29 , 现场要求维语点播，哈语点播进入二级菜单的第一个应用，所以这里放开
+					else if (/*mainMenuContent == "互动电视" || */mainMenuContent == "维语点播" || mainMenuContent == "哈语点播"){
+						if (subMenu[mainMenu_focus_pos].length == 0){
+							$("tips_msg").innerText = "精彩在即，敬请期待!";
+							$("tips").style.opacity=1;
+							if(tips_timeout)clearTimeout(tips_timeout);
+							tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+						}
+						else if (subMenu[mainMenu_focus_pos][0].url == ""){
+							$("tips_msg").innerText = "精彩在即，敬请期待!";
+							$("tips").style.opacity=1;
+							if(tips_timeout)clearTimeout(tips_timeout);
+							tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+						}
+						else{
+							var subMenu_url = subMenu[mainMenu_focus_pos][0].url;
+
+							if(subMenu_url.indexOf("ui://") < 0 || (subMenu_url.indexOf("ui://system/channelManager.htm") < 0 && subMenu_url.indexOf("ui://system/systemSetIndex.htm") < 0)){
+								DVB.stopAV(0);
+							}
+
+							var appType = "Remote";
+							if(subMenu_url.indexOf("ui://") != -1 && subMenu_url.indexOf("loading.htm") == -1){
+								appType = "Local";
+							}
+							var ioctlWrite_content = "0x10;"+E.get_ca_id()+";"+E.stb_id+";1002;"+iPanel.misc.getUserCharsetStr(subMenu[mainMenu_focus_pos][0].name,"gb2312")+";"+appType+";"+subMenu[mainMenu_focus_pos][0].type+";1";
+							iPanel.debug("index -> KEY_SELECT -> case 2 -> ioctlWrite_content = " + ioctlWrite_content);
+							iPanel.TR069.ioctlWrite("udc",ioctlWrite_content);//应用上传
+
+							location.href = subMenu[mainMenu_focus_pos][0].url;
+						}
+					}
+					else{
+						if (subMenu[mainMenu_focus_pos].length == 0){
+							$("tips_msg").innerText = "精彩在即，敬请期待!";
+							$("tips").style.opacity=1;
+							if(tips_timeout)clearTimeout(tips_timeout);
+							tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+						}
+						else{
+							DVB.stopAV(0);
+							window.location.href = "secondAppMenu.htm?" + mainMenu_focus_pos;
+						}
+					}
+					break;
+				case 2: //子菜单					
+					var subMenu_url = subMenu[mainMenu_focus_pos][subMenu_data_pos].url;
+
+					if (subMenu_url == ""){
+						$("tips_msg").innerText = "精彩在即，敬请期待!";
+						$("tips").style.opacity=1;
+						if(tips_timeout)clearTimeout(tips_timeout);
+						tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+					}
+					else{
+						if(subMenu_url.indexOf("ui://") < 0|| (subMenu_url.indexOf("ui://system/channelManager.htm") < 0 && subMenu_url.indexOf("ui://system/systemSetIndex.htm") < 0)){
+							DVB.stopAV(0);
+						}
+						
+						if (subMenu_url == stock_index){
+							//stock上传
+							var ioctlWrite_content = "0x09;"+E.get_ca_id()+";"+E.stb_id+";951;65535;65535;;;;;";
+							iPanel.debug("index ->ioctlWrite =" + ioctlWrite_content);
+							iPanel.TR069.ioctlWrite("udc",ioctlWrite_content);//收视率 股票上传
+						}
+						else{
+							var appType = "Remote";
+							if(subMenu_url.indexOf("ui://") != -1 && subMenu_url.indexOf("loading.htm") == -1){
+								appType = "Local";
+							}
+							var ioctlWrite_content = "0x10;"+E.get_ca_id()+";"+E.stb_id+";1002;"+iPanel.misc.getUserCharsetStr(subMenu[mainMenu_focus_pos][subMenu_data_pos].name,"gb2312")+";"+appType+";"+subMenu[mainMenu_focus_pos][subMenu_data_pos].type+";1";
+							iPanel.debug("index -> KEY_SELECT -> case 2 -> ioctlWrite_content = " + ioctlWrite_content);
+							iPanel.TR069.ioctlWrite("udc",ioctlWrite_content);//应用上传
+						}
+						
+						if (subMenu_url == "ui://3D"){
+							open3DChannel();	//打开3D频道
+						}
+						else if (subMenu_url == "ui://music"){
+							openOffChannel(2);	//打开广播
+						}
+						else{
+							window.location.href = subMenu_url;
+						}
+					}
+					break;
+				}
+			break;
+		case "KEY_EXIT":  //退出
+			openOffChannel();
+			break;
+		case "KEY_BACK":  //返回
+			openOffChannel();
+			break;
+		
+		case "DVB_CABLE_CONNECT_FAILED": //cable网络断开
+			iPanel.setGlobalVar("cable_connect_success",0);
+			check_notes();
+			break;
+		case "DVB_CABLE_CONNECT_SUCCESS":
+			iPanel.setGlobalVar("cable_connect_success",1);
+			check_notes();
+			break;
+		case "CA_MESSAGE_OPEN":
+			var return_type = E.CA_OBJ.checkCAType(obj.args.modifiers);
+			if(return_type != -1){
+				iPanel.setGlobalVar("ca_id",obj.args.modifiers);
+				check_notes();
+			}
+			break;
+		case "CA_MESSAGE_CLOSE":
+			iPanel.setGlobalVar("ca_id",-1);
+			check_notes();
+			break;
+		case "CA_INSERT_SMARTCARD"://插入智能卡
+			iPanel.setGlobalVar("smartcard_in","1");
+			var isCurrCACard = CA.card.isCurrCACard; //判断是否是本卡
+			if (isCurrCACard == 1){
+				var cardId = iPanel.misc.getUserCharsetStr(CA.card.cardId,"gb2312");
+				var cardId_number = cardId.length;
+				var show_cardId = "";
+				while (cardId_number > 0){
+					var id = cardId.substring(cardId_number-1,cardId_number);
+					if (!isNaN(parseInt(id))){
+						show_cardId = id + show_cardId;
+					}
+					if (show_cardId.length == 11)break;
+					cardId_number--;
+				}
+				$("ca_cardId").innerText = show_cardId;
+			}
+			else{
+				$("ca_cardId").innerText = "";
+			}
+			if(typeof(curr_channel)!="undefined" && !(user.passwordEnable && curr_channel.lock) && isCurrCACard==1){
+				var service = curr_channel.getService();
+				DVB.playAV(service.frequency, service.serviceId); 
+			}
+			check_notes();
+
+			caCard_check();//检测联名卡
+			refreshed();
+
+			return 0;
+			break;
+		case "CA_EVULSION_SMARTCARD"://拔出智能卡
+			iPanel.setGlobalVar("smartcard_in","0");
+			$("ca_cardId").innerText = "";
+			DVB.stopAV(0);
+			check_notes();
+
+			caCard_check();//检测联名卡
+			refreshed();
+			
+			return 0;
+			break;
+		case "EIS_IP_NETWORK_DISCONNECT":
+			$("net_icon").src = "net_off.png";
+		break;
+
+		case "EIS_IP_NETWORK_CONNECT":
+		case "EIS_IP_NETWORK_READY":
+			$("net_icon").src = "net_on.png";
+		break;
+	}
+	return obj.args.type;
+}
+
+function recommend_change(__num){
+	if (recommend_focus_pos == 0 && __num < 0)return;
+	if (recommend_focus_pos >= recommend.length - 1 && __num > 0)return;
+
+	recommend_focus_pos += __num;
+
+	$("recommend_focus").style.left = recommend_focus[recommend_focus_pos];
+}
+
+function mainMenu_change(__num){
+	$("img_" + mainMenu_focus_pos).src = mainMenu[mainMenu_focus_pos];
+	var bak_focus_pos = mainMenu_focus_pos;
+	if (mainMenu_focus_pos >= mainMenu_length - 1 && __num > 0){
+		mainMenu_focus_pos = 0;
+	}
+	else if(mainMenu_focus_pos <= 0 && __num < 0){	
+		mainMenu_focus_pos = mainMenu_length - 1;
+	}
+	else{
+		mainMenu_focus_pos += __num;
+	}
+
+	if((bak_focus_pos == 0 && __num < 0) || (bak_focus_pos == mainMenu_length - 1 && __num > 0)){
+		$("mainMenu_focus").style.webkitTransitionDuration = 0;
+	}
+
+	$("mainMenu_focus").style.left = mainMenu_pos[mainMenu_focus_pos];
+
+	if((mainMenu_focus_pos == 0 && __num > 0) || (mainMenu_focus_pos == mainMenu_length - 1 && __num < 0)){
+		$("mainMenu_focus").style.webkitTransitionDuration = 300;
+	}
+
+	if(mainMenu_focus_pos == 0 || mainMenu_focus_pos == mainMenu_length - 1){
+		$("mainMenu_focus").style.webkitTransitionDuration = 0;
+		$("mainMenu_focus").style.opacity = 0;
+		$("mainMenu_focus").style.webkitTransitionDuration = 300;
+		$("mainMenu_focus").style.opacity = 1; 
+	}
+
+	if(mainMenu_timeout)clearTimeout(mainMenu_timeout);
+	mainMenu_timeout = setTimeout(function(){
+		$("img_"+mainMenu_focus_pos).src = mainMenu_focus[mainMenu_focus_pos];	
+	},300
+	);
+	subMenu_slipObj.resetSlip();
+	initSubMenu();
+}
+
+function subMenu_change(__num){
+	if ((subMenu_data_pos == 0 && __num < 0)||(subMenu_data_pos >= subMenu[mainMenu_focus_pos].length - 1 && __num > 0)){
+		subMenu_slipObj.resetSlip();
+		subMenu_slipObj.listPos = 0;
+		subMenu_slipObj.focusPos = 0;
+		if (__num < 0 ){
+			if (subMenu_slipObj.dataLength < subMenu_slipObj.listSize){
+				subMenu_slipObj.listPos = subMenu_slipObj.dataLength - 1 ;
+				subMenu_slipObj.focusPos = subMenu_slipObj.dataLength - 1 ;
+			}else{
+				subMenu_slipObj.listPos = subMenu_slipObj.dataLength - 1 ;
+				subMenu_slipObj.focusPos = subMenu_slipObj.listSize - 1 ;
+			}
+		}
+		subMenu_slipObj.initData();
+		if (subMenu_slipObj.dataLength > 1)
+		{
+			$("subMenu_focus").style.webkitTransitionDuration = 0;
+			$("subMenu_focus").style.opacity = 0;
+			$("subMenu_focus").style.webkitTransitionDuration = 300;
+			$("subMenu_focus").style.opacity = 1;
+		}
+
+		subMenu_data_pos = subMenu_slipObj.listPos;
+		return;
+	}
+	else{
+		subMenu_slipObj.changeFocus(__num);
+	}
+	subMenu_data_pos = subMenu_slipObj.listPos;
+}
+
+function chang_area(__num){
+	if (focus_area == 0 && __num < 0)return;
+	if (focus_area == 2 && __num > 0)return; 
+	
+	if (focus_area == 0){
+		$("recommend_focus").style.opacity = 0;
+	}
+	else if (focus_area == 1){
+		$("mainMenu_focus").style.opacity = 0;
+		if(mainMenu_timeout)clearTimeout(mainMenu_timeout);
+		mainMenu_timeout = setTimeout(function(){
+				$("img_" + mainMenu_focus_pos).src = mainMenu_blur[mainMenu_focus_pos];
+			},300
+		);
+		if (__num < 0){
+			recommend_focus_pos = 0;
+		}
+	}
+	else if (focus_area == 2){
+		$("subMenu_focus").style.opacity = 0;
+	}
+	focus_area += __num;
+
+	if (focus_area== 0){
+		$("recommend_focus").style.webkitTransitionDuration = "0ms";
+		$("recommend_focus").style.left = recommend_focus[recommend_focus_pos];
+		$("recommend_focus").style.webkitTransitionDuration = "300ms";
+		$("recommend_focus").style.opacity = 1;
+	}
+	else if (focus_area == 1){
+		$("mainMenu_focus").style.webkitTransitionDuration = "0ms";
+		$("mainMenu_focus").style.left = mainMenu_pos[mainMenu_focus_pos];
+		$("mainMenu_focus").style.webkitTransitionDuration = "300ms";
+		$("mainMenu_focus").style.opacity = 1;
+
+		if(mainMenu_timeout)clearTimeout(mainMenu_timeout);
+		mainMenu_timeout = setTimeout(function(){
+				$("img_" + mainMenu_focus_pos).src = mainMenu_focus[mainMenu_focus_pos];
+			},300
+		);
+	}
+	else if (focus_area == 2){
+		$("subMenu_focus").style.opacity = 1;
+	}
+}
+
+/*检测提示信息，包括无节目，无信号，锁定，CA提示*/
+function check_notes(){
+	iPanel.debug("index_check_notes_1");
+	var cable_connect_success = iPanel.getGlobalVar("cable_connect_success");
+	if(typeof cable_connect_success == "number" && cable_connect_success == 0){//无信号
+		$("note").style.visibility = "visible";
+		$("note_content").innerHTML = "无信号!";
+	}
+	else{
+		iPanel.debug("index_check_notes_2");
+		if (ChLength == 0 || typeof(curr_channel) == 'undefined') {//无节目
+			if (ChLength == 0)
+			{
+				$("note").style.visibility = "visible";
+				$("note_content").innerHTML = "无节目，请搜索!";
+			}
+			else {
+				$("note").style.visibility = "visible";
+				$("note_content").innerHTML = "频道全部被删除!";
+			}
+		}
+		else{
+			iPanel.debug("index_check_notes_3");
+			var smartcard_in = iPanel.getGlobalVar("smartcard_in");
+			
+			if (smartcard_in == "0"){//智能卡没插上,提示
+				$("note").style.visibility = "visible";
+				$("note_content").innerHTML = "智能卡没插上";	
+			}
+			else{
+				var isCurrCACard = CA.card.isCurrCACard; //判断是否是本卡
+				iPanel.debug("index_check_notes_isCurrCACard==" + isCurrCACard);
+				if (isCurrCACard != 1){
+					$("note").style.visibility = "visible";
+					$("note_content").innerHTML = "无法识别卡,请重新插入或咨询客服96566";
+				}
+				else if(user.passwordEnable && curr_channel.lock){//频道被锁定了...
+					$("note").style.visibility = "visible";
+					$("note_content").innerHTML = "已锁定!";
+				}
+				else{
+					 var ca_id = iPanel.getGlobalVar("ca_id");
+					 if(typeof(ca_id)!= "undefined" && ca_id!="" && ca_id != -1){
+						$("note").style.visibility = "visible";
+						//$("note_content").innerHTML = E.CA_OBJ.getCAMessageTextById(ca_id);
+
+						if(CA.getCAType == "IRDETO_V3"){//爱迪德CA
+							var str = E.CA_OBJ.getCAMessageTextById(ca_id);
+							if(str.substr(0,5) == "E16-4"){//未授权
+								$("note_content").innerHTML = "E16-4 :本节目未订购或欠费停机!";
+							}
+							else{
+								$("note_content").innerHTML = E.CA_OBJ.getCAMessageTextById(ca_id);
+							}
+						}
+						else $("note_content").innerHTML = E.CA_OBJ.getCAMessageTextById(ca_id);
+					 }
+					 else{
+						$("note").style.visibility = "hidden";
+					 }
+				}
+			}
+		}
+	}
+}
+
+
+function openOffChannel(flag,subPos){
+	if (ChLength == 0)
+	{//需要弹出搜索框
+		var nitChangeWidget = iPanel.pageWidgets.getByName("nitChangeWidget");
+		nitChangeWidget.init(1);
+		nitChangeWidget.show();	
+		return;
+	}
+
+	if (typeof subPos != "undefined" && typeof(subPos) == 'number'){
+		var channelList = [];
+		if (subPos == 0){//高清直播
+			channelList = user.channels.bouquetSortByRandom(0x04);
+		}
+		else if (subPos == 1){//央视频道
+			channelList = user.channels.bouquetSortByRandom(0x01);
+		}
+		else if (subPos == 2){//本地频道
+			channelList = user.channels.bouquetSortByRandom(0x05);
+		}
+		else if (subPos == 3){//卫视频道
+			channelList = user.channels.bouquetSortByRandom(0x03);
+		}
+		else if (subPos == 4){//付费频道
+			channelList = user.channels.bouquetSortByRandom(0x02);
+		}
+		if (typeof(channelList)=="undefined" || channelList.length == 0){
+			$("tips_msg").innerText = "无对应的频道,不能收看!!";
+			$("tips").style.opacity=1;
+			if(tips_timeout)clearTimeout(tips_timeout);
+			tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+		}
+		else{
+			var tmp_channel = channelList[0];
+			if (tmp_channel.type == 0x02){
+				iPanel.mainFrame.location.href = 'ui://music.html?' + tmp_channel.userChannel;
+			}
+			else if (tmp_channel.type == 0x01){
+				iPanel.mainFrame.location.href = 'ui://play.html?' + tmp_channel.userChannel;
+			}
+		}
+	}
+	else{
+		var result_flag = E.openOffChannel(flag);
+		if (!result_flag)
+		{//无关机频道,不能进入播放，提示 //需要弹出提示"频道全部被隐藏，不能收看!!"
+			$("tips_msg").innerText = "频道全部被删除，不能收看!!";
+			$("tips").style.opacity=1;
+			if(tips_timeout)clearTimeout(tips_timeout);
+			tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+		}
+	}
+}
+
+function open3DChannel(){
+	var flag = E.open3DChannel();
+	if (!flag)
+	{//无关机频道,不能进入播放，提示
+		if (ChLength == 0)
+		{//需要弹出搜索框
+			var nitChangeWidget = iPanel.pageWidgets.getByName("nitChangeWidget");
+			nitChangeWidget.init(1);
+			nitChangeWidget.show();	
+		}
+		else {//需要弹出提示"无3D频道"
+			$("tips_msg").innerText = "无3D频道";
+			$("tips").style.opacity=1;
+			if(tips_timeout)clearTimeout(tips_timeout);
+			tips_timeout = setTimeout("$('tips').style.opacity=0",1000);
+		}
+	}
+}
+
+function exit_page(){
+	//if (stopAV_flag)DVB.stopAV();
+	if(video_timeout)clearTimeout(video_timeout);
+	if(data_timeout)clearTimeout(data_timeout);
+	if(mainMenu_timeout)clearTimeout(mainMenu_timeout);
+	if(tips_timeout)clearTimeout(tips_timeout);
+}
+//-->
+</script>
+
+<style>
+.com{position:absolute;width:120px;height:60px;top:0px;left:0px;-webkit-transition-duration:300ms;line-height:60px;}
+.f0{left:0px}.f1{left:99px}.f2{left:240px}.f3{left:360px}.f4{left:480px;}.f5{left:600px;}.f6{left:720px;}.f7{left:841px;}.f8{left:960px;}.f9{left:1080px;}.f10{left:1200px;}
+.subMenu{position:absolute;width:165px;height:130px;top:1px;left:0px;-webkit-transition-duration:300ms;}
+.sub0{left:0px}.sub1{left:165px}.sub2{left:330px}.sub3{left:495px}.sub4{left:660px}.sub5{left:825px}.sub6{left:990px}.sub7{left:1155px}
+</style>
+
+</head>
+
+<body leftmargin="0" topmargin="0" background="index_bg.gif" onload='init()' onunload = 'exit_page()' bgcolor="transparent" >
+
+<!--logo-->
+<div style="position:absolute; left:39px; top:27px;"><img src="logo.png" width="226" height="70"/></div>
+
+<div style="position:absolute; left:270px; top:39px;"><img src="i_line.png" width="7" height="50"/></div>
+<div style="position:absolute; left:284px; top:35px; width:230px; height:60px;">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" style="color:#FFFFFF">
+		<tr>
+			<td width="24%" style="font-size:24px">智能<br />卡号</td>
+			<td width="76%" id='ca_cardId' style="font-size:28px">55663428952</td>
+		</tr>
+	</table>
+</div>
+
+<!--weather-->
+<div style="position:absolute; left:1045px; top:27px; width:186px; height:65px;">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" style="font-size:18px; color:#ffffff;">
+		<tr>
+			<td width="52%" align="right"><img src="wether.png" width="42" height="42" id='weather'/></td>
+			<td width="48%" align="center">乌鲁木齐</td>
+		</tr>
+		<tr>
+			<td align="center" id='tem'>无天气情况</td>
+			<td align="center" id='curr_time'>18:15:40</td>
+		</tr>
+	</table>
+</div>
+
+<!--网络提示-->
+<div style="position:absolute; left:977px; top:47px;"><img src="net_off.png" width="57" height="45" id='net_icon'/></div>
+
+<!--小视频-->
+<div style="position:absolute; left:52px; top:111px; width:435px; height:249px;visibility:hidden" id='music_bg'><img src="tv.jpg" width="435" height="249"/></div>
+<!--小视频提示-->
+<div style="position:absolute; left:52px; top:111px; width:435px; height:252px;visibility:hidden;z-index:10;background-color:#000000;" id='note' align='center'>
+	<table width="90%" height="100%"><tr><td style="color:#FFFFFF;font-size:28px;" align='center' id='note_content'>test</td></tr></table>
+</div>
+<!--1-->
+<div style="position:absolute; left:436px; top:110px;z-index:11;"><img src="num_1.png" width="52" height="46"/></div>
+
+<!--广告,2-->
+<div style="position:absolute; left:525px; top:116px; width:319px; height:117px; background:url(adv_bg.png) no-repeat">
+	<div style="position:absolute;left:1px;top:1px;width:319px;height:115px;"><img src="" width="319" height="115" id="imageAd_0"/></div>
+	<div style="position:absolute; left:1px; top:0px; width: 317px;"><img src="shade1.png" width="319" height="47"/></div>
+	<div style="position:absolute; left:273px; top:0px;"><img src="num_2.png" width="47" height="44"/></div>
+</div>
+
+<!--广告,3-->
+<div style="position:absolute; left:905px; top:116px; width:319px; height:117px; background:url(adv_bg1.png) no-repeat">
+	<div style="position:absolute; left:1px; top:1px; width:319px; height:115px;"><img src="" width="319" height="115" id="imageAd_1"/></div>
+	<div style="position:absolute; left:1px; top:0px; width: 317px;"><img src="shade1.png" width="319" height="47"/></div>
+	<div style="position:absolute; left:274px; top:0px;"><img src="num_3.png" width="46" height="45"/></div>
+	<!--
+	<div style="position:absolute; left:3px; top:74px; width:349px; height:42px; background:url(bar1.png) no-repeat">
+		<table border="0" cellpadding="0" cellspacing="0" width=347px height=42px>
+			<tr>
+				<td width="52%" align="center" style="font-size:24px; color:#d4e2ef" id="ad3_des">变形金刚</td>
+				<td width="48%" align="center" style="font-size:15px; color:#fcff00">马上进入观看&gt;&gt;</td>
+			</tr>
+		</table>
+  </div>
+  -->
+</div>
+
+<!-- 主页广告代码 -->
+<iframe id="indexAd0" style="display:none;"><!-- 图片广告2 --></iframe>
+<iframe id="indexAd1" style="display:none;"><!-- 图片广告3 --></iframe>
+<iframe id="indexAd2" style="display:none;"><!-- 走马灯广告 --></iframe>
+
+<!--推荐-->
+<div style="position:absolute; left:502px; top:273px; width:750px; height:110px;">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td width="150" align="center"><img src="app_ico1.png" width="100" height="100" id='recommend_0'/></td>
+			<td width="150" align="center"><img src="app_ico1.png" width="100" height="100" id='recommend_1'/></td>
+			<td width="150" align="center"><img src="app_ico1.png" width="100" height="100" id='recommend_2'/></td>
+			<td width="150" align="center"><img src="app_ico1.png" width="100" height="100" id='recommend_3'/></td>
+			<td width="150" align="center"><img src="app_ico1.png" width="100" height="100" id='recommend_4'/></td>
+		</tr>
+	</table>
+	<div style="position:absolute; left:678px; top:-27px; width:70px; height:43px; background:url(app_tips.png) no-repeat">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" height="30" style="font-size:16px; color:#4a0505">
+			<tr>
+				<td align="center" id='email_num'>未读0</td>
+			</tr>
+		</table>
+  </div>
+</div>
+<!--推荐的焦点框-->
+<div style="position:absolute; left:516px; top:267px; -webkit-transition-duration:300ms;opacity:0" id='recommend_focus'>
+	<img src="focus2.png" width="119" height="118"/>
+</div>
+
+<!--主菜单 看电视/听广播/读报刊....-->
+<div style="position:absolute; left: 12px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_1.png" id='img_0'/>
+</div>
+
+<div style="position:absolute; left: 146px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_2.png" id='img_1'/>
+</div>
+
+<div style="position:absolute; left: 285px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_3.png" id='img_2'/>
+</div>
+
+<div style="position:absolute; left: 418px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_4.png" id='img_3'/>
+</div>
+
+<div style="position:absolute; left: 546px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_5.png" id='img_4'/>
+</div>
+
+<div style="position:absolute; left: 666px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_6.png" id='img_5'/>
+</div>
+
+<div style="position:absolute; left: 786px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_7.png" id='img_6'/>
+</div>
+
+<div style="position:absolute; left: 906px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_8.png" id='img_7'/>
+</div>
+
+<div style="position:absolute; left: 1026px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_9.png" id='img_8'/>
+</div>
+
+<div style="position:absolute; left: 1146px; top: 429px; width:120px" align="center">
+	<img src="mianMenu0_10.png" id='img_9'/></div>
+<!--
+<div style="position:absolute; left:43px; top:422px; width:1200px; height:60px;overflow:hidden;">
+	<div style="position:absolute;left:0px;top:0px;width:1200px;height:60px;-webkit-transition-duration:300ms;z-index:20;">
+		<div class="com f0" id="mainMenu_0" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_1.png" id='img_0'/></td></tr>
+			</table>
+		</div>
+		<div class="com f1" id="mainMenu_1" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_2.png" id='img_1'/></td></tr>
+			</table>
+  	  </div>
+		<div class="com f2" id="mainMenu_2" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_3.png" id='img_2'/></td>
+				</tr>
+			</table>
+	  </div>
+		<div class="com f3" id="mainMenu_3" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_4.png" name="img_3" id='img_3'/></td>
+				</tr>
+			</table>
+	  </div>
+		<div class="com f4" id="mainMenu_4" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_5.png" id='img_4'/></td></tr>
+			</table>
+	  </div>
+		<div class="com f5" id="mainMenu_5" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_6.png" id='img_5'/></td></tr>
+			</table>
+	  </div>
+		<div class="com f6" id="mainMenu_6" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_7.png" id='img_6'/></td></tr>
+			</table>
+	  </div>
+		<div class="com f7" id="mainMenu_7" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_8.png" id='img_7'/></td></tr>
+			</table>
+	  </div>
+		<div class="com f8" id="mainMenu_8" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_9.png" id='img_8'/></td></tr>
+			</table>
+	  </div>
+		<div class="com f9" id="mainMenu_9" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="mianMenu0_10.png" id='img_9'/></td></tr>
+			</table>
+	  </div>
+		<div class="com f10" id="mainMenu_10" align="center">
+			<table width=100% height=100% border="0" cellpadding="0" cellspacing="0">
+				<tr><td align="center"><img src="" id='img_10'/></td></tr>
+			</table>
+	  </div>
+	</div>
+</div>
+-->
+<!--主菜单 焦点-->
+<div style="position:absolute; left:-3px; top:414px; -webkit-transition-duration:300ms;opacity:0;z-index:21;" id="mainMenu_focus"><img src="focus.png" width="150" height="78"/></div>
+
+<!--子菜单 电视直播\高清看吧\名语点播-->
+<!--左右滚动提示-->
+<div style="position:absolute; left:29px; top:571px;"><img src="s_left.png" width="24" height="32"/></div>
+<div style="position:absolute; left:1232px; top:571px;"><img src="s_right.png" width="24" height="32"/></div>
+
+<div style="position:absolute;left:57px;top:529px;width:1155px;height:127px;-webkit-transition-duration:300ms;opacity:0;overflow:hidden;" id="subMenu">
+	<div class="subMenu sub0" id='subMenu_0' align="center"><img src=" " width="108" height="127" id="subImg_0"/></div>
+	<div class="subMenu sub1" id='subMenu_1' align="center"><img src=" " width="108" height="127" id="subImg_1"/></div>
+	<div class="subMenu sub2" id='subMenu_2' align="center"><img src=" " width="108" height="127" id="subImg_2"/></div>
+	<div class="subMenu sub3" id='subMenu_3' align="center"><img src=" " width="108" height="127" id="subImg_3"/></div>
+	<div class="subMenu sub4" id='subMenu_4' align="center"><img src=" " width="108" height="127" id="subImg_4"/></div>
+	<div class="subMenu sub5" id='subMenu_5' align="center"><img src=" " width="108" height="127" id="subImg_5"/></div>
+	<div class="subMenu sub6" id='subMenu_6' align="center"><img src=" " width="108" height="127" id="subImg_6"/></div>
+	<div class="subMenu sub7" id='subMenu_7' align="center"><img src=" " width="108" height="127" id="subImg_7"/></div>
+</div>
+<!--子菜单 焦点-->
+<div style="position:absolute; left:63px; top:520px;-webkit-transition-duration:300ms;opacity:0" id="subMenu_focus"><img src="focus3.png" width="126" height="125"/></div>
+
+<!--滚动条-->
+<div style="position:absolute; left:85px; top:670px; width:950px; height:30px;overflow:hidden;">
+	<img src="voide_ico.png" width="26" height="22" style="position:absolute; left:13px; top:2px;"/>
+	<div style="position:absolute; left:44px; top:0px; height:30px;width:900px;;font-size:22px; color:#9cc4dc; width: 905px;-webkit-transition-duration:300ms;" align="left" id="marquee_ad0">test</div>
+	<div style="position:absolute; left:46px; top:-30px; height:30px;width:900px;;font-size:22px; color:#9cc4dc; width: 905px;-webkit-transition-duration:300ms;" align="left" id="marquee_ad1">test</div>
+</div>
+
+<!--无网络提示-->
+<div style="position:absolute; left:324px; top:202px; width:632px; height:361px; -webkit-transition-duration:300ms;background:url(gq_tips0.png)  center no-repeat;opacity:0;z-index:100;" align="center" id='tips'>
+	<table width="585" height="87%">
+		<tr><td height="50" colspan="2">&nbsp;</td>
+		<tr>
+			<td height="218" colspan="2" align="center" style="font-size:28px;color:#FFFFFF" id='tips_msg'>提醒</td>
+		</tr>
+  </table>
+</div>
+
+</body>
+</html>

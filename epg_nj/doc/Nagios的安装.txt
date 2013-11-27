@@ -1,0 +1,127 @@
+﻿# cd /usr/src
+# wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.4.3.tar.gz
+# tar zxvf nagios-3.4.3.tar.gz
+# cd nagios
+# ./configure --prefix=/usr/local/nagios
+# make all
+useradd nagios
+mkdir /usr/local/nagios
+chown nagios.nagios /usr/local/nagios
+make install
+make install-commandmode
+make install-config
+make install-webconf
+make install-init
+
+cd ../
+wget http://prdownloads.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.16.tar.gz
+tar zxvf nagios-plugins-1.4.16.tar.gz
+cd nagios-plugins-1.4.16
+./configure --prefix=/usr/local/nagios
+cd /usr/local/nagios
+
+
+
+sed -i 's:for file in includes/rss/extlib/\*;:for file in includes/rss/extlib/\*.\*;:g' ./html/Makefile
+
+
+
+
+
+
+====== 监控机 192.168.6.95 ========
+#安装apache、php和图形库
+# yum install httpd php 
+# yum install gcc glibc glibc-common gd gd-devel
+
+#安装源 23位
+# rpm -ivh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+#安装源 64位系统
+# rpm -ivh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm --force --nodeps
+
+#安装nagios及插件
+# yum install nrpe nagios nagios-plugins nagios-plugins-nrpe nrpe --enablerepo=epel-release
+
+#创建密码
+# htpasswd -c /etc/nagios/htpasswd.users admin
+# nagiosadmin
+# nagiosadmin
+
+# chkconfig nagios on
+# service nagios start
+
+====== 被监控机设置 192.168.6.94 ===========
+#需要软件
+# yum install openssl openssl-devel 
+# yum install nagios-plugins nagios-plugins-nrpe nrpe
+
+#修改监控机的地址或域名
+# vi /etc/nagios/nrpe.cfg 
+ allowed_hosts=127.0.0.1,192.168.6.94
+#修改/etc/hosts.allow增加监控机ip
+# echo 'nrpe:192.168.6.95' >> /etc/hosts.allow
+
+#启动 NRPE 守护进程：
+# /usr/sbin/nrpe -c /etc/nagios/nrpe.cfg -d
+
+#检查 NRPE 是否正常：
+# /usr/lib/nagios/plugins/check_nrpe -H 192.168.6.94
+# /usr/lib64/nagios/plugins/check_nrpe -H 192.168.6.94
+
+#查看相应的端口：
+# netstat -an |grep 5666
+
+1. 确认check_nrpe 和 nrpe daemon的版本一定要一致。
+2. 确认 check_nrpe和nrpe deamon端同时启用或者禁用ssl支持。
+3. 确认nrep.cfg可以被nrpe（或者nagios，反正是执行nrep或者xinetd/inetd程序的）用户正常读取。
+4. 有关伪随机设备的问题。这个只会在solaris 8上出现，需要一个补丁Sun patch 112438。
+5. 确定nagios主机在xinetd的 only_from中，如果没有使用xinetd，则要确认nrpe.cfg中的配置。
+1. 检查一下你的Windows或者Linux自带的防火墙，是否把端口给filter掉了。
+2. 把nrpe的的log打开，可以发现更多有用的信息。
+
+====== 回到监控机 ========
+#vi 11.cfg
+define host{
+    use linux-server
+    host_name 192.168.5.11
+    alias 192.168.5.11
+    address 192.168.5.11
+}
+define service{
+    use generic-service
+    host_name 192.168.5.11
+    service_description load
+    check_command check_nrpe!check_load
+}
+define service{
+    use generic-service
+    host_name 192.168.5.11
+    service_description PING
+    check_command check_ping!100.0,20%!200.0,50%
+    max_check_attempts 5
+    normal_check_interval 1
+}
+define service{
+    use generic-service
+    host_name 192.168.5.11
+    service_description FTP
+    check_command check_ftp!21
+    max_check_attempts 5
+    normal_check_interval 1
+}
+define service{
+    use generic-service
+    host_name 192.168.5.11
+    service_description SSH
+    check_command check_ssh
+    max_check_attempts 5
+    normal_check_interval 1
+}
+define service{
+    use generic-service
+    host_name 192.168.5.11
+    service_description HTTP
+    check_command check_http
+    max_check_attempts 5
+    normal_check_interval 1
+}

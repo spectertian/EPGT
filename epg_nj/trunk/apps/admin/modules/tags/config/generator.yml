@@ -1,0 +1,35 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Tags
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          tags
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        name : { label : 名称 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+
+      list:
+        title : 标签
+        object_actions: {}
+
+      filter:
+        display : [name]
+      form:
+        actions:
+          _list  : { label: 返回列表 }
+          _save  : ~
+          _delete: ~
+      edit:
+        title: 编辑标签
+      new:
+        title: 新建标签

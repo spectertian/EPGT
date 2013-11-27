@@ -1,0 +1,19 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html; charset=utf-8
+
+  metas:
+    title:        智能EPG
+    description:  欢网开发的基于三屏互动的智能EPG 
+    keywords:     智能EPG
+    language:     zh
+
+  stylesheets:    [css.css]
+
+  javascripts:    [jquery.js, js.js, iscroll.js]
+
+  has_layout:     true
+  layout:         layout

@@ -1,0 +1,36 @@
+prod:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "5itv", class: "image"}
+
+  #static_url: http://image.5itest.tv/
+  static_url: http://image.epg.huan.tv/
+
+  huan_uc_url: http://61.145.165.154:8080/uc/json
+  lct_server_url: http://192.168.10.71:8080/lct-server/
+  lct_url: http://10.20.20.103:8080/urec/api/v2/interface
+
+  memcache:
+    servers:
+      config_one: {host: "118.194.161.68", port: 11211}
+    compression : 0
+    lefttime : 7200
+  email: { host: "smtp.googlemail.com", user: "XXXXX@mozitek.com", pass: "XXXXX", port: 465, charset: "UTF-8",enable: false }
+
+dev:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "5itv", class: "image"}
+  
+  static_url: http://image.epg.huan.tv/
+
+  huan_uc_url: http://61.145.165.154:8080/uc/json
+  lct_server_url: http://192.168.10.71:8080/lct-server/
+  lct_url: http://10.20.20.103:8080/urec/api/v2/interface
+  
+  memcache:
+    servers:
+      config_one: {host: "118.194.161.68", port: 11211}
+    compression : 0
+  email: { host: "smtp.googlemail.com", user: "XXXXX@mozitek.com", pass: "XXXXX", port: 465, charset: "UTF-8",enable: false }
+

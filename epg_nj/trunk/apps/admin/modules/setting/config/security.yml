@@ -1,0 +1,8 @@
+wordsCheck:
+  credentials: setting_wordsCheck
+recommend:
+  credentials: setting_recommend
+page:
+  credentials: setting_page
+autohidden:
+  credentials: setting_autohidden

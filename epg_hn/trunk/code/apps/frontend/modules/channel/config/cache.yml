@@ -1,0 +1,6 @@
+## YAML Template.
+tag:
+  enabled: true
+  with_layout: false
+  lifetime: 28800
+  

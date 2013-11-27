@@ -1,0 +1,9 @@
+## YAML Template.
+loginSuccess:
+  metas:
+    title:        管理员登录
+  stylesheets:  [login.css, rounded.css]
+  has_layout: false
+
+editSuccess:
+  stylesheets:  [admin.css]

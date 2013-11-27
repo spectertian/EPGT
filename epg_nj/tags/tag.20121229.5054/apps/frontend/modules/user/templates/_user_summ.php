@@ -1,0 +1,7 @@
+        <div class="profile-menu">
+          <ul>
+            <li class="my-feed <?php if($sf_request->getParameter('action')=='user_feed'){echo 'active';}?>"><a href="<?php if($sf_user->checkMe($sf_request->getParameter('uid'))==false){echo url_for('user/user_feed');}else{echo url_for('user/user_feed?uid='.$sf_request->getParameter('uid'));} ?>"><?php if($sf_user->checkMe($sf_request->getParameter('uid'))==false){echo "最近";}else{echo 'TA的';}?>动态 (<?php echo $commenttotal;?>)</a></li>
+            <li class="my-queue <?php if($sf_request->getParameter('action')=='cliplist'){echo 'active';}?>"><a href="<?php if($sf_user->checkMe($sf_request->getParameter('uid'))==false){echo url_for('user/cliplist?type=default');}else{echo url_for('user/cliplist?uid='.$sf_request->getParameter('uid').'&type=default');} ?>"><?php if($sf_user->checkMe($sf_request->getParameter('uid'))==false){echo "我";}else{echo 'TA';}?>的片单 (<?php echo $chiptotal;?>)</a></li>
+            <li class="my-channel <?php if($sf_request->getParameter('action')=='user_channel'){echo 'active';}?>"><a href="<?php if($sf_user->checkMe($sf_request->getParameter('uid'))==false){echo url_for('user/user_channel');}else{echo url_for('user/user_channel?uid='.$sf_request->getParameter('uid'));} ?>"><?php if($sf_user->checkMe($sf_request->getParameter('uid'))==false){echo "我";}else{echo 'TA';}?>的频道 (<?php echo $channeltotal; ?>)</a></li>
+          </ul>
+        </div>

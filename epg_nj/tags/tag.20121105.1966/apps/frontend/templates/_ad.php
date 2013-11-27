@@ -1,0 +1,1 @@
+<!--<div class="ads"> <a href="#"><img src="<?php echo image_path('public/kongfupanda.jpg')?>" alt="ad"></a></div>-->

@@ -1,0 +1,6 @@
+all:
+  is_secure: on
+  credentials: video
+  
+offline:
+  credentials: video_offline

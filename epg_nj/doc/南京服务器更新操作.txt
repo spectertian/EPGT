@@ -1,0 +1,69 @@
+首先进  172.31.200.121服务器
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@同步数据库步骤
+cd /root/mongodb/bin/
+
+●导出数据库到121的home/json目录先备份
+./mongoexport -h 172.31.200.81 -d epg -c video -u sa -psa -o /home/json/video.json
+./mongoexport -h 172.31.200.81 -d epg -c video_playlist -u sa -psa -o /home/json/video_playlist.json
+./mongoexport -h 172.31.200.81 -d epg -c wiki -u sa -psa -o /home/json/wiki.json
+
+●然后清空video表和video_playlist表
+./mongo 172.31.200.81/epg -u sa -psa
+>db.video.count();
+>db.video_playlist.count();
+
+>db.video.remove();
+>db.video_playlist.remove();
+
+
+●导入数据库，先把文件传至121的/home目录下
+cd /home
+unzip video.zip
+unzip video_playlist.zip
+
+
+./mongoimport -h 172.31.200.81 -d epg -c video -u sa -psa /home/video.json
+./mongoimport -h 172.31.200.81 -d epg -c video_playlist -u sa -psa /home/video_playlist.json
+
+●然后更新wiki的has_video值
+cd /usr/share/nginx/5itv
+php symfony tv:VideoWikiUpdate
+
+
+●进12服务器生成迅搜数据
+ssh 172.31.201.12
+#备份迅搜目录
+cd /usr/local/xunsearch/data/
+zip -r epg_wiki20130109.zip epg_wiki 
+#重新生成迅搜数据
+cd /usr/share/nginx/5itv
+php symfony tv:XSIndexRebuild --update=video
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@同步文件步骤
+●需要进行文件替换的情况（以下命令在121下执行）
+首先把文件传至/home/目录，然后
+cd /usr/share/nginx/
+zip -r 5itv_13_0109.zip 5itv  //备份
+cd 5itv
+rm -rf apps
+rm -rf lib
+rm -rf web_stb
+unzip /home/apps.zip
+unzip /home/lib.zip
+unzip /home/web_stb.zip
+php symfony cc
+
+访问：172.31.201.12   页面看有没有问题
+没有问题，则执行以下命令
+
+
+cd /root/shengji_yueyang/web/
+zip -r 5itv_13_0109.zip 5itv  //备份
+cd 5itv
+rm -rf apps
+rm -rf lib
+rm -rf web_stb
+unzip /home/apps.zip
+unzip /home/lib.zip
+unzip /home/web_stb.zip
+cd /root/shengji_yueyang/
+sh epg_rsync.sh    #同步到其他服务器

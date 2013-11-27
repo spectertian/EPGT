@@ -1,0 +1,31 @@
+programCountSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js,-jquery.uitableedit.js]
+
+cdiCountSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js]
+   
+epgLogSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js]
+   
+liveLogSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js]
+   
+injectCountSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js]
+   
+wikiCountSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js]
+   
+fileCountSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js]
+   
+programLogSuccess:
+   stylesheets:   [smoothness/jquery-ui-1.8.2.custom.css]
+   javascripts: [DateTimeMask.js]

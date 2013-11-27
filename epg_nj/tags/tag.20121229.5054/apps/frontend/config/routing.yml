@@ -1,0 +1,145 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+RPC:
+  url: /RPC
+  param: { module: api, action: index }
+
+RPC2:
+  url: /RPC2
+  param: { module: api, action: rpc2 }
+
+#channel_category:
+#  url: /channel/:tag/*
+#  param: { module: channel, action: category }
+#  requirements:
+#    tag: ([^x00-\x7f]+)
+#
+#栏目归档页面
+archive:
+  url: archive/:slug
+  param: { module: wiki, action: archive }
+  
+#评分系统操作
+wiki_do:
+  url: /wiki/do
+  param: { module: wiki, action: do }
+#动态评论加载
+
+wiki_load_comment:
+  url: /wiki/load_comment
+  param: { module: wiki, action: load_comment }
+
+#加载更多评论
+wiki_more:
+  url: /wiki/more
+  param: { module: wiki, action: more }
+  
+#用户评论维基
+wiki_comment:
+  url: /wiki/comment
+  param: { module: wiki, action: comment }
+  
+#微薄数据加载
+wiki_weibo:
+  url: /wiki/weibo
+  param: { module: wiki, action: weibo }
+  
+#电视剧剧情加载
+wiki_drama:
+  url: /wiki/drama
+  param: { module: wiki, action: drama }
+  
+#分期栏目页面
+wiki_television:
+  url: /wiki/:slug/:time
+  param: { module: wiki, action: show }
+  
+#维基显示页面栏目页面
+wiki_show:
+  url: /wiki/:slug
+  param: { module: wiki, action: show }
+    
+login:
+  url: /login
+  param: { module: user, action: login }
+
+user_load_comment:
+  url: /user/load_comment
+  param: { module: user,action: load_comment }
+#channel_tag:
+ # url: /channel/tag/:tag
+  #param: { module: channel, action: tag }
+
+#channel_index_type:
+ # url: /channel/:type
+  #param: { module: channel, action: index }
+
+reg:
+  url: /reg
+  param: { module: user, action: reg }
+
+share:
+  url: /share
+  param: {module: user, action: share }
+
+yingshi:
+  url: /yingshi
+  param: { module: default, action: yingshi}
+
+zongyi:
+  url: /zongyi
+  param: { module: default, action: zongyi }
+  
+sheke:
+  url: /sheke
+  param: { module: default, action: sheke }
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+location_channel_index:
+  url: /:location/channel_index
+  param: { module: channel, action: channel_index }
+  requirements:
+    location:  (beijing|chongqing|shanghai|tianjin|anhui|guangdong|guangxi|heilongjiang|jilin|liaoning|jiangsu|zhejiang|shaanxi|hubei|hunan|gansu|sichuan|shandong|fujian|henan|yunnan|hebei|jiangxi|shanxi|guizhou|neimenggu|ningxia|qinghai|xinjiang|hainan|xizang)
+    
+# generic rules
+# please, remove them by adding more specific rules
+channel_index:
+  url: /:location/channel/:type/:mode/*
+  param: { module: channel, action: index }
+  requirements:
+    location: (beijing|chongqing|shanghai|tianjin|anhui|guangdong|guangxi|heilongjiang|jilin|liaoning|jiangsu|zhejiang|shaanxi|hubei|hunan|gansu|sichuan|shandong|fujian|henan|yunnan|hebei|jiangxi|shanxi|guizhou|neimenggu|ningxia|qinghai|xinjiang|hainan|xizang)
+    type: (all|local|cctv|tv|)
+    mode: (list|tile)
+
+channel_location:
+  url: /:location/:module
+  param: { action: index }
+  requirements:
+    location: (beijing|chongqing|shanghai|tianjin|anhui|guangdong|guangxi|heilongjiang|jilin|liaoning|jiangsu|zhejiang|shaanxi|hubei|hunan|gansu|sichuan|shandong|fujian|henan|yunnan|hebei|jiangxi|shanxi|guizhou|neimenggu|ningxia|qinghai|xinjiang|hainan|xizang)
+
+location_tag:
+  url: /:location/channel/:tag/:mode/*
+  param: { module: channel, action: tag }
+  requirements:
+    location: (beijing|chongqing|shanghai|tianjin|anhui|guangdong|guangxi|heilongjiang|jilin|liaoning|jiangsu|zhejiang|shaanxi|hubei|hunan|gansu|sichuan|shandong|fujian|henan|yunnan|hebei|jiangxi|shanxi|guizhou|neimenggu|ningxia|qinghai|xinjiang|hainan|xizang)
+    mode: (list|tile)
+#    tag: (电视剧|电影|体育|娱乐|少儿|科教|财经|综合)
+
+location:
+  url: /:location/:module/:action/*
+  requirements:
+    location:  (beijing|chongqing|shanghai|tianjin|anhui|guangdong|guangxi|heilongjiang|jilin|liaoning|jiangsu|zhejiang|shaanxi|hubei|hunan|gansu|sichuan|shandong|fujian|henan|yunnan|hebei|jiangxi|shanxi|guizhou|neimenggu|ningxia|qinghai|xinjiang|hainan|xizang)
+
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

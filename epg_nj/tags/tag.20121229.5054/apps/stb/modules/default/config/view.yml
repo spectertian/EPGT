@@ -1,0 +1,8 @@
+indexSuccess:
+    javascripts:    [scroll.js]
+indexTclSuccess:
+    javascripts:    [scroll.js]
+liveSuccess:
+    has_layout:     false
+hotSuccess:
+    has_layout:     false

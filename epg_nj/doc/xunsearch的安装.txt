@@ -1,0 +1,24 @@
+//安装xunsearch
+# wget http://www.xunsearch.com/download/xunsearch-full-latest.tar.bz2
+# tar -xjf xunsearch-full-latest.tar.bz2
+# cd xunsearch-full/
+# sh setup.sh
+//安装完成，默认的路径为 /usr/local/xunsearch/
+# cd /usr/local/xunsearch/ 
+ 
+//将服务加到启动项
+# vi /etc/rc.local  添加一行
+# /usr/local/xunsearch/bin/xs-ctl.sh start
+ 
+//将项目config目录中的epg_wiki.ini放到 /usr/local/xunsearch/sdk/php/app 下 
+//配置连接
+///usr/local/xunsearch/sdk/php/lib/XS.php 
+ 
+//启动服务
+# ./bin/xs-ctl.sh start
+ 
+//建立索引
+# cd /www/newepg
+# symfony tv:XSIndexRebuild --env=prod 
+//完成
+ 

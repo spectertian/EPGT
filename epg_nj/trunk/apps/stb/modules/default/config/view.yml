@@ -1,0 +1,6 @@
+indexSuccess:
+    javascripts:    [scroll.js]
+liveSuccess:
+    has_layout:     false
+hotSuccess:
+    has_layout:     false

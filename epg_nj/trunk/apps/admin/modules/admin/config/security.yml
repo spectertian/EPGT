@@ -1,0 +1,29 @@
+all:
+  is_secure: on
+  
+captcha:
+  is_secure: false
+  
+login:
+  is_secure: false
+  
+new:
+  credentials: admin
+
+create:
+  credentials: admin
+
+delete:
+  credentials: admin
+
+index:
+  credentials: admin
+
+edit:
+  credentials: admin
+
+update:
+  credentials: admin
+
+batchDelete:
+  credentials: admin

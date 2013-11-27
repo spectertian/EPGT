@@ -1,0 +1,19 @@
+homepage:
+  url:   /
+  param: { module: list, action: index }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
+  
+wiki_do:
+  url: /wiki/do
+  param: { module: wiki, action: do }
+
+#维基显示页面栏目页面
+wiki_show:
+  url: /wiki/:slug
+  param: { module: wiki, action: show }

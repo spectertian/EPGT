@@ -1,0 +1,4 @@
+indexSuccess:
+    stylesheets:    [search.css]
+resultSuccess:
+    stylesheets:    [search_result.css]    

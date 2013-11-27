@@ -1,0 +1,35 @@
+iPanel.eventFrame.initPage(window);
+var channelLength = user.channels.length;
+//根据service_id获取直播
+function fullScreen(serverid){
+for (var i=0; i<channelLength; i++){
+		var tmp_channel = user.channels.getAt(i);
+		var tmp_service = tmp_channel.getService();
+		if (tmp_service.serviceId == serverid){
+			//播放当前的service
+			if (tmp_channel.type == 0x02){
+				iPanel.mainFrame.location.href = 'ui://music.html?'+tmp_channel.userChannel;
+			}
+			else if (tmp_channel.type == 0x01){
+				iPanel.mainFrame.location.href = 'ui://play.html?'+tmp_channel.userChannel;
+			}
+			break;
+		}
+	}
+}
+
+//视频流播放
+
+function play(_server_id){
+	media.video.setPosition(122,238,399,286);
+	iPanel.Media.av(_server_id,0,0,0,0,0,0);
+
+}
+
+//视频流关闭
+
+function closeit(){
+
+	iPanel.Media.videoControl("stop");
+
+}

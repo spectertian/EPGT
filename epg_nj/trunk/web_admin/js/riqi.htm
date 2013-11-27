@@ -1,0 +1,193 @@
+<HTML><HEAD><TITLE>添加日期</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf8">
+<STYLE type=text/css>BODY {
+ BACKGROUND-COLOR: #d4d0c8
+}
+.c_fieldset {
+ PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 5px; WIDTH: 180px; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+.c_legend {
+ FONT-SIZE: 11px; PADDING-BOTTOM: 5px; FONT-FAMILY: Tahoma
+}
+.c_frameborder {
+ BORDER-RIGHT: #ffffff 2px inset; BORDER-TOP: #d4d0c8 2px inset; FONT-SIZE: 10px; OVERFLOW: hidden; BORDER-LEFT: #d4d0c8 2px inset; WIDTH: 160px; BORDER-BOTTOM: #ffffff 2px inset; FONT-FAMILY: "Tahoma"; HEIGHT: 120px; BACKGROUND-COLOR: #ffffff
+}
+.c_frameborder TD {
+ FONT-SIZE: 11px; WIDTH: 23px; CURSOR: default; FONT-FAMILY: "Tahoma"; HEIGHT: 16px; TEXT-ALIGN: center
+}
+.c_frameborder .selected {
+ COLOR: white; BACKGROUND-COLOR: #0a246a
+}
+.c_frameborder SPAN {
+ WIDTH: 12px; HEIGHT: 12px
+}
+.c_arrow {
+ PADDING-LEFT: 2px; FONT-SIZE: 7px; WIDTH: 16px; CURSOR: default; LINE-HEIGHT: 2px; FONT-FAMILY: "Webdings"; HEIGHT: 8px
+}
+.c_year {
+ FONT-SIZE: 11px; WIDTH: 55px; CURSOR: default; FONT-FAMILY: "Tahoma"; HEIGHT: 19px
+}
+.c_month {
+ FONT: 11px "Tahoma"; WIDTH: 75px; HEIGHT: 20px
+}
+.c_dateHead {
+ COLOR: #d4d0c8; BACKGROUND-COLOR: #808080
+}
+</STYLE>
+
+<script language="javascript">
+// Written by cloudchen, 2004/03/16
+function calendar(name,fName)
+{
+    var calendar=this
+ this.name = name;
+ this.fName = fName || "calendar";
+ this.year = new Date().getFullYear();
+ this.month = new Date().getMonth();
+ this.date = new Date().getDate();
+ //private
+ this.toString = function()
+ {
+  var str = "";
+  str += "<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" onselectstart=\"return false\">";
+  str += "<tr>";
+  str += "<td>";
+  str += this.drawMonth();
+  str += "</td>";
+  str += "<td align=\"right\">";
+  str += this.drawYear();
+  str += "</td>";
+  str += "</tr>";
+  str += "<tr>";
+  str += "<td colspan=\"2\">";
+  str += "<div class=\"c_frameborder\">";
+  str += "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"c_dateHead\">";
+  str += "<tr>";
+  str += "<td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td>";
+  str += "</tr>";
+  str += "</table>";
+  str += this.drawDate();
+  str += "</div>";
+  str += "</td>";
+  str += "</tr>";
+  str += "</table>";
+  return str;
+ }
+ //private
+ this.drawYear = function()
+ {
+  var str = "";
+  str += "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
+  str += "<tr>";
+  str += "<td>";
+  str += "<input class=\"c_year\" maxlength=\"4\" value=\""+this.year+"\" name=\""+this.fName+"\" id=\""+this.fName+"_year\">";
+  //DateField
+  str += "<input type=\"hidden\" name=\""+this.fName+"\" value=\""+this.date+"\" id=\""+this.fName+"_date\">";
+  str += "</td>";
+  str += "<td>";
+  str += "<table cellspacing=\"2\" cellpadding=\"0\" border=\"0\">";
+  str += "<tr>";
+  str += "<td><button class=\"c_arrow\" onfocus=\"this.blur()\" onclick=\"event.cancelBubble=true;document.getElementById('"+this.fName+"_year').value++;"+this.name+".redrawDate()\">5</button></td>";
+  str += "</tr>";
+  str += "<tr>";
+  str += "<td><button class=\"c_arrow\" onfocus=\"this.blur()\" onclick=\"event.cancelBubble=true;document.getElementById('"+this.fName+"_year').value--;"+this.name+".redrawDate()\">6</button></td>";
+  str += "</tr>";
+  str += "</table>";
+  str += "</td>";
+  str += "</tr>";
+  str += "</table>";
+  return str;
+ }
+ //priavate
+ this.drawMonth = function()
+ {
+  var aMonthName = ["一","二","三","四","五","六","七","八","九","十","十一","十二"];
+  var str = "";
+  str += "<select class=\"c_month\" name=\""+this.fName+"\" id=\""+this.fName+"_month\" onchange=\""+this.name+".redrawDate()\">";
+  for (var i=0;i<aMonthName.length;i++) {
+   str += "<option value=\""+(i+1)+"\" "+(i==this.month?"selected":"")+">"+aMonthName[i]+"月</option>";
+  }
+  str += "</select>";
+  return str;
+ }
+ //private
+ this.drawDate = function()
+ {
+  var str = "";
+  var fDay = new Date(this.year,this.month,1).getDay();
+  var fDate = 1-fDay;
+  var lDay = new Date(this.year,this.month+1,0).getDay();
+  var lDate = new Date(this.year,this.month+1,0).getDate();
+  str += "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" id=\""+this.fName+"_dateTable"+"\">";
+  for (var i=1,j=fDate;i<7;i++)
+  {
+   str += "<tr>";
+   for (var k=0;k<7;k++)
+   {
+    str += "<td style='cursor:hand'><span"+(j==this.date?" class=\"selected\"":"")+" onclick=\""+this.name+".redrawDate(this.innerText,1)\" onmouseover=\"this.style.border='1px solid #333333'\" onmouseout=\"this.style.border=''\" style=\"width:15px;height:13px;padding-left:1px\">"+(isDate(j++))+"</td>";
+   }
+   str += "</tr>";
+  }
+  str += "</table>";
+  return str;
+
+  function isDate(n)
+  {
+   return (n>=1&&n<=lDate)?n:"";
+  }
+ }
+ //public
+ this.redrawDate = function(d,type)
+ {
+  this.year = document.getElementById(this.fName+"_year").value;
+  this.month = document.getElementById(this.fName+"_month").value-1;
+  this.date = d || this.date;
+  var c=1
+  document.getElementById(this.fName+"_year").value = this.year;
+  document.getElementById(this.fName+"_month").selectedIndex = this.month;
+  document.getElementById(this.fName+"_date").value = this.date;
+  if (this.date>new Date(this.year,this.month+1,0).getDate()) this.date = new Date(this.year,this.month+1,0).getDate();
+  document.getElementById(this.fName+"_dateTable").outerHTML = this.drawDate();
+  if (type==1 && d) sendTo(calendar.getDate())
+ }
+ //public
+ this.getDate = function(delimiter)
+ {
+  if (!delimiter) delimiter = "-";
+  var aValue = [this.year,(this.month+1),this.date];
+  return aValue.join(delimiter);
+ }
+}
+
+function sendTo(dvalue) 
+{ 
+  if (!dvalue)
+    {window.returnValue =""}
+  else
+    {window.returnValue = dvalue}
+  window.close()
+} 
+</script>
+
+</HEAD>
+<BODY>
+<DIV align=center>
+<TABLE width=180 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <FIELDSET class=c_fieldset><LEGEND class=c_legend>日期</LEGEND><!-- 调用日历 -->
+      <SCRIPT>
+var c = new calendar("c");
+document.write(c);
+</SCRIPT>
+<!-- 调用日历 --></FIELDSET> </TD></TR>
+  <TR>
+    <TD align=right height="30"><BUTTON 
+      style="BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; FONT-SIZE: 12px; BORDER-LEFT: 1px outset; BORDER-BOTTOM: 1px outset" 
+      onclick=sendTo(c.getDate())>确定</BUTTON> &nbsp;<BUTTON 
+      style="BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; FONT-SIZE: 12px; BORDER-LEFT: 1px outset; BORDER-BOTTOM: 1px outset" 
+      onclick="sendTo('null')">清除</BUTTON> &nbsp;<BUTTON 
+      style="BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; FONT-SIZE: 12px; BORDER-LEFT: 1px outset; BORDER-BOTTOM: 1px outset" 
+      onclick=window.close()>取消</BUTTON> 
+</TD></TR></TBODY></TABLE></DIV></BODY></HTML>

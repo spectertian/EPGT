@@ -1,0 +1,29 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           attachments
+    theme:                  joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          attachments
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        file_name: { label: '文件' }
+        file_type: { label: '类型' }
+        created_at: { label: '创建时间' }
+      list:
+        title: '文件管理'
+        display: [ file_name,file_type,created_at ]
+        max_per_page: 10
+        sort: [ created_at,desc ]
+      filter:
+        class: false
+      form:    ~
+      edit: ~
+      new: ~

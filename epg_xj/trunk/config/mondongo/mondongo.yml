@@ -1,0 +1,910 @@
+#节目
+Program:
+  connection: mondongo
+  collection: program
+  fields:
+    program_id: string
+    name: string
+    publish: {type: boolean }
+    channel_code: string
+    channel_type: raw
+    tags: raw
+    start_time: date
+    end_time: date
+    date: string
+    time: string
+    wiki_id: string
+    episode: integer
+    admin: string
+    sort: integer
+    tvsou_id: integer
+  indexes:
+    - { keys: { channel_code: 1, wiki_id: 1, tags: 1, time: 1, date: 1, sort: 1  } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#节目
+ProgramSport:
+  connection: mondongo
+  collection: program_sport
+  fields:
+    program_id: string
+    name: string
+    publish: { type: boolean }
+    channel_code: string
+    tags: raw
+    start_time: date
+    end_time: date
+    time: string
+    date: string
+    wiki_id: string
+    admin: string
+    sort: integer
+    tvsou_id: integer
+  indexes:
+    - { keys: { channel_code: 1, wiki_id: 1, tags: 1, time: 1, date: 1, sort: 1, program_id:1  } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#临时节目表
+ProgramTemp:
+  connection: mondongo
+  collection: program_temp
+  fields:
+    program_id: string
+    name: string
+    publish: { type: boolean }
+    channel_code: string
+    channel_type: raw
+    tags: raw
+    start_time: date
+    end_time: date
+    date: string 
+    time: string   
+    episode: integer
+    wiki_id: string
+    admin: string
+    sort: integer
+    tvsou_id: integer
+  indexes:
+    - { keys: { channel_code: 1, wiki_id: 1, tags: 1, time: 1, date: 1, sort: 1  } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#维基
+Wiki:
+  connection: mondongo
+  collection: wiki
+  fields:
+    model: string
+    rev: integer
+    cover: string
+    wiki_id: integer
+    title: string
+    html_cache: string
+    aspect: string #看点
+    content: string
+    tags: raw #系统后台添加标签
+    comment_tags: raw #用户评论标签
+    has_video: integer
+    source: raw #视频源
+    watched_num: integer #看过的数量
+    like_num: integer #喜欢的数量
+    dislike_num: integer #不喜欢的数量
+    admin_id: integer #编辑人id
+    do_date: date  #互动操作时间
+    tvsou_id: string
+  indexes:
+    - { keys: {tags: 1, wiki_id: 1, model: 1, admin_id: 1}}
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    - { class: Mondongo\Extension\Extra\Sluggable, options: { from_field: title, builder: [Wiki, slugify] } }
+
+#分集剧情
+WikiMeta:
+  connection: mondongo
+  collection: wiki_meta
+  fields:
+    wiki_id: string
+    title: string
+    content: string
+    html_cache: string
+    mark: integer
+    screenshots: raw
+    guests: raw #嘉宾
+    year: string      #栏目的年份
+    month: string    #栏目的月份
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#栏目
+Television:
+  connection: mondongo
+  collection: television
+  fields:
+    wiki_title : string
+    wiki_id : string
+    play_time : string
+    week_day : string
+    channel_code : string
+    updated_at: date
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#用户
+User:
+  connection: mondongo
+  collection: user
+  fields:
+    email: string
+    username: string
+    password: string
+    updated_at: date
+    tags: raw #   添加的相应的tag标志
+    textpass: string #文本方式存放密码
+    avatar: string #用户的头像
+    original_avatar: string #原始图片
+    nickname: string #昵称
+    desc: string #个人介绍
+    province: string #省
+    city: string #市区
+    dtvsp: string #Dtvsp的标识
+    device_id: string    #设备号
+    referer: string       #来源
+    type: integer #用户类型
+  indexes:
+    - { keys: {tags: 1, username: 1 }}    
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#视频信息
+Video:
+  connection: mondongo
+  collection: video
+  fields:
+    wiki_id: string
+    wiki_mata_id: string
+    video_playlist_id: string
+    title: string
+    url: string
+    config: raw
+    time: string
+    mark: integer
+    model: string  #区分类型 电视剧 电影 栏目
+    referer: string
+    publish: { type: boolean }
+    vc_id: string #百度爬取数据video_crawler的id
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#视频播放列表
+VideoPlaylist:
+  connection: mondongo
+  collection: video_playlist
+  fields:
+    wiki_id: string
+    title: string
+    url: string
+    referer: string
+    vc_id: string #百度爬取数据video_crawler的id
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#wiki推荐    
+WikiRecommend:
+  connection: mondongo
+  collection: wiki_recommend
+  fields:
+    wiki_id: string
+    model: string
+    tags: raw
+  extensions:
+    - {class: Mondongo\Extension\Extra\Timestampable }
+    
+#wiki直播推荐    
+WikiLiverecommend:
+  connection: mondongo
+  collection: wiki_liverecommend
+  fields:
+    wiki_id: string
+  indexes:
+    - { keys: {wiki_id: -1}}
+
+#三天播出节目信息
+WikiPlay:
+  connection: mondongo
+  collection: wiki_play
+  fields:
+    wiki_id: string
+    tags: raw
+    date: string
+    province: string
+    created_at: date
+  extensions:
+    - {class: Mondongo\Extension\Extra\Timestampable}
+
+#节目历史信息
+ProgramArchiver:
+  connection: mondongo
+  collection: program_archiver
+  fields:
+    name: string
+    publish: { type: boolean }
+    channel_code: string    
+    channel_type: raw
+    tags: raw
+    start_time: date
+    time: string
+    date: string
+    wiki_id: string
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+  
+#用户分享    
+UserShare:
+   connection: mondongo
+   collection: user_share
+   fields:
+     user_id: string #用户id
+     stype: integer #分享类型 1表示sina 2 表示qq weibo 后面继续
+     sname: string #分享类型的名称 如Sina,Qqt之类的
+     accecss_token: string #用于防问API的值
+     accecss_token_secret: string #用于防问API的值
+     userinfo: string #分享设置中的关于相应的用户信息，如sina的为user_id，qq为 username
+   indexes:
+     - { keys: {user_id: 1, stype: 1 }}
+   extensions:
+     - { class: Mondongo\Extension\Extra\Timestampable }
+ 
+#评论    
+Comment:
+  connection: mondongo
+  collection: comments
+  fields:
+    parent_id: string #父ID
+    user_id: string #用户Id
+    wiki_id: string #影视 wiki_id
+    text: string  #用户留言
+    mark: integer  #分期评论标记
+    is_publish: { type: boolean , default: true } #是否发布
+    type: string #留言类型  comment/reply/like/dislike/watched
+  indexes:
+    - { keys: {user_id: 1, wiki_id: 1 }}
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+ 
+#用户专辑    
+Album: 
+  connection: mondongo
+  collection: album
+  fields:
+    name: string #专辑名称
+    desc: string #专辑介绍
+    author: string #专辑所有者
+    user_id: string #专辑所有者ID
+    is_public: boolean #是否发布
+    rec_num: integer #推荐的数量
+    list: raw #专辑所包括的影视的wiki_Id
+  indexes:
+    - { keys: { user_id: 1 } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#收藏
+SingleChip: 
+  connection: mondongo
+  collection: single_chip
+  fields:
+    user_id: string #片单所有者
+    wiki_id: string #维基ID
+    is_public: boolean #是否发布
+  indexes:
+    - { keys: {user_id: 1 ,wiki_id: 1 } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#用户频道收藏夹
+ChannelFavorites: 
+    connection: mondongo
+    collection: channel_favorites
+    fields:
+        user_id: string #用户ID
+        channel_type: string #channel type
+        channel_code: string #channel code
+        channel_id: integer #channel id
+    indexes:
+        - { keys: { user_id: 1, channel_id: 1 } }
+    extensions:
+        - { class: Mondongo\Extension\Extra\Timestampable }
+        
+#各块推荐选项
+Recommend:
+  connection: mondongo
+  collection: recommend
+  fields:
+    title: string #推荐ID
+    is_public: boolean #是否显示
+    scene: string #使用场景
+    sort: integer #用来进行显示排序处理
+    pic: string #推荐的图片
+    smallpic: string #推荐的小图片
+    desc: string #推荐理由或者宣传词
+    url: string #链接地址
+    isdesc_display: boolean #推荐内容是否显示
+  indexes:
+    - { keys: {wiki_id: 1, sort: 1 } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#用户标记信息表
+UserMark:
+  connection: mondongo
+  collection: user_mark
+  fields:
+    user_id: string #用户ID
+    type: string #标注类型
+    wiki_id: string #wikiID
+    obj_id: string #目标ID
+    extra: string #扩展值
+  indexes:
+    - { keys: {user_id: 1 , type: 1, obj_id: 1 } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#运营商表
+Sp:
+  connection: mondongo
+  collection: sp
+  fields:
+    signal: string #运营商标识
+    name: string #名称
+    remark: string #描述
+    logo: string #logo
+    type: string #vod live
+    channels: raw
+  indexes:
+    - { keys: {signal: 1}{unique: true}}
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#编辑操作记录表
+EditorMemory:
+  connection: mondongo
+  collection: editor_memory
+  fields:
+    channel_code: string
+    program_name: string
+    wiki_id: string
+  indexes:
+    - { keys: {channel_code: 1 , program_name: 1}}
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#终端类型管理表
+Terminal:
+  connection: mondongo
+  collection: terminal
+  fields:
+    brand: string
+    clienttype: string
+    version: raw
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#关键词设置表
+Setting:
+  connection: mondongo
+  collection: setting
+  fields:
+    key: string
+    value: string   
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#用户预约节目表
+Programe_user:
+  connection: mondongo
+  collection: programe_user
+  fields:
+    user_id: string
+    channel_code: string
+    name: string #节目名称
+    wiki_id: string #wiki的id
+    wiki_title: string #wiki的title
+    wiki_cover: string #wiki的cover
+    start_time: date
+  indexes:
+    - { keys: {user_id: 1 , channel_code: 1, start_time: 1 } }    
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#频道名称上报表
+ReportChannel:
+  connection: mondongo
+  collection: reportchannel
+  fields:
+    dtvsp: string
+    name: string
+    state: { type: boolean }
+    user: string
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }    
+
+#用户当前所在频道
+TransferStatistics:
+  connection: mondongo
+  collection: transfer_statistics
+  fields:
+    userid : string
+    tochannel_code : string
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#用户收藏的频道
+UserChannel: 
+  connection: mondongo
+  collection: user_channel
+  fields:
+    user_id: string #片单所有者
+    name: string #频道名称
+    channel_code: string #频道code
+  indexes:
+    - { keys: {user_id: 1 ,channel_code: 1 } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+
+#维基包信息
+WikiPackage: 
+  connection: mondongo
+  collection: wiki_package
+  fields:
+    name: string #wiki name
+    scene: string #使用场景
+    wiki_id: string #关联wiki_id
+    is_public: boolean #是否显示
+    sort: integer #用来进行显示排序处理
+    start_time: string #起始时间
+    end_time: string #结束时间
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#当前节目 数据又计划任务获得
+ProgramLive:
+  connection: mondongo
+  collection: program_live
+  fields:
+    name: string
+    type: string
+    next_name: string #接下来要播放的节目名
+    channel_code: string
+    start_time: date
+    end_time: date
+    wiki_id: string
+    wiki_cover: string
+    wiki_title: string
+  indexes:
+    - { keys: { channel_code: 1, wiki_id: 1, start_time: 1, end_time: 1  } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#蜘蛛抓取视频信息表
+VideoCrawler:
+  connection: mondongo
+  collection: video_crawler 
+  fields:    
+    site: string #抓取网站
+    title: string #名称
+    model: string #模型[film|teleplay]
+    url: string #连接地址
+    wiki_id: string #关联wiki_id
+    state: integer
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }     
+    
+#分类推荐
+CategoryRecommend:
+  connection: mondongo
+  collection: category_recommend 
+  fields:   
+    name: string #名称
+    category: string #分类标签
+    template: string #模版
+    is_default: boolean #是否默认
+    start_time: string #开始时间
+    end_time: string #结束时间
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }  
+
+#广告
+SimpleAdvert:
+  connection: mondongo
+  collection: simple_advert
+  fields:   
+    name: string #名称  
+    image: string #图片
+    url: string #连接地址
+    start_time: string #开始时间
+    end_time: string #结束时间
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }     
+    
+#短视频    
+ShortMovie:
+  connection: mondongo
+  collection: short_movie
+  fields:   
+    name: string #名称  
+    cover: string #封面
+    url: string #连接地址
+    tag: raw #分类标签    
+    state: integer #发布状态 0 未发布 1 已发布
+    refer: string #来源[sina|youku|baidu|tudou|...]
+    author: string #作者    
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }  
+    
+#短视频包
+ShortMoviePackage:
+  connection: mondongo
+  collection: short_movie_package
+  fields:   
+    name: string #包名称
+    cover: string #封面
+    desc: string #描述
+    tag: raw #分类标签
+    state: integer #发布状态 0 未发布 1 已发布
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable } 
+    
+#短视频包列表
+ShortMoviePackageItem:
+  connection: mondongo
+  collection: short_movie_package_item
+  fields:   
+    package_id: string #包ID  
+    short_movie_id: string #短视频ID
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }     
+
+#开发者信息
+Developer:
+  connection: mondongo
+  collection: developer
+  fields:   
+    name: string #唯一索引
+    desc: string
+    apikey: string  #自动生成8位,唯一索引
+    secretkey: string #md5(_id+apikey)
+    state: integer #发布状态 0 未发布 1 已发布
+    sources: raw #可以播放的源
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }    
+    
+#频道更新时间
+ChannelUpdate:
+  connection: mondongo
+  collection: channel_update
+  fields:
+    channel_code: string
+    time: date
+  indexes:
+    - { keys: { channel_code: 1} }
+
+#epg_report数据库
+#运营商信息表
+ReportSp:
+  connection: mondongosp
+  collection: report_sp
+  fields:
+    newwork_id: string    #运营商ID
+    newwork_name: string  #运营商名称
+    version: string       #运营商版本
+    city: string          #运营商城市    
+    num: integer          #计数器
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#运营商频道表
+ReportSpchannel:
+  connection: mondongosp
+  collection: report_spchannel
+  fields:
+    spid: string         #运营商信息表id
+    name: string         #频道名称
+    service_id: string   #频道id
+    frequency: string    #所在频点的频率值   
+    symbol_rate: string  #所在频点的符号率
+    modulation: string   #所在频点的调制方式
+    on_id: string        #原始网络id
+    ts_id: string        #频点id
+    logic_number: string #逻辑频道号
+    channel_code: string #频道code
+    num: integer         #计数器
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#运营商节目表
+ReportProgram:
+  connection: mondongosp
+  collection: report_program
+  fields:
+    spid: string          #运营商信息表id
+    channel_name: string  #频道名称
+    name: string          #节目名称
+    start_time: date      #开始时间
+    end_time: date        #结束时间
+    tag: string           #标签
+    num: integer          #计数器
+    date: string          #日期
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#运营商节目表
+ReportProgramnum:
+  connection: mondongosp
+  collection: report_programnum
+  fields:
+    spid: string          #运营商信息表id
+    newwork_id: string    #运营商ID
+    newwork_name: string  #运营商名称
+    version: string       #运营商版本
+    city: string          #运营商城市    
+    date: string          #日期
+    num: integer          #计数器
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#用户行为列表
+UserBehavior:
+  connection: mondongo
+  collection: user_behavior
+  fields:
+    user_id: string       #用户id
+    user_name: string     #用户名称
+    access: string        #用户访问的页面
+    values: string        #页面传递的值
+    date: date            #用户访问的时间
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#内容接受
+ContentInject:
+  connection: mondongo
+  collection: content_inject
+  fields:
+    from: string
+    content: string
+    state: integer
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#内容处理
+ContentImport:
+  connection: mondongo
+  collection: content_import
+  fields:
+    inject_id: string
+    from: string   #来源
+    provider_id: string  #cpcode
+    from_type: string    #showType
+    from_id: string      #packageID
+    from_title: string   #packageTitle
+    children_id: raw     #Movie[{ID,Title,Chapter}]
+    wiki_id: string
+    state: integer
+    state_edit: integer
+    state_match: integer #1:人工匹配 -1:自动匹配
+    state_check: integer #1:已校对 0:未校对
+    state_error: integer #1:有错误 0:无错误
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+
+#昨日回顾
+YesterdayProgram:
+  connection: mondongo
+  collection: yesterday_program 
+  fields:
+    program_name: string
+    channel_code: string    
+    date: string #日期
+    start_time: date 
+    end_time: date
+    wiki_id: string
+    poster: string
+    tags: raw
+    aspect: string #看点
+    play_url: string
+    sort: integer
+    style: string #图片样式
+    author: raw #创建人
+    state: boolean #是否启用
+  indexes:
+    - { keys: { date: 1 } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }  
+
+#下周预告
+NextweekProgram:
+  connection: mondongo
+  collection: nextweek_program 
+  fields:
+    program_name: string
+    channel_code: string    
+    date: string #日期
+    start_time: date 
+    end_time: date
+    wiki_id: string
+    poster: string
+    tags: raw
+    aspect: string #看点
+    sort: integer
+    style: string #图片样式
+    author: raw #创建人
+    state: boolean #是否启用
+  indexes:
+    - { keys: { date: 1 } }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }  
+    
+#节目
+ProgramRec:
+  connection: mondongo
+  collection: program_rec
+  fields:
+    name: string
+    channel_code: string
+    tags: raw
+    start_time: date
+    end_time: date
+    date: string
+    time_area: integer
+    wiki_id: string
+    episode: integer
+    author: raw #创建人
+    sort: integer
+  indexes:
+    - { keys: { date: 1} }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }    
+
+#wiki的正则匹配    
+WikiMatch:   
+  connection: mondongo
+  collection: wiki_match
+  fields:
+    pattern: string #正则表达式
+    wiki_id: string #关联wiki
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable } 
+
+#tvsou_id匹配wiki_id   
+TvsouMatchWiki:   
+  connection: mondongo
+  collection: tvsou_match_wiki
+  fields:
+    tvsou_id: string #tvsou_id
+    tvsou_title: string #tvsou_title
+    wiki_id: string #关联wiki_id
+    wiki_title : string
+    compare : boolean #是否相同
+    author: raw #修改人
+  indexes:
+    - { keys: { tvsou_id: 1} }
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable } 
+    
+#运营商频道信息
+SpService:
+  connection: mondongo
+  collection: sp_service 
+  fields:
+    sp_code: string
+    name: string
+    serviceId: string #节目Id
+    frequency: string #节目所在频点的频率值。单位是kHz
+    symbolRate: string #节目所在频点的符号率。单位是Kbps。
+    modulation: string #节目所在频点的调制方式
+    onId: string #节目所在频点的原始网络Id
+    tsId: string #节目所在频点的频点Id
+    logicNumber: integer #节目的逻辑频道号
+    videoPID: string #节目的视频PID
+    audioPID: string #节目的音频PID
+    PCRPID: string #节目的PCR PID
+    isFree: string #节目是加扰节目还是免费节目
+    location: string #节目的location
+    tags: raw #节目分类[cctv,tv,hd,pay,local]
+    channel_id: string #频道ID
+    channel_code: string #频道号
+    channel_logo: string #频道logo
+    hot: integer #频道热度
+    check_epg: boolean #是否监测欢网节目单
+    check_epgbak: boolean #是否监测回看节目单
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }   
+
+#豆瓣电影
+DoubanMovie:
+  connection: mondongo
+  collection: douban_movie 
+  fields:
+    name: string
+    douban_id: integer #节目Id
+    wiki_id: string #wiki_id
+    syn_status: integer #状态 0没有匹配 1自动匹配 2编辑确认
+    title: string  #中文名
+    original_title: string #原名
+    aka: raw #又名
+    images: raw #海报
+    rating: raw #评分
+    ratings_count: raw #评分人数
+    wish_count: integer #想看人数
+    collect_count: integer #看过人数
+    subtype: string #movie或者tv
+    directors: raw #导演
+    casts: raw #主演
+    writers: raw #编剧
+    mainland_pubdate: string #大陆上映日期
+    year: string #年代
+    languages: raw #语言
+    durations: raw #片长
+    genres: raw #类型
+    countries: raw #制片国家/地区
+    summary: string #简介
+    comments_count: integer #短评数量
+    reviews_count: integer #影评数量
+    seasons_count: integer #总季数
+    current_season: integer #当前季数
+    episodes_count: integer #当前季集数
+    photos: raw #剧照
+    popular_reviews: raw #前10影评
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+DoubanCelebrity: 
+  connection: mondongo
+  collection: douban_celebrity
+  fields:
+    douban_id: integer #豆瓣Id
+    name: string #名称
+    name_en: string #英文名
+    avatars: string #头像
+    summary: string #简介
+    gender: string #性别
+    birthday: string #生日
+    country: string #国家
+    born_place: string #出生地
+    professions: string #职业
+    constellation: raw #星座
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }   
+
+#电视剧 追剧
+VideosZhui:
+  connection: mondongo
+  collection: videos_zhui
+  fields:
+    wiki_id: string
+    wiki_name: string
+    total: integer #总集数
+    state: integer
+    local: integer #本地集数
+    source: raw
+    update_time: string #抓取时间
+    success: integer #抓取结果
+  extensions:
+    - { class: Mondongo\Extension\Extra\Timestampable }
+    
+#dict
+Dict:
+  connection: mondongo
+  collection: dict
+  fields:
+    name: string #名称
+    tf: string #词频
+    idf: string #逆词频率
+    attr: string #词性
+    state: integer #导入状态
+  indexes:
+    - {keys:{name:1}}    
+ 

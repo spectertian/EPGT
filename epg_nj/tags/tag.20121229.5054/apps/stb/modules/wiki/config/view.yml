@@ -1,0 +1,11 @@
+filmSuccess:
+    javascripts:    [scroll.js]
+    
+teleplaySuccess:
+    javascripts:    [scroll.js]
+    
+televisionSuccess:
+    javascripts:    [scroll.js]
+    
+playSuccess:    
+    has_layout: false

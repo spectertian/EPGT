@@ -1,0 +1,6 @@
+## YAML Template.
+error404Success:
+  has_layout: false
+
+error500Success:
+  has_layout: false

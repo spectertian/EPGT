@@ -1,0 +1,6 @@
+unaudited:
+  credentials: wiki_unaudited
+  
+all:
+  is_secure: on
+  credentials: wiki

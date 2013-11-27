@@ -1,0 +1,3 @@
+all:
+  is_secure: on
+  credentials: attachments_pre

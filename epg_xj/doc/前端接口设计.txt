@@ -1,0 +1,16 @@
+1、获取当前频道正在播放的节目列表
+    getCurrentProgramByChannel(channel_id)
+   
+2、获取某个频道一天的节目列表
+    getDataProgramByChannel(channel_id, $data)
+    
+    
+3、按照wiki获取一周预告
+    getFutureProgramByWiki(wiki,limit)    
+    
+   
+   喜欢频道
+   likeChannelByUser(user_id, channel_id)
+   
+   关注节目
+   likeWikiByUser(user_id, wiki_id)

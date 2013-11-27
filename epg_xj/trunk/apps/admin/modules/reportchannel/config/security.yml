@@ -1,0 +1,18 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+index:
+  credentials: reportchannel_index
+state:
+  credentials: reportchannel_state
+unstate:
+  credentials: reportchannel_state
+batchstate:
+  credentials: reportchannel_state
+batchunstate:
+  credentials: reportchannel_state
+index:
+  credentials: reportchannel_index
+
+captcha:
+  is_secure: false

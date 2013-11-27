@@ -1,0 +1,31 @@
+﻿监控系统
+//系统类
+1、包括12台portal、2台mysql、4台mongodb、8台mogilefs,2台cache的cpu,内存。OVER
+2、12台portal的http（80,81），2台mysql的mysqld(3306)，4台mongodb的mongod(27017)，8台mogilefs的tracker(6001)。OVER
+3、12台portal的nginx的连接数，超过2000报警。
+4、2台mysql的连接数，超过500报警。OVER
+5、4台mongodb的连接数，超过500报警。OVER
+6、8台mogilefs的连接数，      OVER
+7、2台memcache的连接数，占用内存、命中率等。OVER
+8、12台portal的http响应时间，超过1分钟报警。OVER，nginx没有启动
+//接口类
+11、huan网EPG接口是否正常服务（http+json）。
+    接口地址：http://www.epg.huan.tv/json
+12、终端统计接口是否正常（http+json）。OVER
+    接口地址：http://north_user:north_user@172.31.6.27:8080/hems/servlet/BizStatsQuery?CMD=Channel
+13、CMS的ADI接口是否正常（http+xml）。OVER 问题解决
+    http://172.31.183.10:8080/icms/content?action=adi1&systemId=push 
+14、本地epg的ftp服务器（ftp）。
+    110.173.3.73  njepg njepg025
+15、回看系统的ftp服务器（ftp）。OVER
+    172.31.143.67 epg epg
+16、搜索系统的ftp服务器（ftp）。OVER
+    172.31.198.32  huanwang huanwang
+17、运营中心推荐系统是否正常服务（http+json）。OVER 问题解决
+    http://172.20.224.146:9090/ie/interface?accesskey=f06ffc3a9d1c4d1d9adc95912d4c66da&service=ie.v2&operation=GetRecommendList&rtype=recommend.rs.v1&ctype=vod&count=8&lang=zh&uid=99586611250057372_0&urltype=1&backurl=test&alg=CF
+18、TCL推荐系统是否正常服务（http+json）。OVER，岳阳说就是400
+    http://172.31.201.20:8080/urec/api/v2/interface
+19、技术部推荐系统是否正常服务（http+json）。
+    .....
+//功能类
+1、各频道

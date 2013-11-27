@@ -1,0 +1,22 @@
+videoCount:
+  credentials: count_videoCount
+videoPlayCount:
+  credentials: count_videoPlayCount
+cdiCount:
+  credentials: count_cdiCount
+vodCount:
+  credentials: count_vodCount
+injectCount:
+  credentials: count_injectCount
+programCount:
+  credentials: count_programCount
+wikiCount:
+  credentials: count_wikiCount
+fileCount:
+  credentials: count_fileCount
+liveLog:
+  credentials: count_liveLog
+epgLog:
+  credentials: count_epgLog
+offlineLog:
+  credentials: count_offlineLog

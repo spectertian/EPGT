@@ -1,0 +1,17 @@
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        智能EPG
+    description:  智能电视节目导航
+    keywords:     智能电视节目导航
+
+    language:     zh-cn
+
+  stylesheets:    [base.css]
+
+  javascripts:    []
+
+  has_layout:     false
+  layout:         layout

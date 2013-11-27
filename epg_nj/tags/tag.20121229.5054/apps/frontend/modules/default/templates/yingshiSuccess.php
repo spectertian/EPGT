@@ -1,0 +1,1 @@
+<?php echo eval("?>".$page->getContent(ESC_RAW));?>

@@ -1,0 +1,158 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0;}
+body{ background:#000; color:#fff; font-size:14px; font-family:"微软雅黑";}
+a{ color:#fff; text-decoration:none;}
+img{ border:none;}
+li{ list-style:none;}
+.c{ clear:both;}
+.clr{ overflow:hidden; zoom:1;}
+
+.wapper{ background:url(../img/bg.jpg) no-repeat; height:720px; overflow:hidden; position:relative; width:1280px;}
+.menu{ background:url(../img/menu.png) no-repeat left bottom; bottom:20px; height:120px; left:30px; position:absolute; width:1228px;}
+.menu{ padding:0 0 0 140px;}
+.menu li{ float:left; margin:0 35px 0 0;}
+.menu .one{ margin:0 55px 0 0;}
+.menu a{ display:block; height:111px; width:111px;}
+.menu a:hover{ background:url(../img/mh.png) no-repeat;}
+.menu a img{ display:block; left:7px; position:relative; top:9px;}
+.menu .l,.menu .r{ bottom:50px; height:23px; position:absolute; width:18px;}
+.menu .l{ background:url(../img/l.png) no-repeat; left:90px;}
+.menu .r{ background:url(../img/r.png) no-repeat; left:275px;}
+
+.channel_ml,.channel_mc{ height:469px; position:absolute; top:75px;}
+.channel_ml{ background:url(../img/channel_ml.png) no-repeat; left:80px; padding:4px; width:224px;}
+.channel_ml .t,.channel_ml .b{ background:url(../img/t.png) no-repeat center center; border-bottom:1px #405b79 solid; height:38px; width:100%;}
+.hlist{ overflow:hidden; position:relative;}
+.channel_ml .hlist{ height:273px; overflow:hidden;}
+.channel_ml .hlist ul{ left:0; position:absolute; top:0; width:224px;}
+.channel_ml li{ border-bottom:1px #405b79 solid; font-size:22px; height:38px; line-height:38px; text-align:center; }
+.channel_ml a{ display:block; height:38px; }
+.add_channel{ background:url(../img/channel_mlb.png) no-repeat; bottom:1px; color:#333; display:block; font-size:22px; height:40px; left:-2px; line-height:40px; text-align:center; position:relative; width:229px;}
+.channel_mc{ background:url(../img/channel_mc.png) no-repeat; height:477px; left:320px; width:234px;}
+.channel_mc .t,.channel_mc .b,.channelbg .t,.channelbg .b{ background:url(../img/t.png) no-repeat center center; height:44px;}
+.channel_ml .b,.channel_mc .b,.channelbg .b{ background:url(../img/b.png) no-repeat center center;}
+.channel_mc .hlist{ height:390px; overflow:hidden;}
+.channel_mc .hlist ul{ left:2px; top:0; width:232px;}
+.channel_mc li,.channelbg li a{ border-top:1px #b8b4b5 solid; border-bottom:1px #8e898d solid; height:37px; line-height:37px;}
+.channel_mc li a{ color:#111; display:block; font-size:22px; padding:0 0 0 10px;}
+.channel_ml a:hover,.channel_mc li a:hover,.channelbg li a:hover{ background: url(../img/channel_mch.png) repeat-x; color:#fff;}
+.channel_mc li a span{ background:url(../img/choice.png) no-repeat; float:right; height:14px; margin:10px 10px 0 0; width:19px;}
+.channel_mc li a:hover span{ background:url(../img/choiceh.png) no-repeat;}
+
+.channel_ml .look_list{ height:312px;}
+.look{ background: url(../img/lookbg.png) no-repeat; height:176px; left:315px; padding:10px 30px; position:absolute; top:200px; width:332px; }
+.look img,.look ul{ float:left;}
+.look h2{ font-size:26px;}
+.look .covans{ height:140px; margin:0 20px 8px 0; width:95px;}
+.look ul{ width:215px;}
+.look li { font-size:20px; margin:0 0 5px;}
+.look li span{ background:url(../img/user.png) no-repeat; height:19px; padding:0 0 0 24px;}
+.look p{ clear:both; font-size:22px;}
+.btn{ background:url(../img/gz.png) no-repeat; color:#111; display:block; font-size:22px; height:45px; line-height:48px; margin:-10px 0 0 ; text-align:center; width:119px;}
+.btn:hover{ background:url(../img/gzh.png) no-repeat; color:#fff;}
+
+.today .covans{ float:right; margin:0 0 8px 20px;}
+.today li{ margin:0 0 8px;}
+.today li span{ padding-right:10px;}
+.today .logo{ height:21px; margin:0 8px 0 0; vertical-align:middle; width:26px;}
+.timetips{ height:18px; position:relative; top:-5px; width:100%;}
+.timetips div{ position:absolute; right:5px; top:0;}
+.timeline{ background:url(../img/lbg.png) repeat-x; height:4px; margin:5px 0 0; width:100%;}
+.today .timeline p{ background: url(../img/lbgh.png) repeat-x; clear:none; height:4px; width:50px;}
+
+.channelbg,.follow{ background:url(../img/chanelbg.png) no-repeat; height:477px; left:320px; position:absolute; top:75px; width:392px;}
+.channelbg .hlist{ height:380px; margin:0 0 10px;}
+.channelbg ul{ left:0; position:absolute; top:0;}
+.channelbg li a{ color:#111; display:block; font-size:22px; margin:0 0 0 1px; padding:0 15px; position:relative; width:360px;}
+.channelbg li span{ float:right;}
+.channelbg li em{ font-style:normal;}
+.channelbg li strong{ display:none; font-weight:normal;}
+.channelbg .cbl li strong{ display:inline; padding:0 10px;}
+.channelbg .cbl li span{ float:none;}
+.channelbg .cbl li em{ position:absolute; right:15px;}
+.look3{ left:720px; top:160px;}
+
+.imglist ul{ padding:35px 0;}
+.imglist li{ border:none; float:left; margin:0 0 35px; width:33%;}
+.imglist li a,.imglist li span{ border:none; display:block;}
+.imglist li a,.imglist li img{ height:142px; width:97px;}
+.imglist li a:hover{ background:none;}
+.imglist li a{ margin:0 auto; padding:0; position:relative; text-align:center;}
+.imglist li a .htxt{ background:url(../img/2.jpg) no-repeat; bottom:0; height:39px; left:0; overflow:hidden; position:absolute; text-align:center; width:97px;}
+.imglist li a:hover .htxt{ background:url(../img/3.jpg) no-repeat;}
+.imglist li a .htxt span{ left:0; padding:0 0 0 5px; position:absolute; top:0;}
+
+.reserve .hlist{ height:390px;}
+.reserve li a,.follow li a{ height:76px; overflow:hidden;}
+.reserve li a:hover,.follow li a:hover{ background:url(../img/reserveh.png) no-repeat; color:#fff;}
+.fc{ display:block;}
+.reserve .cbl .fc span{ float:right; height:78px;}
+
+.follow{ background:url(../img/follow.png) no-repeat; height:479px; width:398px;}
+.follow h2{ font-size:28px; font-weight:normal; height:85px; line-height:85px; padding:0 30px;}
+.follow h2 a{ background:url(../img/gz.png) no-repeat; color:#111; display:block; float:right; font-size:22px; height:45px; line-height:50px; margin:18px 0 0; text-align:center; width:119px;}
+.follow h2 a:hover{ background:url(../img/gzh.png) no-repeat; color:#fff;}
+.follow .t,.follow .b{ background:url(../img/t.png) no-repeat center center; height:40px;}
+.follow .b{ background:url(../img/b.png) no-repeat center center;}
+.follow .hlist{ height:310px;}
+.follow .hlist ul{ position:absolute; left:0; top:0;}
+.follow li a{ border-top:1px #b8b4b5 solid; border-bottom:1px #8e898d solid; color:#111; display:block; font-size:22px; height:60px; margin:0 0 0 4px; padding:8px 30px; width:330px;}
+.follow li a span{ display:block;}
+
+.userctrlbg{ background:url(../img/ucbg.png) no-repeat; height:681px; left:885px; position:absolute; top:30px; width:349px;}
+.tit{ display:block; font-size:22px; height:43px; line-height:43px; margin:0 0 0 3px; text-align:center; width:349px;}
+.tit:hover{ background:url(../img/tit.png) no-repeat; font-size:26px;}
+.tit span{ background:url(../img/l.png) no-repeat center center;  height:23px; padding:8px; width:18px;}
+.tit .r{ background:url(../img/r.png) no-repeat center center;}
+.tipstext{ height:72px; overflow:hidden; padding:10px 0 0; zoom:1;}
+.tipstext div{ float:left; font-size:24px;}
+.tpt{ margin:0 0 0 15px; width:80px;}
+.tchanel{ margin:0 0 0 15px; width:125px;}
+.ttn{ color:#d7cd25; width:90px;}
+.ttn p{ padding:0 0 0 26px;}
+.ttn .time{ background:url(../img/tt.png) no-repeat left center;}
+.ttn .num{ background:url(../img/tn.png) no-repeat left center;}
+.tv_info{ font-size:24px; height:180px; margin:15px auto 5px; width:310px;}
+.tv_info h2{ font-size:24px; font-weight:normal;}
+.tv_info img{ display:block; float:left; height:142px; margin:5px 0; width:97px;}
+.tv_info ul{ float:left; margin:5px 0 0 15px; width:185px;}
+.tv_info a{ background:url(../img/gz.png) no-repeat; color:#111; display:block; height:45px; line-height:45px;  text-align:center; width:119px;}
+.tv_info a:hover{ background:url(../img/gzh.png) no-repeat; color:#fff;}
+.tv_infot{ margin:0 auto; width:320px;}
+.tv_infot .timet{ font-size:20px; position:relative;}
+.tv_infot .timet span{ display:block; position:absolute; right:50px; top:5px;}
+.tv_infot .timel{ background:url(../img/lbg.png) repeat-x; height:4px; margin:5px 0; width:300px;}
+.tv_infot .timel p{ background:url(../img/lbgh.png) repeat-x; height:4px; width:50%;}
+.tab,.nowplay,.my_order{ border-bottom:1px #637d94 solid; width:340px;}
+.tab{  border-top:1px #637d94 solid; height:40px; line-height:40px; margin:10px 0 0 4px;}
+.tab div{ display:block; float:left; font-size:22px; text-align:center; width:50%;}
+.tab .there{ background:url(../img/tabh.png) no-repeat; color:#111; width:170px;}
+.nowplay li,.my_order li{ border-bottom:1px #637d94 solid; display:block; font-size:22px; height:37px; line-height:37px; margin:0 0 0 4px; padding:0 10px;}
+.nowplay .there{ background:url(../img/bfh.png) no-repeat;}
+.nowplay span{ display:block; float:left;}
+.nowplay .bf{ height:37px; width:55px;}
+.nowplay .af{ width:245px;}
+.nowplay .yy{ background:url(../img/time.png) no-repeat center center;}
+.my_order li{ height:76px;}
+.my_order .there{ background:url(../img/order.png) no-repeat;}
+.my_order span{ display:block;}
+.my_order .time,.weeklist .time{ background:url(../img/time.png) no-repeat 10px center; padding:0 0 0 50px;}
+.tico{ background:url(../img/t.png) no-repeat center center; height:23px;}
+.bico{ background:url(../img/b.png) no-repeat center center; height:23px;}
+.week{ border-bottom:1px #57728d solid; height:38px; margin:3px 0 0 6px; width:336px;}
+.week li{ background:url(../img/wl.png) no-repeat right center; float:left; text-align:center;}
+.week li,.week a{ display:block; height:38px; line-height:38px; width:48px;}
+.week a:hover{ background:url(../img/weekh.png) no-repeat;}
+.week .there{ background:url(../img/week.png) no-repeat;}
+.weeklist{ height:356px; overflow:hidden; position:relative;}
+.weeklist ul{ left:0; margin:0 0 0 4px; position:absolute; top:0; width:340px;}
+.weeklist a{ border-top:1px #57728d solid; border-bottom:1px #213349 solid; display:block; font-size:22px; height:37px; line-height:38px; padding:0 10px; width:320px;}
+.weeklist a:hover{ background:url(../img/reserveh.png) no-repeat;}
+.weeklist span{ padding-right:10px;}
+.adb{ bottom:10px; height:100px; left:6px; position:absolute; width:336px;}
+
+.tips{ background:url(../img/tips.png) no-repeat; height:225px; left:885px; padding:30px; position:absolute; top:360px; width:289px;}
+.tips dt{ font-size:24px; margin:0 0 30px; padding:0 0 0 50px;}
+.tips dd{ font-size:22px; line-height:120%; margin:0 0 10px;}
+.tips dd div{ float:left;}

@@ -1,0 +1,5 @@
+ajaxSuccess:
+    has_layout:     false
+    
+indexSuccess:
+    javascripts:    [scroll.js]

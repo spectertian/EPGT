@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ADI>
+    <Metadata>
+        <AMS Verb="" Asset_Class="packages" Asset_ID="pack444444444444000D" Asset_Name="中央一套" Provider_ID="cpid6666666666666666" Creation_Date="2012-09-10" Description="pacakage主要用来描述内容间的关联" Version_Major=""  Version_Minor="" Product="MOD"/>
+        <App_Data Value="CableLabsVOD 1.1" Name="Metadata_Spec_Version" App="MOD"/>
+    </Metadata>
+    <Asset>
+        <Metadata>
+			<AMS Verb="" Asset_Class="title" Asset_ID="pack444444444444000D" Asset_Name="中央一套" Provider_ID="cpid6666666666666666" Creation_Date="2012-09-10" Description="中央一套频道收视率高" Version_Major=""  Version_Minor="" Product="MOD"/>
+            <App_Data Value="channel" Name="Show_Type" App="MOD"/>
+            <App_Data Value="1111111111111111" Name="Original_Asset_ID" App="MOD"/>
+            <App_Data Value="icms4232323" Name="Original_System_ID" App="MOD"/>
+            <App_Data Value="CCTV1" Name="Channel_Code" App="MOD"/>
+            <App_Data Value="1" Name="Channel_Number" App="MOD"/>
+            <App_Data Value="CCTV1" Name="Call_Sign" App="MOD"/>			
+        </Metadata>	
+
+		<!--节目单列表-->
+        <Asset>
+            <Metadata>
+                <AMS Verb="" Asset_Class="schedule" Asset_ID="cont66666646000D" Asset_Name="节目单" Provider_ID="cpid6666666666666666" Creation_Date="2012-09-10" Description="节目单" Version_Major="1"  Version_Minor="" Product="MOD"/>
+				<App_Data Value="" Name="Original_Asset_ID" App="MOD"/>
+				<App_Data Value="" Name="Original_System_ID" App="MOD"/>
+                <App_Data Value="pack444444444444000D" Name="Channel_ID" App="MOD"/>
+				<App_Data Value="新闻联播" Name="Program_Name  " App="MOD"/>
+                <App_Data Value="2012-10:11 19:00:00" Name="Start_Time" App="MOD"/>
+                <App_Data Value="2012-10:11 19:30:00" Name="End_Time" App="MOD"/>
+                <App_Data Value="1800" Name="Duration" App="MOD"/>
+				<App_Data Value="这是新闻联播节目" Name="Description" App="MOD"/>				
+            </Metadata>
+			<!--海报-->
+			<Asset>
+				<Metadata>
+					<AMS Verb="" Asset_Class="poster" Asset_ID="cont444444444446000D" Asset_Name="新闻联播海报" Provider_ID="cpid6666666666666666" Creation_Date="2012-09-10" Description="新闻联播海报" Version_Major="1"  Version_Minor="" Product="MOD"/>
+					<App_Data Value="新闻联播海报" Name="Description" App="MOD"/>
+					<App_Data Value="1111111111111114" Name="Original_Asset_ID" App="MOD"/>
+					<App_Data Value="icms4232324" Name="Original_System_ID" App="MOD"/>
+					<App_Data Value="1" Name="Screen_Format" App="MOD"/>
+					<App_Data Value="320x240" Name="Image_Aspect_Ratio" App="MOD"/>
+					<App_Data Value="1" Name="Usage" App="MOD"/>
+					<App_Data Value="Y" Name="Encryption" App="MOD"/>
+					<App_Data Value="SD" Name="VideoType" App="MOD"/>
+					<App_Data Value="54870056" Name="Content_File_Size" App="MOD"/>
+					<App_Data Value="RGB" Name="Color_Type" App="MOD"/>
+					<App_Data Value="bmp" Name="Image_Encoding_Profile" App="MOD"/>
+					<App_Data Value="1024" Name="Horizontal_Pixels" App="MOD"/>
+					<App_Data Value="768" Name="Vertical_Pixels" App="MOD"/>
+				</Metadata>
+				<Content Value="ftp://DY:dayang@100.100.3.31/Live2010.jpg"/>
+			</Asset>
+        </Asset>
+		<Asset>
+            <Metadata>
+                <AMS Verb="" Asset_Class="schedule" Asset_ID="cont66666646001D" Asset_Name="节目单" Provider_ID="cpid6666666666666666" Creation_Date="2012-09-10" Description="节目单" Version_Major="1"  Version_Minor="" Product="MOD"/>
+				<App_Data Value="" Name="Original_Asset_ID" App="MOD"/>
+				<App_Data Value="" Name="Original_System_ID" App="MOD"/>
+                <App_Data Value="pack444444444444000D" Name="Channel_ID" App="MOD"/>
+				<App_Data Value="焦点访谈" Name="Program_Name" App="MOD"/>
+                <App_Data Value="2012-10:11 19:38:00" Name="Start_Time" App="MOD"/>
+                <App_Data Value="2012-10:11 19:50:00" Name="End_Time" App="MOD"/>
+                <App_Data Value="1800" Name="Duration" App="MOD"/>
+				<App_Data Value="这是焦点访谈节目" Name="Description" App="MOD"/>				
+            </Metadata>
+			<Asset>
+				<Metadata>
+					<AMS Verb="" Asset_Class="poster" Asset_ID="cont444444444446000D" Asset_Name="新闻联播海报" Provider_ID="cpid6666666666666666" Creation_Date="2012-09-10" Description="新闻联播海报" Version_Major="1"  Version_Minor="" Product="MOD"/>
+					<App_Data Value="新闻联播海报" Name="Description" App="MOD"/>
+					<App_Data Value="1111111111111114" Name="Original_Asset_ID" App="MOD"/>
+					<App_Data Value="icms4232324" Name="Original_System_ID" App="MOD"/>
+					<App_Data Value="1" Name="Screen_Format" App="MOD"/>
+					<App_Data Value="320x240" Name="Image_Aspect_Ratio" App="MOD"/>
+					<App_Data Value="1" Name="Usage" App="MOD"/>
+					<App_Data Value="Y" Name="Encryption" App="MOD"/>
+					<App_Data Value="SD" Name="VideoType" App="MOD"/>
+					<App_Data Value="54870056" Name="Content_File_Size" App="MOD"/>
+					<App_Data Value="RGB" Name="Color_Type" App="MOD"/>
+					<App_Data Value="bmp" Name="Image_Encoding_Profile" App="MOD"/>
+					<App_Data Value="1024" Name="Horizontal_Pixels" App="MOD"/>
+					<App_Data Value="768" Name="Vertical_Pixels" App="MOD"/>
+				</Metadata>
+				<Content Value="ftp://DY:dayang@100.100.3.31/Live2010.jpg"/>
+			</Asset>
+        </Asset>
+		<Asset>
+            <Metadata>
+                <AMS Verb="" Asset_Class="schedule" Asset_ID="cont66666646002D" Asset_Name="节目单" Provider_ID="cpid6666666666666666" Creation_Date="2012-09-10" Description="节目单" Version_Major="1"  Version_Minor="" Product="MOD"/>
+				<App_Data Value="" Name="Original_Asset_ID" App="MOD"/>
+				<App_Data Value="" Name="Original_System_ID" App="MOD"/>
+                <App_Data Value="pack444444444444000D" Name="Channel_ID" App="MOD"/>
+				<App_Data Value="黄金档电视剧" Name="Program_Name  " App="MOD"/>
+                <App_Data Value="2012-10:11 20:00:00" Name="Start_Time" App="MOD"/>
+                <App_Data Value="2012-10:11 21:00:00" Name="End_Time" App="MOD"/>
+                <App_Data Value="36000" Name="Duration" App="MOD"/>
+				<App_Data Value="这是黄金剧场节目" Name="Description" App="MOD"/>				
+            </Metadata>
+        </Asset>
+    </Asset>
+</ADI>

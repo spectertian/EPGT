@@ -1,0 +1,341 @@
+<script type="text/javascript"> 
+$(document).ready(function() {
+    var wiki_id = '';
+        var back_target = '';
+        $('#dinfo').list({
+            direction: 'V',
+            focus: function(event) {
+                $(this).addClass('hover');
+                //var title = $(this).find('div.title').text();
+                //$('#footer_info_title').text(title);
+                //$('.info').removeClass('display-none');
+            },
+            blur: function(event) {
+                $(this).removeClass('hover');
+            },
+           /* right: function(event) {
+                $('#home-right').data('ui').focus();
+            },*/
+            down: function(event) {
+               $('#tab').data('ui').focus();
+                alert($('#tab').data('ui'));
+                var c = $("#tab").find('.infotab:first');
+                if (c.length) {
+                $("#tab").data('ui').focus();
+            }  
+            },
+            enter: function(event, item) {
+                wiki_id = item.attr('rel');
+                back_target = '#dinfo';
+                var wiki_url = '<?php echo url_for('wiki/show?id='); ?>' + wiki_id;
+                $("#wiki-info-sizer").load(wiki_url, function() {
+                    $("#wiki-sizer").addClass("display-none");
+                    $("#wiki-info-sizer").attr('return_target', back_target);
+                    $("#wiki-info-sizer").removeClass("display-none");
+                    $('#footer1_back').list('focus');
+                });
+                /*
+                back_target = '#home-left';
+                var popup = $('#popup');
+                popup.removeClass('display-none');
+                popup.list('focus');
+                popup.data('back', $(this));
+                */
+            },
+            change: function(event, ui) {
+            },
+        });
+        $('tab').list({
+             direction: 'H',
+            coords: [3 , 1],
+            
+            blur: function(event) {
+                $(this).removeClass('hover');
+            },
+            change: function(event, ui) {
+                //var title = ui.to.find('div.title').text();
+                //$('#footer_info_title').text(title);
+                //$('.info').show();
+            },
+            /*enter: function(event, item) {
+                wiki_id = item.attr('rel');
+                back_target = '#home-right';
+                var wiki_url = '<?php echo url_for('wiki/detail?id='); ?>' + wiki_id;
+                $("#wiki-sizer").load(wiki_url, function() {
+                    $("#main-nav-sizer").addClass("display-none");
+                    $("#wiki-sizer").attr('return_target', back_target);
+                    $("#wiki-sizer").removeClass("display-none");
+                    $('#footer_back').list('focus');
+                });*/
+                /* 2010-11-11
+                back_target = '#home-right';
+                var popup = $('#popup');
+                popup.removeClass('display-none');
+                popup.list('focus');
+                popup.data('back', $(this));
+                
+            },*/
+            leftBorde: function(event, ui) {
+                $('#home-left').data('ui').focus();
+            },
+            rightBorde: function(event, ui) {
+                $('#lr').data('ui').focus();
+            },
+            upBorde: function (event , pos ){
+                $('#dinfo').list('focus');
+            }
+
+        });
+    function closeThis() {
+        $("#main-nav-sizer").removeClass("display-none");
+        var return_target = $('#wiki-sizer').attr('return_target');
+        $(return_target).data("ui").focus();
+        var widgets = $("#wiki-sizer").find('.tvui');
+        $("#wiki-sizer").html("").addClass("display-none");
+        try {
+            widgets.each(function(widget) {
+                widget.data('ui').destroy();
+            });
+        } catch(e) {
+            
+        }
+        
+    }
+});    
+function getElementChildren(element){
+	var children = [];
+	var child = element.firstChild;
+	while(child) {
+	 if (child.nodeType == 1 )
+	  children.push(child);
+	 child = child.nextSibling;
+	}
+	return children;
+}
+function showa(wiki_id){
+                back_target = '#wiki-sizer';
+                var wiki_url = '<?php echo url_for('wiki/show?id='); ?>' + wiki_id;
+                $("#wiki-info-sizer").load(wiki_url, function() {
+                    $("#wiki-sizer").addClass("display-none");
+                    $("#wiki-info-sizer").attr('return_target', back_target);
+                    $("#wiki-info-sizer").removeClass("display-none");
+                    $('#footer1_back').list('focus');
+                        }); 
+}
+var oLi = document.getElementById("tab").getElementsByTagName("li");
+var oContent = document.getElementById("content");
+var tabList =getElementChildren(oContent);   
+for(var i = 0; i < oLi.length; i++){
+	oLi[i].index = i;
+	oLi[i].onclick = function (){
+		for(var n = 0; n < oLi.length; n++) oLi[n].className="";
+		this.className = "cur";
+		for(var j = 0; j < tabList.length; j++) tabList[j].style.display = "none";
+		tabList[this.index].style.display = "block";		   
+		}
+	};
+</script>
+<body>
+    <div class="page" id="main-nav-sizer">
+        <div class="detail-show">
+            <div class="ll">                
+                <div class="binfo">
+                    <div class="bs"><img alt="<?php echo $wiki->getTitle()?>" src="<?php echo thumb_url($wiki->getCover(),260,332)?>"></div>
+                    <div class="dinfo" id="dinfo">
+                        <h2><?php echo $wiki->getTitle()?></h2>
+                        <ul>
+						<strong><?php if($wiki->getModel()=='television') : //综艺节目?>
+						<?php if($hosts = $wiki->getHost()): $i = 0 ?>
+						<li>主持人：      
+								<?php foreach($hosts as $host) : $i++;?>
+								<?php echo ($i > 1) ? ' /' : ''; echo $host;?>
+								<?php endforeach;?>                  
+						</li>
+						<?php endif; ?> 
+						<?php if($guests = $wiki->getGuests()): $i = 0 ?>
+						<li>嘉宾：      
+								<?php foreach($guests as $guest) : $i++;?>
+								<?php echo ($i > 1) ? ' /' : ''; echo $guest;?>
+								<?php endforeach;?>               
+						</li>
+						<?php endif; ?> 	
+						<?php if($wiki->getChannel()): ?>	
+						<li>播出频道：      
+								<?php echo $wiki->getChannel()?>                  
+						</li>
+						<?php endif; ?> 
+						
+						<?php if($wiki->getPlayTime()): ?>	
+						<li>播出时间：     
+								<?php echo substr($wiki->getPlayTime(),30)?>                   
+						</li>
+						<?php endif; ?> 
+						<?php if($wiki->getHtmlCache()): ?>
+						<li class="smry">介绍：      
+							<?php echo $wiki->getHtmlCache(100, ESC_RAW); ?>         
+						</li>
+						<?php endif; ?>                                                                                                            
+				<?php elseif($wiki->getModel()=='telplay'):  //电视剧?>					  
+						<?php if($Stars = $wiki->getStarring()): $i = 0 ?>    
+						<li>主演:     
+						<?php foreach($Stars as $Star) : $i++;
+							  if($i<6):
+						?>
+						<?php echo ($i > 1) ? ' /' : ''; echo $Star;?>
+						<?php 
+							  endif;
+							  endforeach;?>                           
+						</li>  
+						<?php endif; ?>  
+						<?php if($wiki->getCountry()): ?>
+						<li>国家:      
+								<?php echo $wiki->getCountry()?>                   
+						</li>
+						<?php endif; ?>
+						<?php if($wiki->getTags()): ?>
+						<li>类型:      
+						<?php $i=0; foreach($wiki->getTags() as $Tags) : $i++;
+						?>
+						<?php echo ($i > 1) ? ' /' : ''; echo $Tags;?>
+						<?php 
+							  endforeach;?>           
+						</li>
+						<?php endif; ?>
+						<?php if($wiki->getReleased()): ?>
+						<li>年代:     
+								<?php echo $wiki->getReleased()?>                 
+						</li>
+						<?php endif; ?>
+						<?php if($wiki->getHtmlCache()): ?>	
+						<li class="smry">简介:     
+								<?php echo $wiki->getHtmlCache(10, ESC_RAW);?> <a target="_self" href="javascript:void(0)" onclick="showa('<?php echo $wiki->getId(); ?>')" >查看详情</a>      
+						</li>
+						<?php endif; ?>                                                 
+				<?php else:  //电影?> 		  
+						<?php if($Stars = $wiki->getStarring()): $i = 0 ?>    
+						<li>主演:       
+						<?php foreach($Stars as $Star) : $i++;
+							  if($i<6):
+						?>
+						<?php echo ($i > 1) ? ' /' : ''; echo $Star;?>
+						<?php 
+							  endif;
+							  endforeach;?>                           
+						</li>  
+						<?php endif; ?>  
+						
+						<?php if($wiki->getCountry()): ?>
+						<li>国家:     
+								<?php echo $wiki->getCountry()?>                   
+						</li>
+						<?php endif; ?> 
+						<?php if($wiki->getTags()): ?>
+						<li>类型:      
+								<?php $i=0; foreach($wiki->getTags() as $Tags) : $i++;
+						?>
+						<?php echo ($i > 1) ? ' /' : ''; echo $Tags;?>
+						<?php 
+							  endforeach;?>                     
+						</li>
+						<?php endif; ?>
+						<?php if($wiki->getReleased()): ?>
+						<li>上映时间:    
+								<?php echo $wiki->getReleased()?>          
+						</li>
+						<?php endif; ?> 		
+						<?php if($wiki->getHtmlCache()): ?>	
+						<li class="smry">简介:  
+								<?php echo $wiki->getHtmlCache(120, ESC_RAW)?>  <span class="action button" rel="<?php echo $wiki->getId(); ?>" >查看详情</span>     
+						</li>
+						<?php endif; ?>                                                
+				<?php endif;?></strong>
+                        </ul>				
+                    </div>                    
+                </div>
+                <div class="btab" id="btab">
+                        <ul id="tab" class="infotab tvui">
+                        <?php if($programs_ing==null):?><li class="disabled" ><?php else: ?><li class="cur" ><?php endif?><span class="active"><span>当前播放</span></span></li>
+                            <?php if($programs_ing==null&&$unplayed_programs==null):?><li class="disabled" ><?php else: ?><li class="cur" ><?php endif?><span class="active"><span class="hover">本周预约</span></span></li>
+                            <li><span class="active"><span>精彩剧照</span></span></li>
+                             
+                        </ul>
+                        <div id="content" class="bcct">
+                            <div>
+                                <ul class="playlist">
+                            <?php 
+                                  $i=0;
+                                  foreach($programs_ing as $ing): 
+                            ?>
+                         <li>
+                            <div><?php echo $ing->getName(); ?></div>
+                            <div class="info">      
+                                <span class="progress">
+                                    <span style="width: <?php echo $ing->getProgress() ?>%;" class="track"></span>
+                                </span>
+                                <span class="time-left">剩余时间: <?php echo $ing->getLiftTime() ?></span>
+                            </div>
+                            <div><?php echo $ing->getChannelName() ?><span class="play"></span></div>
+                        </li>
+							<?php $i++;
+                                  endforeach; 
+                            ?>
+						
+                                </ul>
+                            </div>
+                            	
+                                
+                                  <div style="display: none;">
+      
+                                <ul class="playlist nextlist">
+								<?php 
+                                  $i=0;
+                                  foreach($unplayed_programs as $program): 
+                            ?>
+                            <li><div><?php echo $program->getName() ?></div><div><?php echo $program->getStartTime()->format("m/d H:i:s") ?></div><div><?php echo $program->getChannelName() ?><span class="ring"></span></div></li>
+							<?php $i++;
+                                  endforeach; 
+                            ?>                                
+                                </ul>
+                            </div>
+                                  <div style="display: none;">                                 
+                                <ul class="stills">
+                                  <?php
+                                    $dramatis = $sf_data->getRaw("wiki")->getScreenshots();
+                                    $photo_count = count($dramatis) -1 ;
+                                  for($i=0;$i<3;$i++):
+                                    if(($photo_count >= $i) && ($photo_count > 0) ):
+                                  ?>
+                                      <li ><img src="<?php echo file_url($dramatis[$i]) ?>" /></li>
+                                  <?php else: ?>
+                                       <li ><img src="<?php echo image_path('details_no_still.png') ?>" width="" height="" alt=""></li>
+                                  <?php endif ?>
+                                  <?php endfor ?>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="lr" id="lr">
+                <h2>正在热播</h2>
+                <ul class="prelist" id="prelist">
+				<?php $i=0; foreach($hot_programs as $programs): if($i%2!=0):?>
+				<li><span><?php echo mb_substr($programs->getName(),0,10,'utf-8') ?></span></li>
+				<?php else:?>
+                <li class="even"><span><?php echo mb_substr($programs->getName(),0,10,'utf-8') ?></span></li>
+                <?php endif ; $i++; endforeach; ?>
+                </ul>
+            </div>
+        <div class="footer">
+        <div id="footer_back" class="back tvui">
+             <div class="action button">返回</div>
+        </div>        
+        <div class="help">
+            <span>按</span>
+            <span class="arrows">&lt; &gt;</span>
+            <span>键选择，按</span>
+            <span class="button">OK</span>
+            <span>键确认</span>
+        </div>
+    </div>  
+        </div>
+</body></html>

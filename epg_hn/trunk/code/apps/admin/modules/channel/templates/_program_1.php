@@ -1,0 +1,1 @@
+<a href="<?php echo url_for('@program').'?channel_id='.$channel->getId();?>">管理</a>

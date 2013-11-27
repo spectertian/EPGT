@@ -1,0 +1,23 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+deleteAjax:
+  credentials: program_sport_del
+
+ajax_del:
+  credentials: program_sport_del
+
+channelupdate:
+  credentials: program_sport_channelupdate
+
+delete:
+  credentials: program_sport_del
+
+index:
+  credentials: program_sport_index
+
+publish:
+  credentials: program_sport_publish
+
+epgupdate:
+  credentials: program_sport_channelupdate

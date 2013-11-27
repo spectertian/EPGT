@@ -1,0 +1,19 @@
+0 8 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:getPrograms --env=prod > /dev/null 2>&1
+0 12 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:getPrograms --env=prod > /dev/null 2>&1
+*/5 * * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:getChannelHot --env=prod >> /home/getChannelHot_`date +%F`.txt
+
+30 0-8/4 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:ExportProgram --env=prod > /dev/null 2>&1
+40 0-8/4 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:EpgHd --env=prod > /dev/null 2>&1
+50 0-8/4 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:EpgAdi --env=prod > /dev/null 2>&1
+30 8-20/2 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:ExportProgram --env=prod > /dev/null 2>&1
+40 8-20/2 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:EpgHd --env=prod > /dev/null 2>&1
+50 8-20/2 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:EpgAdi --env=prod > /dev/null 2>&1
+30 20-23/4 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:ExportProgram --env=prod > /dev/null 2>&1
+40 20-23/4 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:EpgHd --env=prod > /dev/null 2>&1
+50 20-23/4 * * * /usr/local/php5.3.8/bin/php /www/newepg/symfony tv:EpgAdi --env=prod > /dev/null 2>&1 
+
+#tail -f /var/log/cron
+
+svc -d /service/pppd 
+killall pppd 
+svc -u /service/pppd 

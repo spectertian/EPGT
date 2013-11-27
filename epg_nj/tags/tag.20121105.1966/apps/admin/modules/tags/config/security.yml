@@ -1,0 +1,23 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+new:
+  credentials: tags_new
+
+create:
+  credentials: tags_new
+
+delete:
+  credentials: tags_del
+
+index:
+  credentials: tags_show
+
+edit:
+  credentials: tags_edit
+
+update:
+  credentials: tags_edit
+
+batchDelete:
+  credentials: tags_del

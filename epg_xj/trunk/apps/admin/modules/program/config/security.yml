@@ -1,0 +1,41 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+deleteajax:
+  credentials: program_del
+
+ajax_del:
+  credentials: program_del
+
+delete:
+  credentials: program_del
+
+index:
+  credentials: program_show
+
+publish:
+  credentials: program_publish
+
+set:
+  credentials: program_set
+
+setchannelupdate:
+  credentials: program_set
+
+channelupdate:
+  credentials: program_set
+
+epgupdate:
+  credentials: program_set
+
+channelupdate:
+  credentials: program_set
+
+ajax_update:
+  credentials: program_edit
+
+save:
+  credentials: program_edit
+
+captcha:
+  is_secure: false

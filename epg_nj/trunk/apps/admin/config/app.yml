@@ -1,0 +1,41 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+#all:
+#  admin:
+#    credentials: { admin: '管理', channel: '频道', program: '节目单', program_ext: '节目标题', program_template: '节目模板', tags: '标签', tv_station: '电视台', wiki: '维基'  }
+
+all:
+  admin:
+    credentials:
+      system:
+        label: '系统管理'
+        credential: { admin: '权限管理', attachments_pre: '图片审核', media: '文件管理', setting_recommend: '推荐系统切换' , setting_page: '应急页面切换', setting_autohidden: '自动隐藏时间设置', crontabLog: '计划任务日志', queueLog: '消息队列失败日志' }
+      words:
+        label: '敏感词'
+        credential: { words: '敏感词', setting_wordsCheck: '敏感词审核状态', wordsLog: '敏感词日志', wordsWiki: '检查所有wiki' }
+      class:
+        label: '分类管理'
+        credential: { tv_station: '电视台管理', channel: '电视频道管理', spservice: 'NIT管理'}
+      count:
+        label: '数据统计'
+        credential: { count_videoCount: '上线电视剧错误日志', count_videoPlayCount: '视频播放错误日志', count_cdiCount: '上下线影片数量统计', count_vodCount: '影片点播量统计', count_injectCount: 'ADI文件入库统计', count_programCount: '节目统计', count_wikiCount: '维基统计', count_fileCount: '图片统计', count_liveLog: '直播频道点击统计', count_offlineLog: '紧急下线日志' }
+      content:
+        label: '内容管理'
+        credential: { program: '电视节目管理',program_week: '大网节目管理', cpg: '回看节目管理', wiki: '维基(媒资)管理', wiki_unaudited: '未审核维基', video: '视频管理', count_epgLog: 'EPG发送频道查询' }
+      recommand:
+        label: '推荐管理'
+        credential: { wiki_recommend: '推荐维基管理', channel_recommend: '频道推荐管理', recommand_fix: '固定点播推荐' }
+      adicdi:
+        label: '固定接入'
+        credential: { content_inject: 'CMS内容导入', content_import: 'CMS内容处理', content_cdi: '上下线内容查看' }
+      check:
+        label: '系统监测'
+        credential: { check_interface: '接口监测', check_log: '接口监测日志', check_epgbak: '回看节目单监测', check_epg: '欢网节目单监测', check_epgWeek: '大网节目单监测', check_epgBochu: '以播出为准节目单监测'}
+      other:
+        label: '其他管理'
+        credential: { spservice_getSpLogo: '查看所有台标', post: '测试推荐接口', memadmin: '管理memcache', memcache: '查看memcache', synfile: '单图片同步'}
+      special:
+        label: '特殊'
+        credential: { video_offline: '下线'}

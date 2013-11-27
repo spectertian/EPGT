@@ -1,0 +1,37 @@
+/* 
+    Document   : auto_complete
+    Created on : 2010-8-2, 11:08:43
+    Author     : Administrator
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+div.autocomplete{
+	height:400px;
+	overflow:auto;
+	position:absolute;
+	width:248px;
+	background-color:#FEFEFE;
+	border:1px solid #7C7C7C;;
+	font-size:11px;
+	font-family: 'arial';
+}
+div.autocomplete ul{
+	padding-left:0;
+	margin:0;
+	list-style:none
+}
+div.autocomplete ul li{
+	padding:1px 10px;
+	cursor:pointer;
+	color: #303030;
+}
+div.autocomplete ul li.sel{
+	background-color:#B4D5FE;
+}
+

@@ -1,0 +1,12 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+show_templateSuccess:
+  layout: false
+  javascripts: [-index.js,-menu.js,jquery.form.js]
+
+indexSuccess:
+  javascripts: [template.js,jquery-ui-1.8.2.custom.min.js,jquery-ui-i18n.min.js,-program_two.js,DateTimeMask.js,auto_complete.js]
+  stylesheets: [auto_complete.css]
+
+tem_addSuccess:
+  javascripts: [-index.js,-menu.js,-jquery.form.js]

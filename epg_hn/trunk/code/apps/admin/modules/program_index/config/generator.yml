@@ -1,0 +1,51 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ProgramIndex
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          program_index
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        channel_id: {lable: 频道 }
+        title:  {label: 模板名称 }
+        channel:  {label: 所属频道 }
+        channel_id:  {label: 所属频道 }
+        wiki:  {label: 维基 }
+        wiki_id:  {label: 维基 }
+        time:  {label: 播放时间 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+
+      list:
+        title: 模板列表
+        fields:
+          other     :  {label: 已存节目, is_partial: true }
+        display: [id,channel,title,created_at, updated_at,other]
+        sort: [id ,desc]
+        max_per_page: 10
+        batch_actions:
+          _delete: { label: 删除 }
+        object_actions: {}
+      form:
+        fields:
+          publish: { label: 状态: }
+          params: [publish]
+        actions:
+          _list  : { label: 返回列表 }
+          _save  : ~
+          _delete: ~
+      filter:
+        display: [channel_id ,title]
+      edit:
+        title:  更新 %%title%% 模板
+      new:
+        title: 创建模板

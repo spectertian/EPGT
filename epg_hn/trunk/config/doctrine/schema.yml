@@ -1,0 +1,178 @@
+options:
+  type: MyISAM
+  collate: utf8_general_ci
+  charset: utf8
+
+Admin:
+  actAs: { Timestampable: ~ }
+  columns:
+    username: { type: string(50), notnull: true }
+    password: { type: string(50) , notnull: true }
+    name: { type: string(30), default: null }
+    phone: { type: string(20), default: null }
+    status: { type: boolean, notnull: true, default: 0 }
+    email: { type: string(255), unique: true }
+    last_login_ip: { type: string(20), notnull: true }
+    last_login_at: { type: timestamp, notnull: true }
+    created_at: { type: timestamp(25), fixed: false, unsigned: false, primary: false, notnull: true } 
+    updated_at: { type: timestamp(25), fixed: false, unsigned: false, primary: false, notnull: true } 
+    
+AdminAuth:
+  actAs: { Timestampable: ~ }
+  columns:
+    admin_id: integer
+    credential: string(50)
+  relations:
+    Admin:   { local: admin_id, foreign: id }
+
+TvStation:
+  actAs: { Timestampable: ~ }
+  columns:
+    parent_id: { type: integer, notnull: true , default: 0 }
+    name: string(100)
+    sort: { type: integer, notnull: true , default: 0 }
+    publish: { type: integer(1), notnull: true, default: 0 }
+    code: { type: string(32), notnull: true }
+  relations:
+    TvStation: { local: parent_id, foreign: id }
+
+Channel:
+  actAs: { Timestampable: ~ }
+  columns:
+    tv_station_id: { type: integer, notnull: true }
+    sort_id: { type: integer, notnull: true , default: 0 }
+    publish: { type: integer(1), notnull: true, default: 1 }
+    autosyn: { type: enum, length: 1, values: [0, 1], default: 0 }
+    code: { type: string(50), notnull: true }
+    name: string(20)
+    memo : string(255)
+    type: string(20)
+    config: { type: string(4000), notnull: false }
+    logo: { type: string(100),notnull: false,default: 0 }
+    live: { type: enum, length: 1, values: [0, 1], default: 0 }
+    live_config: { type: string(4000), notnull: false }
+    hot: { type: integer(11), notnull: true, default: 0 }
+    tvsou_update: { type: timestamp(25) }
+    editor_update: { type: timestamp(25) }
+    tvsou_get: { type: integer(1), default: 0 }
+    epg_update: { type: timestamp(25) }
+    epg_get: { type: integer(1), default: 0 }
+    recommend: { type: integer, notnull: true , default: 0 }
+  relations:
+    TvStation: { local: tv_station_id, foreign: id }
+
+ProgramIndex:
+  actAs: { Timestampable: ~ }
+  columns:
+    title: string(20)
+    channel_id: integer
+  relations:
+    Channel: { local: channel_id, foreign: id }
+
+ProgramTemplate:
+  actAs: { Timestampable: ~ }
+  columns:
+    p_id: integer
+    wiki_id:  integer
+    name: string(100)
+    time: string(10)
+  relations:
+    ProgramIndex: { local: p_id, foreign: id }
+
+Tags:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: string(100)
+
+Ip:
+  actAs: { Timestampable: ~ }
+  columns:
+    ip1: integer
+    ip2: integer
+    province: { type: string(10), notnull: true }
+    city: { type: string(10), notnull: true }
+    code: { type: string(32), notnull: true }
+
+Favorites:
+  actAs: { Timestampable: ~ }
+  columns:
+    user_id: { type: integer, notnull: true }
+    content: { type: string(50), notnull: true }
+    type: { type: string(50), notnull: true }
+
+Attention:
+  actAs: { Timestampable: ~ }
+  columns:
+    user_id: { type: integer, notnull: true }
+    pid: { type: integer, notnull: true }
+
+Attachments:
+  actAs: { Timestampable: ~ }
+  columns:
+    source_name: { type: string(250),notnull: true }
+    file_name: { type: string(250), notnull: true }
+    file_key: { type: string(250), notnull: true }
+    category_id: { type: integer, notnull: true, default: 0 }
+    thumb: { type: string(4000),notnull: true, default: 0 }
+    
+AttachmentCategorys:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(250),notnull: true }
+    parent_id: { type: integer, notnull: true, default: 0 }
+
+ChannelRecommend:
+  actAs: { Timestampable: ~ }
+  columns: 
+    channel_code: { type: string(32), notnull: true } 
+    wiki_id: { type: string(32), notnull: true  }
+    title: { type: string(128), notnull: true }
+    pic: { type: string(128), notnull: true }  
+    playtime: { type: string(32), notnull: true } 
+    remark: { type: string(255), notnull: true }  
+    sort:  { type: integer(8), notnull: true , default: 0 } 
+    publish: { type: integer(1), notnull: true, default: 0 }
+    tongbu_id: { type: bigint(20), notnull: true, default: 0}
+
+Theme:
+  actAs: { Timestampable: ~ }
+  tableName: theme
+  columns:
+    title: { type: string(250), fixed: false, unsigned: false, primary: false, notnull: true }
+    remark: { type: string(4000), fixed: false, unsigned: false, primary: false, notnull: true }
+    img: { type: string(250), fixed: false, unsigned: false, primary: false, notnull: true }
+    publish: { type: integer(4), fixed: false, unsigned: false, primary: false, default: '0', notnull: true }
+
+ThemeItem:
+  actAs: { Timestampable: ~ }
+  tableName: theme_item
+  columns:
+    theme_id: { type: integer(8), fixed: false, unsigned: false, primary: false, default: '0', notnull: true }
+    wiki_id: { type: string(32), fixed: false, unsigned: false, primary: false, default: '0', notnull: true }
+    remark: { type: string(250), fixed: false, unsigned: false, primary: false, notnull: true }
+    img: { type: string(250), fixed: false, unsigned: false, primary: false, notnull: true }
+  relations:
+    Theme: { local: theme_id, foreign: id }
+    
+UserLiving:
+  actAs: { Timestampable: ~ }
+  tableName: userliving
+  columns:
+    id: { type: integer(4), fixed: false, unsigned: false, primary: true, autoincrement: true }
+    user_id: { type: integer(8), fixed: false, unsigned: false, primary: false, notnull: true }
+    channel: { type: string(50), fixed: false, unsigned: false, primary: false, notnull: true }
+    isliving: { type: integer(1), fixed: false, unsigned: false, primary: false, notnull: true }
+    created_at: { type: timestamp(25), fixed: false, unsigned: false, primary: false, notnull: true } 
+    updated_at: { type: timestamp(25), fixed: false, unsigned: false, primary: false, notnull: true }  
+    
+CategoryRecommend:
+  actAs: { Timestampable: ~ }
+  tableName: categoryrecommend
+  columns:
+    category_id: { type: integer(8), fixed: false, unsigned: false, primary: false, default: '0', notnull: true }
+    category_name: { type: string(50), fixed: false, unsigned: false, primary: false, default: '0', notnull: true }
+    template: { type: string(50), fixed: false, unsigned: false, primary: false, default: '0', notnull: true }
+    is_default: { type: string(250), fixed: false, unsigned: false, primary: false, notnull: true }
+    startime: { type: timestamp(25), fixed: false, unsigned: false, primary: false, notnull: true } 
+    endtime: { type: timestamp(25), fixed: false, unsigned: false, primary: false, notnull: true }
+   

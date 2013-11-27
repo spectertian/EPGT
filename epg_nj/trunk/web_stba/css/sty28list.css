@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;-webkit-transition-duration:0.5s;transition-duration:0.5s;}
+a:focus,input:focus{-webkit-outline-style: none; outline: none;}
+body{ background:transparent; color:#eee; font-size:14px; font-family:微软雅黑;}
+h1,h2,h3,h4,h5,h6{ font-size:12px; font-weight:normal;}
+li{ list-style:none;}
+a{ color:#fff; text-decoration:none; white-space:nowrap;}
+a:hover{ color:yellow;}
+.clr{ overflow:hidden; z-index:1;}
+
+.wapper{ background:transparent; height:720px; margin:0 auto; position:relative; width:1280px;}
+.smartnav8{ background: url(../img/sty2/8bg.png) no-repeat; font-size:18px; height:222px; margin:0 auto; padding:20px 30px; position:relative; top:435px; width:1057px;}
+.smartnav8 h2,.smartnav8 .time{ float:left; font-size:24px;}
+.smartnav8 h2{ padding:0 50px 0 0; height:30px; overflow:hidden; position:relative; width:500px;line-height:30px;}
+.smartnav8 h2 b{ display:block; height:30px; left:0; overflow:hidden; position:absolute; top:0;}
+.smartnav8 img{ margin:0 5px; position:relative; top:0; vertical-align:middle; }
+.time span{ display:block; float:left; font-size:18px; margin:10px 5px 0;}
+.timeline{ background:url(../img/sty2/linbg.png) repeat-x; height:7px; position:relative; top:6px; width:100px;}
+.timeline b{ background:url(../img/sty2/line.png) repeat-x 0 -1px; display:block; height:7px; position:relative; width:50%;}
+.timeline em{ background:url(../img/sty2/lineico.png) no-repeat; display:block; height:14px; position:absolute; right:-7px; top:-3px; width:14px;}
+.tips{ float:right; font-size:16px; margin:5px 15px 0 0;}
+.tips img{ top:-2px;}
+.nav{ background:url(../img/sty2/nav8.png) no-repeat; height:150px; left:535px; padding:13px 14px 10px 10px; position:absolute; top:70px; width:22px; z-index:2;}
+.nav a,.l,.r{ display:block; height:23px; margin:0 auto; width:25px;}
+.nav .up{ background:url(../img/sty2/up.png) no-repeat;}
+.nav .up:hover{ background:url(../img/sty2/uph.png) no-repeat;}
+.nav .up1{ background:url(../img/sty2/uph.png) no-repeat;}
+.nav .down{ background:url(../img/sty2/down.png) no-repeat;}
+.nav .down:hover{ background:url(../img/sty2/downh.png) no-repeat;}
+.nav .down1{ background:url(../img/sty2/downh.png) no-repeat;}
+.nav .hidelist{ font-size:20px; height:70px; left:2px; overflow:hidden; margin:15px 0; position:relative; text-align:center; }
+.nav .hidelist ul{ left:0; position:absolute; top:0px;}
+.nav .hidelist li{ height:70px; line-height:120%; word-wrap:break-word; word-break:nomal;}
+.list{ margin:0 auto; left:10px; padding:25px 0 0 5px; position:relative; width:1050px;}
+.list li{ float:left; width:121px;}
+.list li a,.list li span,.list li img{ display:block; height:141px; margin:0 auto; width:107px;}
+.list .no4{ margin:0 57px 0 0;}
+.list li a{ border:1px #999 solid; position:relative;}
+.list li span{ background:url(../img/sty2/picbg.png) no-repeat; overflow:hidden; position:absolute; top:0;}
+.list li em{ bottom:5px; font-style:normal; display:block; left:10px; position:absolute;}
+.list li a:hover{ left:-3px; top:-15px;}
+.list li a:hover,.list li a:hover span,.list li a:hover img{ font-size:24px; height:167px; width:125px;}
+.list li a:hover span{ background: url(../img/sty2/picbgh.png) repeat-x left bottom;}
+.l,.r{ background:url(../img/sty2/l.png) no-repeat; display:block; left:20px; position:absolute; top:145px; z-index:8;}
+.l:hover,.lh{ background:url(../img/sty2/lh.png) no-repeat;}
+.r{ background:url(../img/sty2/r.png) no-repeat; left:auto; right:20px;}
+.r:hover,.rh{ background:url(../img/sty2/rh.png) no-repeat;}
+#showProgram li b{ background: url(../img/live.png) no-repeat; display:block; height:40px; right:1px; position:absolute; top:1px; width:40px; z-index:9;}

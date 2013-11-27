@@ -1,0 +1,23 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+new:
+  credentials: program_new
+
+create:
+  credentials: program_new
+
+delete:
+  credentials: program_del
+
+index:
+  credentials: program_show
+
+edit:
+  credentials: program_edit
+
+update:
+  credentials: program_edit
+
+batchDelete:
+  credentials: program_del

@@ -1,0 +1,54 @@
+
+.r{ height:100%; margin:0 0 0 20px; width:auto;}
+.r header { position:relative; padding:10px 0 20px; }
+.r h2 { height:48px; overflow:hidden; padding-left:42px; color:#464646; text-shadow:0 1px 0 #fff; font-family:georgia,"times new roman",serif; font-size:28px; line-height:48px; }
+.r h2.content { background:url("../images/title_content.png") no-repeat 0 center; }
+.r header nav.utility { position:absolute; top:10px; right:10px; float:right; list-style:none; }
+.r header nav.utility li, .r header nav.utility li a { float:left; display:block; width:60px; overflow:hidden; text-align:center; }
+.r header nav.utility li a { padding-top:32px; }
+.r header nav.utility li.add a { background:url("../images/ico_add.png") no-repeat center 0; }
+.r header nav.utility li.app-add a { background:url("../images/ico_app_add.png") no-repeat center 0; }
+.r header nav.utility li.app-del a { background:url("../images/ico_app_del.png") no-repeat center 0; }
+.r header nav.utility li.recommended a { background:url("../images/ico_recommended.png") no-repeat center 0; }
+.r header nav.utility li.view-recommended a { background:url("../images/ico_view_recommended.png") no-repeat center 0; }
+.r header nav.utility li.pic-thumb a { background:url("../images/ico_generate_pic_thumb.png") no-repeat center 0; }
+.r header nav.utility li.modify-cats a { background:url("../images/ico_modify_cats.png") no-repeat center 0; }
+
+.r header nav.utility li.save a { background:url("../images/ico_save.png") no-repeat center 0; }
+.r header nav.utility li.back a { background:url("../images/ico_back.png") no-repeat center 0; }
+.r header nav.utility li.delete a { background:url("../images/ico_delete.png") no-repeat center 0; }
+.r header .header-meta { padding:5px 0; }
+.r header .header-meta label { margin:0 8px; }
+.listwarp{ height:220px; margin:10px 0; overflow:hidden; position:relative; width:95%; zoom:1;}
+.list{ left:0; position:absolute; top:0; width:9999px;}
+.list li{ float:left; height:220px; margin:0 15px 0 0; text-align:center;}
+.list img{ display:block; height:170px; margin:0 auto 5px;}
+.listitem{ background:#fff; border:1px #d2d2d2 solid; box-shadow:5px 5px 15px #333; height:400px; left:50%; margin:-200px; padding:15px; position:absolute; top:50%; width:400px;}
+.listitem li{ border-bottom:1px #d2d2d2 dashed; font-size:14px; height:25px; margin:0 0 15px; padding:0 0 15px;}
+.listitem li:first-child{ border-bottom:none; margin:0 0 25px; padding:0;}
+.listitem .autocomplete li:first-child{ border-bottom:1px #d2d2d2 dashed ; height:25px; margin:0 0 15px; padding:1px 10px; }
+.listitem .autocomplete li:last-child{ border-bottom:1px #d2d2d2 dashed ;  text-align:left; height:25px; margin:0 0 15px; padding:1px 10px; }
+.listitem h2{ background:#333; color:#fff; font-size:14px; font-weight:normal; height:28px; line-height:25px; padding:0; text-indent:10px;}
+.listitem li label{ display:inline-block; margin:0 10px 0 0; text-align:right; width:60px;}
+.text{ border:1px #dfdfdf solid; height:20px; padding:4px; width:300px;}
+.text:hover,select:hover{ background:#ffffd4;}
+.listitem select{ width:300px;}
+.listitem li:last-child{ border-bottom:none; text-align:center;}
+.btn { background:#fff; border:1px solid #bbb; border-radius:12px; color:#464646; display:inline-block; line-height:13px; margin:0 10px 0 0; padding:4px 12px; -moz-border-radius:12px; -webkit-border-radius:12px; }
+.btn:hover,select:hover { text-decoration:none; border-color:#666; }
+
+#div_1{ background:rgba(0,0,0,0.8); height:100%; left:0; position:fixed; top:0; width:100%; z-index:99;}
+#div_1 ul{ background:#fff; border:1px #d2d2d2 solid; border-radius:5px; height:400px; left:50%; margin:-200px -300px; padding:15px; position:fixed; top:40%; width:600px;}
+#div_1 h2{ padding:0;}
+#div_1 li{ margin:0 0 15px;}
+#div_1 #list_button{ padding:50px 0 0;}
+#div_1 textarea{ height:80px; vertical-align:top;}
+#div_1 textarea,#div_1 #play_url,#div_1 #program_name{ width:200px;}
+#list_button{ padding:15px 0 0; text-align:center;}
+#right{ left:350px; position:absolute; text-align:center; top:100px; }
+#right img{background:#fff; border:1px #d2d2d2 solid; display:block; margin:0 auto 10px;max-height:260px; max-width:200px; padding:10px;}
+.padib{ padding:0 0 60px;}
+.add_ico img{ height:16px; width:16px;}
+.aboutsave{ text-align:center; padding:15px;}
+.aboutsave li{ padding:0 0 10px;}
+.aboutsave h2{ margin:100px 0 0;}

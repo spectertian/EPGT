@@ -1,0 +1,46 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Wiki
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          wiki
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      fields:
+        id:   { label: ID }
+        title: { label: 名称 }
+        style: { label: 模型 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+
+      list:
+        title:  维基
+        fields:
+          other     :  {label: 其他操作, is_partial: true }
+          stamp     :  {label: 模型, is_partial: true }
+        display: [id,=title,stamp,created_at, updated_at]
+        sort: [id,desc]
+        max_per_page: 20
+        object_actions: {}
+        actions: {}
+        batch_actions:
+          batch_add: {label:批量添加, partial: batch_add }
+          _delete: ~
+      filter:
+        display: [id, title,style]
+      form:
+        actions:
+          _list  : { label: 返回列表 }
+          _save  : ~
+          _delete: ~
+
+      edit:
+        title: 维基百科
+      new:
+        title: 维基百科

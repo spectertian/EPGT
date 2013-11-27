@@ -1,0 +1,23 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+new:
+  credentials: tv_station_new
+
+create:
+  credentials: tv_station_new
+
+delete:
+  credentials: tv_station_del
+
+index:
+  credentials: tv_station_show
+
+edit:
+  credentials: tv_station_edit
+
+update:
+  credentials: tv_station_edit
+
+batchDelete:
+  credentials: tv_station_del

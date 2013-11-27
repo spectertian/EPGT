@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WebApiTest", "WebApiTest.vcproj", "{31DBF4AF-7852-430B-ACE4-F09F7A4FC63A}"
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31DBF4AF-7852-430B-ACE4-F09F7A4FC63A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{31DBF4AF-7852-430B-ACE4-F09F7A4FC63A}.Debug|Win32.Build.0 = Debug|Win32
+		{31DBF4AF-7852-430B-ACE4-F09F7A4FC63A}.Release|Win32.ActiveCfg = Release|Win32
+		{31DBF4AF-7852-430B-ACE4-F09F7A4FC63A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

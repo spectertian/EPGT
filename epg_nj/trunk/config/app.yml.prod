@@ -1,0 +1,96 @@
+prod:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "172.31.201.110:6001", domain: "epg", class: "image"}
+  
+  static_url: http://172.31.139.17:81/
+  #static_url: http://172.31.200.121:81/
+
+  lct_server_url: http://192.168.10.71:8080/lct-server/
+
+  memcache:
+    servers:
+      config_one: {host: "172.31.201.41", port: 11211}
+    compression : 0
+    lefttime : 7200
+
+  cpg_portal:
+    url: http://172.20.224.146:8086/nj-portal/oss/getNScreenPlayUrl
+    username: bokonguser
+    password: 12345678
+  cpg_ftp:
+    host: 172.20.224.235
+    port: 21
+    username: timeshift
+    password: timeshift123 
+    
+  base_url: http://172.31.139.17/
+
+dev:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "172.31.201.110:6001", domain: "epg", class: "image"}
+  static_url: http://172.31.200.121:81/
+  #static_url: http://image.epg.huan.tv/
+
+  huan_uc_url: http://61.145.165.154:8080/uc/json
+  #lct_server_url: http://118.194.161.67:8080/lct-server/
+  lct_server_url: http://192.168.10.71:8080/lct-server/
+
+  memcache:
+    servers:
+      config_one: {host: "172.31.201.41", port: 11211}
+    compression : 0
+
+  cpg_portal:
+    url: http://172.20.224.146:8086/nj-portal/oss/getNScreenPlayUrl
+    username: bokonguser
+    password: 12345678
+  cpg_ftp:
+    host: 172.20.224.235
+    port: 21
+    username: timeshift
+    password: timeshift123 
+
+  base_url: http://172.31.200.121:83/
+
+all: 
+  cpgPortal:
+    url: http://172.20.224.146:8086/nj-portal/oss/getNScreenPlayUrl
+    username: bokonguser
+    password: 12345678
+
+  cpgFtp:
+    host: 172.20.224.235
+    port: 21
+    username: timeshift
+    password: timeshift123 
+
+  linkQuery:
+    center: http://172.31.179.235:8880/SearchService/ContentLinksQuery
+
+  statsQuery:
+    biz: http://172.31.6.27:8080/hems/servlet/BizStatsQuery
+ 
+  #tcl,center,tongzhou
+  recommend:
+    vodWho: center
+    liveWho: tcl
+    tclUrl: http://10.20.20.29:8080/urec/api/v2/interface
+    centerUrl: http://172.20.224.146:9090/ie/interface
+    tongzhouUrl: http://172.31.178.6:10080/recommand/recommand/epgAction.action 
+  
+  cmsCenter:
+    importUrl: http://172.31.155.22:9080/core/ContentLinksQuery.do
+    bkjson: http://172.31.183.8:8080/icms/content
+
+  epgJson:
+    ip: 172.31.198.32
+    username: huanwang
+    password: huanwang
+
+  img:
+    url: http://172.31.139.17:81
+
+  epghuan:
+    url: http://www.epg.huan.tv/json

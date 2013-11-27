@@ -1,0 +1,101 @@
+##  Populate this file with data to be loaded by your ORM's *:data-load task.
+##  You can create multiple files in this directory (i.e. 010_users.yml,
+##  020_articles.yml, etc) which will be loaded in alphabetical order.
+#
+Admin:
+  Admin_1:
+    username: admin
+    password: <?php echo md5('admin')."\n";?>
+AdminAuth:
+  AdminAuth_1:
+    Admin: Admin_1
+    credential: admin_show
+  AdminAuth_2:
+    Admin: Admin_1
+    credential: admin_new
+  AdminAuth_3:
+    Admin: Admin_1
+    credential: admin_edit
+  AdminAuth_4:
+    Admin: Admin_1
+    credential: admin_del
+  AdminAuth_5:
+    Admin: Admin_1
+    credential: channel_show
+  AdminAuth_6:
+    Admin: Admin_1
+    credential: channel_new
+    Admin: Admin_1
+    credential: channel_edit
+  AdminAuth_8:
+    Admin: Admin_1
+    credential: channel_del
+  AdminAuth_9:
+    Admin: Admin_1
+    credential: program_show
+  AdminAuth_10:
+    Admin: Admin_1
+    credential: program_new
+  AdminAuth_11:
+    Admin: Admin_1
+    credential: program_edit
+  AdminAuth_12:
+    Admin: Admin_1
+    credential: program_del
+  AdminAuth_13:
+    Admin: Admin_1
+    credential: program_index_show
+  AdminAuth_14:
+    Admin: Admin_1
+    credential: program_index_new
+  AdminAuth_15:
+    Admin: Admin_1
+    credential: program_index_edit
+  AdminAuth_16:
+    Admin: Admin_1
+    credential: program_index_del
+  AdminAuth_17:
+    Admin: Admin_1
+    credential: program_template_show
+  AdminAuth_18:
+    Admin: Admin_1
+    credential: program_template_new
+  AdminAuth_19:
+    Admin: Admin_1
+    credential: program_template_edit
+  AdminAuth_20:
+    Admin: Admin_1
+    credential: program_template_del
+  AdminAuth_21:
+    Admin: Admin_1
+    credential: tags_show
+  AdminAuth_22:
+    Admin: Admin_1
+    credential: tags_new
+  AdminAuth_23:
+    Admin: Admin_1
+    credential: tags_del
+  AdminAuth_24:
+    Admin: Admin_1
+    credential: tv_station_show
+  AdminAuth_25:
+    Admin: Admin_1
+    credential: tv_station_new
+  AdminAuth_26:
+    Admin: Admin_1
+    credential: tv_station_edit
+  AdminAuth_27:
+    Admin: Admin_1
+    credential: tv_station_del
+  AdminAuth_28:
+    Admin: Admin_1
+    credential: wiki_show
+  AdminAuth_29:
+    Admin: Admin_1
+    credential: wiki_new
+  AdminAuth_30:
+    Admin: Admin_1
+    credential: wiki_edit
+  AdminAuth_31:
+    Admin: Admin_1
+    credential: wiki_del

@@ -1,0 +1,21 @@
+27/10/2010 - Versión 1.0.0 BETA1
+--------------------------------
+
+ * [b5dcfa6] updated Mondongo to 1.0.0 BETA1
+ * [a023290] fixed ->getRepositories() method in base task
+ * [15dc0d3] fixed base class on repository plugin model
+ * [d0df084] fixed form plugin output
+ * [9495084] fixed extension PluginClasses
+ * [a2a16d2] fixed the plugin configuration to work w/ mondongo-extensions-extra instead of mondongo-extensions
+ * [be0ca7f] changed submodule from mondongo-extensions to mondongo-extensions-extra
+ * [6c1060f] fixed sfMondongoExtensionForms.php to work w/ the last mondongo commit
+ * [a04c685] updated mondongo
+ * [6015e80] fixed fields check in form save
+ * [d134724] updated mondongo core extensions
+ * [41e7da3] adding mondongo-extensions
+ * [2f5a874] updated mondonto and tasks
+ * [775f704] fixed data-load task
+ * [3b39c99] updated mondongo
+ * [72ff4be] updated mondongo
+ * [b9865d0] updated mondongo
+ * [c27f3a8] changing for mondongo 1.0

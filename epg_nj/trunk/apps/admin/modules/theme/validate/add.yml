@@ -1,0 +1,6 @@
+methods:
+  post: [title, remark]
+
+names:
+  img:
+    required:     false

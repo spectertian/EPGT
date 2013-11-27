@@ -1,0 +1,41 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+#all:
+#  admin:
+#    credentials: { admin: '管理', channel: '频道', program: '节目单', program_ext: '节目标题', program_template: '节目模板', tags: '标签', tv_station: '电视台', wiki: '维基'  }
+
+all:
+  admin:
+    credentials:
+      admin:
+        label: '管理'
+        credential: { admin_show: '查看', admin_new: '新增', admin_edit: '编辑', admin_del: '删除' }
+      channel:
+        label: '频道'
+        credential: { channel_show: '查看', channel_new: '新增', channel_edit: '编辑', channel_del: '删除' }
+      program:
+        label: '节目单'
+        credential: { program_show: '查看', program_new: '新增', program_edit: '编辑', program_del: '删除', program_publish: '发布' }
+      program_index:
+        label: '节目标题'
+        credential: { program_index_show: '查看', program_index_new: '新增', program_index_edit: '编辑', program_index_del: '删除' }
+      program_ext:
+        label: '推荐管理'
+        credential: { program_ext_show: '查看', program_ext_new: '新增', program_ext_edit: '编辑', program_ext_del: '删除' }
+      program_template:
+        label: '节目模板'
+        credential: { program_template_show: '查看', program_template_new: '新增', program_template_edit: '编辑', program_template_del: '删除' }
+      tags:
+        label: '标签'
+        credential: { tags_show: '查看', tags_new: '新增', tags_edit: '编辑', tags_del: '删除' }
+      tag_relationships:
+        label: '标签关联'
+        credential: { tags_show: '查看', tags_new: '新增', tags_edit: '编辑', tags_del: '删除' }
+      tv_station:
+        label: '电视台'
+        credential: { tv_station_show: '查看', tv_station_new: '新增', tv_station_edit: '编辑', tv_station_del: '删除' }
+      wiki:
+        label: '维基'
+        credential: { wiki_show: '查看', wiki_new: '新增', wiki_edit: '编辑', wiki_del: '删除' }

@@ -1,0 +1,14 @@
+.hide { 
+    opacity: 0; 
+}
+.debug_info{
+    padding: 4px 8px 4px 8px;
+    width:200px;
+    height:400px;
+    float:left;
+	position:fixed;
+	background:#ff0;
+    right:0; 
+    top:0;
+    color:#d7cd25;
+}
