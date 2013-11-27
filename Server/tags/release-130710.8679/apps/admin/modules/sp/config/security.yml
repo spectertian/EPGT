@@ -1,0 +1,33 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: sp_del
+
+listchannel:
+  credentials: sp_index
+
+listwikis:
+  credentials: sp_index
+
+index:
+  credentials: sp_index
+
+edit:
+  credentials: sp_edit
+
+batchdelete:
+  credentials: short_movie_del
+
+add:
+  credentials: sp_new
+
+delchannel:
+  credentials: sp_del
+
+addchannel:
+  credentials: sp_new
+
+
+epgupdate:
+  credentials: program_sport_channelupdate

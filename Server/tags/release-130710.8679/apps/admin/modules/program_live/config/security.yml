@@ -1,0 +1,18 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+
+ajax_update:
+  credentials: program_live_edit
+
+delete:
+  credentials: program_live_del
+
+index:
+  credentials: program_live_index
+
+liveedit:
+  credentials: program_live_edit
+
+epgupdate:
+  credentials: program_sport_channelupdate 

@@ -1,0 +1,3 @@
+/usr/share/nginx/5itv/
+
+/usr/local/tvprogrambot/

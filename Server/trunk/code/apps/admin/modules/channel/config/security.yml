@@ -1,0 +1,23 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+new:
+  credentials: channel_new
+
+create:
+  credentials: channel_new
+
+delete:
+  credentials: channel_del
+
+index:
+  credentials: channel_show
+
+edit:
+  credentials: channel_edit
+
+update:
+  credentials: channel_edit
+
+batchDelete:
+  credentials: channel_del

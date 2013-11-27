@@ -1,0 +1,9 @@
+## YAML Template.
+show_indexSuccess:
+  has_layout: false
+  javascripts:    [thickbox-compressed.js]
+  stylesheets:    [thickbox.css]
+
+indexSuccess:
+  javascripts:    [thickbox-compressed.js,program_index.js]
+  stylesheets:    [thickbox.css]

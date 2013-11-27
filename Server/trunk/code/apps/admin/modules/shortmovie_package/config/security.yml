@@ -1,0 +1,35 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: shortmovie_package_del
+
+index:
+  credentials: shortmovie_package_index
+
+edit:
+  credentials: shortmovie_package_edit
+
+add:
+  credentials: shortmovie_package_new
+
+publishon:
+  credentials: shortmovie_package_new
+
+addshortmovie:
+  credentials: shortmovie_package_new
+
+delsm:
+  credentials: shortmovie_package_del
+
+manage:
+  credentials: shortmovie_package_index
+
+batchdelete:
+  credentials: shortmovie_package_del
+
+addnewshortmovie:
+  credentials: shortmovie_package_new
+
+captcha:
+  is_secure: false

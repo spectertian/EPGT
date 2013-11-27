@@ -1,0 +1,29 @@
+/*** reset ***/
+html{color:#000;background:#FFF;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}/* tables still need 'cellspacing="0"' in the markup */
+fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+blockquote,q{quotes: none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content: none;}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+sup,sub{font-size:100%;vertical-align:baseline;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+input,textarea,select,code kbd samp tt{*font-size:100%;}
+legend{color:#000;}
+
+/*** layout ***/
+body{line-height:100%;font-size:12px;font-family:"Droid Sans Fallback";}
+.clear{float:none;clear:both;}
+.m{margin:0 auto;}
+.d{display:none;}
+.fl{float:left;}
+.fr{float:right;}
+.al{text-align:left;}
+.ar{text-align:right;}
+.ac{text-align:center;}

@@ -1,0 +1,25 @@
+autoload:
+  vendor:
+    name: vendor lib
+    path: %SF_LIB_DIR%/vendor
+    recursive:  on
+  service:
+    name: service
+    path: %SF_LIB_DIR%/service
+    recursive:  on
+  captcha:
+    name: captcha
+    path: %SF_LIB_DIR%/captcha
+    recursive: on
+  wiki:
+    name: wiki
+    path: %SF_LIB_DIR%/wiki
+    recursive: on
+  widget:
+    name: widget
+    path: %SF_LIB_DIR%/widget
+    recursive: on
+  weibo:
+    name: weibo
+    path: %SF_LIB_DIR%/weibo
+    recursive: on

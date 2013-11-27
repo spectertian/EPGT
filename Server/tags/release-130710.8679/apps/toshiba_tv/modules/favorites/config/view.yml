@@ -1,0 +1,14 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+ajax_get_channelSuccess:
+  has_layout: false
+
+ajax_get_tagSuccess:
+  has_layout: false
+
+ajax_get_channel_programSuccess:
+  has_layout: false
+
+ajax_get_tag_programSuccess:
+  has_layout: false

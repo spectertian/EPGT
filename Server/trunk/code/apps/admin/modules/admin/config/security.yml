@@ -1,0 +1,26 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+new:
+  credentials: admin_new
+
+create:
+  credentials: admin_new
+
+delete:
+  credentials: admin_del
+
+index:
+  credentials: admin_show
+
+edit:
+  credentials: admin_edit
+
+update:
+  credentials: admin_edit
+
+batchDelete:
+  credentials: admin_del
+
+captcha:
+  is_secure: false

@@ -1,0 +1,21 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: category_recommends_del
+
+batchdelete:
+  credentials: category_recommends_del
+
+index:
+  credentials: category_recommends_index
+
+preview:
+  credentials: category_recommends_index
+
+list:
+  credentials: category_recommends_index
+edit:
+  credentials: category_recommends_edit
+captcha:
+  is_secure: false

@@ -1,0 +1,40 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ProgramExt
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          program_ext
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        program:   { label: 节目 }
+        type:   { label: 类型 ,is_partial: true }
+        style:   { label: 类型 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+
+      list:
+        title: 推荐管理
+        fields:
+          other     :  {label: 已存节目, is_partial: true }
+        display: [id,program,type,created_at, updated_at]
+        sort: [id ,desc]
+        max_per_page: 30
+        batch_actions:
+          _delete: { label: 删除 }
+        object_actions: {}
+        actions: {}
+
+      filter:
+        display: [style]
+      form:    ~
+      edit:    ~
+      new:     ~

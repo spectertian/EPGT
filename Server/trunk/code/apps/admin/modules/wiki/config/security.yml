@@ -1,0 +1,38 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+ajax_update:
+  credentials: program_live_edit
+
+delete:
+  credentials: wiki_del
+
+index:
+  credentials: wiki_show
+
+edit:
+  credentials: wiki_edit
+
+update:
+  credentials: wiki_edit
+
+new:
+  credentials: wiki_new
+
+create:
+  credentials: wiki_new
+
+batch:
+  credentials: wiki_batch
+
+recommend:
+  credentials: wiki_batch
+
+getwikisitedata:
+  credentials: wiki_getwikisitedata		
+
+getstaging:
+  credentials: wiki_getwikisitedata	
+
+epgupdate:
+  credentials: program_sport_channelupdate

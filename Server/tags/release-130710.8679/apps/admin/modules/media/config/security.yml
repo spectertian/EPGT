@@ -1,0 +1,16 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+batchdelete:
+  credentials: media_batchdelete
+
+index:
+  credentials: media_index
+
+collectionpic:
+  credentials: media_collectionpic
+
+batchchangecategorys:
+  credentials: media_batchchangecategorys
+captcha:
+  is_secure: false

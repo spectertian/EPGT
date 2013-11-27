@@ -1,0 +1,27 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+search:
+  url: /search
+  param: { module: search, action: index }
+
+channel:
+  url: /channel
+  param: { module: channel, action: index }
+
+# default rules
+homepage:
+  url:   /
+  param: { module: channel, action: index }
+
+userpage:
+  url:   /user
+  param: { module: user, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

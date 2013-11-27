@@ -1,0 +1,38 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: video_del
+
+index:
+  credentials: video_index
+
+edit:
+  credentials: video_edit
+
+videoajaxedit:
+  credentials: video_edit
+
+show:
+  credentials: video_index
+
+crawler:
+  credentials: video_edit
+
+addvideoplaylist:
+  credentials: video_new
+
+addvideo:
+  credentials: video_new
+
+deletevideoplaylist:
+  credentials: video_del
+
+deletevideo:
+  credentials: video_del
+
+crawlerdongman:
+  credentials: video_new
+
+epgupdate:
+  credentials: program_sport_channelupdate

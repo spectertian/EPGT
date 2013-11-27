@@ -1,0 +1,15 @@
+## YAML Template.
+indexSuccess:
+  #stylesheets: [internal.css,message-box.css,jquery.autocomplete.css,css.css]
+  stylesheets: [fancybox-1.3.4.css,smoothness/jquery-ui-1.8.2.custom.css,auto_complete.css,css.css]
+  #javascripts: [jquery-1.4.2.min.js, index.js, menu.js, jquery.autocomplete.min.js, menu_left.js, jquery-ui-1.8.2.custom.min.js, addmodul.js]
+  javascripts: [jquery.mousewheel-3.0.4.pack.js,jquery.fancybox-1.3.4.pack.js,thickbox.js,auto_complete.js,jquery-ui-1.8.2.custom.min.js,addmodul.js, DateTimeMask.js]
+editSuccess:
+  stylesheets: [fancybox-1.3.4.css,smoothness/jquery-ui-1.8.2.custom.css,auto_complete.css,css.css]
+  javascripts: [jquery.mousewheel-3.0.4.pack.js,jquery.fancybox-1.3.4.pack.js,thickbox.js,auto_complete.js,jquery-ui-1.8.2.custom.min.js,addmodul.js, DateTimeMask.js, jquery.json-2.4.js]
+previewSuccess:
+  stylesheets: [fancybox-1.3.4.css,smoothness/jquery-ui-1.8.2.custom.css,auto_complete.css,css.css]
+  javascripts: [jquery.mousewheel-3.0.4.pack.js,jquery.fancybox-1.3.4.pack.js,thickbox.js,auto_complete.js,jquery-ui-1.8.2.custom.min.js]
+listSuccess:
+  stylesheets: [fancybox-1.3.4.css,smoothness/jquery-ui-1.8.2.custom.css,auto_complete.css,css.css]
+  javascripts: [jquery.mousewheel-3.0.4.pack.js,jquery.fancybox-1.3.4.pack.js,thickbox.js,auto_complete.js,jquery-ui-1.8.2.custom.min.js,addmodul.js, DateTimeMask.js]

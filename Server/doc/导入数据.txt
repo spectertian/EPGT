@@ -1,0 +1,25 @@
+mysqldump -u root -pportal epg admin >epg/admin.sql                 
+mysqldump -u root -pportal epg admin_auth >epg/admin_auth.sql             
+
+
+           
+mysqldump -u root -pportal epg tv_station >epg/tv_station.sql
+mysqldump -u root -pportal epg channel >epg/channel.sql                
+mysqldump -u root -pportal epg channel_recommend >epg/channel_recommend.sql   
+mysqldump -u root -pportal epg program >epg/program.sql
+mysqldump -u root -pportal epg program_index >epg/program_index.sql
+mysqldump -u root -pportal epg program_template >epg/program_template.sql
+mysqldump -u root -pportal epg tags >epg/tags.sql
+
+   
+mysqldump -u root -pportal epg favorites >epg/favorites.sql           
+mysqldump -u root -pportal epg migration_version >epg/migration_version.sql      
+mysqldump -u root -pportal epg theme >epg/theme.sql                
+mysqldump -u root -pportal epg theme_item >epg/theme_item.sql                
+ 
+
+mysqldump -u root -pportal epg program_template >epg/program_template.sql
+mysqldump -u root -pportal epg attachment_categorys >epg/attachment_categorys.sql   
+mysqldump -u root -pportal epg attachments >epg/attachments.sql            
+mysqldump -u root -pportal epg attention >epg/attention.sql 
+mysqldump -u root -pportal epg ip >epg/ip.sql              

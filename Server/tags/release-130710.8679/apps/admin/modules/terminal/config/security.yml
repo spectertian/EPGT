@@ -1,0 +1,17 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials:terminal_del
+
+index:
+  credentials: terminal_index
+
+edit:
+  credentials: terminal_edit
+
+add:
+  credentials: terminal_new
+
+captcha:
+  is_secure: false

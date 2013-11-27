@@ -1,0 +1,10 @@
+项目编号：1205
+项目名称：智能EPG
+解决问题：
+1、修复计划任务autoCompletionDoubanWiki 
+2、修复测试人员提交的BUG
+
+上线步骤：
+1、备份原有项目文件
+2、将svn://192.168.10.13/EPG/Server/trunk/deploy/20131114/apps.zip lib.zip web_admin.zip上传到web服务器，解压，并覆盖到相应目录。
+3、清除syfmony缓存、完成。

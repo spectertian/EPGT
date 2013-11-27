@@ -1,0 +1,15 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+index:
+  credentials: developer_index
+new:
+  credentials: developer_new
+edit:
+  credentials: developer_edit
+lockdeveloper:
+  credentials: developer_lockdeveloper
+delete:
+  credentials: developer_del
+captcha:
+  is_secure: false

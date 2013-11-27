@@ -1,0 +1,31 @@
+xunsearch1.3 安装 （如果安装过可以忽略）
+	下载解压
+	wget http://www.xunsearch.com/download/xunsearch-full-latest.tar.bz2
+	tar -xjf xunsearch-full-latest.tar.bz2
+	安装
+	cd xunsearch-full/
+	sh setup.sh
+	安装完成，默认的路径为 /usr/local/xunsearch/
+	cd /usr/local/xunsearch/ 
+
+	将服务加到启动项
+	vi /etc/rc.local  添加一行
+	/usr/local/xunsearch/bin/xs-ctl.sh start
+
+	将附件中的epg_wiki.ini放到 /usr/local/xunsearch/sdk/php/app 下
+	启动服务
+	bin/xs-ctl.sh start
+
+web程序的安装
+	1、备份原有程序，及数据库（mysql+mongo）。
+	2、连接数据库，将附件中的epg_20120228.sql导入到数据库。
+	3、从SVN取程序包，解压newepg。覆盖到项目中。
+		svn地址：
+	4、修改配置。
+		将config目录下的 app.yml.prod 改为 app.yml，将 databases.yml.prod 改为 databases.yml
+	5、清除symfony缓存  
+		symfony cc
+
+运行计划任务
+	1、建立wiki的搜索数据
+	symfony tv:wikiToXunSearch  --env=prod

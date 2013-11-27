@@ -1,0 +1,34 @@
+sfMondongoPlugin
+================
+
+Mondongo is the simple, powerful and ultrafast Object Document Mapper (ODM) for PHP and MongoDB.
+
+sfMondongoPlugin is the plugin to use Mondongo with Symfony.
+
+Installation
+------------
+
+    ./symfony plugin:install -s beta sfMondongoPlugin
+
+Documentation
+-------------
+
+  * [Mondongo](http://mondongo.es/documentation/1.0/mondongo/en)
+  * [sfMondongoPlugin](http://mondongo.es/documentation/1.0/sf-mondongo-plugin/en)
+
+Repositories
+------------
+
+  * [Mondongo](http://github.com/mondongo/mondongo)
+  * [sfMondongoPlugin](http://github.com/mondongo/sfMondongoPlugin)
+
+Bug report
+----------
+
+  * [Mondongo](http://github.com/mondongo/mondongo/issues)
+  * [sfMondongoPlugin](http://github.com/mondongo/sfMondongoPlugin/issues)
+
+Links
+-----
+
+  * [Mondongo Website](http://mondongo.es)

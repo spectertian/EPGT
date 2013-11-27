@@ -1,0 +1,21 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        即刻•电影
+    description:  智能电视的新
+    keywords:     首页,节目单,影视,综艺,社科,电视剧,电影,栏目,湖南卫视,体育,偶像,喜剧,爱情,悬疑,恐怖,科幻,剧情,武侠,神话,历史谍战,古装,娱乐,明星,情感,搞笑,访谈,选秀,交友,热点,音乐,女性,时尚,互动
+
+    language:     zh-cn
+    #robots:       index, follow
+
+  stylesheets:    [base.css]
+
+  javascripts:    [jquery-1.4.4.min.js, jquery.cookie.js, 5i.js]
+
+  has_layout:     true
+  layout:         layout

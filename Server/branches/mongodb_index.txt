@@ -1,0 +1,4 @@
+program
+db.program.ensureIndex({"channel_type": 1 }, {"name":"channel_type_1", "background": true})
+db.program.ensureIndex({"channel_code": 1 }, {"name":"channel_code_1", "background": true})
+db.program.ensureIndex({"wiki_id": -1 }, {"name":"wiki_id_-1","background": true, "sparse": true})

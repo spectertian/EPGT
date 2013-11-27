@@ -1,0 +1,12 @@
+indexSuccess:
+  javascripts:    [thickbox-compressed.js,channel.js]
+  stylesheets:    [thickbox.css]
+listSuccess:
+  stylesheets: [jquery.powertip.css,css.css,auto_complete.css]
+  javascripts: [jquery.js,jquery.powertip.js]
+addSuccess:
+   stylesheets:   [calendar.css,smoothness/jquery-ui-1.8.2.custom.css,thickbox.css,auto_complete.css,css.css,fancybox-1.3.4.css]
+   javascripts: [calendar.js,tinybox.js,thickbox.js,auto_complete.js,jquery-ui-1.8.2.custom.min.js, -jquery-ui-i18n.min.js,DateTimeMask.js,DateTimeMask.js,-jquery.uitableedit.js,jquery.fancybox-1.3.4.pack.js,jquery.mousewheel-3.0.4.pack.js]
+editSuccess:
+  javascripts: [jquery.mousewheel-3.0.4.pack.js,jquery.fancybox-1.3.4.pack.js,thickbox.js,auto_complete.js,jquery-ui-1.8.2.custom.min.js,jquery.fancybox-1.3.4.pack.js,jquery.mousewheel-3.0.4.pack.js]
+  stylesheets: [fancybox-1.3.4.css,smoothness/jquery-ui-1.8.2.custom.css,fancybox-1.3.4.css]

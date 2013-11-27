@@ -1,0 +1,13 @@
+1、确认已经安装mysql、mongod、memcache、xunsearch、mogilefs、nginx、php（php-fpm，symfony已经相关php扩展）。
+2、导入mysql数据库，导入mongod数据库。
+3、将程序解压放到/www/hnepg里面。
+4、修改/www/hnepg/config/database.yml中的数据库连接。
+   修改/www/hnepg/config/app.yml中文件存储的连接，已经memache的连接。
+   将/www/hnepg/config/epg_wiki.ini拷贝到/usr/local/xunsearch/sdk/php/app目录下。重启xunsearch。
+4、将nginx的目录指到项目的/www/hnepg/web_henan_tv目录中。
+5、将cache，log，data目录设为可写。
+6、添加计划任务
+   0 12 * * * /usr/local/php/bin/php /www/hnepg/symfony tv:GetProgramsWeek --env=prod >> /www/hnepg/tmp/getProgramsWeek.txt
+7、建立xunsearch的索引
+   /usr/local/php/bin/php /www/hnepg/symfony tv:XSIndexRebuild --env=prod
+8、重启nginx   

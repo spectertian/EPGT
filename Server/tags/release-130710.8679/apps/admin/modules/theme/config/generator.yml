@@ -1,0 +1,47 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Theme
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          theme
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:    false
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        name: { label: 频道名称 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+      list:
+        title: 频道列表
+        fields:
+          program: {label: 节目模板, is_partial: true }
+          program_1: {label: 电视节目, is_partial: true }
+          has_logo: { label: 台标,is_partial: true }
+        display: [id, =name, remark, created_at, updated_at]
+        max_per_page: 30
+        sort: [created_at, asc]
+        
+        batch_actions:
+          _delete: { label: 删除 }
+        object_actions: {}
+      filter:
+        display: [name, remark]
+      form:
+        display: [ name,remark ]
+        fields:
+        actions:
+          _list  : { label: 返回列表 }
+          _save  : ~
+          _delete: ~
+      edit:
+        title: 更新 %%name%% 专题
+      new:
+        title: 创建专题

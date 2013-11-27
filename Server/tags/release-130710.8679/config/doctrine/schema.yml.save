@@ -1,0 +1,230 @@
+options:
+  type: MyISAM
+  collate: utf8_general_ci
+  charset: utf8
+
+Admin:
+  actAs: { Timestampable: ~ }
+  columns:
+    username: { type: string(50), notnull: true }
+    password: { type: string(50) , notnull: true }
+    name: { type: string(30), default: null }
+    phone: { type: string(20), default: null }
+    status: { type: boolean, notnull: true, default: 0 }
+    email: { type: string(255), unique: true }
+    last_login_ip: { type: string(20), notnull: true }
+    last_login_at: { type: timestamp, notnull: true }
+
+AdminAuth:
+  actAs: { Timestampable: ~ }
+  columns:
+    admin_id: integer
+    credential: string(50)
+  relations:
+    Admin:   { local: admin_id, foreign: id }
+
+TvStation:
+  actAs: { Timestampable: ~ }
+  columns:
+    parent_id: { type: integer, notnull: true , default: 0 }
+    name: string(100)
+    sort: { type: integer, notnull: true , default: 0 }
+    publish: { type: integer(1), notnull: true, default: 0 }
+    code: { type: string(32), notnull: true }
+  relations:
+    TvStation: { local: parent_id, foreign: id }
+
+Channel:
+  actAs: { Timestampable: ~ }
+  columns:
+    tv_station_id: { type: integer, notnull: true }
+    sort_id: { type: integer, notnull: true , default: 0 }
+    publish: { type: integer(1), notnull: true, default: 1 }
+    autosyn: { type: enum, length: 1, values: [0, 1], default: 0 }
+    code: { type: string(50), notnull: true }
+    name: string(20)
+    memo : string(10)
+    type: string(20)
+    config: { type: string(4000), notnull: false }
+    logo: { type: string(100),notnull: false,default: 0 }
+    live: { type: enum, length: 1, values: [0, 1], default: 0 }
+    live_config: { type: string(4000), notnull: false }
+  relations:
+    TvStation: { local: tv_station_id, foreign: id }
+
+#Program:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    name: string(100)
+#    publish: { type: integer(1), notnull: true, default: 0 }
+#    channel_id: integer
+#    fulltime: datetime
+#    time: { type: time }
+#    date: date
+#    wiki_id: { type: integer, notnull: false, default: 0 }
+#  relations:
+#    Channel: { local: channel_id, foreign: id }
+#    Wiki: { local: wiki_id, foreign: id }
+
+#ProgramBot:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    date: { type: date, notnull: true }
+#    time: { type: time, notnull: true }
+#    week: { type: integer(11), notnull: true }
+#    name: { type: string(255), notnull: true }
+#    site: { type: string(20), notnull: true }
+#    channel_code: { type: string(50), notnull: true }
+
+
+#ProgramExt:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    program_id: { type: integer, notnull: true }
+#    style: { type: string(6), notnull: true }
+#    date: { type: date, notnull: true }
+#  relations:
+#    Program: { local: program_id, foreign: id }
+
+#ProgramAutosyn:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    program_id: integer
+#    date: date
+#    channel_id: integer
+#  relations:
+#    Channel: { local: channel_id, foreign: id }
+
+ProgramIndex:
+  actAs: { Timestampable: ~ }
+  columns:
+    title: string(20)
+    channel_id: integer
+  relations:
+    Channel: { local: channel_id, foreign: id }
+
+#节目单模板
+ProgramTemplate:
+  actAs: { Timestampable: ~ }
+  columns:
+    p_id: integer
+    wiki_id:  integer
+    name: string(100)
+    time: string(10)
+  relations:
+    ProgramIndex: { local: p_id, foreign: id }
+#    Wiki: { local: wiki_id, foreign: id }
+
+Tags:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: string(100)
+
+#ProgramTag:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    program_id: integer
+#    tag_id: integer
+#    time: { type: time }
+#    date: date
+#    channel_id: integer
+#  relations:
+#    Program: { local: program_id, foreign: id }
+#    Tags: { local: tag_id, foreign: id }
+#    Channel: { local: channel_id, foreign: id }
+    
+#Menu:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    parent_id: { type: integer, default: null }
+#    name: { type: string(100), notnull: true }
+#    notes: { type: string(100), default: null }
+    
+#wiki
+#Wiki:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    title: string(100)
+#    style: string(20)
+#    content: string(10000)
+
+#WikiTag:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    wiki_id: integer
+#    tag_id: integer
+#  relations:
+#    Wiki: { local: wiki_id, foreign: id }
+#    Tags: { local: tag_id, foreign: id }
+#wiki扩展
+#WikiExt:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    title     : string(50)
+#    sort      : integer
+#    wiki_id   : integer
+#    wiki_key: string(50)
+#    wiki_value: string(10000)
+#  relations:
+#    Wiki: { local: wiki_id, foreign: id }
+
+#User:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    user_key: { type: string(30), notnull: true }
+#    username: { type: string(20), notnull: true }
+#    email: { type: string(50), notnull: true }
+#    password: { type: string(32), notnull: true }
+#    user_from: { type: string(10), notnull: true }
+#    avatar: { type: string(100), notnull: true }
+#    ip: { type: string(20), notnull: true }
+#
+#UserExt:
+#  actAs: { Timestampable: ~ }
+#  columns:
+#    user_id   : integer
+#    user_key: { type: string(50), notnull: true }
+#    user_value: { type: string(10000), notnull: true }
+#  relations:
+#    User: { local: user_id, foreign: id }
+
+Ip:
+  actAs: { Timestampable: ~ }
+  columns:
+    ip1: integer
+    ip2: integer
+    province: { type: string(10), notnull: true }
+    city: { type: string(10), notnull: true }
+    code: { type: string(32), notnull: true }
+
+#收藏
+Favorites:
+  actAs: { Timestampable: ~ }
+  columns:
+    user_id: { type: integer, notnull: true }
+    content: { type: string(50), notnull: true }
+    type: { type: string(50), notnull: true }
+
+#关注
+Attention:
+  actAs: { Timestampable: ~ }
+  columns:
+    user_id: { type: integer, notnull: true }
+    pid: { type: integer, notnull: true }
+
+#文件
+Attachments:
+  actAs: { Timestampable: ~ }
+  columns:
+    source_name: { type: string(250),notnull: true }
+    file_name: { type: string(250), notnull: true }
+    file_key: { type: string(250), notnull: true }
+    category_id: { type: integer, notnull: true, default: 0 }
+    thumb: { type: string(4000),notnull: true, default: 0 }
+    
+#文件分类
+AttachmentCategorys:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(250),notnull: true }
+    parent_id: { type: integer, notnull: true, default: 0 }

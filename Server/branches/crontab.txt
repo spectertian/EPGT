@@ -1,0 +1,19 @@
+# ============   EPG  ============= #
+
+#创建第二天及第三天要播出的节目列表
+1 4  * * * /usr/local/php5.3.8/bin/php  /usr/share/nginx/5itv/symfony tv:wikiPlay --env=prod > /dev/null 2>&1
+#周五十三点抓取任务  周一九点抓取任务  每天凌晨两点 执行
+0 2  * * * /usr/bin/python26 /usr/local/tvprogrambot/bot.py
+*/5 * * * * /usr/local/php5.3.8/bin/php /usr/share/nginx/5itv/symfony tv:UpdateChannelHot  --env=prod > /dev/null 2>&1
+*/10 * * * * /usr/bin/python26 /usr/local/tvprogrambot/bot_again.py
+*/10 * * * * /usr/local/php5.3.8/bin/php /usr/share/nginx/5itv/symfony tv:updateChannelTvsou  --env=prod
+*/1 * * * * /usr/local/php5.3.8/bin/php /usr/share/nginx/5itv/symfony tv:programLive --env=prod > /dev/null 2>&1
+#南京广电
+10 */2 * * * /usr/local/php5.3.8/bin/php /usr/share/nginx/5itv/symfony tv:getNJBCPrograms --editor=1 --env=prod >> /usr/share/nginx/5itv/tmp/getNJBCPrograms.txt
+50 23 * * * /usr/local/php5.3.8/bin/php /usr/share/nginx/5itv/symfony tv:DelNJBCFolder --env=prod > /usr/share/nginx/5itv/tmp/DelNJBCFolder.txt
+30 9 * * * /usr/local/php5.3.8/bin/php  /usr/share/nginx/5itv/symfony tv:programExportToCsv --env=prod
+30 3 * * * /usr/local/php5.3.8/bin/php  /usr/share/nginx/5itv/symfony xj:ProgramExportTxt --env=prod > /dev/null 2>&1
+#####0 1 * * * /usr/local/php5.3.8/bin/php /usr/share/nginx/5itv/symfony tv:GetContentInject --env=prod >> /usr/share/nginx/5itv/tmp/GetContentInject.txt
+#####30 1 * * * /usr/local/php5.3.8/bin/php /usr/share/nginx/5itv/symfony tv:GetContentImport --env=prod >> /usr/share/nginx/5itv/tmp/GetContentImport.txt
+#每周二清理过期的 program 数据
+01 00 * * 2 /usr/local/php5.3.8/bin/php  /usr/share/nginx/5itv/symfony tv:programArchiver --env=prod > /dev/null 2>&1

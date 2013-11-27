@@ -1,0 +1,73 @@
+prod:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "5itv", class: "image"}
+
+  #static_url: http://image.5itest.tv/
+  static_url: http://image.epg.huan.tv/
+
+  huan_uc_url: http://61.145.165.154:8080/uc/json
+  #lct_server_url: http://118.194.161.67:8080/lct-server/
+  lct_server_url: http://192.168.10.71:8080/lct-server/
+  huan_irs_url: http://110.173.3.240:8080/
+
+  memcache:
+    servers:
+      config_one: {host: "192.168.10.71", port: 11211}
+    compression : 0
+    lefttime : 7200
+ 
+  php_path: /usr/local/php5.3.8/bin/
+  project_path: /www/newepg/
+
+dev:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.10.70:7001", domain: "5itv", class: "image"}
+  
+  static_url: http://image.epg.huan.tv/
+
+  huan_uc_url: http://61.145.165.154:8080/uc/json
+  #lct_server_url: http://118.194.161.67:8080/lct-server/
+  lct_server_url: http://192.168.10.71:8080/lct-server/
+  huan_irs_url: http://110.173.3.240:8080/
+  memcache:
+    servers:
+      config_one: {host: "192.168.10.71", port: 11211}
+    compression : 0
+  
+  php_path: /usr/local/php5.3.8/bin/
+  project_path: /www/newepg/
+  
+all:
+  live:
+    tags: ['电视剧','电影','体育','娱乐','少儿','科教','财经','综合']
+  vod:
+    source: { qiyi: "奇艺", youku: "优酷", sina: "新浪", sohu: "搜狐", tps: "tps", baidu_youku: "百度-优酷", baidu_sina: "百度-新浪", baidu_qiyi: "百度-奇艺", baidu_souhu: "百度-搜狐", baidu_pptv: "百度-pptv", baidu_pps: "百度-pps", baiud_letv: "百度-乐视", baidu_tudou: "百度-土豆", baidu_tencent: "百度-QQ", cntv: "cntv", wasu: "wasu" }
+    category: [{},{"name" : "电影", "child" : {11 : "喜剧", 12 : "爱情", 13 : "古装", 14 : "家庭", 15 : "剧情", 16 : "悬疑", 17 : "谍战", 18 : "动作", 19 : "战争", 20 : "恐怖", 21 : "动画"}},{"name" : "电视剧", "child" : {22 : "偶像", 23 : "喜剧", 24 : "爱情", 25 : "古装", 26 : "武侠", 27 : "家庭", 28 : "剧情", 29 : "悬疑", 30 : "谍战", 31 : "动作",  32 : "战争", 33 : "恐怖", 34 : "动画", 35 : "科幻", 36 : "警匪", 37 : "励志", 38 : "伦理", 39 : "犯罪", 40 : "商战", 41 : "革命"}}]
+  httpsqs:
+    host: 192.168.10.71
+    port: 1218
+    auth: 
+    charset: utf-8
+  api:
+    need_visit_ontrol: false
+    white_iplist: ["218.241.141.234"]
+  rec:
+    time_area:
+      - 0:00-4:00
+      - 4:00-8:00
+      - 8:00-11:00
+      - 11:00-15:00
+      - 15:00-19:00
+      - 19:00-21:30
+      - 21:30-24:00
+    time_block:
+      - ["00:00-00:30","00:30-01:00","01:00-01:30","01:30-02:00","02:00-02:30","02:30-03:00","03:00-03:30","03:30-04:00"]
+      - ["04:00-04:30","04:30-05:00","05:00-05:30","05:30-06:00","06:00-06:30","06:30-07:00","07:00-07:30","07:30-08:00"]
+      - ["08:00-08:30","08:30-09:00","09:00-09:30","09:30-10:00","10:00-10:30","10:30-11:00"]
+      - ["11:00-11:30","11:30-12:00","12:00-12:30","12:30-13:00","13:00-13:30","13:30-14:00","14:00-14:30","14:30-15:00"]
+      - ["15:00-15:30","15:30-16:00","16:00-16:30","16:30-17:00","17:00-17:30","17:30-18:00","18:00-18:30","18:30-19:00"]
+      - ["19:00-19:30","19:30-20:00","20:00-20:30","20:30-21:00","21:00-21:30"]
+      - ["21:30-22:00","22:00-22:30","22:30-23:00","23:00-23:30","23:30-24:00"]
+    

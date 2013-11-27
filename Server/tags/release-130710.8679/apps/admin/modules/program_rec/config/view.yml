@@ -1,0 +1,3 @@
+indexSuccess:
+  javascripts:    [thickbox-compressed.js,channel.js]
+  stylesheets:    [thickbox.css,css.css]

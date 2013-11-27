@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/* 体育赛事 */
+.game { float:left; margin-top:10px; padding-left:7px; width:630px; }
+.game .item { float:left; margin:0 0 7px 5px; width:120px; height:193px; overflow:hidden; }
+.game .item img { width:114px; height:187px; overflow:hidden; border:3px solid #567b8d; }
+.game .hover img { border-color:#f08200; }
+
+/* 正在直播 */
+.column .spotlight-body { width:280px; padding-right:5px; }
+.column .spotlight { margin:10px 0 25px 20px; }
+.column .spotlight .cover { float:left; }
+.column .spotlight .cover img { width:300px; height:260px; border:3px solid #567b8d; }
+.column .spotlight .hover img { border-color:#f08200; }
+
+.onair-column-title { height:42px; overflow:hidden; background:url("../images/channel-bullet.png") no-repeat 0 center; text-indent:32px; line-height:30px; font-size:24px; }
+.onair-list { margin:5px 0 0; }
+.onair-list li { height:36px; padding:0 5px; line-height:36px; }
+.onair-list li.hover { height:30px; border:3px solid #f08200; line-height:30px; }
+.onair-list li .title { float:left; }
+.onair-list li .channel { float:right; }
+
+.today-content-title { margin:20px 10px 20px 24px; padding-right:8px; height:30px; background:url("../images/drama-tips-bg.png") no-repeat right center; overflow:hidden; line-height:30px; font-size:30px; text-indent:0; }
+.drama-tips { float:right; font-size:24px; }
+
+.column .item { float:left; margin:0 0 0 25px; width:181px; overflow:hidden; text-align:center; }
+
+/* 东部球队 */
+#game .eastteam-the-loop { position:relative; margin:0 18px 3px 12px; width:auto; height:570px; }
+#game .eastteam-the-loop .larr { position:absolute; left:20px; top:250px; width:32px; height:45px; overflow:hidden; text-indent:-9999px; background:url("../images/side_larr.png") no-repeat 0 0; }
+#game .eastteam-the-loop .rarr { position:absolute; right:20px; top:250px; width:32px; height:45px; overflow:hidden; text-indent:-9999px; background:url("../images/side_rarr.png") no-repeat 0 0; }
+#game .eastteam-the-loop ul { margin:0 55px; height:570px; }
+#game .eastteam-the-loop li { float:left; margin:20px 10px 0; width:202px; text-align:center; }
+#game .eastteam-the-loop li .body { position:relative; padding-top:10px; height:145px; border:3px solid transparent; }
+#game .eastteam-the-loop li.hover .body { border-color:#f08200; }
+#game .eastteam-the-loop li .team-icon { height:100px; margin-bottom:10px; line-height:100px; }
+
+
+/* 球员列表 */
+#game .search { margin-top:10px; }
+
+.initial-search { position:relative; height:30px; margin:0 25px; padding-bottom:20px; font-size:28px; line-height:30px; text-align:center; }
+.initial-search .selected { position:absolute; top:3px; left:0; color:#32b5db; font-size:54px; }
+.initial-search li { display:inline; padding:0 2px; }
+.initial-search li.hover { border:3px solid #f08200; }
+
+.player-the-loop { margin:0 40px; }
+.player-the-loop a { padding:3px; display:block; color:#fff; text-decoration:none; }
+.player-the-loop a:hover { padding:0; border:3px solid #f08200; }
+
+.column-left { float:left; width:550px; padding-left:12px; padding-right:24px; border-right:1px solid #117a9c; }
+.column-right { float:right; width:550px; }
+.player-the-loop li { width:550px; height:36px; font-size:22px; line-height:36px; }
+.player-the-loop li .english-name { float:left; width:270px; text-indent:10px; }
+.player-the-loop li .chinese-name { float:right; width:270px; }
+

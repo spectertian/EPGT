@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>Service Web 服务</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" type="text/xml" href="/service.asmx?disco" />
+<link rel="stylesheet" type="text/css" href="base.css" />
+<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="function.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("h3").each(function(){ 
+		$table = $(this).next();
+		$table.hide();
+		$(this).click(function(){
+			$("table").hide();
+			$(this).next().toggle();
+		});
+	});
+});
+</script>
+</head>
+ 
+<body>
+    <p class="heading1">智能EPG接口 RPC 测试</p>	
+	<div id="content"> 	
+	<form method="post" action="http://www.5itest.tv/api/interface2" id="post-form" target="_blank">
+		<input type="hidden" name="xmlString" id="xmlString">
+		<div style="zoom:1; overflow:hidden;">
+			<p class="intro">选择测试平台<select id="env" name="env"><option value="dev">开发平台</option><option value="test">测试平台</option><option value="prod" selected>正式平台</option></select></p>
+			<div style="width:40%;float:left;">
+                <h3>getChannelList</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="getChannelList();"></td>
+                    </tr>
+                </table>
+                <h3>getWeekByProvinceList</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal; width:120px;">channel_code:</td>
+                        <td><input class="frmInput" type="text" size="20" name="cid" id="getWeekByProvinceList_channel_code" value="cctv2"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="getWeekByProvinceList();"></td>
+                    </tr>
+                </table> 
+                <h3>getNowPrograms</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal; width:120px;">channel_code:</td>
+                        <td><input class="frmInput" type="text" size="20" name="cid" id="getNowPrograms_channel_code" value="cctv2"></td>
+                    </tr>                    
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="getNowPrograms();"></td>
+                    </tr>
+                </table>
+                <h3>getLiveTags</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="getLiveTags();"></td>
+                    </tr>
+                </table>
+                <h3>getLiveList</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal; width:120px;">province:</td>
+                        <td><input class="frmInput" type="text" size="20" name="cid" id="getLiveList_province" value="beiing"> 省的全拼</td>
+                    </tr>	
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal; width:120px;">tag:</td>
+                        <td><input class="frmInput" type="text" size="20" name="cid" id="getLiveList_tag" value=""> 如：电视剧、电影、财经、综合等</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="getLiveList();"></td>
+                    </tr>
+                </table> 
+                <h3>search</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal; width:120px;">keyword:</td>
+                        <td><input class="frmInput" type="text" size="20" name="cid" id="search_keyword" value="功夫"></td>
+                    </tr>	
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="search();"></td>
+                    </tr>
+                </table> 
+                <h3>getWikiAllInfo</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal; width:120px;">wiki_id:</td>
+                        <td><input class="frmInput" type="text" size="20" name="cid" id="getWikiAllInfo_wiki_id" value="51668cc8ed454b6c5d000000"></td>
+                    </tr>	
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="getWikiAllInfo();"></td>
+                    </tr>
+                </table> 
+                <h3>postUserLiving</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal; width:120px;">wiki_id:</td>
+                        <td><input class="frmInput" type="text" size="20" name="cid" id="getWikiAllInfo_wiki_id" value="51668cc8ed454b6c5d000000"></td>
+                    </tr>	
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="postUserLiving();"></td>
+                    </tr>
+                </table>
+                <h3>getAllChannel</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="getAllChannel();"></td>
+                    </tr>
+                </table>
+			</div>
+			<div style="width:60%;float:right;">
+                
+			</div>	
+		</div>
+	</form>
+	</div>
+</body>
+</html>

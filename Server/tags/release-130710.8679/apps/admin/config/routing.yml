@@ -1,0 +1,222 @@
+wiki:
+  url:   /wiki
+  param: { module: wiki, action: index }
+
+wiki_edit:
+  url: /wiki/edit
+  param: { module: wiki, action: edit }
+
+developer:
+  url:   /developer
+  param: { module: developer, action: index }
+
+developer_new:
+  url:   /developer/new
+  param: { module: developer, action: new }
+
+developer_edit:
+  url:   /developer/edit
+  param: { module: developer, action: edit }
+
+
+attachment_categorys:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                AttachmentCategorys
+    module:               attachment_categorys
+    prefix_path:          /attachment_categorys
+    column:               id
+    with_wildcard_routes: true
+    
+wiki_recommend:
+  url: /wiki_recommend
+  param: {module: wiki_recommend, action: index }
+  
+category_recommend:
+  url: /category_recommend
+  param: {module: category_recommend, action: index }
+  
+page_index:
+  url: /page
+  param: { module: page, action: index }
+  
+attachments:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                attachments
+    module:               media
+    prefix_path:          /media
+    column:               id
+    with_wildcard_routes: true
+
+program_tag:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProgramTag
+    module:               'program_tag'
+    prefix_path:          /'program_tag'
+    column:               id
+    with_wildcard_routes: true
+
+program_ext:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProgramExt
+    module:               program_ext
+    prefix_path:          /program_ext
+    column:               id
+    with_wildcard_routes: true
+
+admin:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Admin
+    module:               admin
+    prefix_path:          /admin
+    column:               id
+    with_wildcard_routes: true
+
+#wiki_ext:
+#  class: sfDoctrineRouteCollection
+#  options:
+#    model:                WikiExt
+#    module:               wiki_ext
+#    prefix_path:          /wiki_ext
+#    column:               id
+#    with_wildcard_routes: true
+#
+#wiki:
+#  class: sfDoctrineRouteCollection
+#  options:
+#    model:                Wiki
+#    module:               wiki
+#    prefix_path:          /wiki
+#    column:               id
+#    with_wildcard_routes: true
+
+tags:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                tags
+    module:               tags
+    prefix_path:          /tags
+    column:               id
+    with_wildcard_routes: true
+
+program_index:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProgramIndex
+    module:               program_index
+    prefix_path:          /program_index
+    column:               id
+    with_wildcard_routes: true
+
+program_template:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProgramTemplate
+    module:               program_template
+    prefix_path:          /program_template
+    column:               id
+    with_wildcard_routes: true
+
+program:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Program
+    module:               program
+    prefix_path:          /program
+    column:               id
+    with_wildcard_routes: true
+
+channel:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Channel
+    module:               channel
+    prefix_path:          /channel
+    column:               id
+    with_wildcard_routes: true
+
+tv_station:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TvStation
+    module:               tv_station
+    prefix_path:          /tv_station
+    column:               id
+    with_wildcard_routes: true
+
+simple_ad:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                SimpleAdvert
+    module:               simple_ad
+    prefix_path:          /simple_ad
+    column:               id
+    with_wildcard_routes: true
+
+short_movie:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ShortMovie
+    module:               short_movie
+    prefix_path:          /short_movie
+    column:               id
+    with_wildcard_routes: true
+
+shortmovie_package:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ShortMoviePackage
+    module:               shortmovie_package
+    prefix_path:          /shortmovie_package
+    column:               id
+    with_wildcard_routes: true
+
+yesterday_program:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                YesterdayProgram
+    module:               yesterday_program
+    prefix_path:          /yesterday_program
+    column:               id
+    with_wildcard_routes: true
+
+nextweek_program:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                NextweekProgram
+    module:               nextweek_program
+    prefix_path:          /nextweek_program
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: admin, action: dashboard }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
+
+
+queue:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Queue
+    module:               queue
+    prefix_path:          /queue
+    column:               id
+    with_wildcard_routes: true
+

@@ -1,0 +1,6 @@
+ajax_all_liveSuccess:
+  has_layout:   false
+ajax_live_tagidSuccess:
+  has_layout:   false
+ajax_weekdaySuccess:
+  has_layout:   false

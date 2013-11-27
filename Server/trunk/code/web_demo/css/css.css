@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;-webkit-transition-duration:0.3s;transition-duration:0.3s;}
+a:focus,input:focus{-webkit-outline-style: none; outline: none;}
+body{ background:#f3f3f3; color:#313131; font-size:100%; font-family:微软雅黑;}
+h1,h2,h3,h4,h5,h6{ font-size:12px; font-weight:normal;}
+li{ list-style:none;}
+a{ color:#313131; text-decoration:none; white-space:nowrap;}
+a:hover{ color:#111;}
+.clr{ overflow:hidden; z-index:1;}
+
+.wapper{ margin:0 auto; height:670px; padding:50px 0 0; position:relative; overflow:hidden; width:1280px;}
+.menu{ background:#313131; height:40px; line-height:40px; text-shadow:1px 1px 1px #111;}
+.menu li{ float:left; min-width:80px; text-shadow:1px 1px 1px #111;}
+.menu a{ color:#797979; display:block; padding:1% 2%; text-align:center;}
+.menu a:hover,.menu .this a{ background:#1d1d1d; color:#e0e0e0;}
+.play_now{ box-shadow:1px 1px 1px #efefef; padding:20px 0 0;}
+.play_now .item_list{ float:left; margin:0 15px 0 0; width:10%;}
+.play_now .item_list a{ background:url(../img/1.png) repeat-x left bottom; display:block; margin:0 0 10px; padding:10px 15px; text-align:center;}
+.play_now .item_list .this a,.play_now .item_list a:hover{ background:#fff; border:none;}
+.play_now ol{ background:#fff; float:right; height:510px; padding:30px 15px 15px; width:83%;}
+.play_now ol li{ float:left; height:220px; overflow:visible; text-align:center; width:16%;}
+.play_now ol a img{ background:#efefef; display:block; font-size:14px; height:72%; line-height:220px; margin:0 auto 5px; text-align:center; position:relative; top:0; width:65%;}
+.play_now ol a:hover img{ background:#ccc; height:80%; top:-5px; width:70%;}
+.list_bg,.tv_list{ float:right; width:83%;}
+.list_bg{ background:#fff; height:530px; overflow:hidden; padding:10px 15px;}
+.epg_list{ float:left; height:460px; padding:0 20px 15px; overflow:hidden; position:relative; width:72%; }
+.epg_list ul{ height:5000px; left:0; position:absolute; top:0; width:100%;}
+.epg_list li{ background:url(../img/1.png) repeat-x left bottom; overflow:visible;}
+.epg_list a{ background:transparent url(../img/2.png) no-repeat -100px center; display:block; padding:15px 20px;}
+.epg_list a:hover{ background:#f8f8f8 url(../img/2.png) no-repeat 10px center;border:2px #FFFF00 solid;}
+.epg_list span{ display:inline-block; margin:0 10px 0 0;}
+.epg_list .time{ text-indent:10px; width:10%;}
+.epg_list .name{ width:80%;}
+.epg_list .ctrl{ color:#008dde; font-size:14px;}
+
+ 
+.text_list,.logo_list{ height:400px; overflow:hidden; padding:30px 0 50px; position:relative;}
+.tv_info{ float:right; font-size:14px; padding:20px; width:20%;}
+.tv_info img{ background:#efefef; box-shadow:3px 3px 3px #ccc; border:1px #d2d2d2 solid; padding:5px; display:block; height:200px; margin:0 auto 15px; width:133px;}
+.tv_info li{ margin:0 0 8px;}
+.tv_info li h2{ font-size:15px; text-align:center;}
+.tv_info li span{ margin:0 12px 10px 0;}
+.tv_info .more{ margin:20px 0 0; text-align:center;}
+.tv_info li a{ background:#008dde; color:#fff; padding:4px 10px;}
+.text_list,.logo_list{ background:#fff; box-shadow:2px 2px 2px #ccc; height:470px; overflow:hidden; padding:30px 0 50px;}
+.text_list li{ background:url(../img/1.png) repeat-x left bottom; float:left; margin:0 2%; width:46%;}
+.text_list li a{ display:block; font-size:22px; margin:0 0 1px; padding:20px 1% 20px 1%; text-align:center; text-shadow:1px 1px 1px #fff;}
+.text_list li a:hover{ background:#efefef;}
+.text_list li span{ padding:0 15px 0 0;}
+.logo_list{ padding-bottom:0;}
+.logo_list li{ float:left; height:100px; margin:0 0 35px; text-align:center; overflow:visible; width:20%;}
+.logo_list li img{ background:#f6f6f6; box-shadow:2px 2px 2px #ccc; height:100px; position:relative; top:0; width:150px;}
+.logo_list li a:hover img{ background:#333; height:133px; top:-15px; width:200px;}
+
+.tj,.src{ margin:0 auto; width:90%;}
+.tj h2,.src h2{ background:url(../img/2.png) no-repeat 50px center; font-size:20px; margin:0 0 15px; text-indent:80px;}
+.tjlist li{ float:left; height:180px; margin:0 0 25px; text-align:center; overflow:visible; width:16%;}
+.tjlist li img{ background:#fff; display:block; height:150px; margin:0 auto 5px; position:relative; top:0; width:100px;}
+.tjlist li a:hover img{ background:#333; height:200px; margin-bottom:-25px; top:-25px; width:133px;}
+.src li{ background:url(../img/1.png) repeat-x left bottom; margin:0 0 20px; overflow:hidden; padding:15px; zoom:1; }
+.src li:hover{ background:#fff; box-shadow:3px 3px 3px #ccc;}
+.src li a,.src li span,.src li strong{ display:block;}
+.src li a{ color:#008dde; margin:0 0 10px;}
+.src li img{ background:#ccc; height:170px; float:left; margin:0 10px 0 0; width:120px;}
+.src li strong{ margin:0 0 5px;}
+.src li span{ margin:0 0 10px; padding:0 15px 0 0; white-space:normal;}
+.src li em{ font-style:normal; padding:0 0 0 5px;}
+
+.movie{ padding:20px;}
+.movie_info{ float:left; width:70%;}
+.movie_info h2{ font-size:20px; margin:0 0 10px;}
+.movie_info .cover{ float:left; height:300px; margin:0 20px 35px 0; width:200px;}
+.mil li{ margin:0 0 10px;}
+.mil li span{ margin:0 12px 0 0;}
+.tab{ background:url(../img/1.png) repeat-x left top; clear:both; padding:25px 0 0;}
+.tab h2 a{ background:#555; color:#fff; display:inline-block; font-size:15px; margin:0 15px 0 0; padding:5px 8px;}
+.tab h2 a:hover,.tab h2 .this{ background:#008dde;}
+.piclist{ padding:15px 0;}
+.piclist li{ float:left; height:100px; overflow:visible; width:20%;}
+.piclist img{ display:block; height:100px; position:relative; width:150px;}
+.piclist li a:hover img{ background:#555; height:120px; left:-10px; top:-10px; width:170px;}
+.fj{ padding:15px 0;}
+.fj li{ float:left; height:35px; margin:0 0 15px; overflow:visible; width:7%;}
+.fj a{ background:#fff; display:block; height:18px; padding:8px; position:relative; width:18px;}
+.fj a:hover{ background:#555; color:#fff; left:-5px; padding:14px; top:-5px;}
+.yylist{ padding:5px 0 0;}
+.yylist li span{ display:inline-block; padding:0 15px 0 0;}
+.yylist li a{ display:block; padding:10px; position:relative;}
+.yylist li a:hover,.yylist li .this{ background:#fff;}
+.yylist li .ctrl{ color:#008dde; position:absolute; right:0;top:8px;}
+.movie_list{ float:right; width:23%;}
+.sty{ background:#fff; height:240px; margin:0 0 15px; padding:15px;}
+.sty h2{ font-size:18px;}
+.sty span{ display:block; margin:0 0 5px;}
+.sty li{ background:url(../img/1.png) repeat-x left bottom; padding:10px 0 5px;}
+
+.footer{ background:#bebebe; bottom:0; left:0; margin:25px 0 0; padding:5px 10px; position:absolute; width:1260px;}
+.footer span{ display:inline-block; margin:0 15px 0 0; text-shadow:1px 1px 1px #fff;}
+.tips{ background:#fff; box-shadow:1px 1px 3px #666; font-size:15px; height:150px; left:50%; margin: -75px -200px; padding:15px; position:fixed; top:50%; width:400px;}
+.tips h2{ color:rgb(0, 141, 222); font-size:17px; padding:0 0 10px;}
+.cls{ position:absolute; right:5px; top:5px;}
+.page span{ color:rgb(0, 141, 222); padding:0 5px;}
+.page{ bottom:85px; font-size:14px; left:0; position:absolute; text-align:center; text-shadow:1px 1px 1px #fff; width:100%;}
+a:hover img{ border:2px #FFFF00 solid;}
+.mil h2 a { background:#555; color:#fff; font-size:14px; position:absolute; padding:5px 8px; right:0;}
+.mil h2 a:hover{ background:#008dde;}
+.movie_info h2{ font-size:20px; margin:0 0 10px; position:relative;}
+.icolist{ height:480px;}
+.icolist li{ height:48px; line-height:48px; float:left;  margin:0 1% 2% 0; width:19%;}
+.icolist li a{ background:#fff; display:block; padding:5px 8px; }
+.icolist li a:hover{ background:#008dde; color:#fff;}
+.icolist img{ background:#ccc; border:1px #d2d2d2 solid; margin:0 10px 0 0; height:24px; max-height:24px; max-width::44px; width:44px; vertical-align:middle; }
+.search{ margin:25px auto; width:80%;}
+.search form{ text-align:center;}
+.search input[type='text']{ border:0; box-shadow:3px 3px 3px #efefef; color:#575757; font:inherit; font-size:36px; height:50px; line-height:50px; margin:40px 0 40px -30px; padding:10px 20px; width:70%;}
+.search input[type='submit']{ cursor:pointer; font-size:18px; height:72px; line-height:72px; position:relative; top:-8px; width:100px;}

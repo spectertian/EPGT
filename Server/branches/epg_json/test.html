@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Service Web 服务</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" type="text/xml" href="/service.asmx?disco" />
+<link rel="stylesheet" type="text/css" href="base.css" />
+<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+
+function Post() {
+	$posturl = $('#env').val();
+	$jsonstr = $('#postjson').val();
+	$("#post-form").attr('action',$posturl);
+	$("#jsonstr").val($jsonstr);
+	$("#post-form").submit();
+}
+
+</script>
+</head>
+ 
+<body>
+	<div id="content"> 	
+		<form method="post" action="http://www.5itest.tv/api/interface" id="post-form" target="_blank">
+			<input type="hidden" name="jsonstr" id="jsonstr">	
+		</form>	
+		<p class="heading1">智能EPG接口 Ver2.1.9（JSON）测试</p>		
+		<div style="zoom:1; overflow:hidden;">
+			<p class="intro">选择测试平台
+				<select id="env" name="env">
+					<option value="http://www.5itest.tv/json">开发平台</option>
+					<option value="http://www.5itest.tv/frontend_dev.php/json">开发平台Bug</option>
+					<option value="http://www.5i.test.cedock.net/json">测试平台</option>
+					<option value="http://www.epg.huan.tv/json">生产平台</option>
+				</select>，可以点击<a href="Ver2.1.9.pdf" target="_blank">此处</a>，查看接口文档说明。</p>
+			<div style="width:40%;float:left">
+			  <h3>输入请求json</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;"> 
+					<tr>
+					  <td><textarea name="postjson" cols="100" rows="20" class="frmInput" id="postjson"></textarea></td>
+					</tr>  
+					<tr>
+					  <td align="right"> <input type="button" value="调用" class="button" onClick="Post();"></td>
+					</tr>
+				</table>
+			</div>
+			<div style="float:right; width:60%">
+			
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

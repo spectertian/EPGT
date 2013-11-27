@@ -1,0 +1,48 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/06-Admin-Generator
+
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ProgramTemplate
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          program_template
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:    false
+
+    config:
+      actions: ~
+      fields:
+        id:   { label: ID }
+        ProgramTemplate: {lable: 模板 }
+        name:  {label: 节目名称 }
+        wiki_id:  {label: 维基 }
+        p_id:   {label: 节目模板 }
+        wiki:  {label: 维基 }
+        ProgramIndex: {lable: 模板 }
+        time:  {label: 播放时间 }
+        program_index: {label: 模板 }
+        created_at: { label: 创建时间, date_format: 'y-M-d H:m:s' }
+        updated_at: { label: 更新时间, date_format: 'y-M-d H:m:s' }
+
+      list:
+        title: 预留节目列表
+        sort: [time, asc]
+        display: [id,wiki,program_index,name,time,created_at, updated_at]
+        max_per_page: 50
+        batch_actions:
+          _delete: { label: 删除 }
+          batch_add: {label:批量添加, partial: batch_add }
+        object_actions: {}
+        actions: {}
+      filter:
+        display: [p_id, name]
+      edit:
+        title:  更新 %%name%% 模板
+      new:
+        title: 创建模板

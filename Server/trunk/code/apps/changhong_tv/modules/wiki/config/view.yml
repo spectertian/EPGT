@@ -1,0 +1,4 @@
+## YAML Template.
+showSuccess:
+  javascripts: [epg2_5.js]
+  layout: false

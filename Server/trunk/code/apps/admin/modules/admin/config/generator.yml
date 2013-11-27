@@ -1,0 +1,39 @@
+# You can find more information about this file on the symfony website:
+# http://symfony.com/legacy/doc/reference/1_4/en/06-Admin-Generator	
+
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Admin
+    theme:                 joomla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          admin
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      fields:
+        username: { label: 用户名 }
+        password: { label: 密码 }
+        name: { label: 真实姓名 }
+        email: { label: 邮箱 }
+        status: { label: 状态 }
+        phone: { label: 联系电话 }
+        last_login_at: { label: 最后登陆时间 }
+        last_login_ip: { label: 最后登陆IP }
+        created_at: { label:  创建时间 }
+        updated_at: { label: 更新时间 }
+      list:
+        title: 权限管理
+        display: [ id, =username, name, email, phone, status, last_login_at, updated_at ]
+        sort: [last_login_at, desc]
+      edit:
+        title: 管理用户
+      filter:
+        display: [ username, status ]
+        
+
+        

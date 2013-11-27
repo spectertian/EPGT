@@ -1,0 +1,4 @@
+indexSuccess:
+  layout: popup_layout
+  stylesheets:   [ smoothness/jquery-ui-1.8.2.custom.css,thickbox.css,auto_complete.css]
+  javascripts: [ auto_complete.js,jquery-ui-1.8.2.custom.min.js, jquery-ui-i18n.min.js,DateTimeMask.js,jquery.uitableedit.js]

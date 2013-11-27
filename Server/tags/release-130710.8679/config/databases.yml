@@ -1,0 +1,42 @@
+dev:
+  master:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=192.168.10.70;port=3306;dbname=epg'
+      username: epg
+      password: epgpass
+  mondongo:
+    class: sfMondongoDatabase
+    param:
+      server: mongodb://epg:epgpass@192.168.10.71:27017
+      database: epg
+
+  mondongosp:
+    class: sfMondongoDatabase
+    param:
+      server: mongodb://epg:epgpass@192.168.10.71:27017
+      database: epg_report
+      #persist:
+      #replicaSet: true
+prod:
+  master:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=192.168.10.70;port=3306;dbname=epg'
+      username: epg
+      password: epgpass
+  mondongo:
+    class: sfMondongoDatabase
+    param:
+      server: mongodb://epg:epgpass@192.168.10.71:27017
+      database: epg
+      #persist:
+      #replicaSet: true
+
+  mondongosp:
+    class: sfMondongoDatabase
+    param:
+      server: mongodb://epg:epgpass@192.168.10.71:27017
+      database: epg_report
+      #persist:
+      #replicaSet: true

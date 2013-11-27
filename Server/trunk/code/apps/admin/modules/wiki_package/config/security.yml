@@ -1,0 +1,17 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: wiki_package_del
+
+index:
+  credentials: wiki_package_index
+
+edit:
+  credentials: wiki_package_edit
+
+add:
+  credentials: wiki_package_new
+
+captcha:
+  is_secure: false

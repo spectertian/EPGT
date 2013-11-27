@@ -1,0 +1,5 @@
+all:
+  is_secure: off
+  credentials: spservice
+spservice:
+  credentials: spservice_index

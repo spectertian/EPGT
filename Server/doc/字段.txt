@@ -1,0 +1,51 @@
+program   
+    name: 节目名称
+    publish: 是否发布
+    channel_code: 频道code
+    tags: 标签
+    start_time: 开始时间
+    end_time: 结束时间
+    date: 日期
+    wiki_id: wiki_id
+    sort: 排序
+    
+ wiki   
+    title: 名称
+    content: 描述
+    cover: 封面
+    tags: 标签
+    comment_tags: 用户标签
+    model: 模型
+    like_num: 喜欢的数量
+    dislike_num: 不喜欢的数量
+    watched_num: 看过的数量
+    has_video: 是否有视频
+    source: 视频源
+    first_letter: 首字母
+    douban_id: 豆瓣ID
+    verify: 是否审核
+if(model == film or teleplay)   
+    ename: 英文名称
+    alias: 别名
+    director: 导演
+    starring: 演员
+    produced: 出品方
+    released: 发布方
+    distributor: 发行商
+    screenshots: 看点
+    time: 发行时间
+    language: 语音
+    country: 国家
+    writer: 编剧
+if(model == television)
+    channel: 播出频道
+    play_time: 播出时间
+    host: 主持人
+    guest: 嘉宾
+    screenshots: 剧照
+    producer: 监制
+    alias: 别名
+    runtime: 播出时长
+    country: 国家地区
+    language: 语言
+    

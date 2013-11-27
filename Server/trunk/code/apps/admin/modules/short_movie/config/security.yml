@@ -1,0 +1,27 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: short_movie_del
+
+index:
+  credentials: short_movie_index
+
+edit:
+  credentials: short_movie_edit
+
+batchdelete:
+  credentials: short_movie_del
+
+publishoff:
+  credentials: short_movie_publishoff
+
+batchpublish:
+  credentials: short_movie_publishoff
+
+publishon:
+  credentials: short_movie_publishoff
+
+
+epgupdate:
+  credentials: program_sport_channelupdate

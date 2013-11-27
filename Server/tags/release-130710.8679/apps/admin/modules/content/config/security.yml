@@ -1,0 +1,23 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+importdelete:
+  credentials: content_del
+
+tempdelete:
+  credentials: content_del
+
+index:
+  credentials: content_index
+
+show:
+  credentials: content_index
+
+import:
+  credentials: content_import
+
+inject:
+  credentials: content_inject
+
+captcha:
+  is_secure: false

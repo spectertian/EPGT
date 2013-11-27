@@ -1,0 +1,15 @@
+获取央视卫视直播节目
+db.program.find({"channel_type":{$in:['cctv','tv']},"start_time":{$lte:new Date("2013/07/11 12:00:00")},"end_time":{$gt:new Date("2013/07/11 12:00:00")}}).explain();
+获取央视卫视安徽电视台正在直播
+db.program.find({"channel_type":{$in:['cctv','tv','安徽']},"start_time":{$lte:new Date("2013/07/11 12:00:00")},"end_time":{$gt:new Date("2013/07/11 12:00:00")}}).explain();
+获取央视卫视安徽电视台正在直播，并且有wiki
+db.program.find({"channel_type":{$in:['cctv','tv','安徽']},"start_time":{$lte:new Date("2013/07/11 12:00:00")},"end_time":{$gt:new Date("2013/07/11 12:00:00")},"wiki_id":{$exists:true}}).explain();
+获取央视卫视安徽电视台正在直播的电视剧，并且有wiki
+db.program.find({"channel_type":{$in:['cctv','tv','安徽']},"start_time":{$lte:new Date("2013/07/11 12:00:00")},"end_time":{$gt:new Date("2013/07/11 12:00:00")},"wiki_id":{$exists:true},"tags":"电视剧"}).explain();
+
+获取某些频道直播节目
+db.program.find({channel_code: { $in: [ "cctv1", "cctv3", "cctv4_asia", "cctv_kids",  "cctv6", "cctv11", "cctv_news",  "dragontv",  "cctv7",  "cctv2", "cctv5", "cctv8", "cctv10", "cctv12", "antv", "fjtv", "cctv9", "cctv_music",  "jztv_high", "CCTV-NEWS", "cctv22", "cctv1gaoqing", "jiangsuweishigaoqing", "hunanweishigaoqing", "bingtuanweishi", "bjweishigaoqing", "dfweishigaoqing", "gdweishigaoqing", "hljweishigaoqing", "kakukatong", "shenzhenweishigaoqing", "cctv3gaoqing", "cctv5gaoqing", "cctv8gaoqing", "cctv6gaoqing" ] }, start_time: { $lt: new Date("2013/7/10 10:0:0") }, end_time: { $gt: new Date("2013/7/10 10:0:0") }, wiki_id: { $exists: true }, tags: "电视剧"}).explain()
+
+获取某wiki的直播节目
+db.program.find({wiki_id: "500e674ccf63576d6e00002f", start_time: { $gte: new Date("2013/7/11 10:0:0") }, end_time: { $lt: new Date("2013/7/11 20:0:0") }}).explain()
+db.program.find({wiki_id: "500e674ccf63576d6e00002f", "date": "2013-07-11"}).explain()

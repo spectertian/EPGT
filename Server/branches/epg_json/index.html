@@ -1,0 +1,440 @@
+<html>
+<head>
+<title>Service Web 服务</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" type="text/xml" href="/service.asmx?disco" />
+<link rel="stylesheet" type="text/css" href="base.css" />
+<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="function.js"></script>
+<script type="text/javascript">
+//$developer = '{"apikey":"FBCECY2E","secretkey":"9ef2977d62f85681eae90788b13678af"}';
+//$developer = '{"apikey":"S8Q5T32C1","secretkey":"95e49c4363dc1fa0f5004b01412f5be2"}';
+$developer = '{"apikey":"UNU6HKY8","secretkey":"42057dae179f6f33ab758496bb5687c3"}';
+
+$device = '{"dnum":"123"}';
+$user = '{"userid":"123"}';
+
+$(document).ready(function() {
+	$("h3").each(function(){ 
+		$table = $(this).next();
+		$table.hide();
+		$(this).click(function(){
+			$("table").hide();
+			$(this).next().toggle();
+		});
+	});
+	var nowDate = new Date();
+	var nextDate = new Date();
+	nextDate.setHours(nextDate.getHours()+4);
+	$("#GetProgramsByChannel_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#GetProgramsByChannel_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+	$("#SearchProgram_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#SearchProgram_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+	$("#GetAttachments_start_time").val(nowDate.format("yyyy-MM-dd 00:00:00"));
+	$("#GetAttachments_end_time").val(nowDate.format("yyyy-MM-dd 23:59:59"));
+});
+</script>
+</head>
+ 
+<body>
+	<div id="content"> 	
+		<form method="post" action="http://www.5itest.tv/api/interface" id="post-form" target="_blank">
+			<input type="hidden" name="jsonstr" id="jsonstr">	
+		</form>	
+		<p class="heading1">智能EPG接口 Ver2.1.9（JSON）测试</p>		
+		<div style="zoom:1; overflow:hidden;">
+			<p class="intro">选择测试平台
+				<select id="env" name="env">
+					<option value="http://www.5itest.tv/json">开发平台</option>
+					<option value="http://www.5itest.tv/frontend_dev.php/json">开发平台Bug</option>
+					<option value="http://www.5i.test.cedock.net/json">测试平台</option>
+					<option value="http://www.epg.huan.tv/json">生产平台</option>
+					<option value="http://172.31.139.17/json">播出平台nj</option>
+				</select>，可以点击<a href="Ver2.1.9.pdf" target="_blank">此处</a>，查看接口文档说明。</p>
+			<div style="width:40%;float:left">
+				<h3>GetChannelsBySP</h3>
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">sp:</td>
+						<td><input class="frmInput" type="text" size="20" name="sp" id="GetChannels_sp" value=""></td>
+					</tr>  
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetChannelsBySP();"></td>
+					</tr>
+				</table>
+				<h3>GetProgramsByChannel</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">channel_code:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByChannel_channel_code" value="cctv1"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByChannel_start_time" value="2012-11-13 00:00:00"></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetProgramsByChannel_end_time" value="2012-11-13 23:59:59"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetProgramsByChannel();"></td>
+					</tr>
+				</table>
+				<h3>GetLiveCategory</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetLiveCategory();"></td>
+					</tr>
+				</table>
+				<h3>GetLiveProgrameByTag</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">tag:</td>
+						<td><input class="frmInput" type="text" size="20" name="tag" id="GetLiveProgrameByTag_tag" value="电视剧"></td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetLiveProgrameByTag();"></td>
+					</tr>
+				</table>	
+				<h3>SearchProgram</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">tag:</td>
+						<td><input class="frmInput" type="text" size="20" name="key" id="SearchProgram_key" value="新闻联播"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="key" id="SearchProgram_start_time" value="2012-10-10 0:0:0"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="key" id="SearchProgram_end_time" value="2012-10-10 23:59:59"></td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="SearchProgram();"></td>
+					</tr>
+				</table>
+                <h3>SearchWiki</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">keyword:</td>
+						<td><input class="frmInput" type="text" size="20" name="key" id="SearchWiki_keyword" value="title:甄嬛传"></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">hasvideo:</td>
+						<td>
+                            <select id="SearchWiki_hasvideo">
+                                <option value="true">true</option>
+                                <option value="false">false</option>
+                            </select>
+                        </td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="SearchWiki();"></td>
+					</tr>
+				</table>  
+                <h3>GetWikiInfo</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">wiki_id:</td>
+						<td><input class="frmInput" type="text" size="20" name="key" id="GetWikiInfo_wiki_id" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetWikiInfo();"></td>
+					</tr>
+				</table> 
+                <h3>GetWikiInfoByAssetId</h3> 
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">asset_id:</td>
+						<td><input class="frmInput" type="text" size="20" name="key" id="GetWikiInfoByAssetId_asset_id" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetWikiInfoByAssetId();"></td>
+					</tr>
+				</table> 
+                <h3>GetWikiMetas</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">wiki_id:</td>
+						<td><input class="frmInput" type="text" size="20" name="key" id="GetWikiMetas_wiki_id" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetWikiMetas();"></td>
+					</tr>
+				</table> 
+                <h3>GetAttachments</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">start_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="starttime" id="GetAttachments_start_time" value=""></td>
+					</tr>
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">end_time:</td>
+						<td><input class="frmInput" type="text" size="20" name="starttime" id="GetAttachments_end_time" value=""></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetAttachments();"></td>
+					</tr>
+				</table>
+                <h3>GetSystemCitys</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr> 
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="GetSystemCitys();"></td>
+                    </tr>
+                </table>
+                <h3>GetDtvSPList</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr> 
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">province:</td>
+                        <td><input class="frmInput" type="text" size="20" name="starttime" id="GetDtvSPList_province" value=""></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="GetDtvSPList();"></td>
+                    </tr>
+                </table>
+			</div>
+			<div style="float:right; width:60%">                
+                <h3>GetMediaCategory</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetMediaCategory();"></td>
+					</tr>
+				</table>
+                <h3>GetMediasByCategory</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">cid:</td>
+						<td><input class="frmInput" type="text" size="20" name="cid" id="GetMediasByCategory_cid" value="1"></td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetMediasByCategory();"></td>
+					</tr>
+				</table>
+				<h3>GetRecommendByChannel</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">channel_code:</td>
+						<td><input class="frmInput" type="text" size="20" name="channel_code" id="GetRecommendByChannel_channel_code" value="cctv1"></td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetRecommendByChannel();"></td>
+					</tr>
+				</table>
+                <h3>GetWikiUrlByPackageId</h3>  
+				<table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">package_id:</td>
+						<td><input class="frmInput" type="text" size="20" name="package_id" id="GetWikiUrlByPackageId_package_id" value="10907963"></td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">sp_id:</td>
+						<td><input class="frmInput" type="text" size="20" name="sp_id" id="GetWikiUrlByPackageId_sp_id" value="yang.com"></td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetWikiUrlByPackageId();"></td>
+					</tr>
+				</table>
+                <h3>GetSceneRecommend</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+					<tr>
+						<td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+						<td class="frmHeader" background="#dcdcdc">值</td>
+					</tr> 
+					<tr>
+						<td class="frmText" style="color: #000000; font-weight: normal;">scene:</td>
+						<td><input class="frmInput" type="text" size="20" name="scene" id="GetSceneRecommend_scene" value="hncatv_index_hotplay"></td>
+					</tr> 
+					<tr>
+						<td></td>
+						<td align="right"> <input type="button" value="调用" class="button" onclick="GetSceneRecommend();"></td>
+					</tr>
+				</table>
+                <h3>GetRecommendMedias</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">size:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetRecommendMedias_size" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">sort:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetRecommendMedias_sort" value="default"></td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">detail:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetRecommendMedias_detail" value="false"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="GetRecommendMedias();"></td>
+                    </tr>
+                </table>
+                <h3>GetFilterOption</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="GetFilterOption();"></td>
+                    </tr>
+                </table>
+                <h3>GetThemes</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">size:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetThemes_size" value="10"></td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">page:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetThemes_page" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="GetThemes();"></td>
+                    </tr>
+                </table>
+                <h3>GetThemeById</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">id:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetThemeById_tid" value="27"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="GetThemeById();"></td>
+                    </tr>
+                </table>
+                <h3>GetWikisByWiki</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">wiki_id:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetWikisByWiki_wiki_id" value="521d99eb6dbde15949e0c052"></td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">extendtype:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="GetWikisByWiki_extendtype" value="4"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="GetWikisByWiki();"></td>
+                    </tr>
+                </table>
+                <h3>SearchSuggest</h3>
+                <table width="400" cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
+                    <tr>
+                        <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white; width: 120px">参数</td>
+                        <td class="frmHeader" background="#dcdcdc">值</td>
+                    </tr>
+                    <tr>
+                        <td class="frmText" style="color: #000000; font-weight: normal;">keyword:</td>
+                        <td><input class="frmInput" type="text" size="20" name="scene" id="SearchSuggest_key" value="宫"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right"> <input type="button" value="调用" class="button" onclick="SearchSuggest();"></td>
+                    </tr>
+                </table>
+			</div>	
+		</div>
+	</div>
+<div id="result"></div>    
+</body>
+</html>

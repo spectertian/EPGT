@@ -1,0 +1,35 @@
+prod:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.8.220:7001", domain: "5itv", class: "image"}
+  static_url: http://image.epg.huan.tv/
+  memcache:
+    servers:
+      config_one: {host: "192.168.8.221", port: 11230}
+    compression : 0
+  weibo:
+    type: { "Sina": true, "Qqt": true }
+    Sina: { akey: 2690638924, skey: "3c49342daf72040debc88f618e8864ab", callback_url:"http://www.5i.tv/user/" }
+    Qqt: { akey: "d801f1c9adcc4b9fa19b95f864e69680", skey: "c35397c11e4e0d3977f5dc4faf982cbd", callback_url:"http://www.5i.tv/user/" }
+  email: { host: "smtp.googlemail.com", user: "XXXXX@mozitek.com", pass: "XXXXX", port: 465, charset: "UTF-8",enable: false }
+
+  php_path: /usr/local/php5.3.8/bin/
+  project_path: /usr/share/nginx/5itv/
+  
+dev:
+  photo:
+    type: MogilefsStorage
+    config: {hosts: "192.168.8.220:7001", domain: "5itv", class: "image"}
+  static_url: http://image.epg.huan.tv/
+  memcache:
+    servers:
+      config_one: {host: "192.168.8.221", port: 11230}
+    compression : 0
+  weibo:
+    type: { "Sina": true, "Qqt": true }
+    Sina: { akey: 678787622, skey: "e94861c7d5ae60b0817e007086530d7f", callback_url: "http://192.168.1.51/epg_2011_new/web/frontend_dev.php/user/" }
+    Qqt: { akey: "1b8893a1093b42baa042dc21aa86e9c4", skey: "186c513c70a75f82c1b01984edc5c25d", callback_url: "http://192.168.1.51/epg_2011_new/web/frontend_dev.php/user/" }
+  email: { host: "smtp.googlemail.com", user: "XXXXX@mozitek.com", pass: "XXXXX", port: 465, charset: "UTF-8",enable: false }
+
+  php_path: /usr/local/php5.3.8/bin/
+  project_path: /usr/share/nginx/5itv/  

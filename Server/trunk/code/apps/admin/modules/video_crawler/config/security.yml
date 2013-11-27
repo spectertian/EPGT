@@ -1,0 +1,23 @@
+## You can find more information about this file on the symfony website:
+## http://www.symfony-project.org/reference/1_4/en/08-Security
+#
+delete:
+  credentials: video_crawler_del
+
+deleteajax:
+  credentials: video_crawler_del
+
+ajax_del:
+  credentials: video_crawler_del
+
+index:
+  credentials: video_crawler_index
+
+ajax_update:
+  credentials: video_crawler_edit
+
+add:
+  credentials: video_crawler_new
+
+captcha:
+  is_secure: false
