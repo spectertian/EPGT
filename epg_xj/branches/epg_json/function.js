@@ -180,7 +180,7 @@ function GetWikiInfo() {
 function OrderProgramByUser() {
 	$posturl = $('#env').val();
 	$action = 'OrderProgramByUser';
-	$param = '{"userId":"'+$('#OrderProgramByUser_userId').val()+'","channelId":"'+$('#OrderProgramByUser_userId').val()+'","startTime":"'+$('#OrderProgramByUser_start_time').val()+'","endTime":"'+$('#OrderProgramByUser_end_time').val()+'","programName":"'+$('#OrderProgramByUser_programName').val()+'"}';
+	$param = '{"userId":"'+$('#OrderProgramByUser_userId').val()+'","channelId":"'+$('#OrderProgramByUser_channelId').val()+'","startTime":"'+$('#OrderProgramByUser_start_time').val()+'","endTime":"'+$('#OrderProgramByUser_end_time').val()+'","programName":"'+$('#OrderProgramByUser_programName').val()+'"}';
 	$jsonstr = "{\"action\":\""+$action+"\",\"developer\":"+$developer+",\"user\":"+$user+",\"device\":"+$device+",\"param\":"+$param+"}";
 	$("#result").html($jsonstr);
     $("#post-form").attr('action',$posturl);
